@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イズミ電商 採用LP ─ デザイン3案</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Noto Sans JP',sans-serif;background:#1a1f2e;color:#111827;line-height:1.7;font-size:15px;}
+img{display:block;max-width:100%;}
+button{font-family:inherit;cursor:pointer;}
+a{text-decoration:none;color:inherit;}
+
+/* ─── PRESENTATION SHELL ─── */
+.pres-header{
+  background:linear-gradient(135deg,#0d1220 0%,#1e2d50 100%);
+  padding:32px 20px 24px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.pres-header .logo{font-size:11px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:10px;}
+.pres-header h1{font-size:20px;font-weight:900;color:#fff;margin-bottom:6px;}
+.pres-header .sub{font-size:12px;color:rgba(255,255,255,.5);}
+.pres-header .date{font-size:11px;color:rgba(255,255,255,.3);margin-top:8px;}
+
+/* ─── SWITCHER ─── */
+.switcher{
+  position:sticky;top:0;z-index:9999;
+  background:#0d1220;
+  padding:10px 16px;
+  display:flex;gap:6px;
+  align-items:center;
+  box-shadow:0 2px 16px rgba(0,0,0,.6);
+}
+.sw-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.12em;white-space:nowrap;}
+.sw-btn{
+  flex:1;border:none;font-size:11px;font-weight:700;
+  padding:9px 6px;border-radius:5px;letter-spacing:.05em;
+  white-space:nowrap;transition:all .2s;cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.sw-btn:hover{opacity:.85;transform:translateY(-1px);}
+.sw-a{background:linear-gradient(135deg,#1b3a7a,#0e1e44);color:#c9921a;border:1px solid #c9921a;}
+.sw-b{background:linear-gradient(135deg,#b91c1c,#991b1b);color:#fff;}
+.sw-c{background:linear-gradient(135deg,#2d6a4f,#1b4332);color:#74c69d;border:1px solid #74c69d;}
+.sw-all{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);}
+
+/* ─── DOC SHELL ─── */
+.doc-shell{max-width:430px;margin:0 auto;padding:0 0 80px;}
+.plan-section{display:none;}
+.plan-section.active{display:block;}
+
+/* ─── CONCEPT BANNER ─── */
+.concept-banner{
+  margin:16px 12px 8px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+}
+.concept-banner-inner{
+  padding:16px 18px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.concept-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:900;letter-spacing:.1em;
+  padding:5px 14px;border-radius:20px;align-self:flex-start;
+}
+.concept-title{font-size:16px;font-weight:900;color:#fff;}
+.concept-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;}
+.concept-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.concept-tag{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);}
+
+/* ─── DEVICE FRAME ─── */
+.wf-device{
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,.5);
+  border:2px solid rgba(255,255,255,.1);
+  margin:0 8px;
+  background:#fff;
+}
+
+/* ════════════════════════════════════════
+   PLAN A  ネイビー × ゴールド
+════════════════════════════════════════ */
+.pa{
+  --ca1:#0e1e44;--ca2:#1b3a7a;--ca3:#c9921a;--ca4:#f5f0e8;--cag:#6b7280;
+  font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;
+}
+/* header */
+.pa .hdr{background:var(--ca1);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.3);}
+.pa .hdr-logo{color:#fff;font-size:12px;font-weight:900;letter-spacing:.1em;display:flex;align-items:center;gap:8px;}
+.pa .hdr-logo-mark{width:28px;height:28px;border-radius:50%;background:var(--ca3);display:flex;align-items:center;justify-content:center;font-size:13px;}
+.pa .hdr-logo span{color:var(--ca3);}
+.pa .hdr-apply{background:var(--ca3);color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border:none;border-radius:3px;letter-spacing:.05em;}
+/* fv */
+.pa .fv{background:var(--ca1);min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;padding:36px 20px 30px;}
+.pa .fv-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0e1e44 0%,#162d6e 50%,#0a1530 100%);}
+.pa .fv-pattern{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(45deg,#fff 0px,#fff 1px,transparent 1px,transparent 40px),repeating-linear-gradient(-45deg,#fff 0px,#fff 1px,transparent 1px,transparent 40px);}
+.pa .fv-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,30,68,.98) 0%,rgba(14,30,68,.5) 55%,transparent 100%);}
+.pa .fv-photo-hint{position:absolute;top:20px;right:16px;background:rgba(255,255,255,.06);border:1px dashed rgba(255,255,255,.2);border-radius:8px;padding:10px 14px;color:rgba(255,255,255,.3);font-size:10px;letter-spacing:.1em;text-align:center;line-height:1.5;}
+.pa .fv-video{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(201,146,26,.2);border:2px solid rgba(201,146,26,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;}
+.pa .fv-video .ico{font-size:22px;color:var(--ca3);}
+.pa .fv-video .lbl{font-size:8px;color:rgba(255,255,255,.7);letter-spacing:.15em;}
+.pa .fv-content{position:relative;z-index:2;}
+.pa .fv-eyebrow{font-size:9px;letter-spacing:.3em;color:var(--ca3);font-weight:700;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.pa .fv-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--ca3);}
+.pa .fv-h1{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:16px;}
+.pa .fv-h1 em{color:var(--ca3);font-style:normal;}
+.pa .fv-sub{font-size:13px;color:rgba(255,255,255,.7);line-height:1.9;margin-bottom:28px;}
+.pa .fv-btns{display:flex;flex-direction:column;gap:10px;}
+.pa .btn-gold{background:var(--ca3);color:#fff;font-size:14px;font-weight:700;padding:15px;border:none;border-radius:3px;text-align:center;letter-spacing:.06em;box-shadow:0 4px 16px rgba(201,146,26,.4);}
+.pa .btn-ghost-a{background:transparent;color:rgba(255,255,255,.8);font-size:13px;padding:13px;border:1px solid rgba(255,255,255,.3);border-radius:3px;text-align:center;}
+/* numbers */
+.pa .nums{background:var(--ca3);display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background-color:rgba(0,0,0,.15);}
+.pa .num-item{background:var(--ca3);text-align:center;padding:15px 8px;}
+.pa .num-val{font-size:22px;font-weight:900;color:#fff;line-height:1;}
+.pa .num-val small{font-size:12px;}
+.pa .num-lbl{font-size:10px;color:rgba(255,255,255,.8);margin-top:4px;}
+/* section */
+.pa .sec{padding:38px 20px;border-bottom:1px solid #eef0f4;}
+.pa .sec-alt{background:var(--ca4);}
+.pa .sec-dark{background:var(--ca1);}
+.pa .sec-tag{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ca3);display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+.pa .sec-tag::after{content:'';flex:1;height:1px;background:var(--ca3);opacity:.3;}
+.pa .sec-h2{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:#111827;margin-bottom:10px;}
+.pa .sec-lead{font-size:13px;color:var(--cag);margin-bottom:26px;line-height:1.95;}
+/* jobs */
+.pa .job-list-a{display:flex;flex-direction:column;gap:12px;}
+.pa .job-item-a{background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.pa .job-badges{display:flex;gap:5px;flex-wrap:wrap;}
+.pa .jb{font-size:10px;font-weight:700;padding:3px 8px;border-radius:2px;}
+.pa .jb-hot{background:#fee2e2;color:#b91c1c;}
+.pa .jb-exp{background:#dcfce7;color:#15803d;}
+.pa .jb-reg{background:#dbeafe;color:#1d4ed8;}
+.pa .jb-cert{background:#fef9c3;color:#854d0e;}
+.pa .job-name-a{font-size:15px;font-weight:700;color:#0e1e44;}
+.pa .job-meta-a{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--cag);}
+.pa .btn-apply-a{background:var(--ca3);color:#fff;font-size:13px;font-weight:700;padding:12px;border:none;border-radius:3px;text-align:center;}
+.pa .more-btn{background:#fff;color:var(--ca1);font-size:13px;font-weight:700;padding:13px;border:1.5px solid var(--ca1);border-radius:3px;text-align:center;margin-top:8px;display:block;width:100%;}
+/* charms */
+.pa .charm-a{display:flex;flex-direction:column;gap:30px;}
+.pa .charm-photo{background:linear-gradient(135deg,#1b3a7a,#0e1e44);border-radius:10px;height:185px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.18);font-size:11px;letter-spacing:.12em;margin-bottom:16px;border:1px dashed rgba(255,255,255,.1);}
+.pa .charm-num{font-size:9px;font-weight:700;letter-spacing:.25em;color:var(--ca3);margin-bottom:6px;}
+.pa .charm-title{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:#111827;margin-bottom:10px;line-height:1.55;}
+.pa .charm-body{font-size:13px;color:var(--cag);line-height:2.05;}
+.pa .charm-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.pa .ca-tag{background:#e8eef8;color:var(--ca2);font-size:11px;font-weight:700;padding:5px 12px;border-radius:3px;}
+/* career */
+.pa .cp-a{display:flex;flex-direction:column;gap:20px;}
+.pa .cp-lane-title{font-size:13px;font-weight:700;color:#fff;background:var(--ca1);padding:11px 16px;border-radius:4px 4px 0 0;}
+.pa .cp-steps{border:1px solid #e5e7eb;border-top:none;border-radius:0 0 4px 4px;overflow:hidden;}
+.pa .cp-step{padding:13px 16px;border-bottom:1px solid #f3f4f6;display:flex;gap:14px;align-items:flex-start;}
+.pa .cp-step:last-child{border-bottom:none;}
+.pa .cp-yr{font-size:10px;font-weight:700;color:var(--ca3);width:46px;flex-shrink:0;line-height:1.6;}
+.pa .cp-txt dt{font-size:13px;font-weight:700;}
+.pa .cp-txt dd{font-size:11px;color:var(--cag);margin-top:2px;}
+/* data */
+.pa .data-a{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pa .data-card{background:#fff;border-radius:10px;padding:20px 12px;text-align:center;border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.pa .data-ring{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;position:relative;}
+.pa .data-ring::after{content:'';position:absolute;inset:14px;border-radius:50%;background:#fff;}
+.pa .data-val{font-size:22px;font-weight:900;color:#111827;}
+.pa .data-lbl{font-size:10px;color:var(--cag);margin-top:3px;line-height:1.4;}
+/* president */
+.pa .pres-photo{background:linear-gradient(135deg,#1b3a7a,#0e1e44);border-radius:10px;height:210px;display:flex;align-items:flex-end;justify-content:flex-start;padding:14px 16px;color:rgba(255,255,255,.2);font-size:10px;letter-spacing:.1em;margin-bottom:22px;border:1px dashed rgba(255,255,255,.1);}
+.pa .pres-title{font-family:'Noto Serif JP',serif;font-size:19px;font-weight:700;color:#111827;margin-bottom:16px;line-height:1.65;}
+.pa .pres-body{font-size:13px;color:var(--cag);line-height:2.1;margin-bottom:18px;}
+.pa .pres-sign{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;border-top:1px solid #e5e7eb;padding-top:14px;}
+.pa .pres-sign small{display:block;font-size:11px;color:var(--cag);font-family:'Noto Sans JP',sans-serif;font-weight:400;margin-bottom:4px;}
+/* voice */
+.pa .voice-a{display:flex;flex-direction:column;gap:28px;}
+.pa .voice-item{padding-bottom:28px;border-bottom:1px solid #eef0f4;}
+.pa .voice-item:last-child{border-bottom:none;padding-bottom:0;}
+.pa .voice-photo{border-radius:10px;height:165px;display:flex;align-items:flex-end;padding:12px;margin-bottom:14px;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.1em;}
+.pa .voice-photo-1{background:linear-gradient(135deg,#dbeafe,#93c5fd);}
+.pa .voice-photo-2{background:linear-gradient(135deg,#dcfce7,#86efac);}
+.pa .voice-meta{font-size:11px;color:var(--cag);}
+.pa .voice-name{font-size:16px;font-weight:900;margin-bottom:2px;}
+.pa .voice-role{font-size:11px;font-weight:700;color:var(--ca3);margin-bottom:12px;}
+.pa .voice-q{background:#e8eef8;border-left:3px solid var(--ca3);padding:10px 14px;font-size:13px;font-weight:700;margin-bottom:8px;border-radius:0 4px 4px 0;}
+.pa .voice-body{font-size:13px;color:var(--cag);line-height:2;}
+.pa .voice-more{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--ca3);}
+/* company */
+.pa .co-table{width:100%;border-collapse:collapse;font-size:13px;}
+.pa .co-table tr{border-bottom:1px solid #eef0f4;}
+.pa .co-table th{padding:12px 10px;font-weight:700;background:var(--ca4);text-align:left;width:88px;vertical-align:top;font-size:12px;}
+.pa .co-table td{padding:12px 10px;color:var(--cag);}
+.pa .map{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border-radius:10px;height:180px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(0,0,0,.3);letter-spacing:.1em;margin-top:20px;border:1px dashed rgba(0,0,0,.1);}
+/* cta footer */
+.pa .cta-foot{background:var(--ca1);padding:50px 20px;text-align:center;}
+.pa .cta-foot h3{font-family:'Noto Serif JP',serif;font-size:22px;color:#fff;margin-bottom:12px;line-height:1.55;}
+.pa .cta-foot p{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:30px;line-height:1.95;}
+.pa .cta-btns{display:flex;flex-direction:column;gap:10px;}
+/* sticky */
+.pa .sticky{position:sticky;bottom:0;background:#fff;border-top:2px solid #e5e7eb;padding:10px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px;box-shadow:0 -4px 20px rgba(0,0,0,.12);}
+/* footer */
+.pa .foot{background:#070d1c;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.pa .foot .logo-f{color:rgba(255,255,255,.35);font-size:11px;font-weight:700;}
+.pa .foot .copy{font-size:10px;color:rgba(255,255,255,.2);}
+
+/* ════════════════════════════════════════
+   PLAN B  白 × バーミリオン
+════════════════════════════════════════ */
+.pb{--cb1:#b91c1c;--cb2:#991b1b;--cb4:#fff5f5;--cbg:#6b7280;}
+/* header */
+.pb .hdr{background:#fff;border-bottom:3px solid var(--cb1);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.pb .hdr-logo{font-size:13px;font-weight:900;display:flex;align-items:center;gap:6px;}
+.pb .hdr-logo em{color:var(--cb1);font-style:normal;}
+.pb .btn-red{background:var(--cb1);color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border:none;border-radius:2px;box-shadow:0 2px 8px rgba(185,28,28,.3);}
+/* fv */
+.pb .fv{background:#fff;padding:24px 18px 22px;border-bottom:1px solid #f3f4f6;}
+.pb .fv-badge{display:inline-flex;align-items:center;gap:7px;background:var(--cb4);color:var(--cb1);font-size:11px;font-weight:700;padding:7px 14px;border:1px solid #fecaca;border-radius:3px;margin-bottom:18px;}
+.pb .blink-dot{width:7px;height:7px;border-radius:50%;background:var(--cb1);animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.15;}}
+.pb .fv-h1{font-size:27px;font-weight:900;color:#111827;line-height:1.35;margin-bottom:18px;}
+.pb .fv-h1 em{color:var(--cb1);font-style:normal;}
+.pb .fv-checks{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px;}
+.pb .ck{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;background:#fff;border:1px solid #fee2e2;padding:5px 10px;border-radius:3px;}
+.pb .ck::before{content:'✓';color:var(--cb1);font-weight:900;font-size:13px;}
+.pb .fv-btns-b{display:flex;flex-direction:column;gap:9px;}
+.pb .btn-main-b{background:var(--cb1);color:#fff;font-size:14px;font-weight:700;padding:15px;border:none;border-radius:2px;text-align:center;box-shadow:0 4px 14px rgba(185,28,28,.3);}
+.pb .btn-sub-b{background:#fff;color:#374151;font-size:13px;padding:13px;border:1.5px solid #d1d5db;border-radius:2px;text-align:center;}
+/* quick facts */
+.pb .qf-block{background:var(--cb4);border-top:1px solid #fee2e2;border-bottom:1px solid #fee2e2;display:grid;grid-template-columns:1fr 1fr;gap:1px;background-color:#fecaca;}
+.pb .qf-item{background:var(--cb4);padding:14px 12px;display:flex;align-items:center;gap:10px;}
+.pb .qf-ico{font-size:22px;flex-shrink:0;}
+.pb .qf-val{font-size:18px;font-weight:900;color:var(--cb1);line-height:1;}
+.pb .qf-val small{font-size:10px;color:var(--cbg);font-weight:400;}
+.pb .qf-lbl{font-size:10px;color:var(--cbg);margin-top:2px;}
+/* alert */
+.pb .alert-bar{background:#111827;padding:11px 18px;}
+.pb .alert-inner{display:flex;align-items:flex-start;gap:10px;}
+.pb .alert-tag{background:var(--cb1);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:2px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.pb .alert-jobs{display:flex;flex-direction:column;gap:3px;}
+.pb .alert-job{color:rgba(255,255,255,.75);font-size:11px;}
+/* sec */
+.pb .sec-b{padding:30px 18px;border-bottom:1px solid #f3f4f6;}
+.pb .sec-b-alt{background:#fafafa;}
+.pb .sec-h2-b{font-size:18px;font-weight:900;color:#111827;margin-bottom:18px;padding-bottom:10px;border-bottom:3px solid var(--cb1);display:inline-block;}
+/* jobs */
+.pb .job-list-b{display:flex;flex-direction:column;gap:9px;}
+.pb .job-item-b{background:#fff;border:1.5px solid #e5e7eb;border-radius:4px;padding:14px;transition:border-color .15s;}
+.pb .job-item-b:hover{border-color:var(--cb1);}
+.pb .job-top-b{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px;}
+.pb .job-badges-b{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:9px;}
+.pb .job-name-b{font-size:14px;font-weight:700;color:#111827;}
+.pb .btn-apply-b{background:var(--cb1);color:#fff;font-size:12px;font-weight:700;padding:9px 14px;border:none;border-radius:2px;white-space:nowrap;flex-shrink:0;}
+.pb .job-meta-b{font-size:11px;color:var(--cbg);display:flex;flex-direction:column;gap:3px;}
+/* charms */
+.pb .charm-b{display:flex;flex-direction:column;gap:26px;}
+.pb .charm-photo-b{border-radius:6px;height:165px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-size:11px;letter-spacing:.1em;margin-bottom:14px;border:1px dashed rgba(0,0,0,.1);}
+.pb .cp1{background:linear-gradient(135deg,#fca5a5,#f87171);}
+.pb .cp2{background:linear-gradient(135deg,#fbbf24,#f59e0b);}
+.pb .cp3{background:linear-gradient(135deg,#6ee7b7,#34d399);}
+.pb .charm-num-b{font-size:9px;font-weight:700;color:var(--cb1);letter-spacing:.2em;margin-bottom:6px;}
+.pb .charm-title-b{font-size:17px;font-weight:900;color:#111827;margin-bottom:8px;line-height:1.45;}
+.pb .charm-body-b{font-size:13px;color:var(--cbg);line-height:2;}
+.pb .charm-tags-b{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.pb .cbt{background:var(--cb4);color:var(--cb1);font-size:11px;font-weight:700;padding:4px 10px;border-radius:2px;border:1px solid #fecaca;}
+/* career */
+.pb .cp-b{display:flex;flex-direction:column;gap:16px;}
+.pb .cp-b-title{background:#111827;color:#fff;padding:10px 14px;font-size:13px;font-weight:700;border-radius:2px 2px 0 0;}
+.pb .cp-b-steps{border:1px solid #e5e7eb;border-top:none;overflow:hidden;border-radius:0 0 2px 2px;}
+.pb .cp-b-step{padding:11px 14px;border-bottom:1px solid #f3f4f6;display:flex;gap:10px;align-items:flex-start;}
+.pb .cp-b-step:last-child{border-bottom:none;}
+.pb .cp-b-yr{font-size:10px;font-weight:900;color:var(--cb1);width:42px;flex-shrink:0;line-height:1.5;}
+.pb .cp-b-txt dt{font-size:13px;font-weight:700;}
+.pb .cp-b-txt dd{font-size:11px;color:var(--cbg);}
+/* data */
+.pb .data-b{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pb .data-b-card{background:#fff;border-radius:4px;padding:18px 10px;text-align:center;border:1px solid #e5e7eb;}
+.pb .data-b-ring{width:70px;height:70px;border-radius:50%;margin:0 auto 10px;position:relative;}
+.pb .data-b-ring::after{content:'';position:absolute;inset:13px;border-radius:50%;background:#fff;}
+.pb .data-b-val{font-size:20px;font-weight:900;color:#111827;}
+.pb .data-b-lbl{font-size:10px;color:var(--cbg);margin-top:3px;}
+/* president */
+.pb .pres-b-photo{background:linear-gradient(135deg,#fca5a5,#f87171);border-radius:4px;height:185px;display:flex;align-items:flex-end;padding:12px;color:rgba(255,255,255,.25);font-size:10px;letter-spacing:.1em;margin-bottom:18px;border:1px dashed rgba(0,0,0,.1);}
+.pb .pres-b-title{font-size:17px;font-weight:900;line-height:1.55;margin-bottom:14px;color:#111827;}
+.pb .pres-b-body{font-size:13px;color:var(--cbg);line-height:2;margin-bottom:14px;}
+.pb .pres-b-sign{font-size:13px;font-weight:700;border-top:2px solid var(--cb1);padding-top:12px;}
+.pb .pres-b-sign small{display:block;font-size:11px;color:var(--cbg);font-weight:400;margin-bottom:2px;}
+/* voice */
+.pb .voice-b{display:flex;flex-direction:column;gap:16px;}
+.pb .voice-b-item{background:#fff;border:1px solid #e5e7eb;border-radius:4px;overflow:hidden;}
+.pb .voice-b-photo{height:120px;display:flex;align-items:flex-end;padding:10px;color:rgba(255,255,255,.3);font-size:10px;}
+.pb .vb1{background:linear-gradient(135deg,#fca5a5,#f87171);}
+.pb .vb2{background:linear-gradient(135deg,#fbbf24,#f59e0b);}
+.pb .voice-b-content{padding:14px;}
+.pb .voice-b-meta{font-size:10px;color:var(--cbg);}
+.pb .voice-b-name{font-size:15px;font-weight:900;}
+.pb .voice-b-role{font-size:11px;font-weight:700;color:var(--cb1);margin-bottom:10px;}
+.pb .voice-b-q{background:var(--cb4);border-left:3px solid var(--cb1);padding:9px 12px;font-size:12px;font-weight:700;margin-bottom:7px;}
+.pb .voice-b-body{font-size:12px;color:var(--cbg);line-height:1.9;}
+/* company */
+.pb .co-b-table{width:100%;border-collapse:collapse;font-size:12px;}
+.pb .co-b-table tr{border-bottom:1px solid #f3f4f6;}
+.pb .co-b-table th{width:86px;padding:10px 8px;font-weight:700;background:#fafafa;text-align:left;vertical-align:top;}
+.pb .co-b-table td{padding:10px 8px;color:var(--cbg);}
+.pb .map-b{background:linear-gradient(135deg,#fee2e2,#fecaca);border-radius:4px;height:165px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(0,0,0,.3);letter-spacing:.1em;margin-top:16px;border:1px dashed rgba(185,28,28,.2);}
+/* cta */
+.pb .cta-b{background:var(--cb1);padding:46px 20px;}
+.pb .cta-b h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;line-height:1.5;}
+.pb .cta-b p{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:26px;line-height:1.9;}
+.pb .cta-b-btns{display:flex;flex-direction:column;gap:10px;}
+.pb .btn-white-b{background:#fff;color:var(--cb1);font-size:14px;font-weight:700;padding:15px;border:none;border-radius:2px;text-align:center;}
+.pb .btn-ghost-b2{background:transparent;color:rgba(255,255,255,.85);font-size:13px;padding:13px;border:1px solid rgba(255,255,255,.4);border-radius:2px;text-align:center;}
+/* sticky */
+.pb .sticky-b{position:sticky;bottom:0;background:#fff;border-top:3px solid var(--cb1);padding:10px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px;box-shadow:0 -4px 20px rgba(0,0,0,.12);}
+/* foot */
+.pb .foot-b{background:#111827;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.pb .foot-b .logo-f{color:rgba(255,255,255,.35);font-size:11px;font-weight:700;}
+.pb .foot-b .copy{font-size:10px;color:rgba(255,255,255,.2);}
+
+/* ════════════════════════════════════════
+   PLAN C  セージグリーン × クリーム
+════════════════════════════════════════ */
+.pc{--cc1:#2d6a4f;--cc2:#40916c;--cc3:#74c69d;--cc4:#f0faf5;--cc5:#d8f3dc;--ccg:#52796f;}
+/* header */
+.pc .hdr{background:var(--cc1);padding:0 18px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(45,106,79,.3);}
+.pc .hdr-logo{color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;}
+.pc .hdr-logo .mark{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.pc .btn-green-c{background:#fff;color:var(--cc1);font-size:12px;font-weight:700;padding:8px 18px;border:none;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.1);}
+/* fv */
+.pc .fv{background:var(--cc4);}
+.pc .fv-photo{background:linear-gradient(135deg,var(--cc3),var(--cc2));height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;position:relative;}
+.pc .fv-photo-hint{color:rgba(255,255,255,.3);font-size:11px;letter-spacing:.1em;}
+.pc .fv-video-c{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.pc .fv-video-c .ico{font-size:20px;color:#fff;}
+.pc .fv-video-c .lbl{font-size:8px;color:rgba(255,255,255,.75);letter-spacing:.12em;}
+.pc .fv-caption-c{position:absolute;bottom:10px;left:14px;background:rgba(0,0,0,.35);color:#fff;font-size:10px;padding:3px 10px;border-radius:4px;}
+.pc .fv-content-c{padding:24px 20px 30px;}
+.pc .fv-badge-c{display:inline-flex;align-items:center;gap:6px;background:var(--cc1);color:#fff;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:16px;}
+.pc .fv-h1-c{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:#1b2e22;line-height:1.55;margin-bottom:16px;}
+.pc .fv-h1-c em{color:var(--cc1);font-style:normal;display:block;font-size:30px;}
+.pc .fv-body-c{font-size:13px;color:var(--ccg);line-height:2;margin-bottom:24px;}
+.pc .fv-btns-c{display:flex;flex-direction:column;gap:10px;}
+.pc .btn-fill-c{background:var(--cc1);color:#fff;font-size:14px;font-weight:700;padding:15px;border:none;border-radius:8px;text-align:center;box-shadow:0 4px 14px rgba(45,106,79,.3);}
+.pc .btn-line-c{background:transparent;color:var(--cc1);font-size:13px;padding:13px;border:1.5px solid var(--cc1);border-radius:8px;text-align:center;}
+/* catch */
+.pc .catch-c{background:var(--cc1);display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background-color:rgba(0,0,0,.1);}
+.pc .catch-item-c{background:var(--cc1);text-align:center;padding:14px 8px;color:#fff;}
+.pc .catch-ico-c{font-size:22px;display:block;margin-bottom:4px;}
+.pc .catch-lbl-c{font-size:10px;opacity:.85;line-height:1.35;}
+/* sec */
+.pc .sec-c{padding:36px 20px;border-bottom:1px solid var(--cc5);}
+.pc .sec-c-alt{background:var(--cc4);}
+.pc .sec-tag-c{font-size:9px;font-weight:700;letter-spacing:.22em;color:var(--cc2);text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+.pc .sec-tag-c::after{content:'';flex:1;height:1px;background:var(--cc3);opacity:.5;}
+.pc .sec-h2-c{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:#1b2e22;margin-bottom:10px;}
+.pc .sec-lead-c{font-size:13px;color:var(--ccg);margin-bottom:24px;line-height:2;}
+/* jobs */
+.pc .job-cards-c{display:flex;flex-direction:column;gap:11px;}
+.pc .job-card-c{background:#fff;border:1px solid var(--cc5);border-radius:12px;padding:16px;box-shadow:0 2px 10px rgba(45,106,79,.06);}
+.pc .jc-tag{display:inline-block;background:var(--cc5);color:var(--cc1);font-size:10px;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px;}
+.pc .jc-title{font-size:15px;font-weight:700;color:#1b2e22;margin-bottom:9px;}
+.pc .jc-points{list-style:none;font-size:12px;color:var(--ccg);line-height:2.2;}
+.pc .jc-points li::before{content:'✓ ';color:var(--cc2);font-weight:700;}
+.pc .jc-apply{margin-top:14px;background:var(--cc1);color:#fff;font-size:13px;font-weight:700;padding:11px;border:none;border-radius:8px;text-align:center;display:block;width:100%;}
+/* charms */
+.pc .charm-c{display:flex;flex-direction:column;gap:30px;}
+.pc .charm-photo-c{border-radius:12px;height:185px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.22);font-size:11px;letter-spacing:.1em;margin-bottom:16px;box-shadow:0 4px 16px rgba(45,106,79,.18);border:1px dashed rgba(255,255,255,.15);}
+.pc .cph1{background:linear-gradient(135deg,var(--cc3),var(--cc2));}
+.pc .cph2{background:linear-gradient(135deg,#fde68a,#f59e0b);}
+.pc .cph3{background:linear-gradient(135deg,#bfdbfe,#60a5fa);}
+.pc .charm-num-c{font-size:9px;font-weight:700;color:var(--cc2);letter-spacing:.22em;margin-bottom:7px;}
+.pc .charm-title-c{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:#1b2e22;margin-bottom:10px;line-height:1.55;}
+.pc .charm-body-c{font-size:13px;color:var(--ccg);line-height:2.05;}
+.pc .charm-tags-c{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+.pc .cct{background:var(--cc5);color:var(--cc1);font-size:11px;font-weight:700;padding:5px 13px;border-radius:20px;}
+/* career */
+.pc .cp-c{display:flex;flex-direction:column;gap:16px;}
+.pc .cp-c-title{background:var(--cc1);color:#fff;padding:11px 16px;font-size:13px;font-weight:700;border-radius:8px 8px 0 0;}
+.pc .cp-c-steps{background:#fff;border:1px solid var(--cc5);border-top:none;overflow:hidden;border-radius:0 0 8px 8px;}
+.pc .cp-c-step{padding:12px 14px;border-bottom:1px solid var(--cc5);display:flex;gap:12px;align-items:flex-start;}
+.pc .cp-c-step:last-child{border-bottom:none;}
+.pc .cp-c-yr{font-size:10px;font-weight:700;color:var(--cc2);width:42px;flex-shrink:0;line-height:1.6;}
+.pc .cp-c-txt dt{font-size:13px;font-weight:700;color:#1b2e22;}
+.pc .cp-c-txt dd{font-size:11px;color:var(--ccg);margin-top:2px;}
+/* data */
+.pc .data-c{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pc .data-c-card{background:#fff;border-radius:12px;padding:20px 10px;text-align:center;border:1px solid var(--cc5);box-shadow:0 2px 10px rgba(45,106,79,.06);}
+.pc .data-c-ring{width:76px;height:76px;border-radius:50%;margin:0 auto 12px;position:relative;}
+.pc .data-c-ring::after{content:'';position:absolute;inset:14px;border-radius:50%;background:#fff;}
+.pc .data-c-val{font-size:22px;font-weight:900;color:#1b2e22;}
+.pc .data-c-lbl{font-size:10px;color:var(--ccg);margin-top:3px;line-height:1.4;}
+/* president */
+.pc .pres-c-photo{background:linear-gradient(135deg,var(--cc3),var(--cc2));border-radius:12px;height:210px;display:flex;align-items:flex-end;padding:14px;color:rgba(255,255,255,.22);font-size:10px;letter-spacing:.1em;margin-bottom:22px;border:1px dashed rgba(255,255,255,.15);}
+.pc .pres-c-title{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:#1b2e22;margin-bottom:16px;line-height:1.65;}
+.pc .pres-c-body{font-size:13px;color:var(--ccg);line-height:2.1;margin-bottom:18px;}
+.pc .pres-c-sign{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:#1b2e22;border-top:1px solid var(--cc5);padding-top:14px;}
+.pc .pres-c-sign small{display:block;font-size:11px;color:var(--ccg);font-family:'Noto Sans JP',sans-serif;font-weight:400;margin-bottom:4px;}
+/* voice */
+.pc .voice-c{display:flex;flex-direction:column;gap:24px;}
+.pc .voice-c-item{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--cc5);box-shadow:0 2px 10px rgba(45,106,79,.06);}
+.pc .voice-c-photo{height:145px;display:flex;align-items:flex-end;padding:12px;color:rgba(255,255,255,.3);font-size:10px;}
+.pc .vc1{background:linear-gradient(135deg,var(--cc3),var(--cc2));}
+.pc .vc2{background:linear-gradient(135deg,#fde68a,#fbbf24);}
+.pc .vc3{background:linear-gradient(135deg,#bfdbfe,#93c5fd);}
+.pc .voice-c-content{padding:16px;}
+.pc .voice-c-meta{font-size:10px;color:var(--ccg);}
+.pc .voice-c-name{font-size:16px;font-weight:900;color:#1b2e22;}
+.pc .voice-c-role{font-size:11px;font-weight:700;color:var(--cc2);margin-bottom:12px;}
+.pc .voice-c-q{background:var(--cc4);border-left:3px solid var(--cc2);padding:10px 14px;font-size:13px;font-weight:700;color:#1b2e22;margin-bottom:8px;border-radius:0 6px 6px 0;}
+.pc .voice-c-body{font-size:13px;color:var(--ccg);line-height:2;}
+.pc .voice-c-more{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--cc1);}
+/* faq */
+.pc .faq-c{display:flex;flex-direction:column;gap:10px;}
+.pc .faq-c-item{background:#fff;border-radius:10px;border:1px solid var(--cc5);overflow:hidden;}
+.pc .faq-c-q{padding:15px 16px;font-size:13px;font-weight:700;color:#1b2e22;display:flex;align-items:flex-start;gap:10px;}
+.pc .faq-q-badge{width:24px;height:24px;border-radius:50%;background:var(--cc1);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.pc .faq-c-a{padding:10px 16px 14px 50px;font-size:12px;color:var(--ccg);line-height:2;background:var(--cc4);}
+/* company */
+.pc .co-c-table{width:100%;border-collapse:collapse;font-size:12px;}
+.pc .co-c-table tr{border-bottom:1px solid #e8f5ec;}
+.pc .co-c-table th{width:86px;padding:10px 8px;font-weight:700;background:var(--cc4);text-align:left;vertical-align:top;}
+.pc .co-c-table td{padding:10px 8px;color:var(--ccg);}
+.pc .map-c{background:linear-gradient(135deg,var(--cc5),var(--cc3));border-radius:12px;height:165px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(0,0,0,.25);letter-spacing:.1em;margin-top:16px;border:1px dashed rgba(45,106,79,.2);}
+/* cta */
+.pc .cta-c{background:var(--cc1);padding:50px 20px;text-align:center;}
+.pc .cta-c h3{font-family:'Noto Serif JP',serif;font-size:22px;color:#fff;margin-bottom:12px;line-height:1.55;}
+.pc .cta-c p{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:30px;line-height:2;}
+.pc .cta-c-btns{display:flex;flex-direction:column;gap:10px;}
+.pc .btn-cta-w{background:#fff;color:var(--cc1);font-size:15px;font-weight:700;padding:16px;border:none;border-radius:8px;text-align:center;}
+.pc .btn-cta-ol{background:transparent;color:#fff;font-size:13px;padding:14px;border:2px solid rgba(255,255,255,.45);border-radius:8px;text-align:center;}
+/* sticky */
+.pc .sticky-c{position:sticky;bottom:0;background:var(--cc4);border-top:2px solid var(--cc5);padding:10px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px;box-shadow:0 -4px 20px rgba(45,106,79,.15);}
+/* foot */
+.pc .foot-c{background:#0d2018;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.pc .foot-c .logo-f{color:rgba(255,255,255,.35);font-size:11px;font-weight:700;}
+.pc .foot-c .copy{font-size:10px;color:rgba(255,255,255,.2);}
+
+/* ─── BADGE shared ─── */
+.jb{font-size:10px;font-weight:700;padding:3px 8px;border-radius:2px;}
+.jb-hot{background:#fee2e2;color:#b91c1c;}
+.jb-exp{background:#dcfce7;color:#15803d;}
+.jb-reg{background:#dbeafe;color:#1d4ed8;}
+.jb-cert{background:#fef9c3;color:#854d0e;}
+
+/* ─── PROPOSAL OVERVIEW ─── */
+.proposal-wrap{background:#0d1220;padding:0 0 28px;}
+.proposal-inner{padding:22px 20px 0;}
+.proposal-tag-line{font-size:10px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:10px;}
+.proposal-h2{font-size:17px;font-weight:900;color:#fff;line-height:1.6;margin-bottom:12px;}
+.proposal-body{font-size:12px;color:rgba(255,255,255,.5);line-height:1.9;margin-bottom:22px;}
+.spectrum-wrap{padding:0 20px 20px;}
+.spectrum-axis{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.35);margin-bottom:8px;}
+.spectrum-bar{position:relative;height:44px;background:linear-gradient(to right,#1b3a7a 0%,#2d6a4f 50%,#b91c1c 100%);border-radius:22px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;}
+.spec-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.4);position:relative;cursor:default;}
+.spec-a{background:#1b3a7a;border:1.5px solid rgba(255,255,255,.25);}
+.spec-c{background:#2d6a4f;border:1.5px solid rgba(255,255,255,.25);}
+.spec-b{background:#b91c1c;border:2px solid #fff;box-shadow:0 2px 14px rgba(185,28,28,.5);}
+.spec-b::after{content:'推奨';position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:#fca5a5;white-space:nowrap;letter-spacing:.05em;}
+.rec-card{margin:8px 20px 0;background:rgba(185,28,28,.12);border:1.5px solid rgba(185,28,28,.4);border-radius:10px;padding:16px;}
+.rec-card-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:#fca5a5;letter-spacing:.08em;margin-bottom:10px;}
+.rec-card-tag::before{content:'★';font-size:11px;}
+.rec-card h3{font-size:13px;font-weight:900;color:#fff;margin-bottom:10px;line-height:1.6;}
+.rec-card p{font-size:12px;color:rgba(255,255,255,.55);line-height:1.85;}
+.rec-card .note{font-size:11px;color:rgba(255,255,255,.38);margin-top:10px;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;line-height:1.8;}
+.plan-rec-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:6px;}
+.badge-rec{background:rgba(185,28,28,.25);color:#fca5a5;border:1px solid rgba(185,28,28,.5);}
+.badge-corp{background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.12);}
+.badge-mid{background:rgba(116,198,157,.1);color:rgba(116,198,157,.6);border:1px solid rgba(116,198,157,.2);}
+
+/* ─── SVG ICONS ─── */
+.ico-svg{width:1em;height:1em;display:inline-block;vertical-align:-0.18em;flex-shrink:0;}
+.hdr-logo-mark .ico-svg,.mark .ico-svg{width:16px;height:16px;vertical-align:middle;}
+.catch-ico-c .ico-svg,.qf-ico .ico-svg{width:22px;height:22px;display:block;}
+.map .ico-svg,.map-b .ico-svg,.map-c .ico-svg{width:18px;height:18px;margin-right:4px;vertical-align:middle;}
+</style>
+</head>
+<body>
+
+<!-- SVG SPRITE -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;" aria-hidden="true">
+  <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="icon-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9l3-5h14l3 5v6a2 2 0 0 1-2 2h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="17.5" r="2.5"/></symbol>
+  <symbol id="icon-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="13" y1="17" x2="8" y2="17"/></symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+  <symbol id="icon-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol>
+  <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="icon-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20V8l5 4V8l5 4V4h8v16H2z"/><line x1="2" y1="20" x2="22" y2="20"/></symbol>
+  <symbol id="icon-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="icon-yen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l-6 9h12L12 2z"/><line x1="6" y1="15" x2="18" y2="15"/><line x1="6" y1="19" x2="18" y2="19"/><line x1="12" y1="11" x2="12" y2="22"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="icon-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="icon-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></symbol>
+  <symbol id="icon-lightbulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></symbol>
+</svg>
+
+<!-- PRESENTATION HEADER -->
+<div class="pres-header">
+  <div class="logo">IZUMI DENSHO CO., LTD.</div>
+  <h1>採用LP デザイン3案</h1>
+  <div class="sub">担当者向け イメージ確認資料</div>
+  <div class="date">作成日：2026年6月23日</div>
+</div>
+
+<!-- PROPOSAL OVERVIEW -->
+<div class="proposal-wrap">
+  <div class="proposal-inner">
+    <div class="proposal-tag-line">提案の全体像</div>
+    <h2 class="proposal-h2">「日本人応募者を増やす」ために、<br>3つの方向性をご提案します</h2>
+    <p class="proposal-body">ページのデザイン方向性によって、訴求できる求職者層と応募動機が変わります。3案それぞれのページ全体をご覧いただき、「自社らしさ」「伝えたいこと」のイメージをぜひお聞かせください。私たちの推奨案はありますが、最終方向性は社長のご意見を踏まえて一緒に決めたいと考えています。</p>
+  </div>
+  <div class="spectrum-wrap">
+    <div class="spectrum-axis">
+      <span>← コーポレート色が強い</span>
+      <span>応募促進に特化 →</span>
+    </div>
+    <div class="spectrum-bar">
+      <div class="spec-dot spec-a">A</div>
+      <div class="spec-dot spec-c">C</div>
+      <div class="spec-dot spec-b">B</div>
+    </div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-card-tag">私たちの推奨</div>
+    <h3>案Bをベースに、案CのFAQ・先輩の声を加えた構成</h3>
+    <p>Indeed・工場ワークスからの流入ユーザーは、年休・給与・通勤などの条件をすぐ確認できないと離脱します。案Bのスピード感で条件を即提示しつつ、「未経験でも大丈夫か」という不安を案CのFAQと先輩の声で解消する構成が、問い合わせ増加に最も直結すると考えます。</p>
+    <p class="note">ただし、御社がどんな人に来てほしいか・どう見られたいかによって最適解は変わります。「会社の雰囲気」「社長が大切にしていること」など、ぜひ率直にお聞かせください。</p>
+  </div>
+</div>
+
+<!-- SWITCHER -->
+<nav class="switcher">
+  <span class="sw-label">案：</span>
+  <button class="sw-btn sw-a" onclick="showPlan('a')">A 重厚・誠実</button>
+  <button class="sw-btn sw-b" onclick="showPlan('b')">B スピード</button>
+  <button class="sw-btn sw-c" onclick="showPlan('c')">C 温かみ</button>
+  <button class="sw-btn sw-all" onclick="showPlan('all')">3案比較</button>
+</nav>
+
+<div class="doc-shell">
+
+<!-- ══════════════════════════════════════
+     PLAN A
+══════════════════════════════════════ -->
+<div class="plan-section active" id="section-a">
+  <div class="concept-banner" style="background:linear-gradient(135deg,#0e1e44,#1b3a7a);">
+    <div class="concept-banner-inner">
+      <span class="plan-rec-badge badge-corp">コーポレート重視の選択肢</span>
+      <span class="concept-pill" style="background:rgba(201,146,26,.2);color:#c9921a;border:1px solid rgba(201,146,26,.4);">案A ─ 重厚・誠実型</span>
+      <div class="concept-title">会社の歴史・信頼感を前面に出したデザイン</div>
+      <div class="concept-desc">ネイビー×ゴールドで「40年の歴史を持つプロ集団」を演出。「この会社で長く働きたい」という転職検討者に刺さるトーン。コーポレートサイトとの連動や、ブランドイメージを重視したい場合に適しています。</div>
+      <div class="concept-tags">
+        <span class="concept-tag">ターゲット：30〜40代・転職を真剣に検討中</span>
+        <span class="concept-tag">勝ち筋：歴史と誇りで共感を獲得</span>
+        <span class="concept-tag">カード型求人掲載</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-device pa">
+    <header class="hdr">
+      <div class="hdr-logo">
+        <div class="hdr-logo-mark"><svg class="ico-svg" aria-hidden="true"><use href="#icon-wrench"/></svg></div>
+        IZUMI <span>DENSHO</span>
+      </div>
+      <button class="hdr-apply">▶ 応募する</button>
+    </header>
+
+    <div class="fv">
+      <div class="fv-bg"></div>
+      <div class="fv-pattern"></div>
+      <div class="fv-overlay"></div>
+      <div class="fv-photo-hint">現場写真<br>フルブリード</div>
+      <div class="fv-video"><span class="ico">▶</span><span class="lbl">MOVIE</span></div>
+      <div class="fv-content">
+        <p class="fv-eyebrow">IZUMI DENSHO RECRUIT</p>
+        <h1 class="fv-h1">自転車組立の<em>プロ</em>として、<br>毎日の移動を支える。</h1>
+        <p class="fv-sub">大阪・柏原で電動自転車の組立・加工を手がけて40年。未経験でも、チームの力で一人前の技術者へ。</p>
+        <div class="fv-btns">
+          <button class="btn-gold">▶ 募集職種を見る</button>
+          <button class="btn-ghost-a">会社紹介動画を見る</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="nums">
+      <div class="num-item"><div class="num-val">40<small>年</small></div><div class="num-lbl">創業の歴史</div></div>
+      <div class="num-item"><div class="num-val">126<small>日</small></div><div class="num-lbl">年間休日</div></div>
+      <div class="num-item"><div class="num-val">全<small>額</small></div><div class="num-lbl">交通費支給</div></div>
+      <div class="num-item"><div class="num-val">+5<small>日</small></div><div class="num-lbl">一斉年休</div></div>
+      <div class="num-item"><div class="num-val">20〜<small>50代</small></div><div class="num-lbl">幅広く活躍</div></div>
+      <div class="num-item"><div class="num-val">4<small>職種</small></div><div class="num-lbl">募集中</div></div>
+    </div>
+
+    <div class="sec">
+      <span class="sec-tag">RECRUIT</span>
+      <h2 class="sec-h2">募集職種</h2>
+      <p class="sec-lead">どの職種も未経験から始められます。先輩が一つずつ丁寧に教えます。</p>
+      <div class="job-list-a">
+        <div class="job-item-a">
+          <div class="job-badges"><span class="jb jb-hot">急募</span><span class="jb jb-exp">未経験歓迎</span><span class="jb jb-reg">正社員</span></div>
+          <div class="job-name-a">電動自転車の製造スタッフ</div>
+          <div class="job-meta-a"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 月給20万〜</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-clock"/></svg> 8:00〜17:00 / 年休126日</span></div>
+          <button class="btn-apply-a">この職種に応募する</button>
+        </div>
+        <div class="job-item-a">
+          <div class="job-badges"><span class="jb jb-exp">未経験歓迎</span><span class="jb jb-reg">パート可</span></div>
+          <div class="job-name-a">仕分け・梱包スタッフ</div>
+          <div class="job-meta-a"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 時給1,050〜</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-clock"/></svg> シフト相談OK</span></div>
+          <button class="btn-apply-a">この職種に応募する</button>
+        </div>
+        <div class="job-item-a">
+          <div class="job-badges"><span class="jb jb-reg">正社員</span></div>
+          <div class="job-name-a">生産管理・品質管理</div>
+          <div class="job-meta-a"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 月給23万〜</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-trending"/></svg> 改善提案→評価に直結</span></div>
+          <button class="btn-apply-a">この職種に応募する</button>
+        </div>
+        <div class="job-item-a">
+          <div class="job-badges"><span class="jb jb-cert">資格支援あり</span><span class="jb jb-reg">正社員</span></div>
+          <div class="job-name-a">自転車整備技能工</div>
+          <div class="job-meta-a"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 月給22万〜＋資格手当</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-award"/></svg> 整備士資格取得サポート</span></div>
+          <button class="btn-apply-a">この職種に応募する</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec sec-alt">
+      <span class="sec-tag">CHARMS</span>
+      <h2 class="sec-h2">イズミ電商で働く<br>3つの魅力</h2>
+      <div class="charm-a">
+        <div>
+          <div class="charm-photo">現場・組立写真 ①</div>
+          <p class="charm-num">CHARM 01</p>
+          <h3 class="charm-title">電動自転車づくりの<br>プロとして誇りを持てる</h3>
+          <p class="charm-body">検品から組立・調整・仕上げまで自分の手で完成させる達成感。改善提案が評価につながる仕組みで主体的に動ける職場です。</p>
+          <div class="charm-tags"><span class="ca-tag"><svg class="ico-svg" aria-hidden="true"><use href="#icon-wrench"/></svg> ものづくりの達成感</span><span class="ca-tag"><svg class="ico-svg" aria-hidden="true"><use href="#icon-lightbulb"/></svg> 改善提案→評価反映</span></div>
+        </div>
+        <div>
+          <div class="charm-photo">休日・環境写真 ②</div>
+          <p class="charm-num">CHARM 02</p>
+          <h3 class="charm-title">年間休日126日＋<br>充実の福利厚生</h3>
+          <p class="charm-body">GW・夏季・年末年始の長期休暇に加え一斉年休5日。毎月の出張整体・社員食堂・交通費全額支給で体と生活を守ります。</p>
+          <div class="charm-tags"><span class="ca-tag"><svg class="ico-svg" aria-hidden="true"><use href="#icon-calendar"/></svg> 年休131日</span><span class="ca-tag"><svg class="ico-svg" aria-hidden="true"><use href="#icon-heart"/></svg> 毎月の出張整体</span><span class="ca-tag"><svg class="ico-svg" aria-hidden="true"><use href="#icon-coffee"/></svg> 社員食堂</span></div>
+        </div>
+        <div>
+          <div class="charm-photo">資格・研修写真 ③</div>
+          <p class="charm-num">CHARM 03</p>
+          <h3 class="charm-title">未経験から手に職をつけて<br>キャリアアップできる</h3>
+          <p class="charm-body">資格取得支援で自転車整備士などの国家資格取得を会社がバックアップ。20代〜50代が幅広く活躍するアットホームな職場。</p>
+          <div class="charm-tags"><span class="ca-tag"><svg class="ico-svg" aria-hidden="true"><use href="#icon-file"/></svg> 資格取得支援</span><span class="ca-tag"><svg class="ico-svg" aria-hidden="true"><use href="#icon-users"/></svg> 少人数・提案が届く</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="sec-tag">CAREER PATH</span>
+      <h2 class="sec-h2">キャリアパス</h2>
+      <p class="sec-lead">製造・管理の2ルートから長期キャリアを描けます。</p>
+      <div class="cp-a">
+        <div>
+          <div class="cp-lane-title"><svg class="ico-svg" aria-hidden="true"><use href="#icon-wrench"/></svg> 製造スタッフコース</div>
+          <div class="cp-steps">
+            <div class="cp-step"><div class="cp-yr">〜6ヶ月</div><dl class="cp-txt"><dt>工程習得期</dt><dd>OJT・マンツーマン教育</dd></dl></div>
+            <div class="cp-step"><div class="cp-yr">1〜3年</div><dl class="cp-txt"><dt>技術定着・資格取得</dt><dd>複数工程担当・整備士資格へ</dd></dl></div>
+            <div class="cp-step"><div class="cp-yr">3年〜</div><dl class="cp-txt"><dt>熟練・教育係</dt><dd>後輩育成・工程改善リーダー</dd></dl></div>
+          </div>
+        </div>
+        <div>
+          <div class="cp-lane-title"><svg class="ico-svg" aria-hidden="true"><use href="#icon-chart"/></svg> 管理・品質コース</div>
+          <div class="cp-steps">
+            <div class="cp-step"><div class="cp-yr">〜1年</div><dl class="cp-txt"><dt>現場理解期</dt><dd>製造ライン全体を把握</dd></dl></div>
+            <div class="cp-step"><div class="cp-yr">1〜3年</div><dl class="cp-txt"><dt>管理業務習得</dt><dd>工程管理・在庫・品質記録</dd></dl></div>
+            <div class="cp-step"><div class="cp-yr">3年〜</div><dl class="cp-txt"><dt>改善リーダー</dt><dd>ライン改善・評価直結の立場へ</dd></dl></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec sec-alt">
+      <span class="sec-tag">DATA</span>
+      <h2 class="sec-h2">数字でわかる<br>イズミ電商</h2>
+      <div class="data-a">
+        <div class="data-card"><div class="data-ring" style="background:conic-gradient(#c9921a 0% 68%,#e5e7eb 68% 100%);"></div><div class="data-val">68%</div><div class="data-lbl">未経験入社の割合</div></div>
+        <div class="data-card"><div class="data-ring" style="background:conic-gradient(#c9921a 0% 80%,#e5e7eb 80% 100%);"></div><div class="data-val">80%</div><div class="data-lbl">3年以上継続在籍率</div></div>
+        <div class="data-card"><div class="data-ring" style="background:conic-gradient(#c9921a 0% 55%,#e5e7eb 55% 100%);"></div><div class="data-val">55%</div><div class="data-lbl">資格取得者の割合</div></div>
+        <div class="data-card"><div class="data-ring" style="background:conic-gradient(#c9921a 0% 90%,#e5e7eb 90% 100%);"></div><div class="data-val">90%</div><div class="data-lbl">有給取得率</div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="sec-tag">MESSAGE</span>
+      <h2 class="sec-h2">社長メッセージ</h2>
+      <div class="pres-photo">社長写真</div>
+      <p class="pres-title">「人柄を大切に、<br>ともに育てていく会社でありたい。」</p>
+      <p class="pres-body">1985年の創業以来、電動自転車の組立・加工を専門として40年。技術の高さだけでなく「人柄」と「チームで育てる文化」を大切にしてきました。未経験で入社した社員が現場リーダーになる姿を何度も見てきました。あなたのやる気があれば、必ず一人前の技術者になれます。ぜひ一度、現場を見に来てください。</p>
+      <p class="pres-sign"><small>イズミ電商株式会社 代表取締役</small>泉 ◯◯</p>
+    </div>
+
+    <div class="sec sec-alt">
+      <span class="sec-tag">VOICE</span>
+      <h2 class="sec-h2">社員インタビュー</h2>
+      <p class="sec-lead">実際に働いている先輩社員の声をお届けします。</p>
+      <div class="voice-a">
+        <div class="voice-item">
+          <div class="voice-photo voice-photo-1">Aさん写真</div>
+          <p class="voice-meta">入社2年目</p>
+          <p class="voice-name">Aさん（30代）</p>
+          <p class="voice-role">電動自転車 製造スタッフ</p>
+          <div class="voice-q">未経験から入社してどうでしたか？</div>
+          <p class="voice-body">前職は飲食業で製造は全く未経験でした。先輩が横についてくれて3ヶ月で一人で組み立てられるように。今は後輩に教える立場になれたことが誇りです。</p>
+          <a class="voice-more" href="#">インタビューの続きを読む →</a>
+        </div>
+        <div class="voice-item">
+          <div class="voice-photo voice-photo-2">Bさん写真</div>
+          <p class="voice-meta">入社5年目</p>
+          <p class="voice-name">Bさん（40代）</p>
+          <p class="voice-role">整備技能工 / 自転車整備士</p>
+          <div class="voice-q">資格取得のサポートはどうでしたか？</div>
+          <p class="voice-body">費用を出してもらえ、業務時間内の勉強時間も確保。資格手当もつき収入も上がりました。家族も喜んでくれました。</p>
+          <a class="voice-more" href="#">インタビューの続きを読む →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="sec-tag">COMPANY</span>
+      <h2 class="sec-h2">会社概要</h2>
+      <table class="co-table">
+        <tr><th>会社名</th><td>イズミ電商株式会社</td></tr>
+        <tr><th>設立</th><td>1985年（昭和60年）</td></tr>
+        <tr><th>所在地</th><td>大阪府柏原市◯◯◯◯</td></tr>
+        <tr><th>事業内容</th><td>電動自転車の組立・加工・販売</td></tr>
+        <tr><th>従業員数</th><td>◯◯名</td></tr>
+        <tr><th>アクセス</th><td>近鉄・JR 柏原駅より徒歩◯分</td></tr>
+      </table>
+      <div class="map"><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> Google Map / 地図</div>
+    </div>
+
+    <div class="cta-foot">
+      <h3>あなたの「ものづくり」が、<br>街の移動を支えている。</h3>
+      <p>まずは求人内容を見てみてください。工場見学・お問い合わせも大歓迎です。</p>
+      <div class="cta-btns">
+        <button class="btn-gold" style="font-size:15px;padding:16px;">▶ 今すぐ応募する</button>
+        <button class="btn-ghost-a">工場見学を申し込む</button>
+        <button class="btn-ghost-a">お問い合わせ</button>
+      </div>
+    </div>
+
+    <div class="sticky">
+      <button class="btn-gold" style="font-size:13px;padding:12px;">▶ 今すぐ応募</button>
+      <button class="more-btn" style="margin:0;font-size:12px;padding:11px;border-radius:3px;">お問い合わせ</button>
+    </div>
+
+    <footer class="foot">
+      <span class="logo-f">IZUMI DENSHO CO., LTD.</span>
+      <span class="copy">© 2025 イズミ電商株式会社</span>
+    </footer>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PLAN B
+══════════════════════════════════════ -->
+<div class="plan-section" id="section-b">
+  <div class="concept-banner" style="background:linear-gradient(135deg,#b91c1c,#7f1d1d);">
+    <div class="concept-banner-inner">
+      <span class="plan-rec-badge badge-rec">★ 推奨ベース ─ 採用課題に最も直結</span>
+      <span class="concept-pill" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);">案B ─ スピード直撃型</span>
+      <div class="concept-title">条件を即提示→即応募。直帰率を最小化するデザイン</div>
+      <div class="concept-desc">Indeed・工場ワークスからの流入ユーザーは「条件が合うか」を10秒で判断します。FVでチェックリスト形式の条件を一覧表示し、各職種に応募ボタンを直付け。スクロールを最小化して問い合わせ数を最大化する構成です。</div>
+      <div class="concept-tags">
+        <span class="concept-tag">ターゲット：条件比較中の20〜40代</span>
+        <span class="concept-tag">勝ち筋：離脱前に条件確認→即応募</span>
+        <span class="concept-tag">各職種に応募ボタン直付け</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-device pb">
+    <header class="hdr">
+      <div class="hdr-logo">イズミ電商 <em>採用</em></div>
+      <button class="btn-red">▶ 今すぐ応募</button>
+    </header>
+
+    <div class="fv">
+      <div class="fv-badge"><span class="blink-dot"></span>大阪府柏原市 ／ 正社員・パート 募集中</div>
+      <h1 class="fv-h1">未経験から始める、<br><em>電動自転車づくり</em>の仕事。</h1>
+      <div class="fv-checks">
+        <span class="ck">年間休日 126日</span>
+        <span class="ck">交通費 全額支給</span>
+        <span class="ck">車・バイク通勤可</span>
+        <span class="ck">資格取得支援あり</span>
+        <span class="ck">未経験歓迎</span>
+        <span class="ck">毎月の出張整体</span>
+      </div>
+      <div class="fv-btns-b">
+        <button class="btn-main-b">▶ 今すぐ応募する</button>
+        <button class="btn-sub-b">募集要項を確認する</button>
+      </div>
+    </div>
+
+    <div class="qf-block">
+      <div class="qf-item"><span class="qf-ico"><svg class="ico-svg" aria-hidden="true"><use href="#icon-calendar"/></svg></span><div><div class="qf-val">126<small>日</small></div><div class="qf-lbl">年間休日（＋一斉5日）</div></div></div>
+      <div class="qf-item"><span class="qf-ico"><svg class="ico-svg" aria-hidden="true"><use href="#icon-car"/></svg></span><div><div class="qf-val">全額<small>支給</small></div><div class="qf-lbl">交通費・車通勤OK</div></div></div>
+      <div class="qf-item"><span class="qf-ico"><svg class="ico-svg" aria-hidden="true"><use href="#icon-file"/></svg></span><div><div class="qf-val">資格<small>支援</small></div><div class="qf-lbl">整備士資格取得可</div></div></div>
+      <div class="qf-item"><span class="qf-ico"><svg class="ico-svg" aria-hidden="true"><use href="#icon-heart"/></svg></span><div><div class="qf-val">毎月<small>実施</small></div><div class="qf-lbl">出張整体サービス</div></div></div>
+      <div class="qf-item"><span class="qf-ico"><svg class="ico-svg" aria-hidden="true"><use href="#icon-coffee"/></svg></span><div><div class="qf-val">社員<small>食堂</small></div><div class="qf-lbl">昼食もらくらく</div></div></div>
+      <div class="qf-item"><span class="qf-ico"><svg class="ico-svg" aria-hidden="true"><use href="#icon-factory"/></svg></span><div><div class="qf-val">1985<small>年〜</small></div><div class="qf-lbl">創業40年の実績</div></div></div>
+    </div>
+
+    <div class="alert-bar">
+      <div class="alert-inner">
+        <span class="alert-tag">OPEN NOW</span>
+        <div class="alert-jobs">
+          <span class="alert-job">電動自転車 製造スタッフ</span>
+          <span class="alert-job">仕分け・梱包スタッフ</span>
+          <span class="alert-job">生産管理　自転車整備技能工　他</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-b">
+      <h2 class="sec-h2-b">募集職種一覧</h2>
+      <div class="job-list-b">
+        <div class="job-item-b">
+          <div class="job-badges-b"><span class="jb jb-hot">急募</span><span class="jb jb-exp">未経験歓迎</span><span class="jb jb-reg">正社員</span></div>
+          <div class="job-top-b"><div class="job-name-b">電動自転車の製造スタッフ</div><button class="btn-apply-b">応募する</button></div>
+          <div class="job-meta-b"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 月給20万〜</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-clock"/></svg> 8:00〜17:00 / 年休126日</span></div>
+        </div>
+        <div class="job-item-b">
+          <div class="job-badges-b"><span class="jb jb-exp">未経験歓迎</span><span class="jb jb-reg">パート可</span></div>
+          <div class="job-top-b"><div class="job-name-b">仕分け・梱包スタッフ</div><button class="btn-apply-b">応募する</button></div>
+          <div class="job-meta-b"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 時給1,050〜</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-clock"/></svg> シフト相談OK</span></div>
+        </div>
+        <div class="job-item-b">
+          <div class="job-badges-b"><span class="jb jb-reg">正社員</span></div>
+          <div class="job-top-b"><div class="job-name-b">生産管理・品質管理</div><button class="btn-apply-b">応募する</button></div>
+          <div class="job-meta-b"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 月給23万〜</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-trending"/></svg> 改善提案→評価に直結</span></div>
+        </div>
+        <div class="job-item-b">
+          <div class="job-badges-b"><span class="jb jb-cert">資格支援あり</span><span class="jb jb-reg">正社員</span></div>
+          <div class="job-top-b"><div class="job-name-b">自転車整備技能工</div><button class="btn-apply-b">応募する</button></div>
+          <div class="job-meta-b"><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-yen"/></svg> 月給22万〜＋資格手当</span><span><svg class="ico-svg" aria-hidden="true"><use href="#icon-award"/></svg> 整備士資格取得サポート</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-b sec-b-alt">
+      <h2 class="sec-h2-b">3つの魅力</h2>
+      <div class="charm-b">
+        <div>
+          <div class="charm-photo-b cp1">現場・組立写真</div>
+          <p class="charm-num-b">CHARM 01</p>
+          <h3 class="charm-title-b">手に職がつく、<br>電動自転車組立のプロへ</h3>
+          <p class="charm-body-b">検品・組立・調整・仕上げと段階的に技術が身につきます。改善提案が評価につながり主体的に動ける職場です。</p>
+          <div class="charm-tags-b"><span class="cbt">ものづくりの達成感</span><span class="cbt">改善提案→評価反映</span></div>
+        </div>
+        <div>
+          <div class="charm-photo-b cp2">休日・環境写真</div>
+          <p class="charm-num-b">CHARM 02</p>
+          <h3 class="charm-title-b">年間休日126日＋<br>出張整体で体を守る待遇</h3>
+          <p class="charm-body-b">長期休暇あり。毎月の出張整体・社員食堂・交通費全額支給で、無理なく長く続けられます。</p>
+          <div class="charm-tags-b"><span class="cbt">年休131日</span><span class="cbt">毎月の出張整体</span><span class="cbt">社員食堂</span></div>
+        </div>
+        <div>
+          <div class="charm-photo-b cp3">資格・研修写真</div>
+          <p class="charm-num-b">CHARM 03</p>
+          <h3 class="charm-title-b">資格取得を会社がバックアップ。<br>キャリアが描ける</h3>
+          <p class="charm-body-b">整備士などの資格取得費用を会社が補助。少人数のアットホームな職場で、20代〜50代が幅広く活躍中。</p>
+          <div class="charm-tags-b"><span class="cbt">資格取得支援</span><span class="cbt">少人数・アットホーム</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-b">
+      <h2 class="sec-h2-b">キャリアパス</h2>
+      <div class="cp-b">
+        <div>
+          <div class="cp-b-title"><svg class="ico-svg" aria-hidden="true"><use href="#icon-wrench"/></svg> 製造スタッフコース</div>
+          <div class="cp-b-steps">
+            <div class="cp-b-step"><div class="cp-b-yr">〜6ヶ月</div><dl class="cp-b-txt"><dt>工程習得</dt><dd>OJT・マンツーマン教育</dd></dl></div>
+            <div class="cp-b-step"><div class="cp-b-yr">1〜3年</div><dl class="cp-b-txt"><dt>技術定着・資格取得</dt><dd>複数工程、整備士資格へ</dd></dl></div>
+            <div class="cp-b-step"><div class="cp-b-yr">3年〜</div><dl class="cp-b-txt"><dt>熟練・教育係</dt><dd>後輩育成・改善リーダー</dd></dl></div>
+          </div>
+        </div>
+        <div>
+          <div class="cp-b-title"><svg class="ico-svg" aria-hidden="true"><use href="#icon-chart"/></svg> 管理・品質コース</div>
+          <div class="cp-b-steps">
+            <div class="cp-b-step"><div class="cp-b-yr">〜1年</div><dl class="cp-b-txt"><dt>現場理解</dt><dd>製造ライン全体を把握</dd></dl></div>
+            <div class="cp-b-step"><div class="cp-b-yr">1〜3年</div><dl class="cp-b-txt"><dt>管理業務習得</dt><dd>工程・在庫・品質記録</dd></dl></div>
+            <div class="cp-b-step"><div class="cp-b-yr">3年〜</div><dl class="cp-b-txt"><dt>改善リーダー</dt><dd>評価直結の立場へ</dd></dl></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-b sec-b-alt">
+      <h2 class="sec-h2-b">数字でわかるイズミ電商</h2>
+      <div class="data-b">
+        <div class="data-b-card"><div class="data-b-ring" style="background:conic-gradient(#b91c1c 0% 68%,#e5e7eb 68% 100%);"></div><div class="data-b-val">68%</div><div class="data-b-lbl">未経験入社の割合</div></div>
+        <div class="data-b-card"><div class="data-b-ring" style="background:conic-gradient(#b91c1c 0% 80%,#e5e7eb 80% 100%);"></div><div class="data-b-val">80%</div><div class="data-b-lbl">3年以上継続在籍率</div></div>
+        <div class="data-b-card"><div class="data-b-ring" style="background:conic-gradient(#b91c1c 0% 55%,#e5e7eb 55% 100%);"></div><div class="data-b-val">55%</div><div class="data-b-lbl">資格取得者の割合</div></div>
+        <div class="data-b-card"><div class="data-b-ring" style="background:conic-gradient(#b91c1c 0% 90%,#e5e7eb 90% 100%);"></div><div class="data-b-val">90%</div><div class="data-b-lbl">有給取得率</div></div>
+      </div>
+    </div>
+
+    <div class="sec-b">
+      <h2 class="sec-h2-b">社長メッセージ</h2>
+      <div class="pres-b-photo">社長写真</div>
+      <p class="pres-b-title">「人柄を大切に、ともに育てていく会社でありたい。」</p>
+      <p class="pres-b-body">1985年の創業から40年、電動自転車の組立・加工を専門に。技術だけでなく「人柄」と「チームで育てる文化」を大切にしています。未経験で入社した社員が現場リーダーになる姿を何度も見てきました。</p>
+      <p class="pres-b-sign"><small>イズミ電商株式会社 代表取締役</small>泉 ◯◯</p>
+    </div>
+
+    <div class="sec-b sec-b-alt">
+      <h2 class="sec-h2-b">社員インタビュー</h2>
+      <div class="voice-b">
+        <div class="voice-b-item">
+          <div class="voice-b-photo vb1">Aさん写真</div>
+          <div class="voice-b-content">
+            <p class="voice-b-meta">入社2年目</p>
+            <p class="voice-b-name">Aさん（30代）</p>
+            <p class="voice-b-role">電動自転車 製造スタッフ</p>
+            <div class="voice-b-q">未経験から入社してどうでしたか？</div>
+            <p class="voice-b-body">先輩がマンツーマンでついてくれて3ヶ月で一人で組み立てられるようになりました。今は後輩に教える立場に。</p>
+          </div>
+        </div>
+        <div class="voice-b-item">
+          <div class="voice-b-photo vb2">Bさん写真</div>
+          <div class="voice-b-content">
+            <p class="voice-b-meta">入社5年目</p>
+            <p class="voice-b-name">Bさん（40代）</p>
+            <p class="voice-b-role">整備技能工 / 自転車整備士</p>
+            <div class="voice-b-q">資格取得のサポートはどうでしたか？</div>
+            <p class="voice-b-body">費用補助と業務時間内の勉強時間を確保してもらえました。資格手当もつき収入も上がりました。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-b">
+      <h2 class="sec-h2-b">会社概要</h2>
+      <table class="co-b-table">
+        <tr><th>会社名</th><td>イズミ電商株式会社</td></tr>
+        <tr><th>設立</th><td>1985年（昭和60年）</td></tr>
+        <tr><th>所在地</th><td>大阪府柏原市◯◯◯◯</td></tr>
+        <tr><th>事業内容</th><td>電動自転車の組立・加工・販売</td></tr>
+        <tr><th>アクセス</th><td>近鉄・JR 柏原駅より徒歩◯分</td></tr>
+      </table>
+      <div class="map-b"><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> Google Map / 地図</div>
+    </div>
+
+    <div class="cta-b">
+      <h3>まず、話だけでも構いません。</h3>
+      <p>工場見学・職場体験も受け付けています。気になった職種があればお気軽にどうぞ。</p>
+      <div class="cta-b-btns">
+        <button class="btn-white-b">▶ 今すぐ応募する</button>
+        <button class="btn-ghost-b2">工場見学を申し込む</button>
+        <button class="btn-ghost-b2">お問い合わせ</button>
+      </div>
+    </div>
+
+    <div class="sticky-b">
+      <button class="btn-main-b" style="font-size:13px;padding:12px;">▶ 今すぐ応募する</button>
+      <button class="btn-sub-b" style="font-size:12px;padding:11px;">条件を確認する</button>
+    </div>
+
+    <footer class="foot-b">
+      <span class="logo-f">イズミ電商株式会社</span>
+      <span class="copy">© 2025 IZUMI DENSHO</span>
+    </footer>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PLAN C
+══════════════════════════════════════ -->
+<div class="plan-section" id="section-c">
+  <div class="concept-banner" style="background:linear-gradient(135deg,#2d6a4f,#1b4332);">
+    <div class="concept-banner-inner">
+      <span class="plan-rec-badge badge-mid">A・Bの中間 ─ バランス型</span>
+      <span class="concept-pill" style="background:rgba(116,198,157,.2);color:#74c69d;border:1px solid rgba(116,198,157,.4);">案C ─ 温かみ・物語型</span>
+      <div class="concept-title">「人・環境の良さ」で安心感を作り、応募へ導くデザイン</div>
+      <div class="concept-desc">セージグリーンで温かみを演出しつつ、FAQ5問で「未経験でも大丈夫？」という不安を先回り解消。「会社の雰囲気を重視したい」「じっくり検討する層を取り込みたい」という方針の場合に適しています。</div>
+      <div class="concept-tags">
+        <span class="concept-tag">ターゲット：未経験・転職不安が強い20〜30代</span>
+        <span class="concept-tag">勝ち筋：不安解消→心理的ハードルを下げる</span>
+        <span class="concept-tag">FAQ・社員インタビュー3名</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-device pc">
+    <header class="hdr">
+      <div class="hdr-logo"><span class="mark"><svg class="ico-svg" aria-hidden="true"><use href="#icon-wrench"/></svg></span> イズミ電商 採用</div>
+      <button class="btn-green-c">まず話を聞く</button>
+    </header>
+
+    <div class="fv">
+      <div class="fv-photo">
+        <div class="fv-video-c"><span class="ico">▶</span><span class="lbl">MOVIE</span></div>
+        <span class="fv-photo-hint">現場・チームの写真</span>
+        <div class="fv-caption-c">組立ラインの様子</div>
+      </div>
+      <div class="fv-content-c">
+        <div class="fv-badge-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> 大阪府柏原市・未経験歓迎</div>
+        <h1 class="fv-h1-c">ものづくりが好きなら、<em>経験は関係ない。</em></h1>
+        <p class="fv-body-c">電動自転車の組立・加工を一緒にやってくれる仲間を募集中。製造が初めてでも大丈夫。年間休日もしっかり確保、長く無理なく続けられる職場です。</p>
+        <div class="fv-btns-c">
+          <button class="btn-fill-c">▶ 募集職種を見る</button>
+          <button class="btn-line-c">まずは話を聞く</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="catch-c">
+      <div class="catch-item-c"><span class="catch-ico-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-calendar"/></svg></span><div class="catch-lbl-c">年間休日<br>126日</div></div>
+      <div class="catch-item-c"><span class="catch-ico-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-car"/></svg></span><div class="catch-lbl-c">交通費<br>全額支給</div></div>
+      <div class="catch-item-c"><span class="catch-ico-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-file"/></svg></span><div class="catch-lbl-c">資格取得<br>支援あり</div></div>
+      <div class="catch-item-c"><span class="catch-ico-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-heart"/></svg></span><div class="catch-lbl-c">毎月の<br>出張整体</div></div>
+      <div class="catch-item-c"><span class="catch-ico-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-coffee"/></svg></span><div class="catch-lbl-c">社員<br>食堂あり</div></div>
+      <div class="catch-item-c"><span class="catch-ico-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-users"/></svg></span><div class="catch-lbl-c">未経験<br>歓迎</div></div>
+    </div>
+
+    <div class="sec-c">
+      <span class="sec-tag-c">RECRUIT</span>
+      <h2 class="sec-h2-c">募集職種</h2>
+      <p class="sec-lead-c">どの職種も未経験から。一緒に成長しましょう。</p>
+      <div class="job-cards-c">
+        <div class="job-card-c">
+          <span class="jc-tag">未経験歓迎</span>
+          <div class="jc-title">電動自転車 製造スタッフ</div>
+          <ul class="jc-points"><li>部品検品・組付け・調整</li><li>月給20万〜 / 正社員・パート</li><li>段階的OJT教育あり</li></ul>
+          <button class="jc-apply">この職種に応募する</button>
+        </div>
+        <div class="job-card-c">
+          <span class="jc-tag">未経験歓迎</span>
+          <div class="jc-title">仕分け・梱包スタッフ</div>
+          <ul class="jc-points"><li>完成品の検品・梱包</li><li>時給1,050〜 / シフト相談OK</li><li>体を動かす仕事</li></ul>
+          <button class="jc-apply">この職種に応募する</button>
+        </div>
+        <div class="job-card-c">
+          <span class="jc-tag">キャリアアップ可</span>
+          <div class="jc-title">生産管理・品質管理</div>
+          <ul class="jc-points"><li>工程・在庫管理</li><li>月給23万〜 / 正社員</li><li>改善提案→評価に反映</li></ul>
+          <button class="jc-apply">この職種に応募する</button>
+        </div>
+        <div class="job-card-c">
+          <span class="jc-tag">資格取得支援</span>
+          <div class="jc-title">自転車整備技能工</div>
+          <ul class="jc-points"><li>整備士資格取得サポート</li><li>月給22万〜＋資格手当</li><li>電動アシスト専門スキル</li></ul>
+          <button class="jc-apply">この職種に応募する</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-c sec-c-alt">
+      <span class="sec-tag-c">CHARMS</span>
+      <h2 class="sec-h2-c">イズミ電商で働く<br>3つの魅力</h2>
+      <div class="charm-c">
+        <div>
+          <div class="charm-photo-c cph1">現場・組立写真</div>
+          <p class="charm-num-c">CHARM 01</p>
+          <h3 class="charm-title-c">手に職がつく、<br>電動自転車組立のプロへ</h3>
+          <p class="charm-body-c">検品・組立・調整・仕上げと段階的に技術が身につきます。改善提案が評価につながり主体的に動ける職場です。</p>
+          <div class="charm-tags-c"><span class="cct"><svg class="ico-svg" aria-hidden="true"><use href="#icon-wrench"/></svg> 達成感</span><span class="cct"><svg class="ico-svg" aria-hidden="true"><use href="#icon-lightbulb"/></svg> 改善提案</span></div>
+        </div>
+        <div>
+          <div class="charm-photo-c cph2">休日・環境写真</div>
+          <p class="charm-num-c">CHARM 02</p>
+          <h3 class="charm-title-c">年間休日126日。<br>体と生活をちゃんと守る</h3>
+          <p class="charm-body-c">長期休暇あり、毎月の出張整体、社員食堂、交通費全額支給。無理せず長く続けられる環境を整えています。</p>
+          <div class="charm-tags-c"><span class="cct"><svg class="ico-svg" aria-hidden="true"><use href="#icon-calendar"/></svg> 年休131日</span><span class="cct"><svg class="ico-svg" aria-hidden="true"><use href="#icon-heart"/></svg> 出張整体</span><span class="cct"><svg class="ico-svg" aria-hidden="true"><use href="#icon-coffee"/></svg> 社員食堂</span></div>
+        </div>
+        <div>
+          <div class="charm-photo-c cph3">資格・研修写真</div>
+          <p class="charm-num-c">CHARM 03</p>
+          <h3 class="charm-title-c">資格取得を応援。<br>キャリアのステップがある</h3>
+          <p class="charm-body-c">整備士などの資格取得費用を会社が補助。少人数でアットホームな職場で、20代〜50代が活躍中です。</p>
+          <div class="charm-tags-c"><span class="cct"><svg class="ico-svg" aria-hidden="true"><use href="#icon-file"/></svg> 資格支援</span><span class="cct"><svg class="ico-svg" aria-hidden="true"><use href="#icon-users"/></svg> アットホーム</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-c">
+      <span class="sec-tag-c">CAREER PATH</span>
+      <h2 class="sec-h2-c">キャリアパス</h2>
+      <p class="sec-lead-c">2つのルートから長期キャリアを描けます。</p>
+      <div class="cp-c">
+        <div>
+          <div class="cp-c-title"><svg class="ico-svg" aria-hidden="true"><use href="#icon-wrench"/></svg> 製造スタッフコース</div>
+          <div class="cp-c-steps">
+            <div class="cp-c-step"><div class="cp-c-yr">〜6ヶ月</div><dl class="cp-c-txt"><dt>工程習得期</dt><dd>OJT・マンツーマン</dd></dl></div>
+            <div class="cp-c-step"><div class="cp-c-yr">1〜3年</div><dl class="cp-c-txt"><dt>技術定着・資格取得</dt><dd>複数工程・整備士へ</dd></dl></div>
+            <div class="cp-c-step"><div class="cp-c-yr">3年〜</div><dl class="cp-c-txt"><dt>熟練・教育係</dt><dd>後輩育成・改善リーダー</dd></dl></div>
+          </div>
+        </div>
+        <div>
+          <div class="cp-c-title"><svg class="ico-svg" aria-hidden="true"><use href="#icon-chart"/></svg> 管理・品質コース</div>
+          <div class="cp-c-steps">
+            <div class="cp-c-step"><div class="cp-c-yr">〜1年</div><dl class="cp-c-txt"><dt>現場理解期</dt><dd>ライン全体を把握</dd></dl></div>
+            <div class="cp-c-step"><div class="cp-c-yr">1〜3年</div><dl class="cp-c-txt"><dt>管理業務習得</dt><dd>工程・在庫・品質記録</dd></dl></div>
+            <div class="cp-c-step"><div class="cp-c-yr">3年〜</div><dl class="cp-c-txt"><dt>改善リーダー</dt><dd>評価直結の立場へ</dd></dl></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-c sec-c-alt">
+      <span class="sec-tag-c">DATA</span>
+      <h2 class="sec-h2-c">数字でわかる<br>イズミ電商</h2>
+      <div class="data-c">
+        <div class="data-c-card"><div class="data-c-ring" style="background:conic-gradient(#2d6a4f 0% 68%,#d8f3dc 68% 100%);"></div><div class="data-c-val">68%</div><div class="data-c-lbl">未経験入社の割合</div></div>
+        <div class="data-c-card"><div class="data-c-ring" style="background:conic-gradient(#2d6a4f 0% 80%,#d8f3dc 80% 100%);"></div><div class="data-c-val">80%</div><div class="data-c-lbl">3年以上継続在籍率</div></div>
+        <div class="data-c-card"><div class="data-c-ring" style="background:conic-gradient(#2d6a4f 0% 55%,#d8f3dc 55% 100%);"></div><div class="data-c-val">55%</div><div class="data-c-lbl">資格取得者の割合</div></div>
+        <div class="data-c-card"><div class="data-c-ring" style="background:conic-gradient(#2d6a4f 0% 90%,#d8f3dc 90% 100%);"></div><div class="data-c-val">90%</div><div class="data-c-lbl">有給取得率</div></div>
+      </div>
+    </div>
+
+    <div class="sec-c">
+      <span class="sec-tag-c">MESSAGE</span>
+      <h2 class="sec-h2-c">社長メッセージ</h2>
+      <div class="pres-c-photo">社長写真</div>
+      <p class="pres-c-title">「人柄を大切に、<br>ともに育てていく会社でありたい。」</p>
+      <p class="pres-c-body">1985年創業から40年、電動自転車の組立・加工を専門に。技術だけでなく「人柄」と「チームで育てる文化」を大切にしています。未経験で入社した社員が現場リーダーになる姿を何度も見てきました。</p>
+      <p class="pres-c-sign"><small>イズミ電商株式会社 代表取締役</small>泉 ◯◯</p>
+    </div>
+
+    <div class="sec-c sec-c-alt">
+      <span class="sec-tag-c">VOICE</span>
+      <h2 class="sec-h2-c">先輩社員の声</h2>
+      <p class="sec-lead-c">同じ不安を持ってスタートした先輩たちに聞きました。</p>
+      <div class="voice-c">
+        <div class="voice-c-item">
+          <div class="voice-c-photo vc1">Aさん写真</div>
+          <div class="voice-c-content">
+            <p class="voice-c-meta">入社2年目</p>
+            <p class="voice-c-name">Aさん（30代）</p>
+            <p class="voice-c-role">電動自転車 製造スタッフ</p>
+            <div class="voice-c-q">未経験から入社してどうでしたか？</div>
+            <p class="voice-c-body">前職は飲食業で製造は全く未経験でした。先輩が横についてくれて3ヶ月で一人で組み立てられるように。今は後輩に教える立場になれたことが誇りです。</p>
+            <a class="voice-c-more" href="#">続きを読む →</a>
+          </div>
+        </div>
+        <div class="voice-c-item">
+          <div class="voice-c-photo vc2">Bさん写真</div>
+          <div class="voice-c-content">
+            <p class="voice-c-meta">入社5年目</p>
+            <p class="voice-c-name">Bさん（40代）</p>
+            <p class="voice-c-role">整備技能工 / 自転車整備士</p>
+            <div class="voice-c-q">資格取得のサポートはどうでしたか？</div>
+            <p class="voice-c-body">費用補助と業務時間内の勉強時間を確保してもらえました。資格手当もつき収入も上がりました。</p>
+            <a class="voice-c-more" href="#">続きを読む →</a>
+          </div>
+        </div>
+        <div class="voice-c-item">
+          <div class="voice-c-photo vc3">Cさん写真</div>
+          <div class="voice-c-content">
+            <p class="voice-c-meta">入社3年目</p>
+            <p class="voice-c-name">Cさん（20代）</p>
+            <p class="voice-c-role">生産管理</p>
+            <div class="voice-c-q">職場の雰囲気はどうですか？</div>
+            <p class="voice-c-body">少人数なのでアットホームです。改善提案を出したら評価に反映してもらえた時は嬉しかったです。自分のやり方が現場で使われているのが一番のやりがいです。</p>
+            <a class="voice-c-more" href="#">続きを読む →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-c">
+      <span class="sec-tag-c">FAQ</span>
+      <h2 class="sec-h2-c">よくある質問</h2>
+      <p class="sec-lead-c">「こんなこと聞いてもいいの？」と思うことも、全部答えます。</p>
+      <div class="faq-c">
+        <div class="faq-c-item">
+          <div class="faq-c-q"><div class="faq-q-badge">Q</div>製造の経験がなくても大丈夫ですか？</div>
+          <div class="faq-c-a">大丈夫です。先輩社員がマンツーマンでサポートします。部品の名前や工程を覚えるところから始めるので焦らず進めます。入社者の多くが未経験スタートです。</div>
+        </div>
+        <div class="faq-c-item">
+          <div class="faq-c-q"><div class="faq-q-badge">Q</div>残業はどれくらいありますか？</div>
+          <div class="faq-c-a">残業は少なく定時退社が基本です。年間休日126日＋一斉年休5日で、プライベートをしっかり確保できます。</div>
+        </div>
+        <div class="faq-c-item">
+          <div class="faq-c-q"><div class="faq-q-badge">Q</div>通勤はどうすればいいですか？</div>
+          <div class="faq-c-a">車・自転車・バイク通勤が可能です。交通費は全額支給します。</div>
+        </div>
+        <div class="faq-c-item">
+          <div class="faq-c-q"><div class="faq-q-badge">Q</div>応募前に職場を見学できますか？</div>
+          <div class="faq-c-a">もちろんです。実際の現場を見てから応募したい方は工場見学のお申し込みをどうぞ。</div>
+        </div>
+        <div class="faq-c-item">
+          <div class="faq-c-q"><div class="faq-q-badge">Q</div>年齢制限はありますか？</div>
+          <div class="faq-c-a">ありません。20代〜50代のスタッフが活躍中です。経験・年齢より「一緒に働けるか」を大切にしています。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-c sec-c-alt">
+      <span class="sec-tag-c">COMPANY</span>
+      <h2 class="sec-h2-c">会社概要</h2>
+      <table class="co-c-table">
+        <tr><th>会社名</th><td>イズミ電商株式会社</td></tr>
+        <tr><th>設立</th><td>1985年（昭和60年）</td></tr>
+        <tr><th>所在地</th><td>大阪府柏原市◯◯◯◯</td></tr>
+        <tr><th>事業内容</th><td>電動自転車の組立・加工・販売</td></tr>
+        <tr><th>従業員数</th><td>◯◯名</td></tr>
+        <tr><th>アクセス</th><td>近鉄・JR 柏原駅より徒歩◯分</td></tr>
+      </table>
+      <div class="map-c"><svg class="ico-svg" aria-hidden="true"><use href="#icon-location"/></svg> Google Map / 地図</div>
+    </div>
+
+    <div class="cta-c">
+      <h3>まず話を聞くだけでも、<br>大歓迎です。</h3>
+      <p>「こんなこと聞いてもいいの？」と思うことも全部聞いてください。工場見学だけでも気軽にどうぞ。</p>
+      <div class="cta-c-btns">
+        <button class="btn-cta-w">▶ 募集職種を見る</button>
+        <button class="btn-cta-ol">工場見学を申し込む</button>
+        <button class="btn-cta-ol">お問い合わせ</button>
+      </div>
+    </div>
+
+    <div class="sticky-c">
+      <button class="btn-fill-c" style="font-size:13px;padding:12px;">▶ 募集職種を見る</button>
+      <button class="btn-line-c" style="font-size:12px;padding:11px;">まず話を聞く</button>
+    </div>
+
+    <footer class="foot-c">
+      <span class="logo-f">イズミ電商株式会社</span>
+      <span class="copy">© 2025 IZUMI DENSHO</span>
+    </footer>
+  </div>
+</div>
+
+</div><!-- /doc-shell -->
+
+<script>
+function showPlan(plan) {
+  document.querySelectorAll('.plan-section').forEach(el => el.classList.remove('active'));
+  if (plan === 'all') {
+    document.querySelectorAll('.plan-section').forEach(el => el.classList.add('active'));
+  } else {
+    const el = document.getElementById('section-' + plan);
+    if (el) {
+      el.classList.add('active');
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
+  }
+}
+</script>
+</body>
+</html>
