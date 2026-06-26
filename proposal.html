@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イズミ電商株式会社 HP制作提案書</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1a2d4e; --blue: #2563eb; --light-blue: #eff6ff;
+    --gold: #d4a017; --gray: #64748b; --light: #f8fafc; --border: #e2e8f0;
+  }
+  body { font-family: 'Noto Sans JP', sans-serif; color: #1e293b; background: white; font-size: 11pt; line-height: 1.8; }
+
+  @page { size: A4; margin: 15mm; }
+  @media print { .page-break { page-break-before: always; } .no-print { display: none; } }
+
+  /* ナビ */
+  .nav { position: fixed; top: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 6px; }
+  .nav a { background: var(--navy); color: white; text-decoration: none; padding: 7px 13px; border-radius: 5px; font-size: 8.5pt; font-weight: 500; }
+  @media print { .nav { display: none; } }
+
+  /* 表紙 */
+  .cover {
+    min-height: 100vh; background: linear-gradient(135deg, #1a2d4e 0%, #2d4a7a 100%);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 60px 40px;
+  }
+  .cover-label { background: var(--gold); color: white; padding: 6px 20px; border-radius: 2px; font-size: 9pt; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 40px; }
+  .cover h1 { color: white; font-size: 26pt; font-weight: 900; line-height: 1.5; margin-bottom: 16px; }
+  .cover h1 span { display: block; font-size: 14pt; font-weight: 400; opacity: 0.8; margin-bottom: 8px; }
+  .cover-line { width: 60px; height: 3px; background: var(--gold); margin: 28px auto; }
+  .cover-meta { color: rgba(255,255,255,0.75); font-size: 10pt; line-height: 2.4; }
+  .cover-meta strong { color: white; }
+
+  /* セクション共通 */
+  .section { padding: 52px 52px 44px; }
+  .section-alt { background: var(--light); }
+  .sec-label { font-size: 8pt; font-weight: 700; letter-spacing: 0.2em; color: var(--blue); margin-bottom: 6px; }
+  .sec-title { font-size: 20pt; font-weight: 900; color: var(--navy); line-height: 1.4; margin-bottom: 30px; padding-bottom: 14px; border-bottom: 3px solid var(--navy); }
+  .sec-title small { display: block; font-size: 10.5pt; font-weight: 400; color: var(--gray); margin-top: 6px; }
+
+  /* ── SECTION 01: 現行HP分析 ── */
+  .analysis-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+  .a-card { border-radius: 8px; padding: 22px 24px; }
+  .a-card.good { background: #f0fdf4; border-left: 4px solid #22c55e; }
+  .a-card.issue { background: #fef2f2; border-left: 4px solid #ef4444; }
+  .a-card h3 { font-size: 11pt; font-weight: 700; margin-bottom: 12px; }
+  .a-card.good h3 { color: #15803d; }
+  .a-card.issue h3 { color: #b91c1c; }
+  .a-card ul { list-style: none; }
+  .a-card ul li { font-size: 10pt; padding: 5px 0 5px 18px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05); line-height: 1.65; }
+  .a-card ul li:last-child { border-bottom: none; }
+  .a-card.good li::before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+  .a-card.issue li::before { content: '!'; position: absolute; left: 0; color: #ef4444; font-weight: 700; }
+
+  /* 比較表 */
+  .compare { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  .compare th { padding: 11px 16px; font-weight: 700; border-bottom: 2px solid var(--border); }
+  .compare th:first-child { text-align: left; }
+  .compare th.now { background: #fef2f2; color: #b91c1c; text-align: center; }
+  .compare th.new { background: var(--light-blue); color: var(--blue); text-align: center; }
+  .compare td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
+  .compare td:nth-child(2) { background: #fef2f2; text-align: center; font-size: 14pt; font-weight: 700; }
+  .compare td:nth-child(3) { background: var(--light-blue); text-align: center; font-size: 14pt; font-weight: 700; }
+  .ok { color: #22c55e; } .ng { color: #ef4444; } .tri { color: #f59e0b; }
+
+  /* ── SECTION 02: 採用媒体分析（新設） ── */
+  .media-table { width: 100%; border-collapse: collapse; font-size: 10pt; margin-bottom: 28px; }
+  .media-table th { background: var(--navy); color: white; padding: 11px 16px; text-align: left; font-weight: 500; }
+  .media-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .media-table tr:nth-child(even) td { background: var(--light); }
+
+  .advice-box {
+    background: #fffbeb; border: 1px solid #fbbf24; border-left: 4px solid var(--gold);
+    border-radius: 8px; padding: 20px 24px; font-size: 10.5pt; color: #78350f; line-height: 1.85;
+  }
+  .advice-box .title { font-weight: 700; font-size: 11.5pt; margin-bottom: 10px; color: #92400e; }
+
+  .flow-diagram {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin: 24px 0; flex-wrap: wrap;
+  }
+  .flow-box {
+    background: white; border: 2px solid var(--border); border-radius: 8px;
+    padding: 14px 18px; text-align: center; min-width: 130px;
+    font-size: 9.5pt; font-weight: 500; color: var(--navy); line-height: 1.5;
+  }
+  .flow-box.current { border-color: #ef4444; background: #fef2f2; color: #b91c1c; }
+  .flow-box.ideal { border-color: var(--blue); background: var(--light-blue); color: var(--blue); font-weight: 700; }
+  .flow-arrow { font-size: 20pt; color: var(--border); padding: 0 10px; }
+  .flow-arrow.real { color: var(--blue); }
+
+  /* ── SECTION 03: 戦略 ── */
+  .strategy-headline {
+    font-size: 14pt; font-weight: 700; color: var(--navy);
+    padding: 18px 22px; background: var(--light-blue);
+    border-left: 4px solid var(--blue); border-radius: 6px; margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .journey {
+    background: var(--navy); border-radius: 10px; padding: 32px 36px;
+    margin-bottom: 28px;
+  }
+  .journey .label { color: rgba(255,255,255,0.6); font-size: 9pt; letter-spacing: 0.12em; text-align: center; margin-bottom: 20px; }
+  .journey-steps { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+  .j-step { background: rgba(255,255,255,0.09); border-radius: 6px; padding: 13px 16px; text-align: center; min-width: 120px; }
+  .j-step.key { background: var(--gold); }
+  .j-step .icon { font-size: 16pt; margin-bottom: 4px; }
+  .j-step p { font-size: 9pt; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .j-step.key p { color: var(--navy); font-weight: 700; }
+  .j-arrow { font-size: 20pt; color: rgba(255,255,255,0.25); padding: 0 6px; }
+
+  .nums-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .num-card { background: white; border-radius: 8px; padding: 20px; border: 1px solid var(--border); text-align: center; }
+  .num-card .n { font-size: 26pt; font-weight: 900; color: var(--blue); line-height: 1; }
+  .num-card .n span { font-size: 12pt; }
+  .num-card p { font-size: 9.5pt; color: var(--gray); margin-top: 8px; line-height: 1.55; }
+
+  /* ── SECTION 04: コピー案 ── */
+  .copy-list { display: flex; flex-direction: column; gap: 18px; }
+  .copy-item { border-radius: 10px; padding: 26px 30px; border: 1px solid var(--border); display: grid; grid-template-columns: 70px 1fr; gap: 22px; align-items: start; }
+  .copy-item.rec { border: 2px solid var(--blue); background: var(--light-blue); }
+  .copy-badge { font-size: 8.5pt; font-weight: 700; padding: 6px 12px; border-radius: 5px; text-align: center; line-height: 1.5; }
+  .copy-badge.a { background: var(--navy); color: white; }
+  .copy-badge.b { background: var(--blue); color: white; }
+  .copy-badge.c { background: #0d9488; color: white; }
+  .copy-item h3 { font-size: 15pt; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.5; }
+  .copy-item .sub { font-size: 9.5pt; color: var(--gray); margin-bottom: 10px; }
+  .copy-item .why { font-size: 9.5pt; color: var(--gray); line-height: 1.75; padding: 10px 14px; background: rgba(0,0,0,0.03); border-radius: 6px; }
+  .rec-tag { display: inline-block; background: var(--blue); color: white; font-size: 8pt; font-weight: 700; padding: 2px 9px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+
+  /* ── SECTION 05: 費用・工程 ── */
+  .budget-table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  .budget-table th { background: var(--navy); color: white; padding: 12px 16px; text-align: left; font-weight: 500; }
+  .budget-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .budget-table tr:nth-child(even) td { background: var(--light); }
+  .budget-table .total td { background: var(--light-blue); font-weight: 700; border-top: 2px solid var(--blue); }
+  .budget-table .price { text-align: right; font-weight: 500; }
+
+  .steps { list-style: none; padding: 0; margin-top: 32px; position: relative; }
+  .steps::before { content: ''; position: absolute; left: 19px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .steps li { display: grid; grid-template-columns: 40px 1fr; gap: 16px; margin-bottom: 20px; }
+  .step-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: white; display: flex; align-items: center; justify-content: center; font-size: 11pt; font-weight: 700; flex-shrink: 0; position: relative; z-index: 1; }
+  .step-dot.done { background: #22c55e; }
+  .step-dot.now { background: var(--blue); box-shadow: 0 0 0 4px rgba(37,99,235,0.2); }
+  .step-body { padding-top: 8px; }
+  .step-date { font-size: 9pt; color: var(--gray); margin-bottom: 3px; }
+  .step-title { font-size: 11pt; font-weight: 700; color: var(--navy); }
+  .step-desc { font-size: 9.5pt; color: var(--gray); margin-top: 4px; }
+
+  /* 注釈 */
+  .note { background: #fffbeb; border: 1px solid #fbbf24; border-left: 4px solid #f59e0b; border-radius: 6px; padding: 15px 20px; margin-top: 20px; font-size: 9.5pt; color: #92400e; line-height: 1.8; }
+  .note strong { color: #78350f; }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.55); text-align: center; padding: 18px; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<nav class="nav no-print">
+  <a href="#cover">表紙</a>
+  <a href="#analysis">現行HP</a>
+  <a href="#media">採用媒体</a>
+  <a href="#issues">課題整理</a>
+  <a href="#strategy">戦略</a>
+  <a href="#copy">コピー案</a>
+</nav>
+
+<!-- ── 表紙 ── -->
+<div class="cover" id="cover">
+  <div class="cover-label">HP 制作提案 / 2026.06.29</div>
+  <h1>
+    <span>イズミ電商株式会社 御中</span>
+    「人が来る会社」への<br>変え方、あります。
+  </h1>
+  <div class="cover-line"></div>
+  <div class="cover-meta">
+    <div>提案先：<strong>イズミ電商株式会社</strong></div>
+    <div>パナソニック系列 ／ 電動自転車製造 ／ 大阪府柏原市</div>
+    <div style="margin-top:12px;">提案者：<strong>株式会社FiTNESS UNIVERSITY</strong></div>
+    <div>提案日：2026年6月29日</div>
+  </div>
+</div>
+
+<!-- ── 01 現行HP分析 ── -->
+<div class="section page-break" id="analysis">
+  <div class="sec-label">SECTION 01</div>
+  <div class="sec-title">
+    今のホームページを確認しました
+    <small>良い部分はそのまま活かし、変えるべき点だけを変えます</small>
+  </div>
+
+  <div class="analysis-cols">
+    <div class="a-card good">
+      <h3>✅ すでに良い点</h3>
+      <ul>
+        <li>会社の場所・歴史がきちんと書かれており、信頼感がある</li>
+        <li>パナソニック系列であることが書かれており、強みがある</li>
+        <li>実際の製造現場の写真があり、具体的でわかりやすい</li>
+        <li>問い合わせの窓口が設置されている</li>
+      </ul>
+    </div>
+    <div class="a-card issue">
+      <h3>⚠ 整えるともっと良くなる点</h3>
+      <ul>
+        <li>採用の案内が目立たず、たどり着くまでに時間がかかる</li>
+        <li>「どんな人が働いているか」「職場の雰囲気」が伝わらない</li>
+        <li>携帯（スマートフォン）で見ると読みにくい部分がある</li>
+        <li>「この会社でどう成長できるか」の見通しが伝わらない</li>
+        <li>「応募してみよう」というきっかけになるボタンが少ない</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="compare">
+    <thead>
+      <tr>
+        <th>チェック項目</th>
+        <th class="now">今のホームページ</th>
+        <th class="new">リニューアル後</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>携帯（スマホ）でも見やすい</td><td><span class="tri">△</span></td><td><span class="ok">◎</span></td></tr>
+      <tr><td>採用ページへすぐたどり着ける</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+      <tr><td>職場・社員の顔が見える</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+      <tr><td>パナソニック系列であることが伝わる</td><td><span class="tri">△</span></td><td><span class="ok">◎</span></td></tr>
+      <tr><td>「応募する」ボタンが見つけやすい</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+      <tr><td>入社後の仕事の流れが想像できる</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>提案の立場について：</strong> 今のホームページを否定するものではありません。40年の歴史と信頼の積み上げは大きな財産です。その土台の上に「採用に特化した見せ方」を加えることが、今回の提案の核心です。
+  </div>
+</div>
+
+<!-- ── 02 採用媒体分析（新設） ── -->
+<div class="section section-alt page-break" id="media">
+  <div class="sec-label">SECTION 02</div>
+  <div class="sec-title">
+    現在の採用状況を確認しました
+    <small>求人サイトの使い方を整理することで、管理の手間を減らせます</small>
+  </div>
+
+  <table class="media-table">
+    <thead>
+      <tr><th>項目</th><th>内容</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>掲載している求人サイト</strong></td><td>Indeed ／ engage ／ Yahoo!しごとカタログ</td></tr>
+      <tr><td><strong>掲載費用</strong></td><td>無料掲載（上位表示なし）</td></tr>
+      <tr><td><strong>掲載している求人件数</strong></td><td>Indeed に7件掲載中</td></tr>
+    </tbody>
+  </table>
+
+  <div class="advice-box">
+    <div class="title">💡 整えるとこうなります</div>
+    求人を職種別に7件に分けて掲載されています。仕事を探している方から見ると「どれに応募すればいいのか」が少しわかりにくい状態です。<br><br>
+    ホームページに採用専用のページを作ることで、<strong>「まずホームページを見てもらい、そこから応募してもらう」という流れ</strong>を作ることができます。求人サイトへの掲載は引き続き続けながら、ホームページからも応募が来るようにする、という考え方です。管理する窓口がひとつになるので、社内の手間も減ります。
+  </div>
+
+  <div class="flow-diagram">
+    <div class="flow-box current">求人サイト<br>（7件バラバラ）</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box current">求職者が<br>迷いやすい</div>
+    <div class="flow-arrow real">　→　今後　→　</div>
+    <div class="flow-box ideal">ホームページの<br>採用専用ページ</div>
+    <div class="flow-arrow real">→</div>
+    <div class="flow-box ideal">「応募する」<br>ボタンで直結</div>
+  </div>
+</div>
+
+<!-- ── 03 課題整理（新設） ── -->
+<div class="section page-break" id="issues">
+  <div class="sec-label">SECTION 03</div>
+  <div class="sec-title">
+    現状を外から見て、気づいたことがあります
+    <small>整理すればすぐに良くなることばかりです</small>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:32px;">
+
+    <div style="background:white; border-radius:10px; border:1px solid var(--border); overflow:hidden; display:grid; grid-template-columns:64px 1fr;">
+      <div style="background:#ef4444; display:flex; align-items:center; justify-content:center; padding:20px 0;">
+        <span style="color:white; font-size:18pt; font-weight:900;">①</span>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-size:11pt; font-weight:700; color:#b91c1c; margin-bottom:8px;">自社ホームページがセキュリティエラーの状態になっています</div>
+        <p style="font-size:10pt; color:var(--gray); line-height:1.8;">現在の自社HPは、ブラウザに「安全ではないサイト」と表示される可能性があります。仕事を探している方が最初のページを見た時点で離れてしまっている可能性があります。これは比較的簡単に修正できます。</p>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:10px; border:1px solid var(--border); overflow:hidden; display:grid; grid-template-columns:64px 1fr;">
+      <div style="background:#f59e0b; display:flex; align-items:center; justify-content:center; padding:20px 0;">
+        <span style="color:white; font-size:18pt; font-weight:900;">②</span>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-size:11pt; font-weight:700; color:#b45309; margin-bottom:8px;">最大の強みが、求人に出ていません</div>
+        <p style="font-size:10pt; color:var(--gray); line-height:1.8;">「パナソニックサイクルテックの敷地内で、30年間取引を続けている」という事実は、仕事を探す方にとって非常に大きな安心材料です。「つぶれない会社」「信頼できる職場」を証明する最強の根拠なのに、現状の求人ではほとんど伝わっていません。</p>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:10px; border:1px solid var(--border); overflow:hidden; display:grid; grid-template-columns:64px 1fr;">
+      <div style="background:#f59e0b; display:flex; align-items:center; justify-content:center; padding:20px 0;">
+        <span style="color:white; font-size:18pt; font-weight:900;">③</span>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-size:11pt; font-weight:700; color:#b45309; margin-bottom:8px;">7件の求人がバラバラに並んでいます</div>
+        <p style="font-size:10pt; color:var(--gray); line-height:1.8;">職種ごとに7件の求人を個別に掲載しているため、仕事を探している方が「どれに応募すればいいか」迷いやすい状態です。採用ページをひとつにまとめることで、応募までの流れがシンプルになります。</p>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:10px; border:1px solid var(--border); overflow:hidden; display:grid; grid-template-columns:64px 1fr;">
+      <div style="background:#2563eb; display:flex; align-items:center; justify-content:center; padding:20px 0;">
+        <span style="color:white; font-size:18pt; font-weight:900;">④</span>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-size:11pt; font-weight:700; color:#1d4ed8; margin-bottom:8px;">「出張整体」という珍しい福利厚生が埋もれています</div>
+        <p style="font-size:10pt; color:var(--gray); line-height:1.8;">「月1回の出張整体サービス」は、製造業ではほとんど見かけない福利厚生です。体を使う仕事だからこそ、この制度は求職者に刺さります。現状の求人では目立っていませんが、他社との大きな違いになります。</p>
+      </div>
+    </div>
+
+    <div style="background:white; border-radius:10px; border:1px solid var(--border); overflow:hidden; display:grid; grid-template-columns:64px 1fr;">
+      <div style="background:#64748b; display:flex; align-items:center; justify-content:center; padding:20px 0;">
+        <span style="color:white; font-size:18pt; font-weight:900;">⑤</span>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-size:11pt; font-weight:700; color:#475569; margin-bottom:8px;">求人サイトの口コミが、まだ育っていません</div>
+        <p style="font-size:10pt; color:var(--gray); line-height:1.8;">engageの口コミは現在1件のみです。仕事を探している方は、応募する前に必ず口コミを確認します。今後の採用力を高めるためにも、口コミを増やす仕組みを作ることが大切です。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:var(--navy); border-radius:10px; padding:24px 28px; color:white; text-align:center;">
+    <p style="font-size:11pt; font-weight:500; line-height:1.9; opacity:0.9;">
+      これらは、今すぐ整理できることです。<br>
+      ホームページを軸に採用の窓口を一本化することで、<strong style="color:var(--gold);">求人広告費をかけずに応募数を増やせる状態</strong>を目指します。
+    </p>
+  </div>
+</div>
+
+<!-- ── 04 戦略 ── -->
+<div class="section page-break" id="strategy">
+  <div class="sec-label">SECTION 04</div>
+  <div class="sec-title">
+    「誰に、何を伝えるか」を変える
+    <small>ターゲットを広げると、もっと多くの人に届きます</small>
+  </div>
+
+  <div class="strategy-headline">
+    「自転車好きな人」だけに向けるより、<br>「パナソニック系列・安定した職場環境に惹かれる人」に向けた方が、応募者が増えます。
+  </div>
+
+  <div class="journey">
+    <div class="label">— ページを見た人の気持ちの流れ —</div>
+    <div class="journey-steps">
+      <div class="j-step"><div class="icon">🏢</div><p>パナソニック系列<br>→ 信頼できる</p></div>
+      <div class="j-arrow">→</div>
+      <div class="j-step"><div class="icon">😌</div><p>休日・残業<br>→ 安心できる</p></div>
+      <div class="j-arrow">→</div>
+      <div class="j-step key"><div class="icon">📈</div><p>成長できる<br>キャリアがある</p></div>
+      <div class="j-arrow">→</div>
+      <div class="j-step"><div class="icon">🚲</div><p>社会に役立つ<br>仕事という誇り</p></div>
+    </div>
+  </div>
+
+  <div class="nums-row">
+    <div class="num-card">
+      <div class="n">126<span>日</span></div>
+      <p>年間休日数。大手メーカー並みの水準で、仕事を探す人に刺さる数字です。</p>
+    </div>
+    <div class="num-card">
+      <div class="n">40<span>年</span></div>
+      <p>パナソニックとの取引年数。「長く続く会社」を証明する最大の根拠。</p>
+    </div>
+    <div class="num-card">
+      <div class="n">未経験<span>OK</span></div>
+      <p>実は未経験歓迎。この事実をページで伝えられていないのが今の課題。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── 05 コピー案 ── -->
+<div class="section section-alt page-break" id="copy">
+  <div class="sec-label">SECTION 05</div>
+  <div class="sec-title">
+    ページのキャッチコピー案
+    <small>3つのパターンをご用意しました。社長のイメージに近いものをお選びください</small>
+  </div>
+
+  <div class="copy-list">
+    <div class="copy-item">
+      <div>
+        <div class="copy-badge a">案 A<br>成長</div>
+      </div>
+      <div>
+        <h3>ここから、プロになる。<br>パナソニックの現場で。</h3>
+        <p class="sub">〈小見出し〉未経験歓迎。手で作り、目で確かめ、誇りを積み上げる仕事。</p>
+        <p class="why">
+          <strong>こんな人に届きます：</strong> 将来の仕事の見通しを考えている20〜30代。「成長できる場所で働きたい」という気持ちを持つ転職希望者。パナソニックの名前が安心感につながります。
+        </p>
+      </div>
+    </div>
+
+    <div class="copy-item rec">
+      <div>
+        <div class="copy-badge b">案 B<br>社会貢献</div>
+        <div style="margin-top:8px; text-align:center;"><span class="rec-tag">おすすめ</span></div>
+      </div>
+      <div>
+        <h3>日本の街を走る自転車を、<br>柏原から作っている。</h3>
+        <p class="sub">〈小見出し〉パナソニック系列。年間休日126日。未経験から手に職をつける製造の仕事。</p>
+        <p class="why">
+          <strong>こんな人に届きます：</strong> 自転車が好きかどうかに関わらず、幅広い層に刺さります。「柏原」という地名が親しみやすく、地元で仕事を探している方にも響きます。<br>
+          <strong>おすすめの理由：</strong> 仕事の「社会的な意味」を感じてもらえる言葉。長く働いてくれる人が来やすくなります。
+        </p>
+      </div>
+    </div>
+
+    <div class="copy-item">
+      <div>
+        <div class="copy-badge c">案 C<br>職人</div>
+      </div>
+      <div>
+        <h3>一台一台、手で仕上げる。<br>それが、イズミのものづくり。</h3>
+        <p class="sub">〈小見出し〉大阪・柏原のパナソニック系自転車メーカー。丁寧な仕事を大切にしています。</p>
+        <p class="why">
+          <strong>こんな人に届きます：</strong> 「量より質の仕事がしたい」「コツコツ取り組むのが好き」という職人気質の方。会社の誠実さや丁寧さが伝わるコピーです。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  © 2026 Tosei Web制作 ／ 本資料は打ち合わせ用の提案資料です。内容は変更になる場合があります。
+</footer>
+
+</body>
+</html>

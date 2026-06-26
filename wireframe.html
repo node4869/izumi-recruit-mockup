@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>採用ページ ワイヤーフレーム — イズミ電商 × FU</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #1a2d4e;
+  --blue: #2563eb;
+  --gold: #d4a017;
+  --gray: #5a6a7a;
+  --border: #d1d5db;
+  --bg: #f3f4f6;
+  --wf: #e5e7eb;   /* wireframe block */
+  --wf2: #d1d5db;
+  --ann: #fefce8;  /* annotation yellow */
+  --ann-border: #fbbf24;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #f0f2f5;
+  color: var(--navy);
+}
+
+/* ── タブナビ ── */
+#tabs {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy);
+  display: flex; align-items: center;
+  padding: 0 32px; gap: 4px; height: 56px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+#tabs span {
+  color: rgba(255,255,255,.5);
+  font-size: 13px; letter-spacing: .06em;
+  margin-right: 12px;
+}
+.tab {
+  padding: 8px 22px; border-radius: 4px 4px 0 0;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  border: none; font-family: inherit;
+  background: rgba(255,255,255,.08); color: rgba(255,255,255,.55);
+  transition: .15s;
+}
+.tab:hover { background: rgba(255,255,255,.15); color: white; }
+.tab.on { background: white; color: var(--navy); }
+
+/* ── ページ共通 ── */
+.wf-page { display: none; }
+.wf-page.on { display: block; }
+
+/* ── セクション行（左：ワイヤー、右：注釈） ── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 0;
+  border-bottom: 2px dashed var(--border);
+  background: white;
+}
+.row:last-child { border-bottom: none; }
+
+/* ── ワイヤーフレーム側 ── */
+.wf {
+  padding: 24px 32px;
+  border-right: 2px dashed var(--border);
+}
+
+/* ── 注釈側 ── */
+.ann {
+  padding: 20px 18px;
+  background: var(--ann);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.ann-num {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; color: var(--gold);
+  text-transform: uppercase;
+}
+.ann-title {
+  font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.4;
+}
+.ann-body {
+  font-size: 13px; color: var(--gray); line-height: 1.7;
+}
+.ann-tag {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  padding: 3px 8px; border-radius: 3px; margin-top: 4px;
+}
+.tag-research { background: #dbeafe; color: #1d4ed8; }
+.tag-ux { background: #dcfce7; color: #15803d; }
+.tag-trust { background: #fef3c7; color: #92400e; }
+
+/* ── ワイヤーパーツ ── */
+.wf-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; background: var(--wf); border-radius: 4px; margin-bottom: 8px;
+}
+.wf-logo { width: 80px; height: 20px; background: var(--wf2); border-radius: 3px; }
+.wf-nav { display: flex; gap: 8px; }
+.wf-nav-item { height: 16px; border-radius: 3px; background: var(--wf2); }
+
+.wf-hero {
+  border-radius: 6px; overflow: hidden; margin-bottom: 8px;
+  position: relative;
+}
+.wf-hero-bg {
+  background: var(--wf); padding: 36px 28px 32px; position: relative;
+}
+.wf-hero-bg.dark { background: #374151; }
+.wf-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  color: var(--gray); text-transform: uppercase; margin-bottom: 8px;
+}
+.wf-label.light { color: rgba(255,255,255,.5); }
+.wf-h1 {
+  font-size: 22px; font-weight: 900; color: var(--navy); line-height: 1.5; margin-bottom: 10px;
+}
+.wf-h1.light { color: white; }
+.wf-sub { font-size: 13px; color: var(--gray); margin-bottom: 16px; line-height: 1.6; }
+.wf-sub.light { color: rgba(255,255,255,.7); }
+.wf-btn {
+  display: inline-block; padding: 12px 28px; border-radius: 4px;
+  font-size: 14px; font-weight: 700; background: var(--gold); color: white;
+}
+.wf-img-ph {
+  background: var(--wf2); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: #9ca3af; font-weight: 500;
+}
+
+.wf-strip {
+  display: flex; gap: 8px; margin-bottom: 8px;
+}
+.wf-badge {
+  flex: 1; background: var(--wf); border-radius: 6px;
+  padding: 12px 14px; text-align: center;
+}
+.wf-badge .n { font-size: 22px; font-weight: 900; color: var(--navy); line-height: 1; }
+.wf-badge .l { font-size: 11px; color: var(--gray); margin-top: 4px; }
+
+.wf-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+.wf-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.wf-card {
+  background: var(--wf); border-radius: 6px; padding: 14px;
+}
+.wf-card-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.wf-card-body { font-size: 12px; color: var(--gray); line-height: 1.6; }
+.wf-line { height: 10px; background: var(--wf2); border-radius: 3px; margin-bottom: 6px; }
+.wf-line.short { width: 60%; }
+.wf-line.mid   { width: 80%; }
+
+.wf-sec-title {
+  font-size: 16px; font-weight: 900; color: var(--navy);
+  border-left: 4px solid var(--blue); padding-left: 10px;
+  margin-bottom: 12px;
+}
+
+.wf-flow { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.wf-flow-step {
+  flex: 1; background: var(--wf); border-radius: 6px; padding: 10px;
+  text-align: center; font-size: 12px; font-weight: 700; color: var(--navy);
+}
+.wf-flow-arrow { font-size: 16px; color: var(--wf2); }
+
+.wf-voice {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--wf); border-radius: 6px; padding: 14px; margin-bottom: 8px;
+}
+.wf-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--wf2); flex-shrink: 0; }
+.wf-voice-body .wf-line { margin-bottom: 4px; }
+
+.wf-cta {
+  background: var(--navy); border-radius: 8px; padding: 28px;
+  text-align: center;
+}
+.wf-cta-title { color: white; font-size: 17px; font-weight: 900; margin-bottom: 14px; }
+.wf-cta-btn {
+  display: inline-block; background: var(--gold); color: white;
+  padding: 14px 36px; border-radius: 4px; font-size: 15px; font-weight: 700;
+}
+.wf-cta-note { color: rgba(255,255,255,.5); font-size: 12px; margin-top: 10px; }
+
+.wf-benefit-card {
+  background: var(--wf); border-radius: 6px; padding: 14px;
+  border-left: 4px solid var(--gold);
+}
+.wf-benefit-card.highlight { background: #fffbeb; border-color: var(--gold); }
+.wf-benefit-card .icon { font-size: 20px; margin-bottom: 6px; }
+.wf-benefit-card .ttl { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.wf-benefit-card .txt { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+.wf-faq { margin-bottom: 6px; }
+.wf-faq-q { background: var(--wf); border-radius: 4px; padding: 10px 14px; font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.wf-faq-a { background: white; border: 1px solid var(--wf); border-radius: 4px; padding: 10px 14px; font-size: 12px; color: var(--gray); }
+
+/* ── ページ見出し ── */
+.page-hdr {
+  background: white; border-bottom: 2px solid var(--border);
+  padding: 20px 32px;
+  display: flex; align-items: flex-end; gap: 16px;
+}
+.page-hdr h2 { font-size: 20px; font-weight: 900; color: var(--navy); }
+.page-hdr p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+/* ── 凡例 ── */
+.legend {
+  display: flex; gap: 12px; padding: 12px 32px;
+  background: white; border-bottom: 1px solid var(--border);
+  font-size: 12px; color: var(--gray);
+}
+.legend span { display: flex; align-items: center; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+@media (max-width: 768px) {
+  #tabs { padding: 0 12px; gap: 4px; height: auto; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
+  .tab { font-size: 12px; padding: 7px 12px; }
+  #tabs span { display: none; }
+
+  .page-hdr { padding: 16px 16px; }
+  .page-hdr h2 { font-size: 16px; }
+  .page-hdr p { font-size: 13px; }
+  .legend { padding: 10px 16px; flex-wrap: wrap; gap: 8px; }
+
+  .row { grid-template-columns: 1fr; }
+  .wf { padding: 16px; border-right: none; border-bottom: 1px dashed var(--border); }
+  .ann { padding: 14px 16px; }
+
+  .wf-2col { grid-template-columns: 1fr; }
+  .wf-3col { grid-template-columns: 1fr; }
+  .wf-strip { flex-wrap: wrap; }
+  .wf-badge { min-width: calc(50% - 4px); }
+  .wf-flow { flex-wrap: wrap; justify-content: center; }
+  .wf-flow-step { min-width: 80px; flex: none; }
+  .wf-flow-arrow { display: none; }
+
+  .wf-hero-bg { grid-template-columns: 1fr !important; }
+  .wf-hero-bg > div:last-child { display: none; }
+
+  .wf-h1 { font-size: 17px; }
+  .wf-sub { font-size: 12px; }
+  .wf-sec-title { font-size: 14px; }
+
+  .wf-voice { flex-direction: column; gap: 8px; }
+
+  .wf-cta { padding: 20px 16px; }
+  .wf-cta-title { font-size: 14px; }
+  .wf-cta-btn { padding: 12px 20px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div id="tabs">
+ <span>ワイヤーフレーム</span>
+ <button class="tab on" onclick="show('a')">案 A ／ 成長・キャリア型</button>
+ <button class="tab"    onclick="show('b')">案 B ／ 社会貢献型</button>
+ <button class="tab"    onclick="show('c')">案 C ／ 職人・クラフト型</button>
+</div>
+
+<!-- ═══════════════════════════════════════
+     案 A：成長・キャリア型
+═══════════════════════════════════════ -->
+<div class="wf-page on" id="page-a">
+ <div class="page-hdr">
+  <div>
+   <h2>案 A ／ 成長・キャリア型</h2>
+   <p>「ここから、プロになる。パナソニックの現場で。」<br>未経験歓迎を訴求の入口にし、成長とキャリアを軸に構成する。</p>
+  </div>
+ </div>
+ <div class="legend">
+  <span><span class="dot" style="background:#dbeafe"></span>リサーチ根拠あり</span>
+  <span><span class="dot" style="background:#dcfce7"></span>UX設計判断</span>
+  <span><span class="dot" style="background:#fef3c7"></span>信頼構築</span>
+ </div>
+
+ <!-- 01 ヘッダー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">01 ヘッダー / ナビゲーション</div>
+   <div class="wf-header">
+    <div class="wf-logo"></div>
+    <div class="wf-nav">
+     <div class="wf-nav-item" style="width:48px"></div>
+     <div class="wf-nav-item" style="width:60px"></div>
+     <div class="wf-nav-item" style="width:54px"></div>
+     <div class="wf-nav-item" style="width:72px;background:var(--gold)"></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 01</div>
+   <div class="ann-title">採用ページへの直リンクをナビに設置</div>
+   <div class="ann-body">調査で「採用へのたどり着き方が不明」と判明。ナビの最右に「採用情報」を金色ボタンで配置し、どのページからでも応募導線に入れるようにする。</div>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 02 ヒーロー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">02 ヒーローセクション</div>
+   <div class="wf-hero">
+    <div class="wf-hero-bg dark" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center">
+     <div>
+      <div class="wf-label light">未経験歓迎 ／ パナソニック系列</div>
+      <div class="wf-h1 light">ここから、プロになる。<br>パナソニックの現場で。</div>
+      <div class="wf-sub light">手で作り、目で確かめ、誇りを積み上げる仕事。</div>
+      <div class="wf-btn">応募する・話を聞く</div>
+     </div>
+     <div class="wf-img-ph" style="height:160px">現場写真</div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 02</div>
+   <div class="ann-title">「未経験歓迎」を最初に見せる</div>
+   <div class="ann-body">成長志向層は「自分が応募できるか」を最初に判断する。「未経験歓迎」をキャッチコピーの直前に小さく置くことで、ページを読み続けるハードルを下げる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 03 信頼バー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">03 信頼バー（数字で示す）</div>
+   <div class="wf-strip">
+    <div class="wf-badge"><div class="n">40年</div><div class="l">パナソニックとの取引歴</div></div>
+    <div class="wf-badge"><div class="n">126日</div><div class="l">年間休日数</div></div>
+    <div class="wf-badge"><div class="n">未経験OK</div><div class="l">入社後に技術習得可能</div></div>
+    <div class="wf-badge"><div class="n">残業少</div><div class="l">月平均残業〇時間</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 03</div>
+   <div class="ann-title">ヒーロー直下に数字を置く理由</div>
+   <div class="ann-body">ヒーローでコピーに引きつけた後、すぐに「本当に安定しているのか」を確認しに来る。調査で判明した「パナソニック40年」「年間休日126日」という根拠数字をここで示す。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 04 成長ストーリー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">04 キャリアの流れ（案Aの核）</div>
+   <div class="wf-sec-title">未経験から、こう成長できます</div>
+   <div class="wf-flow">
+    <div class="wf-flow-step">入社<br>（未経験OK）</div>
+    <div class="wf-flow-arrow">→</div>
+    <div class="wf-flow-step">基礎技術<br>習得（3ヶ月）</div>
+    <div class="wf-flow-arrow">→</div>
+    <div class="wf-flow-step">担当工程<br>を持つ</div>
+    <div class="wf-flow-arrow">→</div>
+    <div class="wf-flow-step">後輩の<br>指導役へ</div>
+   </div>
+   <div class="wf-2col">
+    <div class="wf-card"><div class="wf-card-title">丁寧な引き継ぎ体制</div><div class="wf-card-body">先輩社員が隣でサポート。製造未経験でも安心して始められる環境です。</div></div>
+    <div class="wf-card"><div class="wf-card-title">技術が身につく仕事</div><div class="wf-card-body">電動自転車の製造工程を通じて、精密な手作業の技術が積み上がります。</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 04</div>
+   <div class="ann-title">キャリアの見通しを最初に見せる</div>
+   <div class="ann-body">調査で「入社後の見通しが伝わっていない」と判明。成長志向の20〜30代は「3年後の自分がイメージできるか」で応募を決める。フローで可視化することで離脱を防ぐ。</div>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 05 会社の安心感 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">05 会社の安心感</div>
+   <div class="wf-sec-title">なぜイズミ電商は安定しているのか</div>
+   <div class="wf-2col">
+    <div>
+     <div class="wf-img-ph" style="height:100px;margin-bottom:8px">パナソニック社屋・工場写真</div>
+     <div class="wf-line"></div>
+     <div class="wf-line mid"></div>
+     <div class="wf-line short"></div>
+    </div>
+    <div>
+     <div class="wf-card" style="margin-bottom:8px"><div class="wf-card-title">📍 パナソニックの敷地内に工場</div><div class="wf-card-body">パナソニックサイクルテック株式会社の敷地内に工場を構え、約40年間取引が続いています。</div></div>
+     <div class="wf-card"><div class="wf-card-title">🚲 日本の主要自転車ブランドを製造</div><div class="wf-card-body">「なくなることのない需要」を支える製造に携わっています。</div></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 05</div>
+   <div class="ann-title">キャリア提示の直後に安定の根拠を置く</div>
+   <div class="ann-body">「成長できそう」と思った次の疑問は「この会社は長く続くのか」。調査で最大の強みと判明した「パナソニック40年取引」をここで詳しく説明する。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 06 仕事内容 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">06 仕事内容</div>
+   <div class="wf-sec-title">1日の仕事の流れ</div>
+   <div class="wf-3col">
+    <div class="wf-card"><div class="wf-card-title">午前</div><div class="wf-card-body">ライン作業・部品の組み付け・品質確認</div></div>
+    <div class="wf-card"><div class="wf-card-title">午後</div><div class="wf-card-body">仕上げ・梱包・翌日の段取り確認</div></div>
+    <div class="wf-card"><div class="wf-card-title">終業</div><div class="wf-card-body">残業ほぼなし。定時退社が基本。</div></div>
+   </div>
+   <div class="wf-card"><div class="wf-card-title">募集職種・勤務条件</div><div class="wf-card-body">製造スタッフ（正社員・パート）／ 勤務地：大阪府柏原市 ／ 勤務時間・給与は確認中（打ち合わせで確認）</div></div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 06</div>
+   <div class="ann-title">1日の流れで「普通の生活」が見えるようにする</div>
+   <div class="ann-body">求職者は「自分がそこで働くイメージ」ができないと応募しない。調査でも「仕事の見通しが伝わっていない」と判明。時間軸で見せることで具体性を補う。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 07 福利厚生 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">07 福利厚生（出張整体を前面に）</div>
+   <div class="wf-sec-title">働く環境・福利厚生</div>
+   <div class="wf-3col">
+    <div class="wf-benefit-card highlight"><div class="icon">💆</div><div class="ttl">月1回・出張整体サービス</div><div class="txt">製造業では珍しい制度。体を使う仕事だからこそ、会社がサポートします。</div></div>
+    <div class="wf-benefit-card"><div class="icon">📅</div><div class="ttl">年間休日 126日</div><div class="txt">大手メーカー並みの休日数。土日祝休み。</div></div>
+    <div class="wf-benefit-card"><div class="icon">🕐</div><div class="ttl">残業少なめ</div><div class="txt">月平均〇時間（確認中）。プライベートの時間を確保できます。</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 07</div>
+   <div class="ann-title">出張整体を一番目立つ位置に</div>
+   <div class="ann-body">調査で「他社にない福利厚生なのに埋もれている」と判明。製造業での出張整体は差別化要素が高い。ハイライトカードとして3つの中で最初に配置する。</div>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 08 社員の声 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">08 社員の声</div>
+   <div class="wf-sec-title">働いている人の話</div>
+   <div class="wf-2col">
+    <div class="wf-voice">
+     <div class="wf-avatar"></div>
+     <div class="wf-voice-body">
+      <div class="wf-line"></div>
+      <div class="wf-line mid"></div>
+      <div class="wf-line short"></div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:4px">入社〇年目・製造スタッフ（写真・コメント確認中）</div>
+     </div>
+    </div>
+    <div class="wf-voice">
+     <div class="wf-avatar"></div>
+     <div class="wf-voice-body">
+      <div class="wf-line"></div>
+      <div class="wf-line mid"></div>
+      <div class="wf-line short"></div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:4px">入社〇年目・製造スタッフ（写真・コメント確認中）</div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 08</div>
+   <div class="ann-title">応募ボタンの直前に置く理由</div>
+   <div class="ann-body">調査で「職場の雰囲気が伝わっていない」と判明。社員の顔と言葉は、口コミが少ない（engage 1件）ことを補う役割も持つ。CTA直前に置くことで「応募への後押し」になる。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 09 応募CTA -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">09 応募 CTA</div>
+   <div class="wf-cta">
+    <div class="wf-cta-title">あなたのペースで始められます。まずは話だけでも。</div>
+    <div class="wf-cta-btn">応募する・話を聞く</div>
+    <div class="wf-cta-note">フォームまたはお電話で受け付けています</div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 09</div>
+   <div class="ann-title">「応募」のハードルを下げる言葉を添える</div>
+   <div class="ann-body">「応募する」だけでは行動を起こしにくい人向けに「話だけでも」という副テキストを置く。7件の求人をまとめてここから1本で受け付けられるようにすることが導線改善の核。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 10 FAQ -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">10 よくある質問</div>
+   <div class="wf-sec-title">よくある質問</div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 製造経験がなくても応募できますか？</div><div class="wf-faq-a">はい、未経験の方も歓迎しています。入社後に先輩スタッフが丁寧に教えます。</div></div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 正社員とパートの違いを教えてください</div><div class="wf-faq-a">（確認中）</div></div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 応募したらすぐに選考が始まりますか？</div><div class="wf-faq-a">まずは話を聞くだけのご連絡も歓迎しています。</div></div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 10</div>
+   <div class="ann-title">応募後・応募前の不安をここで解消</div>
+   <div class="ann-body">「未経験でも大丈夫か」という疑問は成長型訴求のターゲットにとって最も大きな壁。FAQで明示することで、CTAを見た後の離脱を防ぐ。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     案 B：社会貢献型
+═══════════════════════════════════════ -->
+<div class="wf-page" id="page-b">
+ <div class="page-hdr">
+  <div>
+   <h2>案 B ／ 社会貢献型</h2>
+   <p>「日本の街を走る自転車を、柏原から作っている。」<br>仕事の社会的意味を軸に構成し、地域密着・長期定着を重視した層に届ける。</p>
+  </div>
+ </div>
+ <div class="legend">
+  <span><span class="dot" style="background:#dbeafe"></span>リサーチ根拠あり</span>
+  <span><span class="dot" style="background:#dcfce7"></span>UX設計判断</span>
+  <span><span class="dot" style="background:#fef3c7"></span>信頼構築</span>
+ </div>
+
+ <!-- 01 ヘッダー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">01 ヘッダー / ナビゲーション</div>
+   <div class="wf-header">
+    <div class="wf-logo"></div>
+    <div class="wf-nav">
+     <div class="wf-nav-item" style="width:48px"></div>
+     <div class="wf-nav-item" style="width:60px"></div>
+     <div class="wf-nav-item" style="width:54px"></div>
+     <div class="wf-nav-item" style="width:72px;background:var(--gold)"></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 01</div>
+   <div class="ann-title">採用ページへの直リンクをナビに設置</div>
+   <div class="ann-body">案Aと同じ構造。調査で「採用へのたどり着き方が不明」と判明しているため、全案共通でナビに採用ボタンを固定する。</div>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 02 ヒーロー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">02 ヒーローセクション</div>
+   <div class="wf-hero">
+    <div class="wf-hero-bg" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;background:#1a2d4e">
+     <div>
+      <div class="wf-label light">大阪府柏原市 ／ パナソニック系列</div>
+      <div class="wf-h1 light">日本の街を走る自転車を、<br>柏原から作っている。</div>
+      <div class="wf-sub light">パナソニック系列。年間休日126日。未経験から手に職をつける製造の仕事。</div>
+      <div class="wf-btn">採用情報を見る・応募する</div>
+     </div>
+     <div class="wf-img-ph" style="height:160px;background:#374151">完成した自転車・街の風景写真</div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 02</div>
+   <div class="ann-title">「柏原」という地名を最初に出す</div>
+   <div class="ann-body">地元で仕事を探している層にとって「柏原」という地名は検索ワードでもある。ヒーローで地名を明記することで「自分向けの情報だ」と認識させる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 03 信頼バー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">03 信頼バー</div>
+   <div class="wf-strip">
+    <div class="wf-badge"><div class="n">40年</div><div class="l">パナソニックとの取引歴</div></div>
+    <div class="wf-badge"><div class="n">126日</div><div class="l">年間休日数</div></div>
+    <div class="wf-badge"><div class="n">柏原市</div><div class="l">地元での安定した雇用</div></div>
+    <div class="wf-badge"><div class="n">未経験OK</div><div class="l">入社後に技術習得可能</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 03</div>
+   <div class="ann-title">「柏原」をバッジに加える</div>
+   <div class="ann-body">案Bでは地域密着が訴求軸のひとつ。「柏原市」をバッジに入れることで、地元雇用であることを数字と並べて強調できる。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+  </div>
+ </div>
+
+ <!-- 04 社会的意味 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">04 仕事の社会的意味（案Bの核）</div>
+   <div class="wf-sec-title">あなたが作るものが、街を走っている</div>
+   <div class="wf-2col">
+    <div>
+     <div class="wf-img-ph" style="height:120px;margin-bottom:8px">街中を走る自転車の写真</div>
+     <div class="wf-line"></div>
+     <div class="wf-line mid"></div>
+     <div class="wf-line short"></div>
+    </div>
+    <div>
+     <div class="wf-card" style="margin-bottom:8px"><div class="wf-card-title">🚲 毎年〇万台を出荷</div><div class="wf-card-body">パナソニックブランドの電動自転車として、全国に届けられています。（数値は確認中）</div></div>
+     <div class="wf-card"><div class="wf-card-title">🏭 柏原に根ざした製造拠点</div><div class="wf-card-body">40年以上、同じ場所でものづくりを続けてきた会社です。</div></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 04</div>
+   <div class="ann-title">「何を作っているか」を先に見せる</div>
+   <div class="ann-body">社会貢献型の訴求では「自分の仕事が世の中とつながっている」という実感が応募動機になる。キャリアより先に「仕事の意味」を置くことで、長く働こうとする人を引きつける。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 05 会社の安心感 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">05 会社の安心感</div>
+   <div class="wf-sec-title">40年続く会社には理由があります</div>
+   <div class="wf-2col">
+    <div class="wf-card" style="margin-bottom:8px"><div class="wf-card-title">📍 パナソニックの敷地内で操業</div><div class="wf-card-body">パナソニックサイクルテックの敷地内に工場を構え、約40年間取引が続いています。</div></div>
+    <div class="wf-card"><div class="wf-card-title">📈 電動自転車の需要は拡大中</div><div class="wf-card-body">環境意識の高まりとともに電動自転車の需要は増加傾向にあります。（出典確認中）</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 05</div>
+   <div class="ann-title">「意味」の後に「安定」を補強する</div>
+   <div class="ann-body">社会貢献に共感した人が次に確認するのは「会社の存続性」。調査で判明した「パナソニック40年」という根拠をここで丁寧に説明する。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 06 仕事内容 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">06 仕事内容・勤務条件</div>
+   <div class="wf-sec-title">1日の仕事の流れ</div>
+   <div class="wf-3col">
+    <div class="wf-card"><div class="wf-card-title">午前</div><div class="wf-card-body">ライン作業・部品の組み付け・品質確認</div></div>
+    <div class="wf-card"><div class="wf-card-title">午後</div><div class="wf-card-body">仕上げ・梱包・翌日の段取り確認</div></div>
+    <div class="wf-card"><div class="wf-card-title">終業</div><div class="wf-card-body">残業ほぼなし。定時退社が基本。</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 06</div>
+   <div class="ann-title">「普通の生活ができる仕事」を示す</div>
+   <div class="ann-body">長期定着を重視する層は仕事の意味と同時に「生活との両立」を確認する。1日の流れで「残業ほぼなし」が伝わるよう設計する。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 07 福利厚生 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">07 福利厚生</div>
+   <div class="wf-sec-title">働く環境・福利厚生</div>
+   <div class="wf-3col">
+    <div class="wf-benefit-card highlight"><div class="icon">💆</div><div class="ttl">月1回・出張整体サービス</div><div class="txt">製造業では珍しい制度。体を使う仕事だからこそ、会社がサポートします。</div></div>
+    <div class="wf-benefit-card"><div class="icon">📅</div><div class="ttl">年間休日 126日</div><div class="txt">土日祝休み。地域の行事にも参加しやすい。</div></div>
+    <div class="wf-benefit-card"><div class="icon">🏠</div><div class="ttl">地元雇用・通いやすい</div><div class="txt">柏原市内の工場。引っ越し不要で働けます。（確認中）</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 07</div>
+   <div class="ann-title">「地域で長く働く」視点で福利厚生を並べる</div>
+   <div class="ann-body">案Bでは地元定着を意識する層が対象。出張整体は引き続き目立たせつつ、「地元雇用」も加える。年間126日の休日は地域行事との両立というフレームで説明する。</div>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 08 社員の声 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">08 社員の声</div>
+   <div class="wf-sec-title">ここで働いている人の話</div>
+   <div class="wf-2col">
+    <div class="wf-voice">
+     <div class="wf-avatar"></div>
+     <div class="wf-voice-body"><div class="wf-line"></div><div class="wf-line mid"></div><div class="wf-line short"></div><div style="font-size:11px;color:#9ca3af;margin-top:4px">地元出身・入社〇年目（写真・コメント確認中）</div></div>
+    </div>
+    <div class="wf-voice">
+     <div class="wf-avatar"></div>
+     <div class="wf-voice-body"><div class="wf-line"></div><div class="wf-line mid"></div><div class="wf-line short"></div><div style="font-size:11px;color:#9ca3af;margin-top:4px">入社〇年目・製造スタッフ（写真・コメント確認中）</div></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 08</div>
+   <div class="ann-title">地元の顔が見える社員インタビュー</div>
+   <div class="ann-body">案Bでは「地元で長く働く人の話」という切り口にする。engage口コミが1件しかないという調査結果を補完する役割もある。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 09 応募CTA -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">09 応募 CTA</div>
+   <div class="wf-cta">
+    <div class="wf-cta-title">柏原から、ものづくりを続けていく仲間を探しています。</div>
+    <div class="wf-cta-btn">採用情報を見る・応募する</div>
+    <div class="wf-cta-note">フォームまたはお電話で受け付けています</div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 09</div>
+   <div class="ann-title">「仲間」という言葉で長期定着を示唆</div>
+   <div class="ann-body">案Bのターゲットは長く一緒に働ける人。「仲間を探している」という表現はプレッシャーを与えず、かつ「長く続く関係」を自然に伝えられる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 10 FAQ -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">10 よくある質問</div>
+   <div class="wf-sec-title">よくある質問</div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 自転車に詳しくなくても大丈夫ですか？</div><div class="wf-faq-a">はい、特別な知識は不要です。入社後に製造工程を覚えていきます。</div></div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 柏原市外から通うことはできますか？</div><div class="wf-faq-a">（確認中。駐車場・交通費支給の有無も明記予定）</div></div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 長く働き続けられる環境ですか？</div><div class="wf-faq-a">パナソニックとの長期取引実績がある安定した事業基盤のもとで働けます。</div></div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 10</div>
+   <div class="ann-title">「長く続けられるか」という疑問を先取りする</div>
+   <div class="ann-body">案Bのターゲットは雇用継続性を重視する。「長く働き続けられるか」という質問をFAQに入れることで、その答えを自然に伝えられる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     案 C：職人・クラフト型
+═══════════════════════════════════════ -->
+<div class="wf-page" id="page-c">
+ <div class="page-hdr">
+  <div>
+   <h2>案 C ／ 職人・クラフト型</h2>
+   <p>「一台一台、手で仕上げる。それが、イズミのものづくり。」<br>仕事の丁寧さ・誠実さを軸に、コツコツ型の人材に向けて構成する。</p>
+  </div>
+ </div>
+ <div class="legend">
+  <span><span class="dot" style="background:#dbeafe"></span>リサーチ根拠あり</span>
+  <span><span class="dot" style="background:#dcfce7"></span>UX設計判断</span>
+  <span><span class="dot" style="background:#fef3c7"></span>信頼構築</span>
+ </div>
+
+ <!-- 01 ヘッダー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">01 ヘッダー / ナビゲーション</div>
+   <div class="wf-header">
+    <div class="wf-logo"></div>
+    <div class="wf-nav">
+     <div class="wf-nav-item" style="width:48px"></div>
+     <div class="wf-nav-item" style="width:60px"></div>
+     <div class="wf-nav-item" style="width:54px"></div>
+     <div class="wf-nav-item" style="width:72px;background:var(--gold)"></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 01</div>
+   <div class="ann-title">採用ページへの直リンクをナビに設置</div>
+   <div class="ann-body">全案共通。調査で「採用へのたどり着き方が不明」と判明しているため、ナビに採用ボタンを固定する。</div>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 02 ヒーロー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">02 ヒーローセクション</div>
+   <div class="wf-hero">
+    <div class="wf-hero-bg" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;background:#f8fafc">
+     <div>
+      <div class="wf-label">パナソニック系列 ／ 大阪・柏原</div>
+      <div class="wf-h1">一台一台、手で仕上げる。<br>それが、イズミのものづくり。</div>
+      <div class="wf-sub">丁寧な仕事を大切にしています。未経験歓迎。</div>
+      <div class="wf-btn">採用情報を見る・応募する</div>
+     </div>
+     <div class="wf-img-ph" style="height:160px">手作業の工程写真（手元・部品のクローズアップ）</div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 02</div>
+   <div class="ann-title">手作業の写真で「職人的な仕事」を視覚化</div>
+   <div class="ann-body">案Cでは仕事の丁寧さが最大の訴求。ヒーロー画像を「手元・部品のクローズアップ」にすることで、コピーを読む前から「丁寧なものづくり」を伝える。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 03 信頼バー -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">03 信頼バー</div>
+   <div class="wf-strip">
+    <div class="wf-badge"><div class="n">40年</div><div class="l">パナソニックとの取引歴</div></div>
+    <div class="wf-badge"><div class="n">126日</div><div class="l">年間休日数</div></div>
+    <div class="wf-badge"><div class="n">手作業</div><div class="l">一台ずつ丁寧に仕上げる</div></div>
+    <div class="wf-badge"><div class="n">未経験OK</div><div class="l">入社後に技術習得可能</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 03</div>
+   <div class="ann-title">「手作業」をバッジに加える</div>
+   <div class="ann-body">案Cでは「量より質」への共感が入口。「手作業」という言葉をバッジに置くことで、コツコツ型の人が「自分に向いている」と判断できる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 04 ものづくりの丁寧さ -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">04 ものづくりのこだわり（案Cの核）</div>
+   <div class="wf-sec-title">イズミのものづくりとは</div>
+   <div class="wf-2col">
+    <div>
+     <div class="wf-img-ph" style="height:120px;margin-bottom:8px">工程写真（検品・組み立て）</div>
+    </div>
+    <div>
+     <div class="wf-card" style="margin-bottom:8px"><div class="wf-card-title">🔩 一台ごとの品質確認</div><div class="wf-card-body">流れ作業ではなく、一台ずつ丁寧に品質を確認しています。（確認中）</div></div>
+     <div class="wf-card"><div class="wf-card-title">👥 少人数チームの現場</div><div class="wf-card-body">大量生産ラインではなく、担当範囲が明確な少人数の現場です。（確認中）</div></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 04</div>
+   <div class="ann-title">「どう作るか」を先に見せる</div>
+   <div class="ann-body">職人気質の人は「作り方の丁寧さ」に共感して応募を決める。キャリアや安定より先に「仕事のやり方のこだわり」を置くことで、ミスマッチが起きにくい採用につながる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 05 会社の安心感 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">05 会社の安心感</div>
+   <div class="wf-sec-title">誠実なものづくりが、40年間続いた理由</div>
+   <div class="wf-2col">
+    <div class="wf-card" style="margin-bottom:8px"><div class="wf-card-title">📍 パナソニック系列として40年</div><div class="wf-card-body">品質を大切にする会社だからこそ、パナソニックとの長期取引が続いています。</div></div>
+    <div class="wf-card"><div class="wf-card-title">🏆 丁寧な仕事が評価される環境</div><div class="wf-card-body">速さより正確さを重視する現場です。丁寧に仕事をする人が評価されます。</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 05</div>
+   <div class="ann-title">「丁寧さ」と「安定」を結びつける</div>
+   <div class="ann-body">案Cでは「丁寧なものづくり→だからパナソニックに選ばれ続けている→だから会社は安定している」という論理で安心感を作る。調査の「パナソニック40年」をここに活用する。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 06 仕事内容 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">06 仕事内容・勤務条件</div>
+   <div class="wf-sec-title">1日の仕事の流れ</div>
+   <div class="wf-3col">
+    <div class="wf-card"><div class="wf-card-title">午前</div><div class="wf-card-body">担当工程の作業・品質確認</div></div>
+    <div class="wf-card"><div class="wf-card-title">午後</div><div class="wf-card-body">仕上げ・検品・梱包</div></div>
+    <div class="wf-card"><div class="wf-card-title">終業</div><div class="wf-card-body">残業ほぼなし。決まったリズムで働けます。</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 06</div>
+   <div class="ann-title">「決まったリズム」がコツコツ型に響く</div>
+   <div class="ann-body">コツコツ型の人は「毎日のリズムが安定していること」を重視する。1日の流れを「午前・午後・終業」で見せることで、規則正しい仕事であることが伝わる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 07 福利厚生 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">07 福利厚生</div>
+   <div class="wf-sec-title">働く環境・福利厚生</div>
+   <div class="wf-3col">
+    <div class="wf-benefit-card highlight"><div class="icon">💆</div><div class="ttl">月1回・出張整体サービス</div><div class="txt">体を使う仕事だからこそ、会社がケアをサポートします。製造業では珍しい制度です。</div></div>
+    <div class="wf-benefit-card"><div class="icon">📅</div><div class="ttl">年間休日 126日</div><div class="txt">土日祝休み。オンとオフのけじめがつく環境。</div></div>
+    <div class="wf-benefit-card"><div class="icon">🤝</div><div class="ttl">丁寧な引き継ぎ体制</div><div class="txt">未経験でも安心して始められる、先輩サポートの仕組みがあります。</div></div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 07</div>
+   <div class="ann-title">「体のケア」と「引き継ぎ」を職人視点で表現</div>
+   <div class="ann-body">案Cでは出張整体を「体を使う仕事だから会社がケアする」という文脈で説明する。また、引き継ぎ体制は「最初から丁寧に仕事を覚えられる」という職人気質の人の安心感につながる。</div>
+   <span class="ann-tag tag-research">リサーチ根拠</span>
+  </div>
+ </div>
+
+ <!-- 08 社員の声 -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">08 社員の声</div>
+   <div class="wf-sec-title">ここで働いている人の話</div>
+   <div class="wf-2col">
+    <div class="wf-voice">
+     <div class="wf-avatar"></div>
+     <div class="wf-voice-body"><div class="wf-line"></div><div class="wf-line mid"></div><div class="wf-line short"></div><div style="font-size:11px;color:#9ca3af;margin-top:4px">入社〇年目・ベテランスタッフ（写真・コメント確認中）</div></div>
+    </div>
+    <div class="wf-voice">
+     <div class="wf-avatar"></div>
+     <div class="wf-voice-body"><div class="wf-line"></div><div class="wf-line mid"></div><div class="wf-line short"></div><div style="font-size:11px;color:#9ca3af;margin-top:4px">入社〇年目・製造スタッフ（写真・コメント確認中）</div></div>
+    </div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 08</div>
+   <div class="ann-title">長く働くベテランの声を選ぶ</div>
+   <div class="ann-body">案Cでは定着率が高い採用につながることが目標。社員インタビューは「長く働いているベテラン」を選ぶと、コツコツ型のターゲットに「自分の将来像」として映る。</div>
+   <span class="ann-tag tag-trust">信頼構築</span>
+  </div>
+ </div>
+
+ <!-- 09 応募CTA -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">09 応募 CTA</div>
+   <div class="wf-cta">
+    <div class="wf-cta-title">丁寧に仕事をしたい方を、お待ちしています。</div>
+    <div class="wf-cta-btn">採用情報を見る・応募する</div>
+    <div class="wf-cta-note">フォームまたはお電話で受け付けています</div>
+   </div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 09</div>
+   <div class="ann-title">「丁寧に仕事をしたい人」という自己申告を促す</div>
+   <div class="ann-body">案Cのターゲットは「自分はコツコツ型だ」という自覚を持っている。CTAで「丁寧に仕事をしたい方」と明記することで、そのタイプの人が「自分のことだ」と感じて応募しやすくなる。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+ <!-- 10 FAQ -->
+ <div class="row">
+  <div class="wf">
+   <div class="wf-label">10 よくある質問</div>
+   <div class="wf-sec-title">よくある質問</div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 製造経験がなくても丁寧に仕事を覚えられますか？</div><div class="wf-faq-a">はい。先輩スタッフが隣でサポートします。焦らず覚えられる環境です。</div></div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 作業スピードよりも正確さを大切にする職場ですか？</div><div class="wf-faq-a">はい。品質を最優先にする現場です。丁寧さが評価されます。（確認中）</div></div>
+   <div class="wf-faq"><div class="wf-faq-q">Q. 長く続けて働いている方はいますか？</div><div class="wf-faq-a">（確認中。定着率・勤続年数の平均を記載予定）</div></div>
+  </div>
+  <div class="ann">
+   <div class="ann-num">Section 10</div>
+   <div class="ann-title">「正確さが評価されるか」という疑問を先取りする</div>
+   <div class="ann-body">コツコツ型の人は「自分のペースで仕事ができるか」を最も心配する。FAQで「スピードより正確さ」という職場の評価軸を明示することで、長く働ける確信を与える。</div>
+   <span class="ann-tag tag-ux">UX設計</span>
+  </div>
+ </div>
+
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.wf-page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  document.getElementById('page-' + id).classList.add('on');
+  event.target.classList.add('on');
+}
+</script>
+</body>
+</html>
