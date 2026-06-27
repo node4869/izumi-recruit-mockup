@@ -73,6 +73,19 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .career-card { border-left: 3px solid; padding: 14px 16px; }
 .career-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
 .career-card p { font-size: 12px; opacity: .65; line-height: 1.7; }
+/* 出張整体ハイライト */
+.sekkei-wrap { padding: 0 32px 32px; }
+.sekkei-inner { display: flex; align-items: center; gap: 24px; padding: 28px 32px; border-radius: 10px; }
+.sekkei-icon { font-size: 48px; flex-shrink: 0; }
+.sekkei-body { flex: 1; }
+.sekkei-eyebrow { font-size: 11px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 8px; }
+.sekkei-title { font-size: 26px; font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
+.sekkei-sub { font-size: 14px; line-height: 1.8; opacity: .75; }
+.sekkei-badge { flex-shrink: 0; width: 72px; height: 72px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; text-align: center; line-height: 1.4; }
+.cc .sekkei-inner { background: #1c1c1c; border: 1px solid #555; color: white; }
+.cc .sekkei-eyebrow { color: #aaa; }
+.cc .sekkei-title { color: white; }
+.cc .sekkei-badge { background: white; color: #1c1c1c; }
 .wf-story { padding: 40px 32px; }
 .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
 .story-img { width: 100%; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
@@ -225,6 +238,22 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
       <div class="wf-num"><div class="n-val">年<small>2</small>回</div><div class="n-lbl">賞与支給</div></div>
       <div class="wf-num"><div class="n-val">月<small>22〜27万</small></div><div class="n-lbl">給与水準</div></div>
     </div>
+  </div>
+
+  <div class="wf-section">
+    <span class="sec-tag diff" style="background:#555;color:white">他社にない福利厚生</span>
+    <div class="sekkei-wrap cc">
+      <div class="sekkei-inner">
+        <div class="sekkei-icon">🤲</div>
+        <div class="sekkei-body">
+          <div class="sekkei-eyebrow">製造業でここだけの制度</div>
+          <div class="sekkei-title">出張整体 ── 月1回、無料</div>
+          <div class="sekkei-sub">プロのセラピストが職場に来て、肩・腰・首をしっかりケア。<br>体を使う現場だからこそ、会社が全額負担で導入。競合求人にはない、イズミだけの制度。</div>
+        </div>
+        <div class="sekkei-badge">社員<br>全員<br>無料</div>
+      </div>
+    </div>
+    <div class="wf-note green">「年間休日126日」と並ぶ最大の差別化ポイント。NUMBERS直後に専用枠を設けることで流し読みでも必ず目に入る。「整体が月1回無料」は製造業の競合求人にまず存在しない。</div>
   </div>
 
   <div class="wf-section">
