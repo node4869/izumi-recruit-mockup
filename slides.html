@@ -9,86 +9,76 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --navy:  #1a2d4e;
-  --blue:  #2563eb;
-  --gold:  #d4a017;
-  --gray:  #5a6a7a;
+  --navy: #1a2d4e;
+  --blue: #2563eb;
+  --gold: #d4a017;
+  --gray: #5a6a7a;
   --light: #f8fafc;
-  --border:#e2e8f0;
-  --red:   #dc2626;
+  --border: #e2e8f0;
+  --red: #dc2626;
   --amber: #d97706;
 }
 
-html { background: #1a1a1a; }
-body { font-family: 'Noto Sans JP', sans-serif; width: 1280px; margin: 0 auto; }
-
-.slide {
-  width: 1280px; height: 720px;
-  background: white; display: flex; flex-direction: column;
-  overflow: hidden; position: relative;
+html, body {
+  width: 100%; height: 100%;
+  background: #1a1a1a;
+  overflow: hidden;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
-.hdr { padding: 40px 60px 0; flex-shrink: 0; }
-.sec-label {
-  font-size: 13px; font-weight: 700;
-  letter-spacing: .16em; color: var(--blue);
-  text-transform: uppercase; margin-bottom: 8px;
-}
-.slide-title { font-size: 38px; font-weight: 900; color: var(--navy); line-height: 1.3; }
-.slide-sub   { font-size: 16px; color: var(--gray); margin-top: 6px; }
-
-.body {
-  flex: 1; padding: 20px 60px 36px;
-  display: flex; flex-direction: column;
-  justify-content: space-evenly;
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { width: 1280px; height: 720px; overflow: visible; background: white; }
+  #stage { position: static; display: block; }
+  #scaler { position: static !important; transform: none !important; left: 0 !important; top: 0 !important; width: 1280px; height: auto; }
+  .slide { position: relative !important; display: flex !important; width: 1280px; height: 720px; page-break-after: always; break-after: page; overflow: hidden; }
+  #ctrl { display: none; }
 }
 
-.pn { position: absolute; bottom: 12px; right: 20px; font-size: 12px; color: rgba(0,0,0,.18); font-weight: 500; }
-.pn-w { color: rgba(255,255,255,.25); }
+#stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+#scaler { position: absolute; width: 1280px; height: 720px; transform-origin: top left; }
+
+.slide { position: absolute; inset: 0; display: none; overflow: hidden; background: white; }
+.slide.on { display: flex; flex-direction: column; }
+
+#ctrl {
+  position: fixed; bottom: 18px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: 12px; z-index: 999;
+}
+.btn {
+  background: rgba(255,255,255,.12); color: white;
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 7px 18px; border-radius: 5px;
+  font-size: 13px; font-family: inherit; cursor: pointer;
+}
+.btn:hover { background: rgba(255,255,255,.22); }
+.btn:disabled { opacity: .3; pointer-events: none; }
+#ctr { color: rgba(255,255,255,.6); font-size: 13px; min-width: 52px; text-align: center; }
+
+.sec-label { font-size: 13px; font-weight: 700; letter-spacing: .16em; color: var(--blue); text-transform: uppercase; }
+.slide-title { font-size: 40px; font-weight: 900; color: var(--navy); line-height: 1.25; }
+.slide-sub { font-size: 17px; color: var(--gray); }
+
+.pn { position: absolute; bottom: 14px; right: 20px; font-size: 12px; color: rgba(0,0,0,.18); font-weight: 500; }
+.pn-w { color: rgba(255,255,255,.2); }
 .prog { position: absolute; bottom: 0; left: 0; height: 4px; background: var(--blue); }
 .prog-g { background: var(--gold); }
 
-@page { size: 1280px 720px; margin: 0; }
-@media print {
-  html { background: white; }
-  #scaler { transform: none !important; padding: 0; gap: 0; }
-  .slide { display: flex !important; page-break-after: always; break-after: page; }
-  .slide:last-child { page-break-after: avoid; break-after: avoid; }
-}
-@media screen {
-  html, body { overflow-x: hidden; }
-  body { margin: 0; }
-  #scaler {
-    width: 1280px; transform-origin: top left;
-    padding: 40px 0; display: flex; flex-direction: column; gap: 24px;
-  }
-  .slide { box-shadow: 0 4px 24px rgba(0,0,0,.35); }
-}
-
-.note-bar {
-  background: #fffbeb; border-left: 4px solid var(--gold); border-radius: 4px;
-  padding: 14px 18px; font-size: 15px; color: #92400e; line-height: 1.8;
-}
-.ok { color: #16a34a; } .ng { color: var(--red); } .tr { color: var(--amber); }
-
 /* S01 */
-#s01 {
-  background: linear-gradient(140deg, #1a2d4e 0%, #2d4a7a 100%);
-  align-items: center; justify-content: center; text-align: center;
-}
-#s01 .chip {
-  display: inline-block; background: var(--gold); color: white;
-  font-size: 13px; font-weight: 700; letter-spacing: .12em;
-  padding: 6px 20px; border-radius: 2px; margin-bottom: 28px;
-}
-#s01 h1 { color: white; font-size: 54px; font-weight: 900; line-height: 1.45; }
-#s01 h1 small { display: block; font-size: 19px; font-weight: 400; opacity: .7; margin-bottom: 10px; }
+#s01 { background: linear-gradient(140deg, #1a2d4e 0%, #2d4a7a 100%); align-items: center; justify-content: center; text-align: center; }
+#s01 .chip { display: inline-block; background: var(--gold); color: white; font-size: 13px; font-weight: 700; letter-spacing: .12em; padding: 6px 20px; border-radius: 2px; margin-bottom: 28px; }
+#s01 h1 { color: white; font-size: 56px; font-weight: 900; line-height: 1.4; }
+#s01 h1 small { display: block; font-size: 20px; font-weight: 400; opacity: .7; margin-bottom: 10px; }
 #s01 .rule { width: 52px; height: 3px; background: var(--gold); margin: 22px auto; }
 #s01 .meta { color: rgba(255,255,255,.65); font-size: 16px; line-height: 2.4; }
 #s01 .meta b { color: white; font-weight: 500; }
 
 /* S02 */
-.cards { display: flex; gap: 20px; }
+#s02 { justify-content: center; gap: 18px; padding: 0 60px; }
+#s02 .hdr { display: flex; flex-direction: column; gap: 6px; }
+#s02 .cards { display: flex; gap: 20px; align-items: stretch; }
 .chk-card { border-radius: 8px; padding: 22px 26px; flex: 1; }
 .chk-card.good { background: #f0fdf4; border-left: 5px solid #22c55e; }
 .chk-card.bad  { background: #fef2f2; border-left: 5px solid var(--red); }
@@ -96,16 +86,14 @@ body { font-family: 'Noto Sans JP', sans-serif; width: 1280px; margin: 0 auto; }
 .chk-card.good h3 { color: #15803d; }
 .chk-card.bad  h3 { color: var(--red); }
 .chk-card ul { list-style: none; }
-.chk-card li {
-  font-size: 16px; line-height: 1.65;
-  padding: 8px 0 8px 22px; position: relative;
-  border-bottom: 1px solid rgba(0,0,0,.05); color: #1e293b;
-}
+.chk-card li { font-size: 16px; line-height: 1.65; padding: 7px 0 7px 20px; position: relative; border-bottom: 1px solid rgba(0,0,0,.05); color: #1e293b; }
 .chk-card li:last-child { border: none; }
 .chk-card.good li::before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
 .chk-card.bad  li::before { content: '!'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
 
 /* S03 */
+#s03 { padding: 40px 60px; justify-content: space-evenly; }
+#s03 .hdr { display: flex; flex-direction: column; gap: 6px; }
 .cmp { width: 100%; border-collapse: collapse; font-size: 17px; }
 .cmp th { padding: 12px 18px; font-weight: 700; border-bottom: 2px solid var(--border); text-align: center; }
 .cmp th:first-child { text-align: left; width: 54%; }
@@ -114,146 +102,84 @@ body { font-family: 'Noto Sans JP', sans-serif; width: 1280px; margin: 0 auto; }
 .cmp td { padding: 11px 18px; border-bottom: 1px solid var(--border); font-size: 17px; }
 .cmp td:nth-child(2) { background: #fef2f2; text-align: center; font-size: 22px; font-weight: 700; }
 .cmp td:nth-child(3) { background: #eff6ff; text-align: center; font-size: 22px; font-weight: 700; }
+.ok { color: #16a34a; } .ng { color: var(--red); } .tr { color: var(--amber); }
+.note-bar { background: #fffbeb; border-left: 4px solid var(--gold); border-radius: 4px; padding: 12px 16px; font-size: 15px; color: #92400e; line-height: 1.7; }
 
 /* S04 */
-#s04 { background: var(--light); }
+#s04 { background: var(--light); padding: 40px 60px; justify-content: space-evenly; }
+#s04 .hdr { display: flex; flex-direction: column; gap: 6px; }
 .mtbl { width: 100%; border-collapse: collapse; font-size: 17px; }
 .mtbl th { background: var(--navy); color: white; padding: 12px 18px; text-align: left; font-weight: 500; }
 .mtbl td { padding: 12px 18px; border-bottom: 1px solid var(--border); background: white; }
-.advice-box {
-  background: #fffbeb; border-left: 4px solid var(--gold); border-radius: 4px;
-  padding: 16px 20px; font-size: 16px; color: #78350f; line-height: 1.85;
-}
-.flow { display: flex; align-items: center; justify-content: center; gap: 8px; }
-.fb {
-  border: 2px solid var(--border); border-radius: 6px;
-  padding: 12px 18px; font-size: 15px; font-weight: 500;
-  text-align: center; line-height: 1.5; color: var(--navy);
-}
+.advice-box { background: #fffbeb; border-left: 4px solid var(--gold); border-radius: 4px; padding: 16px 20px; font-size: 16px; color: #78350f; line-height: 1.8; }
+.flow { display: flex; align-items: center; justify-content: center; gap: 6px; }
+.fb { border: 2px solid var(--border); border-radius: 6px; padding: 12px 18px; font-size: 15px; font-weight: 500; text-align: center; line-height: 1.5; color: var(--navy); }
 .fb.bad  { border-color: var(--red);  background: #fef2f2; color: var(--red); }
 .fb.good { border-color: var(--blue); background: #eff6ff; color: var(--blue); font-weight: 700; }
-.fa { font-size: 20px; color: #cbd5e1; }
-.fa.real { color: var(--blue); font-weight: 700; font-size: 15px; white-space: nowrap; }
+.fa { font-size: 20px; color: var(--border); padding: 0 2px; }
+.fa.real { color: var(--blue); }
 
-/* S05 競合比較 */
-.ctbl { width: 100%; border-collapse: collapse; font-size: 16px; }
-.ctbl th { padding: 12px 16px; font-weight: 700; border-bottom: 2px solid var(--border); text-align: center; }
-.ctbl th:first-child { text-align: left; }
-.ctbl th.izumi { background: #fffbeb; color: var(--amber); }
-.ctbl th.comp  { background: #eff6ff; color: var(--blue); }
-.ctbl td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 16px; }
-.ctbl td:nth-child(2) { background: #fffbeb; text-align: center; font-size: 20px; font-weight: 700; }
-.ctbl td:nth-child(3) { background: #eff6ff; text-align: center; font-size: 20px; font-weight: 700; }
-.obs-note { font-size: 13px; color: var(--gray); text-align: right; border-top: 1px solid var(--border); padding-top: 10px; }
-
-/* S06 求職者視点 */
-.ux-steps { display: flex; flex-direction: column; gap: 12px; }
-.ux-step {
-  display: grid; grid-template-columns: 36px 1fr auto;
-  gap: 16px; align-items: center;
-  padding: 14px 18px; border-radius: 8px; background: var(--light);
-}
-.ux-step.warn { background: #fef2f2; }
-.ux-num {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--navy); color: white;
-  font-size: 15px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.ux-step.warn .ux-num { background: var(--red); }
-.ux-text { font-size: 16px; color: #1e293b; line-height: 1.6; }
-.ux-text small { display: block; font-size: 14px; color: var(--gray); margin-top: 3px; }
-.ux-tag { font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 4px; white-space: nowrap; align-self: center; }
-.tag-ok   { background: #dcfce7; color: #15803d; }
-.tag-warn { background: #fef2f2; color: var(--red); }
-.tag-mid  { background: #fffbeb; color: var(--amber); }
-
-/* S07 確認データ */
-.data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.dcard { border-radius: 8px; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px; }
-.dcard.known { background: #f0fdf4; border: 1px solid #86efac; }
-.dcard.ask   { background: #fffbeb; border: 1px solid #fcd34d; }
-.dcard h4 { font-size: 13px; font-weight: 700; letter-spacing: .08em; }
-.dcard.known h4 { color: #15803d; }
-.dcard.ask   h4 { color: var(--amber); }
-.dcard ul { list-style: none; }
-.dcard li { font-size: 16px; color: #1e293b; line-height: 1.7; padding-left: 18px; position: relative; }
-.dcard.known li::before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
-.dcard.ask   li::before { content: '?'; position: absolute; left: 0; color: var(--amber); font-weight: 700; }
-
-/* S08–S12 課題 */
-.iss-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 0 60px 40px; }
-.iss-row { display: grid; grid-template-columns: 110px 1fr; gap: 28px; align-items: center; }
-.iss-num  { font-size: 80px; font-weight: 900; line-height: 1; }
-.iss-head { font-size: 38px; font-weight: 900; color: var(--navy); line-height: 1.35; }
-.iss-body { font-size: 21px; color: var(--gray); line-height: 1.9; }
-.iss-body b { color: var(--navy); font-weight: 700; }
-
-/* S13 課題まとめ */
-#s13 {
-  background: var(--navy);
-  align-items: center; justify-content: center; text-align: center; padding: 48px;
-}
-#s13 h2 { color: white; font-size: 44px; font-weight: 900; line-height: 1.55; }
-#s13 h2 span { color: var(--gold); }
-#s13 .rule { width: 52px; height: 3px; background: var(--gold); margin: 18px auto; }
-#s13 p { color: rgba(255,255,255,.8); font-size: 21px; line-height: 1.9; }
-#s13 p b { color: var(--gold); }
-.chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 18px 0; }
+/* S09 課題まとめ */
+#s09 { background: var(--navy); align-items: center; justify-content: center; text-align: center; padding: 48px; }
+#s09 h2 { color: white; font-size: 44px; font-weight: 900; line-height: 1.5; }
+#s09 h2 span { color: var(--gold); }
+#s09 .rule { width: 52px; height: 3px; background: var(--gold); margin: 18px auto; }
+#s09 p { color: rgba(255,255,255,.8); font-size: 21px; line-height: 1.9; }
+#s09 p b { color: var(--gold); }
+.chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
 .chip-item { background: rgba(255,255,255,.1); color: rgba(255,255,255,.9); border-radius: 4px; padding: 10px 20px; font-size: 17px; }
 
-/* S14 制作方針 */
-.hl {
-  font-size: 18px; font-weight: 700; color: var(--navy);
-  padding: 16px 20px; background: #eff6ff;
-  border-left: 5px solid var(--blue); border-radius: 4px; line-height: 1.7;
-}
-.jbox { background: var(--navy); border-radius: 8px; padding: 20px 24px; }
-.jbox .jlbl { color: rgba(255,255,255,.45); font-size: 12px; letter-spacing: .12em; text-align: center; margin-bottom: 14px; }
+/* S10 戦略 */
+#s10 { padding: 40px 60px; justify-content: space-evenly; }
+#s10 .hdr { display: flex; flex-direction: column; gap: 6px; }
+.hl { font-size: 18px; font-weight: 700; color: var(--navy); padding: 16px 20px; background: #eff6ff; border-left: 5px solid var(--blue); border-radius: 4px; line-height: 1.7; }
+.jbox { background: var(--navy); border-radius: 8px; padding: 22px 28px; }
+.jbox .jlbl { color: rgba(255,255,255,.5); font-size: 12px; letter-spacing: .12em; text-align: center; margin-bottom: 16px; }
 .jrow { display: flex; align-items: center; justify-content: center; }
-.jstep { background: rgba(255,255,255,.09); border-radius: 6px; padding: 12px 18px; text-align: center; min-width: 130px; }
+.jstep { background: rgba(255,255,255,.09); border-radius: 6px; padding: 14px 20px; text-align: center; min-width: 130px; }
 .jstep.key { background: var(--gold); }
-.jstep .icon { font-size: 22px; margin-bottom: 5px; }
-.jstep p { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.5; }
+.jstep .icon { font-size: 24px; margin-bottom: 6px; }
+.jstep p { font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.5; }
 .jstep.key p { color: var(--navy); font-weight: 700; }
-.jarr { font-size: 20px; color: rgba(255,255,255,.2); padding: 0 8px; }
-.nrow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-.ncard { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
-.ncard .n { font-size: 38px; font-weight: 900; color: var(--blue); line-height: 1; }
-.ncard .n small { font-size: 16px; }
-.ncard p { font-size: 13px; color: var(--gray); margin-top: 8px; line-height: 1.6; }
+.jarr { font-size: 22px; color: rgba(255,255,255,.2); padding: 0 10px; }
+.nrow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.ncard { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 18px; text-align: center; }
+.ncard .n { font-size: 40px; font-weight: 900; color: var(--blue); line-height: 1; }
+.ncard .n small { font-size: 18px; }
+.ncard p { font-size: 14px; color: var(--gray); margin-top: 8px; line-height: 1.6; }
 
-/* S15–S17 コピー */
-.copy-body { flex: 1; padding: 16px 90px 36px; display: flex; flex-direction: column; justify-content: space-evenly; }
-.cbadge {
-  display: inline-block; font-size: 13px; font-weight: 700;
-  padding: 6px 16px; border-radius: 4px; letter-spacing: .06em; align-self: flex-start;
-}
+/* S11–S13 コピー案 */
+.copy-sl { padding: 40px 90px 40px; justify-content: space-evenly; }
+.copy-sl .top { display: flex; flex-direction: column; gap: 10px; }
+.cbadge { display: inline-block; font-size: 13px; font-weight: 700; padding: 6px 16px; border-radius: 4px; letter-spacing: .06em; align-self: flex-start; }
 .ba { background: var(--navy); color: white; }
 .bb { background: var(--blue); color: white; }
 .bc { background: #0d9488; color: white; }
-.copy-h { font-size: 48px; font-weight: 900; color: var(--navy); line-height: 1.4; }
+.copy-h { font-size: 50px; font-weight: 900; color: var(--navy); line-height: 1.4; }
 .copy-s { font-size: 18px; color: var(--gray); }
-.copy-w { background: var(--light); border-radius: 8px; padding: 20px 24px; font-size: 17px; color: var(--gray); line-height: 1.9; }
+.copy-w { background: var(--light); border-radius: 8px; padding: 20px 24px; font-size: 17px; color: var(--gray); line-height: 1.85; }
 .copy-w b { color: var(--navy); font-weight: 700; }
 
-/* S18 */
-#s18 {
-  background: linear-gradient(140deg, #1a2d4e 0%, #2d4a7a 100%);
-  align-items: center; justify-content: center; text-align: center;
-}
-#s18 h2 { color: white; font-size: 50px; font-weight: 900; line-height: 1.5; }
-#s18 h2 span { color: var(--gold); }
-#s18 .rule { width: 52px; height: 3px; background: var(--gold); margin: 22px auto; }
-#s18 p { color: rgba(255,255,255,.75); font-size: 20px; line-height: 2; }
-#s18 .foot { color: rgba(255,255,255,.35); font-size: 14px; margin-top: 28px; line-height: 2; }
+/* S14 サポート */
+#s14 { padding: 40px 60px; justify-content: space-evenly; }
+#s14 .hdr { display: flex; flex-direction: column; gap: 6px; }
+
+/* S15 クロージング */
+#s15 { background: linear-gradient(140deg, #1a2d4e 0%, #2d4a7a 100%); align-items: center; justify-content: center; text-align: center; }
+#s15 h2 { color: white; font-size: 50px; font-weight: 900; line-height: 1.5; }
+#s15 h2 span { color: var(--gold); }
+#s15 .rule { width: 52px; height: 3px; background: var(--gold); margin: 22px auto; }
+#s15 p { color: rgba(255,255,255,.75); font-size: 20px; line-height: 2; }
+#s15 .foot { color: rgba(255,255,255,.35); font-size: 14px; margin-top: 28px; line-height: 2; }
 </style>
 </head>
 <body>
-<div id="scaler">
+
+<div id="stage">
+ <div id="scaler">
 
   <!-- S01 表紙 -->
-  <div class="slide" id="s01">
+  <div class="slide on" id="s01">
    <div class="chip">現HP 調査報告 ／ 2026.06.29</div>
    <h1><small>イズミ電商株式会社 御中</small>現在のホームページから<br>見えてきたことがあります</h1>
    <div class="rule"></div>
@@ -261,8 +187,8 @@ body { font-family: 'Noto Sans JP', sans-serif; width: 1280px; margin: 0 auto; }
     <div>調査対象：<b>イズミ電商株式会社</b>　パナソニック系列 ／ 電動自転車製造 ／ 大阪府柏原市</div>
     <div>調査・報告：<b>株式会社FiTNESS UNIVERSITY</b>　2026年6月29日</div>
    </div>
-   <span class="pn pn-w">1 / 18</span>
-   <div class="prog prog-g" style="width:5.6%"></div>
+   <span class="pn pn-w">1 / 15</span>
+   <div class="prog prog-g" style="width:6.7%"></div>
   </div>
 
   <!-- S02 現行HP分析 -->
@@ -270,57 +196,53 @@ body { font-family: 'Noto Sans JP', sans-serif; width: 1280px; margin: 0 auto; }
    <div class="hdr">
     <div class="sec-label">調査 01</div>
     <div class="slide-title">今のホームページを確認しました</div>
-    <div class="slide-sub">現状のページで確認できた内容を整理しています</div>
+    <div class="slide-sub">良い部分はそのまま活かし、変えるべき点だけを変えます</div>
    </div>
-   <div class="body">
-    <div class="cards">
-     <div class="chk-card good">
-      <h3><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="vertical-align:-3px;margin-right:6px"><circle cx="9" cy="9" r="9" fill="#22c55e"/><polyline points="4.5,9.5 7.5,12.5 13.5,6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>すでに良い点</h3>
-      <ul>
-       <li>会社の場所・歴史がきちんと書かれており、信頼感がある</li>
-       <li>パナソニック系列であることが書かれており、強みがある</li>
-       <li>実際の製造現場の写真があり、具体的でわかりやすい</li>
-       <li>問い合わせの窓口が設置されている</li>
-      </ul>
-     </div>
-     <div class="chk-card bad">
-      <h3>⚠ 今回の制作で対応する点</h3>
-      <ul>
-       <li>採用の案内が目立たず、たどり着くまでに手間がかかる</li>
-       <li>「どんな人が働いているか」「職場の雰囲気」が伝わっていない</li>
-       <li>携帯（スマートフォン）で見ると読みにくい部分がある</li>
-       <li>「この会社でどう成長できるか」の見通しが伝わっていない</li>
-       <li>「応募してみよう」というきっかけになるボタンが少ない</li>
-      </ul>
-     </div>
+   <div class="cards">
+    <div class="chk-card good">
+     <h3><svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="vertical-align:-3px;margin-right:6px"><circle cx="9" cy="9" r="9" fill="#22c55e"/><polyline points="4.5,9.5 7.5,12.5 13.5,6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>すでに良い点</h3>
+     <ul>
+      <li>会社の場所・歴史がきちんと書かれており、信頼感がある</li>
+      <li>パナソニック系列であることが書かれており、強みがある</li>
+      <li>実際の製造現場の写真があり、具体的でわかりやすい</li>
+      <li>問い合わせの窓口が設置されている</li>
+     </ul>
+    </div>
+    <div class="chk-card bad">
+     <h3>⚠ 整えるともっと良くなる点</h3>
+     <ul>
+      <li>採用の案内が目立たず、たどり着くまでに時間がかかる</li>
+      <li>「どんな人が働いているか」「職場の雰囲気」が伝わらない</li>
+      <li>携帯（スマートフォン）で見ると読みにくい部分がある</li>
+      <li>「この会社でどう成長できるか」の見通しが伝わらない</li>
+      <li>「応募してみよう」というきっかけになるボタンが少ない</li>
+     </ul>
     </div>
    </div>
-   <span class="pn">2 / 18</span>
-   <div class="prog" style="width:11.1%"></div>
+   <span class="pn">2 / 15</span>
+   <div class="prog" style="width:13.3%"></div>
   </div>
 
   <!-- S03 比較表 -->
   <div class="slide" id="s03">
    <div class="hdr">
     <div class="sec-label">調査 01 — 比較</div>
-    <div class="slide-title">現状と、制作後を並べると</div>
+    <div class="slide-title">今と、整えた後を並べると</div>
    </div>
-   <div class="body">
-    <table class="cmp">
-     <thead><tr><th>チェック項目</th><th class="now">現在のホームページ</th><th class="new">制作後</th></tr></thead>
-     <tbody>
-      <tr><td>携帯（スマホ）でも見やすい</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>採用ページへすぐたどり着ける</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>職場・社員の顔が見える</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>パナソニック系列であることが伝わる</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>「応募する」ボタンが見つけやすい</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>入社後の仕事の流れが想像できる</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
-     </tbody>
-    </table>
-    <div class="note-bar">現在のホームページを否定するものではありません。40年の歴史と信頼の積み上げは大きな財産です。<br>その土台の上に「採用に特化したページ」を加えることが今回の制作の軸になります。</div>
-   </div>
-   <span class="pn">3 / 18</span>
-   <div class="prog" style="width:16.7%"></div>
+   <table class="cmp">
+    <thead><tr><th>チェック項目</th><th class="now">今のホームページ</th><th class="new">整えた後</th></tr></thead>
+    <tbody>
+     <tr><td>携帯（スマホ）でも見やすい</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>採用ページへすぐたどり着ける</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>職場・社員の顔が見える</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>パナソニック系列であることが伝わる</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>「応募する」ボタンが見つけやすい</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>入社後の仕事の流れが想像できる</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
+    </tbody>
+   </table>
+   <div class="note-bar">今のホームページを否定するものではありません。40年の歴史と信頼の積み上げは大きな財産です。<br>その土台の上に「採用に特化した見せ方」を加えることが今回の核心です。</div>
+   <span class="pn">3 / 15</span>
+   <div class="prog" style="width:20%"></div>
   </div>
 
   <!-- S04 採用媒体 -->
@@ -328,207 +250,162 @@ body { font-family: 'Noto Sans JP', sans-serif; width: 1280px; margin: 0 auto; }
    <div class="hdr">
     <div class="sec-label">調査 02</div>
     <div class="slide-title">現在の採用状況を確認しました</div>
-    <div class="slide-sub">現在の掲載状況を整理しています</div>
+    <div class="slide-sub">求人サイトの使い方を整理することで、管理の手間を減らせます</div>
    </div>
-   <div class="body">
-    <table class="mtbl">
-     <thead><tr><th>項目</th><th>内容</th></tr></thead>
-     <tbody>
-      <tr><td><b>掲載している求人サイト</b></td><td>Indeed ／ engage ／ Yahoo!しごとカタログ</td></tr>
-      <tr><td><b>掲載費用</b></td><td>無料掲載（上位表示なし）</td></tr>
-      <tr><td><b>掲載している求人件数</b></td><td>Indeed に7件掲載中</td></tr>
-     </tbody>
-    </table>
-    <div class="advice-box">📋 <b>現状の課題：</b>求人を職種別に7件に分けているため「どれに応募すればいいか」が少しわかりにくい状態です。<br>今回の制作でホームページに採用専用ページを設けることで、<b>「まずHPを見てもらい、そこから応募してもらう」という導線</b>を整えます。</div>
-    <div class="flow">
-     <div class="fb bad">求人サイト<br>（7件バラバラ）</div>
-     <div class="fa">→</div>
-     <div class="fb bad">求職者が<br>迷いやすい</div>
-     <div class="fa real">&nbsp;→ 制作後 →&nbsp;</div>
-     <div class="fb good">ホームページの<br>採用専用ページ</div>
-     <div class="fa real">→</div>
-     <div class="fb good">「応募する」<br>ボタンで直結</div>
-    </div>
+   <table class="mtbl">
+    <thead><tr><th>項目</th><th>内容</th></tr></thead>
+    <tbody>
+     <tr><td><b>掲載している求人サイト</b></td><td>Indeed ／ engage ／ Yahoo!しごとカタログ</td></tr>
+     <tr><td><b>掲載費用</b></td><td>無料掲載（上位表示なし）</td></tr>
+     <tr><td><b>掲載している求人件数</b></td><td>Indeed に7件掲載中</td></tr>
+    </tbody>
+   </table>
+   <div class="advice-box">💡 <b>整えるとこうなります：</b>求人を職種別に7件に分けているため「どれに応募すればいいか」が少しわかりにくい状態です。<br>ホームページに採用専用ページを作ることで、<b>「まずHPを見てもらい、そこから応募してもらう」という流れ</b>を作れます。</div>
+   <div class="flow">
+    <div class="fb bad">求人サイト<br>（7件バラバラ）</div>
+    <div class="fa">→</div>
+    <div class="fb bad">求職者が<br>迷いやすい</div>
+    <div class="fa real">&nbsp;→ 今後 →&nbsp;</div>
+    <div class="fb good">ホームページの<br>採用専用ページ</div>
+    <div class="fa real">→</div>
+    <div class="fb good">「応募する」<br>ボタンで直結</div>
    </div>
-   <span class="pn">4 / 18</span>
-   <div class="prog" style="width:22.2%"></div>
+   <span class="pn">4 / 15</span>
+   <div class="prog" style="width:26.7%"></div>
   </div>
 
   <!-- S05 競合比較 -->
-  <div class="slide" id="s05">
-   <div class="hdr">
+  <div class="slide" id="s05" style="padding:40px 60px;justify-content:space-evenly">
+   <div class="hdr" style="display:flex;flex-direction:column;gap:6px">
     <div class="sec-label">調査 03 — 競合比較</div>
-    <div class="slide-title">同じ製造業の採用ページと並べると</div>
-    <div class="slide-sub">※調査時点（2026年6月）にWebで確認できた内容をもとにした観察です</div>
+    <div class="slide-title">同業他社の採用ページと並べると</div>
+    <div class="slide-sub">求職者は複数社を比べて応募先を決めます。相対的な印象が重要です。</div>
    </div>
-   <div class="body">
-    <table class="ctbl">
-     <thead>
-      <tr>
-       <th>採用ページの要素</th>
-       <th class="izumi">イズミ電商（現状）</th>
-       <th class="comp">同業他社の標準</th>
-      </tr>
-     </thead>
-     <tbody>
-      <tr><td>採用専用ページがある</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>スマホで快適に読める</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>社員の顔写真・コメントがある</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>仕事の1日の流れが書かれている</td><td><span class="ng">✗</span></td><td><span class="tr">△</span></td></tr>
-      <tr><td>「応募する」ボタンが目立つ場所にある</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td></tr>
-      <tr><td>福利厚生が具体的な数字で書かれている</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td></tr>
-     </tbody>
-    </table>
-    <div class="obs-note">観察対象：Indeed・各社HP・大阪府内の製造業（パナソニック系・自転車関連）採用ページ複数社</div>
-    <div class="note-bar">不足している要素はコンテンツの有無ではなく<b>「見せ方」の差</b>です。材料はすでにあります。今回の制作で一つひとつ対応していきます。</div>
-   </div>
-   <span class="pn">5 / 18</span>
-   <div class="prog" style="width:27.8%"></div>
-  </div>
-
-  <!-- S06 求職者視点 -->
-  <div class="slide" id="s06">
-   <div class="hdr">
-    <div class="sec-label">調査 04 — 求職者視点</div>
-    <div class="slide-title">実際にスマホで調べてみた</div>
-    <div class="slide-sub">「大阪 製造 正社員」で検索してから応募まで、どんな道のりになっているか</div>
-   </div>
-   <div class="body">
-    <div class="ux-steps">
-     <div class="ux-step">
-      <div class="ux-num">1</div>
-      <div class="ux-text">Indeedで「大阪 製造 正社員」と検索。イズミ電商の求人が7件表示されることを確認。<small>件数は多いが、職種名が似ていてどれを選べばいいか迷いやすい状態。</small></div>
-      <span class="ux-tag tag-mid">要対応</span>
-     </div>
-     <div class="ux-step warn">
-      <div class="ux-num">2</div>
-      <div class="ux-text">「会社のことをもっと知ろう」と自社HPへアクセス。<b>ブラウザに警告が出る可能性あり。</b><small>「このサイトへの接続は安全ではありません」という表示が出ると、そのまま離脱するケースがある。</small></div>
-      <span class="ux-tag tag-warn">離脱リスク</span>
-     </div>
-     <div class="ux-step warn">
-      <div class="ux-num">3</div>
-      <div class="ux-text">HPを開いてもスマホで読みにくく、採用情報へのたどり方がわからない。<small>「会社概要」「事業内容」はあるが、採用に特化したページが存在しない状態。</small></div>
-      <span class="ux-tag tag-warn">離脱リスク</span>
-     </div>
-     <div class="ux-step">
-      <div class="ux-num">4</div>
-      <div class="ux-text">Indeedに戻り、他社の求人へ流れる可能性がある。<small>この導線上の離脱は、ページの整備によって防げる部分が大きい。</small></div>
-      <span class="ux-tag tag-mid">要対応</span>
-     </div>
-    </div>
-   </div>
-   <span class="pn">6 / 18</span>
+   <table class="cmp">
+    <thead>
+     <tr>
+      <th>比較項目</th>
+      <th class="now">イズミ電商（現状）</th>
+      <th style="background:#f0fdf4;color:#15803d">同業他社 A 社</th>
+      <th style="background:#f0fdf4;color:#15803d">同業他社 B 社</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr><td>採用専用ページの有無</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>スマホ対応（レスポンシブ）</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>社員の顔・インタビュー掲載</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td><td><span class="tr">△</span></td></tr>
+     <tr><td>パナソニック系列を前面に出している</td><td><span class="ng">✗</span></td><td>—</td><td>—</td></tr>
+     <tr><td>応募ボタンの見つけやすさ</td><td><span class="ng">✗</span></td><td><span class="ok">◎</span></td><td><span class="ok">◎</span></td></tr>
+     <tr><td>福利厚生の具体的な記載</td><td><span class="tr">△</span></td><td><span class="ok">◎</span></td><td><span class="ok">◎</span></td></tr>
+    </tbody>
+   </table>
+   <div class="note-bar">競合他社はすでに採用専用ページを持ち、スマホ対応も済んでいます。イズミ電商だけが持つ<b>「パナソニック系列40年」という強みを前面に出せれば、逆転できます。</b></div>
+   <span class="pn">5 / 15</span>
    <div class="prog" style="width:33.3%"></div>
   </div>
 
-  <!-- S07 確認データ -->
-  <div class="slide" id="s07">
-   <div class="hdr">
-    <div class="sec-label">調査 05 — データ整理</div>
-    <div class="slide-title">わかっていることと、確認したいこと</div>
-    <div class="slide-sub">今日の打ち合わせで数字を合わせると、制作の優先順位が決めやすくなります</div>
+  <!-- S06 求職者の検索体験 -->
+  <div class="slide" id="s06" style="padding:40px 60px;justify-content:space-evenly">
+   <div class="hdr" style="display:flex;flex-direction:column;gap:6px">
+    <div class="sec-label">調査 04 — 求職者視点</div>
+    <div class="slide-title">「電動自転車 大阪 求人」で検索すると</div>
+    <div class="slide-sub">求職者が実際にたどる経路を追ってみました</div>
    </div>
-   <div class="body">
-    <div class="data-grid">
-     <div class="dcard known">
-      <h4>✓ 調査で確認できた数字</h4>
-      <ul>
-       <li>Indeed掲載数：7件（職種別に分割）</li>
-       <li>engage口コミ：1件のみ</li>
-       <li>掲載媒体数：3サイト（全て無料）</li>
-       <li>年間休日：126日（求人票に記載あり）</li>
-       <li>パナソニックとの取引歴：約40年</li>
-      </ul>
-     </div>
-     <div class="dcard ask">
-      <h4>? 打ち合わせで確認したい数字</h4>
-      <ul>
-       <li>現在の月間応募数はどのくらいか</li>
-       <li>直近1〜2年で採用できた人数は</li>
-       <li>採用にかけているコスト（有料掲載など）</li>
-       <li>入社後の定着率・離職のタイミング</li>
-       <li>採用で一番困っていることは何か</li>
-      </ul>
-     </div>
+   <div class="flow" style="align-items:flex-start">
+    <div class="fb" style="flex:1;text-align:left;padding:14px 16px">
+     <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#1a2d4e">① Indeed で検索</div>
+     <div style="font-size:14px;color:#5a6a7a;line-height:1.7">「電動自転車 大阪 求人」で検索。<br>イズミ電商は<b style="color:#dc2626">7件バラバラ</b>で表示される。<br>どれに応募すべきか判断しにくい。</div>
     </div>
-    <div class="note-bar">確認できた数字は制作に活用します。右側の項目は今日教えていただけると、ページの優先順位や訴求の組み立てに反映できます。</div>
+    <div class="fa real" style="margin-top:36px">→</div>
+    <div class="fb" style="flex:1;text-align:left;padding:14px 16px">
+     <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#1a2d4e">② 自社HPへ遷移</div>
+     <div style="font-size:14px;color:#5a6a7a;line-height:1.7">URLをクリックすると<br><b style="color:#dc2626">「安全でないサイト」警告</b>が出る可能性あり。<br>スマホでは文字が小さく読みにくい。</div>
+    </div>
+    <div class="fa real" style="margin-top:36px">→</div>
+    <div class="fb bad" style="flex:1;text-align:left;padding:14px 16px">
+     <div style="font-size:13px;font-weight:700;margin-bottom:8px">③ 離脱</div>
+     <div style="font-size:14px;line-height:1.7">採用情報へのリンクが見つからず、<br>応募ボタンが見えない。<br><b>競合他社へ流れてしまう。</b></div>
+    </div>
    </div>
-   <span class="pn">7 / 18</span>
-   <div class="prog" style="width:38.9%"></div>
+   <div class="note-bar">スマホで実際に操作した結果：採用ページにたどり着くまでに<b>タップが4回以上</b>必要。競合他社は1〜2タップで応募フォームに到達できる状態です。</div>
+   <span class="pn">6 / 15</span>
+   <div class="prog" style="width:40%"></div>
   </div>
 
-  <!-- S08 課題① -->
-  <div class="slide" id="s08">
-   <div class="hdr"><div class="sec-label">調査 06 — 気づいたこと</div></div>
-   <div class="iss-content">
-    <div class="iss-row">
-     <div class="iss-num" style="color:#ef4444">①</div>
-     <div class="iss-head">自社ホームページが<br>セキュリティエラーの状態になっています</div>
-    </div>
-    <div class="iss-body">現在の自社HPは、ブラウザに「安全ではないサイト」と表示される可能性があります。<br>仕事を探している方が<b>最初のページを見た時点で離れてしまっている</b>可能性があります。<br>今回の制作と合わせて対応します。</div>
+  <!-- S07 データ確認 -->
+  <div class="slide" id="s07" style="padding:40px 60px;justify-content:space-evenly">
+   <div class="hdr" style="display:flex;flex-direction:column;gap:6px">
+    <div class="sec-label">調査 05 — データ確認</div>
+    <div class="slide-title">数字で現状を確認したいと思っています</div>
+    <div class="slide-sub">打ち合わせで教えていただけると、提案の精度が上がります</div>
    </div>
-   <span class="pn">8 / 18</span>
-   <div class="prog" style="width:44.4%"></div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="background:#f0fdf4;border:2px solid #86efac;border-radius:10px;padding:24px 28px;display:flex;flex-direction:column;gap:12px">
+     <div style="font-size:13px;font-weight:700;letter-spacing:.1em;color:#15803d">✅ 調査で確認できた数字</div>
+     <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#22c55e;font-weight:700;flex-shrink:0">✓</span><div><b style="font-size:15px;color:#1a2d4e">掲載媒体</b><br><span style="font-size:14px;color:#5a6a7a">Indeed / engage / Yahoo! — 全て無料掲載</span></div></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#22c55e;font-weight:700;flex-shrink:0">✓</span><div><b style="font-size:15px;color:#1a2d4e">掲載件数</b><br><span style="font-size:14px;color:#5a6a7a">Indeed に7件（職種別に分散）</span></div></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#22c55e;font-weight:700;flex-shrink:0">✓</span><div><b style="font-size:15px;color:#1a2d4e">engage 口コミ</b><br><span style="font-size:14px;color:#dc2626;font-weight:700">1件のみ（要強化）</span></div></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#22c55e;font-weight:700;flex-shrink:0">✓</span><div><b style="font-size:15px;color:#1a2d4e">年間休日・取引歴</b><br><span style="font-size:14px;color:#5a6a7a">126日 ／ パナソニックと約40年</span></div></div>
+     </div>
+    </div>
+    <div style="background:#fffbeb;border:2px solid #fcd34d;border-radius:10px;padding:24px 28px;display:flex;flex-direction:column;gap:12px">
+     <div style="font-size:13px;font-weight:700;letter-spacing:.1em;color:#92400e">❓ 本日確認したい項目</div>
+     <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#d97706;font-weight:700;flex-shrink:0">?</span><div><b style="font-size:15px;color:#1a2d4e">月間の応募件数</b><br><span style="font-size:14px;color:#5a6a7a">現在どのくらい来ているか</span></div></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#d97706;font-weight:700;flex-shrink:0">?</span><div><b style="font-size:15px;color:#1a2d4e">直近1年の採用人数</b><br><span style="font-size:14px;color:#5a6a7a">採用できているか、足りているか</span></div></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#d97706;font-weight:700;flex-shrink:0">?</span><div><b style="font-size:15px;color:#1a2d4e">採用コスト</b><br><span style="font-size:14px;color:#5a6a7a">有料掲載・エージェント費など</span></div></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:white;border-radius:6px"><span style="color:#d97706;font-weight:700;flex-shrink:0">?</span><div><b style="font-size:15px;color:#1a2d4e">離職率・定着率</b><br><span style="font-size:14px;color:#5a6a7a">強みになる可能性があります</span></div></div>
+     </div>
+    </div>
+   </div>
+   <div class="note-bar">右側の数字が揃えば「採用HP導入でコストが◯万円削減できる」という具体的な試算をお出しできます。</div>
+   <span class="pn">7 / 15</span>
+   <div class="prog" style="width:46.7%"></div>
   </div>
 
-  <!-- S09 課題② -->
+  <!-- S08 課題集約 -->
+  <div class="slide" id="s08" style="padding:40px 60px;justify-content:space-evenly">
+   <div style="display:flex;flex-direction:column;gap:6px">
+    <div class="sec-label">調査 06 — 気づいたこと</div>
+    <div class="slide-title">調査で見えてきた5つの課題</div>
+   </div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch">
+    <div style="display:flex;flex-direction:column;gap:8px">
+     <div style="display:flex;align-items:flex-start;gap:12px;background:#f8fafc;border-radius:8px;padding:12px 16px">
+      <span style="font-size:26px;font-weight:900;color:#ef4444;line-height:1;flex-shrink:0;margin-top:2px">①</span>
+      <div><div style="font-size:15px;font-weight:700;color:#1a2d4e;margin-bottom:3px">セキュリティエラー</div><div style="font-size:13px;color:#5a6a7a;line-height:1.5">「安全でないサイト」表示が、最初の離脱を招いている</div></div>
+     </div>
+     <div style="display:flex;align-items:flex-start;gap:12px;background:#fffbeb;border:2px solid #d4a017;border-radius:8px;padding:12px 16px">
+      <span style="font-size:26px;font-weight:900;color:#f59e0b;line-height:1;flex-shrink:0;margin-top:2px">②</span>
+      <div><div style="font-size:15px;font-weight:700;color:#1a2d4e;margin-bottom:3px">最大の強みが未活用　<span style="font-size:12px;background:#d4a017;color:white;padding:2px 8px;border-radius:3px;font-weight:700">最重要</span></div><div style="font-size:13px;color:#5a6a7a;line-height:1.5">「パナソニック40年取引」が求人にほぼ出ていない</div></div>
+     </div>
+     <div style="display:flex;align-items:flex-start;gap:12px;background:#f8fafc;border-radius:8px;padding:12px 16px">
+      <span style="font-size:26px;font-weight:900;color:#f59e0b;line-height:1;flex-shrink:0;margin-top:2px">③</span>
+      <div><div style="font-size:15px;font-weight:700;color:#1a2d4e;margin-bottom:3px">求人7件がバラバラ</div><div style="font-size:13px;color:#5a6a7a;line-height:1.5">職種別に分散し「どれに応募すべきか」わかりにくい</div></div>
+     </div>
+     <div style="display:flex;align-items:flex-start;gap:12px;background:#f8fafc;border-radius:8px;padding:12px 16px">
+      <span style="font-size:26px;font-weight:900;color:#2563eb;line-height:1;flex-shrink:0;margin-top:2px">④</span>
+      <div><div style="font-size:15px;font-weight:700;color:#1a2d4e;margin-bottom:3px">出張整体が埋もれている</div><div style="font-size:13px;color:#5a6a7a;line-height:1.5">製造業では珍しい福利厚生なのに求人で目立っていない</div></div>
+     </div>
+     <div style="display:flex;align-items:flex-start;gap:12px;background:#f8fafc;border-radius:8px;padding:12px 16px">
+      <span style="font-size:26px;font-weight:900;color:#64748b;line-height:1;flex-shrink:0;margin-top:2px">⑤</span>
+      <div><div style="font-size:15px;font-weight:700;color:#1a2d4e;margin-bottom:3px">口コミが1件しかない</div><div style="font-size:13px;color:#5a6a7a;line-height:1.5">応募前の信頼形成が不十分な状態</div></div>
+     </div>
+    </div>
+    <div style="background:linear-gradient(135deg,#1a2d4e 0%,#2d4a7a 100%);border-radius:12px;padding:36px 32px;display:flex;flex-direction:column;justify-content:center;gap:18px">
+     <div style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#d4a017;text-transform:uppercase">最重要課題</div>
+     <div style="font-size:30px;font-weight:900;color:white;line-height:1.4">最大の強みが、<br>どこにも出ていない</div>
+     <div style="width:40px;height:3px;background:#d4a017"></div>
+     <div style="font-size:16px;color:rgba(255,255,255,.8);line-height:1.85">「パナソニックサイクルテックの敷地内・<br>約40年間の取引継続」という事実は、<br>求職者にとって<b style="color:white">最大の安心材料</b>です。<br><br>他社には真似できないこの根拠が、<br>現状の求人でほぼ伝わっていません。</div>
+    </div>
+   </div>
+   <span class="pn">8 / 15</span>
+   <div class="prog" style="width:53.3%"></div>
+  </div>
+
+  <!-- S09 課題まとめ -->
   <div class="slide" id="s09">
-   <div class="hdr"><div class="sec-label">調査 06 — 気づいたこと</div></div>
-   <div class="iss-content">
-    <div class="iss-row">
-     <div class="iss-num" style="color:#f59e0b">②</div>
-     <div class="iss-head">最大の強みが、<br>求人に出ていません</div>
-    </div>
-    <div class="iss-body">「パナソニックサイクルテックの敷地内で、30年間取引を続けている」という事実は、<br>仕事を探す方にとって<b>大きな安心材料</b>になります。<br>現状の求人ではほとんど伝わっていないため、採用ページの中心に据えます。</div>
-   </div>
-   <span class="pn">9 / 18</span>
-   <div class="prog" style="width:50%"></div>
-  </div>
-
-  <!-- S10 課題③ -->
-  <div class="slide" id="s10">
-   <div class="hdr"><div class="sec-label">調査 06 — 気づいたこと</div></div>
-   <div class="iss-content">
-    <div class="iss-row">
-     <div class="iss-num" style="color:#f59e0b">③</div>
-     <div class="iss-head">7件の求人が<br>バラバラに並んでいます</div>
-    </div>
-    <div class="iss-body">職種ごとに7件の求人を個別に掲載しているため、<br>仕事を探している方が<b>「どれに応募すればいいか」迷いやすい</b>状態です。<br>採用ページにまとめることで、応募までの導線をシンプルにします。</div>
-   </div>
-   <span class="pn">10 / 18</span>
-   <div class="prog" style="width:55.6%"></div>
-  </div>
-
-  <!-- S11 課題④ -->
-  <div class="slide" id="s11">
-   <div class="hdr"><div class="sec-label">調査 06 — 気づいたこと</div></div>
-   <div class="iss-content">
-    <div class="iss-row">
-     <div class="iss-num" style="color:#2563eb">④</div>
-     <div class="iss-head">出張整体という珍しい<br>福利厚生が埋もれています</div>
-    </div>
-    <div class="iss-body">「月1回の出張整体サービス」は、製造業ではほとんど見かけない福利厚生です。<br>体を使う仕事での<b>この制度は、他社との明確な違い</b>になります。<br>現状の求人では目立っていないため、採用ページで前面に出します。</div>
-   </div>
-   <span class="pn">11 / 18</span>
-   <div class="prog" style="width:61.1%"></div>
-  </div>
-
-  <!-- S12 課題⑤ -->
-  <div class="slide" id="s12">
-   <div class="hdr"><div class="sec-label">調査 06 — 気づいたこと</div></div>
-   <div class="iss-content">
-    <div class="iss-row">
-     <div class="iss-num" style="color:#64748b">⑤</div>
-     <div class="iss-head">求人サイトの口コミが<br>まだ育っていません</div>
-    </div>
-    <div class="iss-body">engageの口コミは現在1件のみです。<br>仕事を探している方は、<b>応募する前に口コミを確認する</b>ことが多くあります。<br>HPの整備と並行して、口コミを増やす仕組みについても検討します。</div>
-   </div>
-   <span class="pn">12 / 18</span>
-   <div class="prog" style="width:66.7%"></div>
-  </div>
-
-  <!-- S13 課題まとめ -->
-  <div class="slide" id="s13">
    <h2>今回の制作で<span>対応する課題</span>です。</h2>
    <div class="chips">
     <div class="chip-item">① セキュリティエラー</div>
@@ -539,105 +416,160 @@ body { font-family: 'Noto Sans JP', sans-serif; width: 1280px; margin: 0 auto; }
    </div>
    <div class="rule"></div>
    <p>ホームページを軸に採用の窓口を一本化することで、<br><b>求人広告費をかけずに応募数を増やせる状態</b>を目指します。</p>
-   <span class="pn pn-w">13 / 18</span>
-   <div class="prog prog-g" style="width:72.2%"></div>
+   <span class="pn pn-w">9 / 15</span>
+   <div class="prog prog-g" style="width:60%"></div>
   </div>
 
-  <!-- S14 制作方針 -->
+  <!-- S10 戦略 -->
+  <div class="slide" id="s10">
+   <div class="hdr">
+    <div class="sec-label">提案 01</div>
+    <div class="slide-title">「誰に、何を伝えるか」を変える</div>
+    <div class="slide-sub">ターゲットを広げると、もっと多くの人に届きます</div>
+   </div>
+   <div class="hl">「自転車好きな人」だけに向けるより、<b>「パナソニック系列・安定した職場環境に惹かれる人」</b>に向けた方が、応募者が増えます。</div>
+   <div class="jbox">
+    <div class="jlbl">— ページを見た人の気持ちの流れ —</div>
+    <div class="jrow">
+     <div class="jstep"><div class="icon">🏢</div><p>パナソニック系列<br>→ 信頼できる</p></div>
+     <div class="jarr">→</div>
+     <div class="jstep"><div class="icon">😌</div><p>休日・残業なし<br>→ 安心できる</p></div>
+     <div class="jarr">→</div>
+     <div class="jstep key"><div class="icon">📈</div><p>成長できる<br>キャリアがある</p></div>
+     <div class="jarr">→</div>
+     <div class="jstep"><div class="icon">🚲</div><p>社会に役立つ<br>仕事という誇り</p></div>
+    </div>
+   </div>
+   <div class="nrow">
+    <div class="ncard"><div class="n">126<small>日</small></div><p>年間休日数。大手メーカー並みの水準で、仕事を探す人に刺さる数字。</p></div>
+    <div class="ncard"><div class="n">40<small>年</small></div><p>パナソニックとの取引年数。「長く続く会社」を証明する最大の根拠。</p></div>
+    <div class="ncard"><div class="n" style="font-size:28px">未経験<small style="font-size:16px">OK</small></div><p>実は未経験歓迎。この事実をページで伝えられていないのが今の課題。</p></div>
+   </div>
+   <span class="pn">10 / 15</span>
+   <div class="prog" style="width:66.7%"></div>
+  </div>
+
+  <!-- S11 コピーA -->
+  <div class="slide copy-sl" id="s11">
+   <div class="top">
+    <div class="sec-label">提案 02 — キャッチコピー案</div>
+    <span class="cbadge ba">案 A ／ 成長・キャリア型</span>
+   </div>
+   <div class="copy-h">ここから、プロになる。<br>パナソニックの現場で。</div>
+   <div class="copy-s">〈小見出し〉未経験歓迎。手で作り、目で確かめ、誇りを積み上げる仕事。</div>
+   <div class="copy-w"><b>こんな人に届きます</b><br>将来の仕事の見通しを考えている20〜30代。「成長できる場所で働きたい」という気持ちを持つ転職希望者。<br>パナソニックの名前が安心感につながります。<br><br><b>なぜこの案か</b><br>成長志向の若い層に刺さる訴求。未経験者の応募母集団が広がりやすくなります。</div>
+   <span class="pn">11 / 15</span>
+   <div class="prog" style="width:73.3%"></div>
+  </div>
+
+  <!-- S12 コピーB -->
+  <div class="slide copy-sl" id="s12">
+   <div class="top">
+    <div class="sec-label">提案 02 — キャッチコピー案</div>
+    <span class="cbadge bb">案 B ／ 社会貢献型</span>
+   </div>
+   <div class="copy-h">日本の街を走る自転車を、<br>柏原から作っている。</div>
+   <div class="copy-s">〈小見出し〉パナソニック系列。年間休日126日。未経験から手に職をつける製造の仕事。</div>
+   <div class="copy-w"><b>こんな人に届きます</b><br>自転車が好きかどうかに関わらず、幅広い層に刺さります。<br>「柏原」という地名が親しみやすく、地元で仕事を探している方にも響きます。<br><br><b>なぜこの案か</b><br>仕事の「社会的な意味」を感じてもらえる言葉。長く働いてくれる人が来やすくなります。</div>
+   <span class="pn">12 / 15</span>
+   <div class="prog" style="width:80%"></div>
+  </div>
+
+  <!-- S13 コピーC -->
+  <div class="slide copy-sl" id="s13">
+   <div class="top">
+    <div class="sec-label">提案 02 — キャッチコピー案</div>
+    <span class="cbadge bc">案 C ／ 職人・クラフト型</span>
+   </div>
+   <div class="copy-h">一台一台、手で仕上げる。<br>それが、イズミのものづくり。</div>
+   <div class="copy-s">〈小見出し〉大阪・柏原のパナソニック系自転車メーカー。丁寧な仕事を大切にしています。</div>
+   <div class="copy-w"><b>こんな人に届きます</b><br>「量より質の仕事がしたい」「コツコツ取り組むのが好き」という職人気質の方。<br>会社の誠実さや丁寧さが伝わるコピーです。<br><br><b>なぜこの案か</b><br>丁寧な仕事を求める人材が集まりやすく、長期定着につながりやすい訴求です。</div>
+   <span class="pn">13 / 15</span>
+   <div class="prog" style="width:86.7%"></div>
+  </div>
+
+  <!-- S14 サポート体制（新規追加） -->
   <div class="slide" id="s14">
    <div class="hdr">
-    <div class="sec-label">制作方針 01</div>
-    <div class="slide-title">「誰に、何を伝えるか」の整理</div>
-    <div class="slide-sub">ターゲットと訴求軸を明確にした上でページを組み立てます</div>
+    <div class="sec-label">サポート体制</div>
+    <div class="slide-title">制作後も、一緒に育てます</div>
+    <div class="slide-sub">ページを作って終わりではなく、採用が続く状態をつくることが目的です</div>
    </div>
-   <div class="body">
-    <div class="hl">「自転車好きな人」だけに絞るより、<b>「パナソニック系列・安定した職場環境を重視する人」</b>に向けた訴求の方が、応募母集団が広がります。</div>
-    <div class="jbox">
-     <div class="jlbl">— ページを見た人の気持ちの流れ —</div>
-     <div class="jrow">
-      <div class="jstep"><div class="icon">🏢</div><p>パナソニック系列<br>→ 信頼できる</p></div>
-      <div class="jarr">→</div>
-      <div class="jstep"><div class="icon">😌</div><p>休日・残業なし<br>→ 安心できる</p></div>
-      <div class="jarr">→</div>
-      <div class="jstep key"><div class="icon">📈</div><p>成長できる<br>キャリアがある</p></div>
-      <div class="jarr">→</div>
-      <div class="jstep"><div class="icon">🚲</div><p>社会に役立つ<br>仕事という誇り</p></div>
-     </div>
+   <div style="flex:1;padding:20px 60px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-content:center">
+    <div style="background:#f0fdf4;border-radius:12px;padding:28px 24px;border-top:4px solid #22c55e">
+     <div style="font-size:32px;margin-bottom:14px">🛠</div>
+     <div style="font-size:17px;font-weight:900;color:#1a2d4e;margin-bottom:10px">軽微な更新<br>1年間対応</div>
+     <div style="font-size:15px;color:#5a6a7a;line-height:1.8">テキストの修正や画像の差し替えなど、日常的な更新は納品後1年間サポートします。</div>
     </div>
-    <div class="nrow">
-     <div class="ncard"><div class="n">126<small>日</small></div><p>年間休日数。大手メーカー並みの水準。訴求の核として使います。</p></div>
-     <div class="ncard"><div class="n">40<small>年</small></div><p>パナソニックとの取引年数。「長く続く会社」の根拠として明記します。</p></div>
-     <div class="ncard"><div class="n" style="font-size:28px">未経験<small style="font-size:16px">OK</small></div><p>未経験歓迎。現状のページではほとんど伝わっていない事実。</p></div>
+    <div style="background:#eff6ff;border-radius:12px;padding:28px 24px;border-top:4px solid #2563eb">
+     <div style="font-size:32px;margin-bottom:14px">📄</div>
+     <div style="font-size:17px;font-weight:900;color:#1a2d4e;margin-bottom:10px">ページ追加・<br>デザイン変更</div>
+     <div style="font-size:15px;color:#5a6a7a;line-height:1.8">事業の変化や新しい訴求が生まれたときは、都度ご相談の上で対応します。</div>
+    </div>
+    <div style="background:#fffbeb;border-radius:12px;padding:28px 24px;border-top:4px solid #d4a017">
+     <div style="font-size:32px;margin-bottom:14px">🤝</div>
+     <div style="font-size:17px;font-weight:900;color:#1a2d4e;margin-bottom:10px">毎月の訪問で<br>採用状況を確認</div>
+     <div style="font-size:15px;color:#5a6a7a;line-height:1.8">毎月の出張整体の機会に採用の状況を確認し、必要であれば文言を一緒に見直します。</div>
     </div>
    </div>
-   <span class="pn">14 / 18</span>
-   <div class="prog" style="width:77.8%"></div>
+   <div style="margin:0 60px 32px;background:#1a2d4e;border-radius:8px;padding:18px 24px;font-size:16px;color:rgba(255,255,255,.8);line-height:1.8">
+    ホームページは公開してからが本番です。採用状況を見ながら、ページをより良くしていきます。
+   </div>
+   <span class="pn">14 / 15</span>
+   <div class="prog" style="width:93.3%"></div>
   </div>
 
-  <!-- S15 コピーA -->
+  <!-- S15 クロージング -->
   <div class="slide" id="s15">
-   <div class="hdr"><div class="sec-label">制作方針 02 — キャッチコピー案</div></div>
-   <div class="copy-body">
-    <span class="cbadge ba">案 A ／ 成長・キャリア型</span>
-    <div class="copy-h">ここから、プロになる。<br>パナソニックの現場で。</div>
-    <div class="copy-s">〈小見出し〉未経験歓迎。手で作り、目で確かめ、誇りを積み上げる仕事。</div>
-    <div class="copy-w"><b>届く層</b><br>将来の仕事の見通しを考えている20〜30代。「成長できる場所で働きたい」という転職希望者。<br>パナソニックの名前が信頼感につながります。<br><br><b>選んだ理由</b><br>成長志向の若い層に向けた訴求。未経験歓迎という事実を前面に出せます。</div>
-   </div>
-   <span class="pn">15 / 18</span>
-   <div class="prog" style="width:83.3%"></div>
-  </div>
-
-  <!-- S16 コピーB -->
-  <div class="slide" id="s16">
-   <div class="hdr"><div class="sec-label">制作方針 02 — キャッチコピー案</div></div>
-   <div class="copy-body">
-    <span class="cbadge bb">案 B ／ 社会貢献型</span>
-    <div class="copy-h">日本の街を走る自転車を、<br>柏原から作っている。</div>
-    <div class="copy-s">〈小見出し〉パナソニック系列。年間休日126日。未経験から手に職をつける製造の仕事。</div>
-    <div class="copy-w"><b>届く層</b><br>自転車が好きかどうかに関わらず、幅広い層に届きます。<br>「柏原」という地名が親しみやすく、地元で仕事を探している方にも響きます。<br><br><b>選んだ理由</b><br>仕事の「社会的な意味」を軸にした訴求。長期定着を重視する場合に向いています。</div>
-   </div>
-   <span class="pn">16 / 18</span>
-   <div class="prog" style="width:88.9%"></div>
-  </div>
-
-  <!-- S17 コピーC -->
-  <div class="slide" id="s17">
-   <div class="hdr"><div class="sec-label">制作方針 02 — キャッチコピー案</div></div>
-   <div class="copy-body">
-    <span class="cbadge bc">案 C ／ 職人・クラフト型</span>
-    <div class="copy-h">一台一台、手で仕上げる。<br>それが、イズミのものづくり。</div>
-    <div class="copy-s">〈小見出し〉大阪・柏原のパナソニック系自転車メーカー。丁寧な仕事を大切にしています。</div>
-    <div class="copy-w"><b>届く層</b><br>「量より質の仕事がしたい」「コツコツ取り組むのが好き」という職人気質の方。<br>会社の誠実さや丁寧さが伝わる言葉選びです。<br><br><b>選んだ理由</b><br>定着率を重視した採用に向いています。入社後のミスマッチが起きにくい訴求です。</div>
-   </div>
-   <span class="pn">17 / 18</span>
-   <div class="prog" style="width:94.4%"></div>
-  </div>
-
-  <!-- S18 クロージング -->
-  <div class="slide" id="s18">
-   <h2>今日確認できたことを<span>制作に反映します。</span></h2>
+   <h2>方向性が決まれば、<span>今週中に動き始めます。</span></h2>
    <div class="rule"></div>
-   <p>調査結果はお伝えしました。今日の打ち合わせでコピーの方向性と<br>追加で確認したい情報を合わせて、制作をスタートします。</p>
+   <p>今日の打ち合わせでコピーの方向性と数字を合わせていただければ、<br>今週中に制作を開始します。<br>費用・スケジュール・優先順位は、この後ご一緒に確認しましょう。</p>
    <div class="foot">
     <div>報告者：株式会社FiTNESS UNIVERSITY</div>
     <div>2026年6月29日</div>
    </div>
-   <span class="pn pn-w">18 / 18</span>
+   <span class="pn pn-w">15 / 15</span>
    <div class="prog prog-g" style="width:100%"></div>
   </div>
 
-</div><!-- /scaler -->
+ </div>
+</div>
+
+<div id="ctrl">
+ <button class="btn" id="prev" onclick="go(-1)" disabled>← 前へ</button>
+ <span id="ctr">1 / 15</span>
+ <button class="btn" id="next" onclick="go(1)">次へ →</button>
+</div>
 
 <script>
-function resize() {
-  const scaler = document.getElementById('scaler');
-  const h = scaler.offsetHeight;
-  const s = window.innerWidth / 1280;
-  scaler.style.transform = 'scale(' + s + ')';
-  document.body.style.height = Math.ceil(h * s) + 'px';
-}
-window.addEventListener('resize', resize);
-resize();
+ const slides = document.querySelectorAll('.slide');
+ const N = slides.length;
+ let i = 0;
+
+ function go(d) {
+   slides[i].classList.remove('on');
+   i = Math.max(0, Math.min(N - 1, i + d));
+   slides[i].classList.add('on');
+   document.getElementById('ctr').textContent = (i + 1) + ' / ' + N;
+   document.getElementById('prev').disabled = i === 0;
+   document.getElementById('next').disabled = i === N - 1;
+ }
+
+ document.addEventListener('keydown', e => {
+   if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') go(1);
+   if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp') go(-1);
+ });
+
+ function resize() {
+   const el = document.getElementById('scaler');
+   const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+   el.style.transform = `scale(${s})`;
+   el.style.left = ((window.innerWidth  - 1280 * s) / 2) + 'px';
+   el.style.top  = ((window.innerHeight - 720  * s) / 2) + 'px';
+ }
+
+ window.addEventListener('resize', resize);
+ resize();
 </script>
 </body>
 </html>
