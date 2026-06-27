@@ -29,24 +29,14 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 /* ─── HERO（フルスクリーン） ─── */
 .hero {
   height: 100vh; min-height: 600px;
-  background: #1c3a6e;
+  background: url('img/izumi-hero.jpg') center/cover no-repeat;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 0 72px 80px;
   position: relative; overflow: hidden;
 }
 /* 背景装飾円 */
-.hero::before {
-  content: ''; position: absolute;
-  top: -120px; right: -120px;
-  width: 560px; height: 560px; border-radius: 50%;
-  background: rgba(255,255,255,.04);
-}
-.hero::after {
-  content: ''; position: absolute;
-  bottom: -80px; left: 60%;
-  width: 340px; height: 340px; border-radius: 50%;
-  background: rgba(255,255,255,.03);
-}
+.hero::before { content: ''; position: absolute; inset: 0; background: rgba(15,35,90,.72); z-index: 0; }
+.hero::after { display: none; }
 /* スライドバー（視覚的演出） */
 .hero-slides {
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -404,6 +394,18 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 .iv-card-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; display: block; }
 .modal-photo { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 16px; display: block; }
 
+
+/* brand stmt with photo */
+.bs-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; flex-shrink: 0; width: 240px; }
+@media(max-width:768px){ .bs-photo { display: none; } }
+
+
+/* gallery strip */
+.gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; height: 420px; }
+.gallery-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-strip .g-main { grid-row: 1 / 3; }
+@media(max-width:768px){ .gallery-strip { grid-template-columns: 1fr 1fr; height: auto; } .gallery-strip .g-main { grid-row: auto; } }
+
 </style>
 </head>
 <body>
@@ -426,7 +428,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-content" style="position:relative;z-index:1">
     <div class="hero-label">Recruit — Izumi Electronic Trading Co.,Ltd</div>
     <h1 class="hero-copy">自転車組立の<br>プロフェッショナルとして<br>「活躍しませんか」</h1>
     <p class="hero-sub">パナソニックの工場で、日本中を走る電動アシスト自転車をつくる。<br>柏原から、40年。未経験から、プロへ。</p>
@@ -435,7 +437,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
       <button class="hero-btn-sub" onclick="document.querySelector('#recruit').scrollIntoView({behavior:'smooth'})">募集要項を見る</button>
     </div>
   </div>
-  <div class="hero-scroll">
+  <div class="hero-scroll" style="position:relative;z-index:1">
     <div class="hero-scroll-line"></div>
     <span>Scroll</span>
   </div>
@@ -443,6 +445,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 
 <!-- BRAND STATEMENT -->
 <section id="about" class="brand-stmt">
+  <img class="bs-photo" src="img/izumi-member-funamoto.jpg" alt="代表取締役 船本 到">
   <div>
     <div class="bs-en">About Us</div>
     <div class="bs-title">すべては、<br>「人」が<br>つくっている。<br><em>── 40年の実績がある。</em></div>
@@ -581,6 +584,18 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
     <div class="sk-pill">社員全員 無料</div>
   </div>
 </div>
+
+
+<!-- GALLERY -->
+<section style="padding:0">
+  <div class="gallery-strip">
+    <img class="g-main" src="img/izumi-gallery-1.jpg" alt="組立現場">
+    <img src="img/izumi-gallery-2.jpg" alt="工場内">
+    <img src="img/izumi-gallery-3.jpg" alt="作業風景">
+    <img src="img/izumi-about-1.jpg" alt="ライン作業">
+    <img src="img/izumi-gallery-4.jpg" alt="製品">
+  </div>
+</section>
 
 <!-- INTERVIEW -->
 <section id="interview" class="interview-section">
