@@ -223,11 +223,88 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .dr-badge-c { background: rgba(255,255,255,.08); color: rgba(255,255,255,.5); }
 .dr-label-c { color: #aaa; }
 .dr-step-num-c { background: #555; color: white; }
+
+@media (max-width: 640px) {
+  .shell-header { height: auto; padding: 10px 14px; flex-wrap: wrap; gap: 8px; }
+  .shell-logo { font-size: 11px; }
+  .case-nav { gap: 3px; width: 100%; overflow-x: auto; }
+  .case-link { font-size: 11px; padding: 5px 10px; white-space: nowrap; }
+  .shell-meta { display: none; }
+  .strategy { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .s-copy { font-size: 13px; }
+  .s-pill { margin-left: 0; }
+  .design-rationale .dr-top { padding: 14px 16px 8px; }
+  .dr-grid { grid-template-columns: 1fr; padding: 0 16px 12px; }
+  .dr-block { border-right: none; margin-right: 0; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 12px; padding-bottom: 12px; }
+  .dr-block:last-child { border-bottom: none; margin-bottom: 0; }
+  .dr-flow-wrap { padding: 12px 16px 16px; }
+  .dr-flow { gap: 8px 4px; }
+  .dr-step-name { font-size: 10px; }
+  .dr-step-why { display: none; }
+  .wf-canvas { margin: 16px auto; padding: 0 12px 60px; }
+  .wf-nav { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
+  .wf-nav .n-links { display: none; }
+  .wf-hero { padding: 36px 20px 32px; }
+  .wf-hero h1 { font-size: 24px; }
+  .wf-hero .h-sub { font-size: 13px; }
+  .wf-hero .h-cta { font-size: 14px; padding: 14px 28px; margin-right: 0; margin-bottom: 10px; display: block; width: 100%; }
+  .wf-hero .h-cta2 { font-size: 13px; padding: 12px 20px; display: block; width: 100%; }
+  .wf-hero .h-img-placeholder { height: 140px; font-size: 11px; }
+  .wf-nums { grid-template-columns: 1fr 1fr; }
+  .wf-num { padding: 20px 10px; border-right: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .wf-num .n-val { font-size: 28px; }
+  .wf-num .n-val small { font-size: 14px; }
+  .sekkei-inner { flex-direction: column; text-align: center; padding: 20px 16px; gap: 14px; }
+  .sekkei-wrap { padding: 0 0 20px; }
+  .sekkei-title { font-size: 20px; }
+  .sekkei-sub { font-size: 13px; }
+  .wf-career { padding: 24px 16px; }
+  .career-head h2 { font-size: 18px; }
+  .career-steps { flex-direction: column; gap: 0; }
+  .career-step { border-top: none; border-left: 3px solid; padding: 12px 0 12px 14px; }
+  .career-arr { padding: 4px 0 0 6px; transform: rotate(90deg); display: inline-block; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .story-grid { grid-template-columns: 1fr; }
+  .story-img { height: 160px; }
+  .wf-story { padding: 24px 16px; }
+  .workday-grid { grid-template-columns: 1fr 1fr; padding: 20px 16px; gap: 12px; }
+  .workday-item { border-right: none; border-bottom: 1px solid #f0f0f0; padding-bottom: 12px; }
+  .workday-item:last-child { border-bottom: none; }
+  .wf-philosophy { padding: 32px 20px; }
+  .phil-quote { font-size: 18px; }
+  .phil-points { flex-direction: column; gap: 20px; align-items: flex-start; }
+  .phil-point { max-width: 100%; text-align: left; }
+  .phil-point .pp-num { font-size: 28px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-img { height: 160px; }
+  .wf-about { padding: 24px 16px; }
+  .about-text h2 { font-size: 18px; }
+  .about-stats { flex-wrap: wrap; gap: 16px; }
+  .voice-cards { grid-template-columns: 1fr; }
+  .wf-voice { padding: 24px 16px; }
+  .voice-head h2 { font-size: 18px; }
+  .env-grid { grid-template-columns: 1fr; }
+  .wf-recruit { padding: 24px 16px; }
+  .recruit-head h2 { font-size: 18px; }
+  .recruit-table td { padding: 10px 10px; font-size: 13px; }
+  .recruit-table td:first-child { width: 90px; font-size: 12px; }
+  .wf-access { padding: 24px 16px; }
+  .access-grid { grid-template-columns: 1fr; }
+  .access-map { height: 160px; }
+  .wf-entry { padding: 36px 20px; }
+  .wf-entry h2 { font-size: 20px; }
+  .entry-btns { flex-direction: column; gap: 10px; }
+  .e-btn-main { padding: 16px 24px; font-size: 14px; width: 100%; }
+  .e-btn-line { padding: 14px 20px; font-size: 13px; width: 100%; }
+  .e-btn-tel { padding: 14px 20px; font-size: 13px; width: 100%; }
+  .sec-tag { font-size: 9px; padding: 2px 7px; }
+  .wf-note { margin: 8px 12px 0; font-size: 11px; }
+}
 </style>
 </head>
 <body>
 <div class="shell-header">
-  <div class="shell-logo"><span>Build</span> × イズミ電商 ワイヤーフレーム</div>
+  <div class="shell-logo">イズミ電商 ワイヤーフレーム</div>
   <div class="case-nav">
     <a href="wireframe-a.html" class="case-link a ">案A｜成長・キャリア型</a>
     <a href="wireframe-b.html" class="case-link b ">案B｜ものづくり誇り型</a>
