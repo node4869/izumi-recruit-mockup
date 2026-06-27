@@ -175,6 +175,11 @@ footer { background: #111; color: rgba(255,255,255,.35); text-align: center; pad
 .iv-card-top.clickable:hover { filter: brightness(1.12); }
 .msg-sign.clickable:hover { background: #eaecf0 !important; }
 
+
+/* スタッフ写真 */
+.iv-card-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; display: block; }
+.modal-photo { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 16px; display: block; }
+
 </style>
 </head>
 <body>
@@ -440,6 +445,7 @@ footer { background: #111; color: rgba(255,255,255,.35); text-align: center; pad
 <div id="presidentModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">×</button>
+    <img class="modal-photo" src="img/funamoto.jpg" alt="船本 到">
     <div class="modal-role">代表取締役</div>
     <div class="modal-name">船本 到（49歳）</div>
 
@@ -478,6 +484,7 @@ document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 <div id="noguchiModal" class="modal-overlay" onclick="if(event.target===this)closeNoguchiModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeNoguchiModal()">×</button>
+    <img class="modal-photo" src="img/noguchi.jpg" alt="野口 孝文">
     <div class="modal-role">ラインリーダー・教育係 ／ 社歴11年目</div>
     <div class="modal-name">野口 孝文（32歳）</div>
 
@@ -503,6 +510,7 @@ document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 <div id="okaModal" class="modal-overlay" onclick="if(event.target===this)closeOkaModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeOkaModal()">×</button>
+    <img class="modal-photo" src="img/oka.png" alt="岡 浩之">
     <div class="modal-role">サブリーダー</div>
     <div class="modal-name">岡 浩之</div>
 
