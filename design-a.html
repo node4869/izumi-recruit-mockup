@@ -146,6 +146,20 @@ footer { background: #111; color: rgba(255,255,255,.35); text-align: center; pad
   .entry-section { padding: 60px 24px; }
   .entry-btn-main, .entry-btn-line, .entry-btn-tel { width: 100%; }
 }
+
+/* モーダル */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 900; overflow-y: auto; padding: 40px 20px; }
+.modal-overlay.open { display: flex; justify-content: center; align-items: flex-start; }
+.modal-box { background: white; max-width: 720px; width: 100%; position: relative; padding: 48px 52px 52px; margin: auto; }
+.modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: #1c3a6e; color: white; border: none; cursor: pointer; font-size: 18px; font-family: inherit; display: flex; align-items: center; justify-content: center; }
+.modal-role { font-size: 11px; color: #888; letter-spacing: .08em; margin-bottom: 4px; }
+.modal-name { font-size: 22px; font-weight: 900; color: #1c3a6e; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #e8e8e8; }
+.modal-q { font-size: 13px; font-weight: 700; color: #2d5ba3; border-left: 3px solid #2d5ba3; padding-left: 10px; margin-bottom: 10px; margin-top: 28px; line-height: 1.5; }
+.modal-a { font-size: 14px; color: #444; line-height: 2.1; }
+.modal-close-btn { display: block; width: 100%; margin-top: 36px; padding: 14px; background: #1c3a6e; color: white; border: none; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: .06em; }
+.iv-card-top.clickable, .msg-card.clickable { cursor: pointer; }
+.iv-card-top.clickable:hover { filter: brightness(1.1); transition: filter .2s; }
+
 </style>
 </head>
 <body>
@@ -194,7 +208,7 @@ footer { background: #111; color: rgba(255,255,255,.35); text-align: center; pad
       <p>「自己資本比率7割以上」という数字が示す通り、財務は非常に堅実です。大手に依存しながらも自立した経営を続けてきた。だからこそ、社員にしっかり還元できる。その循環を大切にしてきました。</p>
       <p>未経験でも構いません。素直さと誠実さがあれば、必ず技術は身につきます。ここで長く働いてほしい。それが私の本音です。</p>
     </div>
-    <div class="msg-sign">
+    <div class="msg-sign clickable" onclick="openModal()" style="cursor:pointer;padding:14px;background:#f5f7fa;border-radius:2px" title="クリックで詳細を見る">
       <div>
         <div class="msg-sign-role">代表取締役</div>
         <div class="msg-sign-name">船本 到（49歳）</div>
@@ -408,5 +422,43 @@ footer { background: #111; color: rgba(255,255,255,.35); text-align: center; pad
 </a>
 
 <footer>© 2024 イズミ電商株式会社 All Rights Reserved.</footer>
+
+<!-- 社長モーダル -->
+<div id="presidentModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-role">代表取締役</div>
+    <div class="modal-name">船本 到（49歳）</div>
+
+    <div class="modal-q">一 私の普段の仕事内容は。</div>
+    <div class="modal-a">社長業と言えど、さまざまあります。現場のラインに立つこともありますしデスクワークに1日中没頭することも。イズミ電商の監督としてオールマイティに動き回っています。<br>監督はチームのモチベーションを向上させ、時に厳しくチームを引き締めることが大事です。それが私の役割だと考えております。</div>
+
+    <div class="modal-q">一 私がこのお仕事を始めたきっかけ。</div>
+    <div class="modal-a">最初は岡山県で営業職をしていました。そのあと、熊本県でも営業職として日々奮戦！だから、しゃべったり、ビジネスの交渉は得意なんですよ（笑）<br>その後、大阪に戻り堺市にある親友の会社でも営業職を経験。さらに別の会社でも玄関ドアの営業職をしました。<br>奥さんと結婚して、義父が創業した「イズミ電商」に入社することになりました。だから自転車の組立の仕事は未経験。最初は苦労しましたね。自由度が高く応変力が求められる営業職と違い、組立は基礎知識と集中力が必要な仕事です。</div>
+
+    <div class="modal-q">一 最初に始めたこと。</div>
+    <div class="modal-a">まず、部品の名前を覚える。そのあと、組立の仕方を覚える。常に自分自身の中で改善点を考え、次に実践する。<br>部品を見るだけでどのパーツかわかるようになったり、発見がどんどん出てきます。電動自転車は毎年新作がリリースされるため、新しいパーツの把握も大切です。<br>デタラメに組んだら、後の工程で大変なことになります。集中力が必要なので、慣れるまでが大変かもしれませんね。</div>
+
+    <div class="modal-q">一 ES向上のための取組み</div>
+    <div class="modal-a"><strong>公平な人事考課と人材育成</strong><br>安全・5Sチーム、品質チーム、生産性チームのどれかに属し小集団活動（改善活動）を行っていただきます。<br>少し頑張れば手の届く数値目標をチームリーダーと設定しその達成率が人事考課となり、評価に繋がります。活動を通して創意工夫し考える力や発想力を養い、個人の成長を促します。目標を達成する喜びを実感することで仕事にやりがいをもってもらえたらという思いで取組んでおります。</div>
+
+    <div class="modal-q">一 出張整体について</div>
+    <div class="modal-a">従業員にとても好評な企画です。毎月最終日に身体のメンテナンスのため出張整体に来ていただいてます。1人当たり約30分間、身体の疲れている箇所をほぐしてもらい、自身でできるストレッチ方法を教えていただく。また、身体の困りごとの相談や健康診断結果からのアドバイスも。<br>彼らと協同で『中小企業健康経営優良法人』の取得を目指しています。</div>
+
+    <div class="modal-q">一 社内行事</div>
+    <div class="modal-a">社員旅行・定期的な飲み会（どちらも希望者のみ）コロナ禍で一度はなくなっていたのですが、従業員からの熱い要望で再開いたしました。自由参加で希望者のみで開催、無理強いは一切いたしません。笑</div>
+
+    <div class="modal-q">一 イズミ電商の経営理念。</div>
+    <div class="modal-a">『私たちは、みんなが笑顔になる、安心できる製品を提供します。』<br>自転車の製造を通じて、お客様、取引先、従業員など、私たちに関わる全ての人を幸せにする企業を目指しています。<br>イズミ電商とそこで働く従業員は、求められる品質以上の製品を作り出すために、常に新しいことにチャレンジし続けています。そして、誰もが安心して乗れる自転車を作ることが、私たちに関わる全ての人の幸せ・笑顔につながると考えています。<br>自転車組立のプロとして、私たちの冒険はまだまだ始まったばかりです。</div>
+
+    <button class="modal-close-btn" onclick="closeModal()">× 閉じる</button>
+  </div>
+</div>
+<script>
+function openModal(){ document.getElementById('presidentModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ document.getElementById('presidentModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+
 </body>
 </html>
