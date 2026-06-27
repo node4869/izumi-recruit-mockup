@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案A — 成長・キャリア型 — イズミ電商 採用ページ デザイン案</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans JP', sans-serif; background: #f0f0f0; }
+
+/* ===== TAB SWITCHER ===== */
+#tab-bar {
+  position: sticky; top: 0; z-index: 999;
+  background: #111; display: flex; border-bottom: 1px solid #333;
+}
+.tab-btn {
+  flex: 1; padding: 14px 10px; color: rgba(255,255,255,.4); font-size: 13px;
+  font-family: inherit; font-weight: 700; letter-spacing: .06em;
+  background: none; border: none; cursor: pointer; transition: .2s;
+  border-bottom: 3px solid transparent; line-height: 1.4;
+}
+.tab-btn.active { color: white; border-bottom-color: var(--accent); }
+
+.lp { display: none; }
+.lp.active { display: block; }
+
+/* ===== SHARED COMPONENTS ===== */
+.section { padding: 72px 0; }
+.inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: .2em; opacity: .5; text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-size: 32px; font-weight: 900; line-height: 1.4; margin-bottom: 10px; }
+.section-sub { font-size: 16px; opacity: .65; line-height: 1.7; }
+.divider { width: 40px; height: 3px; margin: 20px 0; }
+.apply-btn {
+  display: inline-block; padding: 18px 48px; border-radius: 4px;
+  font-size: 17px; font-weight: 900; letter-spacing: .06em;
+  text-decoration: none; cursor: pointer; border: none; font-family: inherit;
+}
+.card-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
+.card { border-radius: 10px; padding: 28px 22px; }
+.card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; line-height: 1.5; }
+.card p { font-size: 14px; line-height: 1.85; opacity: .8; }
+.num-row { display: flex; gap: 0; margin-top: 32px; }
+.num-item { flex: 1; text-align: center; padding: 32px 12px; }
+.num-item .n { font-size: 52px; font-weight: 900; line-height: 1; }
+.num-item .n small { font-size: 22px; }
+.num-item p { font-size: 13px; margin-top: 8px; opacity: .65; line-height: 1.6; }
+.num-sep { width: 1px; background: currentColor; opacity: .1; align-self: stretch; margin: 24px 0; }
+.flow-row { display: flex; align-items: flex-start; gap: 0; margin-top: 32px; }
+.flow-step { flex: 1; text-align: center; padding: 0 8px; }
+.flow-step .yr { font-size: 13px; font-weight: 700; opacity: .5; margin-bottom: 8px; }
+.flow-step .title { font-size: 15px; font-weight: 700; margin-bottom: 6px; line-height: 1.5; }
+.flow-step .desc { font-size: 13px; opacity: .65; line-height: 1.6; }
+.flow-arrow { padding: 32px 0; opacity: .2; font-size: 22px; display: flex; align-items: flex-start; padding-top: 36px; }
+.voice-card { border-radius: 10px; padding: 28px; margin-top: 16px; }
+.voice-card .who { font-size: 13px; font-weight: 700; opacity: .55; margin-bottom: 12px; }
+.voice-card .text { font-size: 17px; line-height: 2; font-weight: 500; }
+
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .num-row { flex-direction: column; }
+  .num-sep { width: 100%; height: 1px; margin: 0; }
+  .flow-row { flex-direction: column; }
+  .flow-arrow { display: none; }
+  .section-title { font-size: 26px; }
+  .tab-btn { font-size: 11px; padding: 12px 6px; }
+}
+
+
+/* ============================
+   案A — 成長・キャリア型
+   Navy × Gold
+   ============================ */
+#lp-a { --accent: #d4a017; --accent2: #1a2d4e; }
+
+/* A: Hero */
+#lp-a .hero {
+  background: linear-gradient(150deg, #0f1f38 0%, #1a3a6e 100%);
+  padding: 96px 24px 80px; text-align: center; color: white;
+}
+#lp-a .hero .badge {
+  display: inline-block; background: var(--accent); color: #1a2d4e;
+  font-size: 12px; font-weight: 900; letter-spacing: .16em;
+  padding: 6px 20px; border-radius: 2px; margin-bottom: 32px;
+}
+#lp-a .hero h1 { font-size: clamp(32px, 6vw, 62px); font-weight: 900; line-height: 1.35; margin-bottom: 20px; }
+#lp-a .hero h1 em { color: var(--accent); font-style: normal; }
+#lp-a .hero .sub { font-size: 18px; opacity: .75; line-height: 1.9; margin-bottom: 40px; }
+#lp-a .hero .apply-btn { background: var(--accent); color: #1a2d4e; }
+#lp-a .hero .note { font-size: 13px; opacity: .4; margin-top: 16px; }
+
+/* A: Numbers */
+#lp-a .nums { background: #1a2d4e; color: white; }
+#lp-a .nums .num-item .n { color: var(--accent); }
+
+/* A: Career Flow */
+#lp-a .career { background: white; }
+#lp-a .flow-step { border-top: 3px solid var(--accent); padding-top: 16px; }
+
+/* A: Benefits */
+#lp-a .benefits { background: #f8fafc; }
+#lp-a .card { background: white; border-left: 4px solid var(--accent); }
+#lp-a .card h3 { color: #1a2d4e; }
+
+/* A: Voice */
+#lp-a .voices { background: #1a2d4e; color: white; }
+#lp-a .voice-card { background: rgba(255,255,255,.06); }
+
+/* A: CTA */
+#lp-a .cta { background: var(--accent); text-align: center; padding: 80px 24px; }
+#lp-a .cta h2 { font-size: 30px; font-weight: 900; color: #1a2d4e; margin-bottom: 12px; }
+#lp-a .cta p { color: rgba(0,0,0,.55); margin-bottom: 32px; font-size: 16px; line-height: 1.8; }
+#lp-a .cta .apply-btn { background: #1a2d4e; color: white; }
+
+/* A: footer */
+#lp-a .foot { background: #0f1f38; color: rgba(255,255,255,.3); text-align: center; padding: 24px; font-size: 12px; line-height: 2; }
+
+
+/* ============================
+   案B — 社会貢献型
+   Forest Green × Earth
+   ============================ */
+#lp-b { --accent: #2d6a4f; --accent2: #52b788; --earth: #6b4c26; }
+
+#lp-b .hero {
+  background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 60%, #40916c 100%);
+  padding: 96px 24px 80px; text-align: center; color: white;
+}
+#lp-b .hero .badge {
+  display: inline-block; background: #95d5b2; color: #1b4332;
+  font-size: 12px; font-weight: 900; letter-spacing: .16em;
+  padding: 6px 20px; border-radius: 2px; margin-bottom: 32px;
+}
+#lp-b .hero h1 { font-size: clamp(30px, 6vw, 60px); font-weight: 900; line-height: 1.35; margin-bottom: 20px; }
+#lp-b .hero h1 em { color: #95d5b2; font-style: normal; }
+#lp-b .hero .sub { font-size: 18px; opacity: .8; line-height: 1.9; margin-bottom: 40px; }
+#lp-b .hero .apply-btn { background: #95d5b2; color: #1b4332; }
+#lp-b .hero .note { font-size: 13px; opacity: .45; margin-top: 16px; }
+
+#lp-b .nums { background: #1b4332; color: white; }
+#lp-b .nums .num-item .n { color: #95d5b2; }
+
+#lp-b .about { background: white; }
+#lp-b .about .highlight {
+  background: #d8f3dc; border-left: 5px solid var(--accent);
+  border-radius: 4px; padding: 20px 24px;
+  font-size: 17px; color: #1b4332; line-height: 1.85; font-weight: 500;
+  margin-top: 24px;
+}
+
+#lp-b .card { background: #f0fdf4; border: 1px solid #b7e4c7; }
+#lp-b .card h3 { color: #1b4332; }
+
+#lp-b .role { background: #f8fafc; }
+#lp-b .role-item { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid #e2e8f0; }
+#lp-b .role-item:last-child { border: none; }
+#lp-b .role-item .icon { font-size: 28px; flex-shrink: 0; width: 48px; text-align: center; }
+#lp-b .role-item h3 { font-size: 17px; font-weight: 700; color: #1b4332; margin-bottom: 6px; }
+#lp-b .role-item p { font-size: 15px; color: #5a6a7a; line-height: 1.75; }
+
+#lp-b .voices { background: #1b4332; color: white; }
+#lp-b .voice-card { background: rgba(255,255,255,.06); }
+
+#lp-b .cta { background: #d8f3dc; text-align: center; padding: 80px 24px; }
+#lp-b .cta h2 { font-size: 30px; font-weight: 900; color: #1b4332; margin-bottom: 12px; }
+#lp-b .cta p { color: rgba(0,0,0,.55); margin-bottom: 32px; font-size: 16px; line-height: 1.8; }
+#lp-b .cta .apply-btn { background: #1b4332; color: white; }
+
+#lp-b .foot { background: #1b4332; color: rgba(255,255,255,.3); text-align: center; padding: 24px; font-size: 12px; line-height: 2; }
+
+
+/* ============================
+   案C — 職人・クラフト型
+   Dark Gray × Silver
+   ============================ */
+#lp-c { --accent: #8a8a8a; --accent2: #222; --silver: #c9c9c9; }
+
+#lp-c .hero {
+  background: #1a1a1a;
+  padding: 96px 24px 80px; text-align: center; color: white;
+  border-bottom: 1px solid #333;
+}
+#lp-c .hero .badge {
+  display: inline-block; background: none; color: var(--silver);
+  font-size: 12px; font-weight: 700; letter-spacing: .22em;
+  padding: 6px 20px; border: 1px solid #444; border-radius: 2px; margin-bottom: 32px;
+}
+#lp-c .hero h1 { font-size: clamp(30px, 6vw, 58px); font-weight: 900; line-height: 1.4; margin-bottom: 20px; color: #f0f0f0; }
+#lp-c .hero h1 em { color: var(--silver); font-style: normal; }
+#lp-c .hero .sub { font-size: 17px; color: rgba(255,255,255,.55); line-height: 1.9; margin-bottom: 40px; }
+#lp-c .hero .apply-btn { background: white; color: #1a1a1a; }
+#lp-c .hero .note { font-size: 13px; color: rgba(255,255,255,.25); margin-top: 16px; }
+
+#lp-c .nums { background: #111; color: white; border-bottom: 1px solid #2a2a2a; }
+#lp-c .nums .num-item .n { color: var(--silver); }
+
+#lp-c .craft { background: #f8f8f8; }
+#lp-c .craft-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 32px; background: #ddd; }
+#lp-c .craft-item { background: white; padding: 32px 28px; }
+#lp-c .craft-item .num { font-size: 40px; font-weight: 900; color: #ddd; line-height: 1; margin-bottom: 12px; }
+#lp-c .craft-item h3 { font-size: 17px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+#lp-c .craft-item p { font-size: 14px; color: #666; line-height: 1.85; }
+
+#lp-c .benefits { background: white; }
+#lp-c .card { background: #f8f8f8; border: none; border-top: 2px solid #ddd; }
+#lp-c .card h3 { color: #1a1a1a; }
+
+#lp-c .voices { background: #1a1a1a; color: white; }
+#lp-c .voice-card { background: rgba(255,255,255,.04); border: 1px solid #333; }
+
+#lp-c .cta { background: #1a1a1a; text-align: center; padding: 80px 24px; color: white; border-top: 1px solid #2a2a2a; }
+#lp-c .cta h2 { font-size: 30px; font-weight: 900; color: white; margin-bottom: 12px; }
+#lp-c .cta p { color: rgba(255,255,255,.45); margin-bottom: 32px; font-size: 16px; line-height: 1.8; }
+#lp-c .cta .apply-btn { background: white; color: #1a1a1a; }
+
+#lp-c .foot { background: #111; color: rgba(255,255,255,.2); text-align: center; padding: 24px; font-size: 12px; line-height: 2; border-top: 1px solid #222; }
+
+@media (max-width: 640px) {
+  #lp-c .craft-grid { grid-template-columns: 1fr; }
+}
+
+.site-nav { position: sticky; top:0; z-index:999; background:#111; display:flex; align-items:center; justify-content:space-between; padding:12px 24px; }
+.site-nav .ttl { color:rgba(255,255,255,.5); font-size:13px; font-weight:700; }
+.site-nav .nav-links { display:flex; gap:10px; }
+.site-nav .nav-links a { color:rgba(255,255,255,.5); font-size:13px; font-weight:700; text-decoration:none; padding:6px 14px; border:1px solid rgba(255,255,255,.2); border-radius:4px; }
+.site-nav .nav-links a:hover { color:white; border-color:rgba(255,255,255,.5); }
+</style>
+</head>
+<body>
+<div class="site-nav">
+ <span class="ttl">案A — 成長・キャリア型</span>
+ <div class="nav-links"><a href="lp-mockup-b.html">案B →</a> <a href="lp-mockup-c.html">案C →</a></div>
+</div>
+
+
+ <!-- Hero -->
+ <div class="hero">
+  <div class="badge">IZUMI DENKI CO.,LTD. ／ RECRUIT</div>
+  <h1>ここから、<em>プロになる。</em><br>パナソニックの現場で。</h1>
+  <p class="sub">未経験歓迎。手で作り、目で確かめ、誇りを積み上げる仕事。<br>大阪・柏原のモノづくりで、あなたのキャリアが始まる。</p>
+  <button class="apply-btn">応募する・話を聞く</button>
+  <p class="note">※ 応募後、まず担当者よりご連絡します。面接の前にオンライン面談も対応可</p>
+ 
+</body>
+</html>
