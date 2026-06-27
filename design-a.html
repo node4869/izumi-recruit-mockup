@@ -286,7 +286,7 @@ footer { background: #111; color: rgba(255,255,255,.35); text-align: center; pad
     <div class="appeal-item">
       <div class="appeal-num">05</div>
       <div class="appeal-body">
-        <div class="appeal-title">顔が見える、少数精鋭の職場</div>
+        <div class="appeal-title">12名の少数精鋭の職場</div>
         <div class="appeal-text">大きな組織にありがちな「人間関係の複雑さ」がない。困ったことはすぐ相談できる、フラットな職場環境です。</div>
         <div class="appeal-badge">職場環境</div>
       </div>
@@ -460,5 +460,59 @@ function closeModal(){ document.getElementById('presidentModal').classList.remov
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
 </script>
 
+
+<!-- 野口モーダル -->
+<div id="noguchiModal" class="modal-overlay" onclick="if(event.target===this)closeNoguchiModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeNoguchiModal()">×</button>
+    <div class="modal-role">ラインリーダー・教育係 ／ 社歴11年目</div>
+    <div class="modal-name">野口 孝文（32歳）</div>
+
+    <div class="modal-q">一 新人教育で気を付けていること。</div>
+    <div class="modal-a">入社してくる方は未経験者がほとんどです。この部品は何か？今、どの箇所の何を作っているのか？まずは興味を持ってもらう事から始めています。<br>今、作ってるものが、自転車を組み立てる上でどの箇所に使われるのか。君が作った部分が自転車のこんな所に使われている。イズミ電商が作った自転車が、世の中のあらゆる所で使われている。自分の作品のようなものが世の中で役に立っており、そこの楽しさを感じてもらえる様に心がけています。<br>技術をしっかり磨いてもらって、そこに楽しさを見出してほしい。そうすれば、遣り甲斐も出てきます。</div>
+
+    <div class="modal-q">一 会社の魅力</div>
+    <div class="modal-a">・年間カレンダーが配布されるので休日のスケジュールが組みやすく長期休暇も年3回あるので趣味や旅行でプライベートを充実させたり、家族サービスをしたり、リフレッシュできます。<br>・自転車整備士免許・技師免許も自身の頑張り次第で取得可能。試験を受ける際は、指導・アドバイスをするので安心してください。もし退職されたとしても、自転車業界内では役に立つ免許ですよ！<br>・20代〜50代の従業員が働いており、皆人柄が良く、社長も1番に従業員の事を考えてくれ、コミュニケーションがとりやすく仕事・プライベートの相談も気軽にできます。<br>・年功序列制度がないので自身の頑張り次第でサブリーダー、リーダーと上がっていけるのも魅力の一つです。</div>
+
+    <div class="modal-q">一 私の会社での役割</div>
+    <div class="modal-a">たまに組立ライン内で作業もしますが、メインの仕事はピッキング作業を行いながらライン全体の管理をしています。不具合など様々な問題が発生した時の対応や従業員・新人の教育も行っています。<br>また、毎年新しい車種が販売されるので、各ポジションの仕事の割振りを考えます。組立て後に皆にヒアリングをして仕事量の調整を行います。それぞれの意見を尊重しながら調整し、納得してもらう作業がとても大変ですがやりがいがあります。</div>
+
+    <div class="modal-q">一 自分が新人の時に苦労したこと。</div>
+    <div class="modal-a">リーマンショックの影響がまだ残っていて、なかなか就職先が見つからなかった。だからイズミ電商に入社できた時は本当にうれしかったです。<br>初めての正社員だから、覚えることも多くて大変ですし8時間も働く事も初体験！最初は体を慣らすことに苦労しました。</div>
+
+    <div class="modal-q">一 新しく加わる仲間へのメッセージ</div>
+    <div class="modal-a">新しい仕事をする時は、職種関係なく心身ともに疲れると思います。しかし、イズミ電商は優しい先輩ばかりなのですぐに仲良くなり打ち解けられるはず。<br>組立作業も頭で理解し体が勝手に覚えるまで懇切丁寧に指導いたします。発想力や考える力も身につくと思うので、共に頑張り共に成長しましょう！</div>
+
+    <button class="modal-close-btn" onclick="closeNoguchiModal()">× 閉じる</button>
+  </div>
+</div>
+<!-- 岡モーダル -->
+<div id="okaModal" class="modal-overlay" onclick="if(event.target===this)closeOkaModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOkaModal()">×</button>
+    <div class="modal-role">サブリーダー</div>
+    <div class="modal-name">岡 浩之</div>
+
+    <div class="modal-q">一 あなたの仕事内容を教えてください。</div>
+    <div class="modal-a">主に検査ポジションを担当しています。皆が組み立てた車体に組付けミスや調整ミスがないか等のチェックを1台1台行っています。<br>またサブリーダーとして組立ての技術指導も行ってます。入社するまで全く自転車を触った事がなかった人でも一から丁寧に教えます。実際に自転車整備士試験に合格した人も何人もいますよ。</div>
+
+    <div class="modal-q">一 組立て作業以外にすることはありますか？</div>
+    <div class="modal-a">「安全」・「品質」・「生産」とチームにわかれて社内の改善活動を行っています。それぞれのメンバーが自分自身で問題点を見つけて改善を行うので自分で考えて行動する力が付くと思います。<br>大きなミスや問題があった場合も個人を責めるのではなく、チームで対策を考えて改善したり仕組みを変えたりします。</div>
+
+    <div class="modal-q">一 職場の雰囲気を教えてください</div>
+    <div class="modal-a">20代から50代まで様々な年齢層の社員がいます。前職が工場だったり自転車販売店だったり自動車整備士だったりいろいろな職種を経験してきてる人がいます。<br>また社員は全員で12名と少人数なので自分の意見や提案が上に届きやすいです。キャリアアップも年功序列ではないので頑張り次第で誰でも上にいけるチャンスがあります。</div>
+
+    <div class="modal-q">一 休日の過ごし方は？</div>
+    <div class="modal-a">釣りに行ったりドライブしたりしています。あとはお酒が好きな社員と飲みにいったりもしますね。ときどき社長もお誘いして連れて行ってもらうこともありますよ。<br>そしてGWや夏季休暇は毎年10連休近くあるので、旅行に行ったり心身ともにかなりリフレッシュできます。</div>
+
+    <button class="modal-close-btn" onclick="closeOkaModal()">× 閉じる</button>
+  </div>
+</div>
+<script>
+function openNoguchiModal(){ document.getElementById('noguchiModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeNoguchiModal(){ document.getElementById('noguchiModal').classList.remove('open'); document.body.style.overflow=''; }
+function openOkaModal(){ document.getElementById('okaModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeOkaModal(){ document.getElementById('okaModal').classList.remove('open'); document.body.style.overflow=''; }
+</script>
 </body>
 </html>
