@@ -3,519 +3,682 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>案B｜ものづくり誇り型 — イズミ電商株式会社</title>
+<title>採用情報 — イズミ電商株式会社</title>
 <style>
-
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Noto Sans JP', sans-serif; color: #333; background: #fff; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff; }
 
-/* ケース切替バー */
-.case-switcher { background: #0f172a; padding: 0 24px; display: flex; align-items: center; height: 44px; gap: 6px; position: sticky; top: 0; z-index: 300; }
-.cs-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .1em; margin-right: 8px; white-space: nowrap; }
-.cs-link { font-size: 12px; font-weight: 700; letter-spacing: .06em; padding: 5px 14px; border-radius: 3px; text-decoration: none; color: rgba(255,255,255,.4); background: rgba(255,255,255,.06); white-space: nowrap; }
-.cs-link.active { color: white; }
-.cs-link.a.active { background: #1c3a6e; }
-.cs-link.b.active { background: #1e5c3a; }
-.cs-link.c.active { background: #3a3a3a; }
-.cs-meta { margin-left: auto; font-size: 11px; color: rgba(255,255,255,.25); white-space: nowrap; }
-
-/* NAV（現サイト忠実再現）*/
-.site-nav { background: white; border-bottom: 1px solid #e8eaed; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 68px; position: sticky; top: 44px; z-index: 200; }
+/* ─── NAV ─── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 72px;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
 .nav-logo { display: flex; flex-direction: column; }
-.nav-logo-main { font-size: 15px; font-weight: 900; color: #1c3a6e; letter-spacing: .04em; line-height: 1; }
-.nav-logo-sub { font-size: 9px; color: #888; letter-spacing: .14em; margin-top: 3px; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 13px; color: #444; text-decoration: none; letter-spacing: .04em; }
+.nav-logo-main { font-size: 14px; font-weight: 900; color: #1c3a6e; letter-spacing: .04em; }
+.nav-logo-sub  { font-size: 9px; color: #aaa; letter-spacing: .14em; margin-top: 2px; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-size: 12px; color: #444; text-decoration: none; letter-spacing: .04em; }
 .nav-links a:hover { color: #1c3a6e; }
-.nav-entry { background: #1c3a6e; color: white; font-size: 12px; font-weight: 700; padding: 10px 22px; letter-spacing: .06em; text-decoration: none; }
+.nav-cta { background: #1c3a6e; color: white; font-size: 12px; font-weight: 700; padding: 10px 24px; text-decoration: none; letter-spacing: .06em; }
 
-/* HERO */
-.hero { position: relative; height: 560px; overflow: hidden; background: #1c3a6e; }
-.hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.65); }
-.hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 60px; }
-.hero-en { font-size: 11px; font-weight: 700; letter-spacing: .22em; color: rgba(255,255,255,.65); text-transform: uppercase; margin-bottom: 14px; }
-.hero-copy { font-size: 38px; font-weight: 900; color: white; line-height: 1.45; }
-.hero-sub { font-size: 14px; color: rgba(255,255,255,.75); margin-top: 14px; line-height: 1.9; }
-.hero-ctas { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
-.hero-btn-main { background: #1c3a6e; color: white; font-size: 14px; font-weight: 700; padding: 14px 36px; letter-spacing: .06em; border: none; cursor: pointer; font-family: inherit; }
-.hero-btn-sub { background: transparent; color: white; font-size: 13px; font-weight: 700; padding: 12px 24px; border: 1px solid rgba(255,255,255,.5); cursor: pointer; font-family: inherit; }
+/* ─── HERO（フルスクリーン） ─── */
+.hero {
+  height: 100vh; min-height: 600px;
+  background: #1c3a6e;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 72px 80px;
+  position: relative; overflow: hidden;
+}
+/* 背景装飾円 */
+.hero::before {
+  content: ''; position: absolute;
+  top: -120px; right: -120px;
+  width: 560px; height: 560px; border-radius: 50%;
+  background: rgba(255,255,255,.04);
+}
+.hero::after {
+  content: ''; position: absolute;
+  bottom: -80px; left: 60%;
+  width: 340px; height: 340px; border-radius: 50%;
+  background: rgba(255,255,255,.03);
+}
+/* スライドバー（視覚的演出） */
+.hero-slides {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: stretch;
+}
+.hero-slide {
+  flex: 1; opacity: 0; transition: opacity 1.2s;
+  display: flex; align-items: flex-end; padding: 0 24px 80px;
+}
+.hero-slide.active { opacity: 1; }
+.slide-1 { background: linear-gradient(160deg, #0f2447 0%, #1c3a6e 60%, #2d5ba3 100%); }
+.slide-2 { background: linear-gradient(160deg, #1a3356 0%, #243f6e 60%, #1c5ba3 100%); }
+.hero-content { position: relative; z-index: 2; }
+.hero-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: rgba(255,255,255,.4); text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-copy {
+  font-size: 52px; font-weight: 900; color: white; line-height: 1.3;
+  margin-bottom: 24px;
+}
+.hero-sub {
+  font-size: 15px; color: rgba(255,255,255,.6);
+  line-height: 2; max-width: 480px; margin-bottom: 40px;
+}
+.hero-btns { display: flex; gap: 16px; }
+.hero-btn-main {
+  background: white; color: #1c3a6e;
+  font-size: 13px; font-weight: 900; padding: 14px 40px;
+  border: none; cursor: pointer; font-family: inherit; letter-spacing: .06em;
+}
+.hero-btn-sub {
+  background: transparent; color: white;
+  font-size: 13px; font-weight: 700; padding: 12px 28px;
+  border: 1px solid rgba(255,255,255,.35); cursor: pointer; font-family: inherit;
+}
+/* スクロール矢印 */
+.hero-scroll {
+  position: absolute; bottom: 32px; right: 48px; z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.hero-scroll span { font-size: 9px; letter-spacing: .2em; color: rgba(255,255,255,.35); text-transform: uppercase; }
+.hero-scroll-line {
+  width: 1px; height: 48px; background: rgba(255,255,255,.2);
+  position: relative; overflow: hidden;
+}
+.hero-scroll-line::after {
+  content: ''; position: absolute; top: -100%; left: 0; right: 0; height: 100%;
+  background: white; animation: scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine { 0%{top:-100%} 100%{top:100%} }
 
-/* セクション共通 */
-.section { padding: 80px 40px; }
-.section.alt { background: #f5f7fa; }
-.section.dark { background: #1c3a6e; }
-.sec-head { text-align: center; margin-bottom: 52px; }
-.sec-en { font-size: 38px; font-weight: 700; color: #2d5ba3; letter-spacing: .12em; text-transform: uppercase; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1; }
-.sec-en.white { color: white; }
-.sec-ja { font-size: 14px; color: #555; letter-spacing: .1em; margin-top: 8px; font-weight: 500; }
-.sec-ja.white { color: rgba(255,255,255,.6); }
-.sec-divider { width: 32px; height: 3px; background: #2d5ba3; margin: 14px auto 0; }
-.sec-divider.white { background: rgba(255,255,255,.4); }
-
-/* NUMBERS帯 */
-.nums-bar { background: #1c3a6e; display: grid; grid-template-columns: repeat(4, 1fr); }
-.num-item { padding: 32px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
-.num-item:last-child { border: none; }
-.num-val { font-size: 42px; font-weight: 900; color: white; line-height: 1; }
-.num-val small { font-size: 18px; }
-.num-lbl { font-size: 12px; color: rgba(255,255,255,.55); margin-top: 8px; line-height: 1.6; letter-spacing: .04em; }
-
-/* 出張整体バナー */
-.sekkei-bar { background: #f0f4ff; border-left: 5px solid #2d5ba3; margin: 0 40px 0; padding: 22px 28px; display: flex; align-items: center; gap: 20px; }
-.sekkei-bar.case-b { background: #f0fdf4; border-color: #16a34a; }
-.sekkei-bar.case-c { background: #f5f5f5; border-color: #555; }
-.sk-badge { background: #2d5ba3; color: white; font-size: 10px; font-weight: 900; letter-spacing: .12em; padding: 5px 12px; white-space: nowrap; }
-.sk-badge.b { background: #16a34a; }
-.sk-badge.c { background: #555; }
-.sk-title { font-size: 18px; font-weight: 900; color: #1c3a6e; }
-.sk-title.b { color: #14532d; }
-.sk-title.c { color: #1c1c1c; }
-.sk-text { font-size: 13px; color: #555; line-height: 1.7; }
-.sk-pill { margin-left: auto; background: #1c3a6e; color: white; font-size: 11px; font-weight: 900; padding: 8px 20px; white-space: nowrap; }
-.sk-pill.b { background: #16a34a; }
-.sk-pill.c { background: #555; }
-
-/* ABOUT */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; max-width: 1000px; margin: 0 auto; }
-.about-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-.about-body h2 { font-size: 22px; font-weight: 900; color: #1c3a6e; line-height: 1.5; margin-bottom: 18px; }
-.about-body p { font-size: 14px; line-height: 2; color: #444; margin-bottom: 14px; }
-.about-stats { display: flex; gap: 28px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
-.about-stat-val { font-size: 24px; font-weight: 900; color: #1c3a6e; }
-.about-stat-lbl { font-size: 11px; color: #888; margin-top: 3px; }
-
-/* 沿革 */
-.history-table { max-width: 760px; margin: 0 auto; }
-.history-row { display: grid; grid-template-columns: 100px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid #e8eaed; }
-.history-row:first-child { border-top: 1px solid #e8eaed; }
-.history-year { font-size: 16px; font-weight: 900; color: #1c3a6e; }
-.history-text { font-size: 14px; line-height: 1.85; color: #444; }
-
-/* CAREER PATH (案A) */
-.career-flow { display: flex; align-items: flex-start; gap: 0; max-width: 900px; margin: 0 auto; }
-.career-step-item { flex: 1; }
-.csi-inner { border-top: 3px solid #2d5ba3; padding: 16px 16px 0; }
-.csi-yr { font-size: 11px; font-weight: 700; color: #2d5ba3; margin-bottom: 6px; }
-.csi-ttl { font-size: 15px; font-weight: 900; color: #1c3a6e; margin-bottom: 8px; }
-.csi-desc { font-size: 13px; color: #555; line-height: 1.75; }
-.career-arrow { padding-top: 20px; color: #ccc; font-size: 20px; flex-shrink: 0; padding-left: 4px; padding-right: 4px; }
-
-/* STORY (案B) */
-.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 960px; margin: 0 auto; }
-.story-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-.story-body .st-label { font-size: 11px; font-weight: 700; letter-spacing: .18em; color: #16a34a; text-transform: uppercase; margin-bottom: 10px; }
-.story-body h2 { font-size: 24px; font-weight: 900; color: #1e4d2e; line-height: 1.5; margin-bottom: 16px; }
-.story-body p { font-size: 14px; line-height: 2; color: #444; margin-bottom: 12px; }
-.story-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.story-pill { font-size: 12px; font-weight: 700; padding: 5px 14px; background: #dbeafe; color: #1c3a6e; border-radius: 20px; }
-
-/* PHILOSOPHY (案C) */
-.philosophy-inner { max-width: 760px; margin: 0 auto; text-align: center; }
-.phil-quote-text { font-size: 26px; font-weight: 900; color: white; line-height: 1.7; margin-bottom: 8px; }
-.phil-quote-src { font-size: 13px; color: rgba(255,255,255,.45); }
-.phil-points-row { display: flex; gap: 40px; margin-top: 52px; justify-content: center; }
-.pp { flex: 1; max-width: 200px; text-align: left; }
-.pp-num { font-size: 48px; font-weight: 900; color: rgba(255,255,255,.12); line-height: 1; margin-bottom: 8px; }
-.pp-title { font-size: 16px; font-weight: 900; color: white; margin-bottom: 8px; }
-.pp-text { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.8; }
-
-/* MESSAGE */
-.message-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1000px; margin: 0 auto; }
-.msg-card { background: white; }
-.msg-card-photo { width: 100%; aspect-ratio: 3/2; object-fit: cover; object-position: top; }
-.msg-card-body { padding: 20px; }
-.msg-card-role { font-size: 11px; color: #888; letter-spacing: .06em; margin-bottom: 4px; }
-.msg-card-name { font-size: 17px; font-weight: 900; color: #1c3a6e; margin-bottom: 14px; }
-.msg-qa { margin-bottom: 12px; }
-.msg-q { font-size: 12px; font-weight: 700; color: #2d5ba3; border-left: 3px solid #2d5ba3; padding-left: 8px; margin-bottom: 6px; line-height: 1.5; }
-.msg-a { font-size: 13px; color: #444; line-height: 1.85; }
-/* 案B green */
-.msg-q.green { color: #16a34a; border-color: #16a34a; }
-/* 案C gray */
-.msg-q.gray { color: #555; border-color: #888; }
-
-/* 職場環境 (案C) */
-.env-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; }
-.env-card { background: white; padding: 24px; border: 1px solid #e5e7eb; }
-.env-card-title { font-size: 15px; font-weight: 900; color: #1c1c1c; margin-bottom: 8px; border-left: 3px solid #888; padding-left: 10px; }
-.env-card-text { font-size: 13px; color: #555; line-height: 1.8; }
-
-/* スキル (案A) */
-.skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; }
-.skill-card { background: white; padding: 24px; border-top: 3px solid #2d5ba3; }
-.skill-card-title { font-size: 15px; font-weight: 900; color: #1c3a6e; margin-bottom: 8px; }
-.skill-card-text { font-size: 13px; color: #555; line-height: 1.8; }
-
-/* RECRUIT */
-.recruit-inner { max-width: 900px; margin: 0 auto; }
-.recruit-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.recruit-table tr { border-bottom: 1px solid #e8eaed; }
-.recruit-table tr:first-child { border-top: 1px solid #e8eaed; }
-.recruit-table td { padding: 18px 16px; vertical-align: top; line-height: 1.9; color: #444; }
-.recruit-table td:first-child { width: 140px; font-weight: 700; color: #1c3a6e; white-space: nowrap; font-size: 13px; vertical-align: top; }
-.recruit-hl { font-weight: 700; color: #1c3a6e; }
-
-/* ACCESS */
-.access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; max-width: 900px; margin: 0 auto; }
-.access-map-ph { width: 100%; height: 260px; background: #e0e4eb; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #888; }
-.access-info h3 { font-size: 16px; font-weight: 900; color: #1c3a6e; margin-bottom: 14px; }
-.access-info p { font-size: 14px; line-height: 2; color: #444; }
-
-/* GALLERY */
-.gallery-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 4px; max-width: 960px; margin: 0 auto; }
-.gallery-main { aspect-ratio: 4/3; overflow: hidden; }
-.gallery-main img { width: 100%; height: 100%; object-fit: cover; }
-.gallery-thumbs { display: grid; grid-template-rows: repeat(3, 1fr); gap: 4px; }
-.gallery-thumb { overflow: hidden; }
-.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* ENTRY */
-.entry-section { background: #1c3a6e; padding: 72px 40px; text-align: center; }
-.entry-en { font-size: 38px; font-weight: 700; color: white; letter-spacing: .12em; font-family: 'Helvetica Neue', Arial, sans-serif; }
-.entry-ja { font-size: 14px; color: rgba(255,255,255,.5); letter-spacing: .1em; margin-top: 6px; }
-.entry-divider { width: 32px; height: 3px; background: rgba(255,255,255,.3); margin: 16px auto; }
-.entry-copy { font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.9; margin-bottom: 36px; }
-.entry-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.entry-btn-main { background: white; color: #1c3a6e; font-size: 15px; font-weight: 900; padding: 16px 48px; border: none; cursor: pointer; font-family: inherit; letter-spacing: .04em; }
-.entry-btn-line { background: #06C755; color: white; font-size: 14px; font-weight: 700; padding: 14px 32px; border: none; cursor: pointer; font-family: inherit; }
-.entry-btn-tel { background: transparent; color: white; font-size: 14px; font-weight: 700; padding: 14px 28px; border: 1px solid rgba(255,255,255,.4); cursor: pointer; font-family: inherit; }
-
-/* ENTRY fixed button */
-.fixed-entry { position: fixed; bottom: 0; right: 0; background: #1c3a6e; color: white; text-align: center; padding: 12px 20px; text-decoration: none; z-index: 500; }
-.fixed-entry-en { font-size: 16px; font-weight: 900; letter-spacing: .1em; display: block; font-family: 'Helvetica Neue', Arial, sans-serif; }
-.fixed-entry-ja { font-size: 10px; display: block; opacity: .7; letter-spacing: .06em; }
-
-/* FOOTER */
-.site-footer { background: #111; color: rgba(255,255,255,.4); text-align: center; padding: 24px; font-size: 12px; }
-
-/* MOBILE */
-@media (max-width: 640px) {
-  .case-switcher { height: auto; padding: 8px 12px; flex-wrap: wrap; }
-  .cs-link { font-size: 11px; padding: 4px 10px; }
-  .cs-meta { display: none; }
-  .site-nav { padding: 0 16px; height: 56px; top: auto; position: relative; }
-  .nav-links { display: none; }
-  .nav-entry { font-size: 11px; padding: 8px 14px; }
-  .hero { height: 380px; }
-  .hero-overlay { padding: 0 20px 28px; }
-  .hero-copy { font-size: 22px; }
-  .hero-sub { font-size: 13px; display: none; }
-  .hero-btn-main { font-size: 13px; padding: 12px 24px; }
-  .hero-btn-sub { display: none; }
-  .section { padding: 52px 20px; }
-  .sec-en { font-size: 26px; }
-  .nums-bar { grid-template-columns: 1fr 1fr; }
-  .num-item { padding: 20px 10px; border-bottom: 1px solid rgba(255,255,255,.1); }
-  .sekkei-bar { margin: 0; flex-wrap: wrap; gap: 10px; }
-  .sk-pill { margin-left: 0; }
-  .about-grid { grid-template-columns: 1fr; }
-  .career-flow { flex-direction: column; }
-  .career-arrow { transform: rotate(90deg); padding: 0 0 0 8px; }
-  .story-grid { grid-template-columns: 1fr; }
-  .message-grid { grid-template-columns: 1fr; }
-  .skill-grid { grid-template-columns: 1fr; }
-  .env-grid { grid-template-columns: 1fr; }
-  .phil-points-row { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .access-grid { grid-template-columns: 1fr; }
-  .gallery-layout { grid-template-columns: 1fr; }
-  .gallery-thumbs { grid-template-rows: none; grid-template-columns: repeat(3, 1fr); }
-  .entry-btn-main { padding: 14px 28px; font-size: 14px; width: 100%; }
-  .entry-btn-line { width: 100%; }
-  .entry-btn-tel { width: 100%; }
+/* ─── BRAND STATEMENT ─── */
+.brand-stmt {
+  background: #111; padding: 100px 72px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.bs-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: rgba(255,255,255,.3); text-transform: uppercase; margin-bottom: 24px;
+}
+.bs-title {
+  font-size: 40px; font-weight: 900; color: white; line-height: 1.5;
+}
+.bs-title em { font-style: normal; color: rgba(255,255,255,.35); }
+.bs-body { font-size: 14px; color: rgba(255,255,255,.5); line-height: 2.2; }
+.bs-body p { margin-bottom: 16px; }
+.bs-link {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 28px; font-size: 12px; font-weight: 700;
+  letter-spacing: .12em; color: white; text-decoration: none; text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 6px;
 }
 
+/* ─── 3カードグリッド ─── */
+.card-section { padding: 100px 72px; background: #f8f9fb; }
+.card-head { text-align: center; margin-bottom: 60px; }
+.card-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.card-head-title { font-size: 28px; font-weight: 900; color: #1c3a6e; }
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.card-item {
+  background: white; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow .3s;
+}
+.card-item:hover { box-shadow: 0 8px 40px rgba(28,58,110,.12); }
+.card-item-top {
+  height: 200px; background: #1c3a6e;
+  display: flex; align-items: flex-end; padding: 24px;
+  position: relative; overflow: hidden;
+}
+.card-item:nth-child(2) .card-item-top { background: #2d5ba3; }
+.card-item:nth-child(3) .card-item-top { background: #1a4d7a; }
+.card-item-top::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.card-num {
+  position: absolute; top: 20px; left: 24px;
+  font-size: 56px; font-weight: 900; color: rgba(255,255,255,.08);
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1;
+}
+.card-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .2em;
+  color: rgba(255,255,255,.45); text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+.card-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+.card-title { font-size: 18px; font-weight: 900; color: #1c3a6e; margin-bottom: 12px; }
+.card-text { font-size: 13px; color: #555; line-height: 1.9; flex: 1; }
+.card-more {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 20px; font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; color: #2d5ba3; text-transform: uppercase; text-decoration: none;
+  border-bottom: 1px solid #c8d8f0; padding-bottom: 4px; width: fit-content;
+}
 
+/* ─── 働く魅力リスト ─── */
+.appeal-section { padding: 100px 72px; }
+.appeal-inner { max-width: 900px; margin: 0 auto; }
+.appeal-head { margin-bottom: 56px; }
+.appeal-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.appeal-head-title { font-size: 28px; font-weight: 900; color: #1c3a6e; }
+.appeal-list { display: flex; flex-direction: column; }
+.appeal-item {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 0; padding: 32px 0; border-bottom: 1px solid #e8eaed;
+  align-items: start;
+}
+.appeal-item:first-child { border-top: 1px solid #e8eaed; }
+.appeal-num {
+  font-size: 40px; font-weight: 900; color: #e8edf5; line-height: 1;
+  font-family: 'Helvetica Neue', Arial, sans-serif; padding-top: 4px;
+}
+.appeal-body {}
+.appeal-title { font-size: 17px; font-weight: 900; color: #1c3a6e; margin-bottom: 8px; }
+.appeal-text { font-size: 13px; color: #555; line-height: 1.9; }
+.appeal-tag {
+  display: inline-block; margin-top: 10px;
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  background: #eef2fa; color: #2d5ba3; padding: 4px 12px;
+}
 
+/* ─── NUMBERS 帯 ─── */
+.nums-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: #1c3a6e; }
+.num-item { padding: 40px 24px; text-align: center; border-right: 1px solid rgba(255,255,255,.08); }
+.num-item:last-child { border: none; }
+.num-val {
+  font-size: 48px; font-weight: 900; color: white; line-height: 1;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.num-val small { font-size: 20px; }
+.num-lbl { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 10px; line-height: 1.6; letter-spacing: .04em; }
 
-.sec-en.green { color: #16a34a; }
-.sec-divider.green { background: #16a34a; }
-.recruit-hl { color: #14532d; }
+/* ─── 出張整体バナー ─── */
+.sekkei-wrap { padding: 0 72px; }
+.sekkei-bar {
+  background: #eef2fa; border-left: 5px solid #1c3a6e;
+  padding: 28px 36px; display: flex; align-items: center; gap: 24px;
+}
+.sk-badge {
+  background: #1c3a6e; color: white; font-size: 10px; font-weight: 900;
+  letter-spacing: .1em; padding: 6px 16px; white-space: nowrap;
+}
+.sk-body { flex: 1; }
+.sk-title { font-size: 18px; font-weight: 900; color: #1c3a6e; margin-bottom: 4px; }
+.sk-text { font-size: 13px; color: #555; line-height: 1.7; }
+.sk-pill {
+  background: #1c3a6e; color: white; font-size: 11px; font-weight: 900;
+  padding: 12px 24px; white-space: nowrap; flex-shrink: 0;
+}
 
+/* ─── インタビュー ─── */
+.interview-section { padding: 100px 72px; background: #f8f9fb; }
+.interview-head { margin-bottom: 56px; }
+.interview-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.interview-head-title { font-size: 28px; font-weight: 900; color: #1c3a6e; }
+.interview-head-sub { font-size: 14px; color: #888; margin-top: 10px; line-height: 1.8; }
+.iv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.iv-card { background: white; }
+.iv-card-top { background: #1c3a6e; padding: 28px; }
+.iv-card:nth-child(2) .iv-card-top { background: #2d5ba3; }
+.iv-card:nth-child(3) .iv-card-top { background: #1a4d7a; }
+.iv-role { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .08em; margin-bottom: 6px; }
+.iv-name { font-size: 22px; font-weight: 900; color: white; margin-bottom: 4px; }
+.iv-meta { font-size: 11px; color: rgba(255,255,255,.4); }
+.iv-body { padding: 24px; }
+.iv-q {
+  font-size: 12px; font-weight: 700; color: #2d5ba3;
+  border-left: 3px solid #2d5ba3; padding-left: 10px;
+  margin-bottom: 8px; line-height: 1.5;
+}
+.iv-a { font-size: 13px; color: #444; line-height: 1.9; margin-bottom: 20px; }
+
+/* ─── 募集要項 ─── */
+.recruit-section { padding: 100px 72px; }
+.recruit-head { margin-bottom: 56px; }
+.recruit-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.recruit-head-title { font-size: 28px; font-weight: 900; color: #1c3a6e; }
+.recruit-table { width: 100%; border-collapse: collapse; font-size: 14px; max-width: 900px; }
+.recruit-table tr { border-bottom: 1px solid #e8eaed; }
+.recruit-table tr:first-child { border-top: 1px solid #e8eaed; }
+.recruit-table td { padding: 20px 16px; vertical-align: top; line-height: 1.9; color: #444; }
+.recruit-table td:first-child {
+  width: 150px; font-weight: 700; color: #1c3a6e;
+  font-size: 12px; letter-spacing: .04em; white-space: nowrap;
+}
+.hl { font-weight: 700; color: #1c3a6e; }
+
+/* ─── ACCESS ─── */
+.access-section { padding: 100px 72px; background: #f8f9fb; }
+.access-head { margin-bottom: 48px; }
+.access-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.access-head-title { font-size: 28px; font-weight: 900; color: #1c3a6e; }
+.access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.access-map {
+  width: 100%; height: 280px; background: #dde3ed;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: #888;
+}
+.access-info h3 { font-size: 16px; font-weight: 900; color: #1c3a6e; margin-bottom: 16px; }
+.access-info p { font-size: 14px; line-height: 2.1; color: #444; }
+
+/* ─── ENTRY CTA（フルバンド） ─── */
+.entry-section {
+  background: #1c3a6e; padding: 100px 72px;
+  display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center;
+}
+.entry-left {}
+.entry-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: rgba(255,255,255,.35); text-transform: uppercase; margin-bottom: 16px;
+}
+.entry-title { font-size: 34px; font-weight: 900; color: white; line-height: 1.4; margin-bottom: 16px; }
+.entry-sub { font-size: 14px; color: rgba(255,255,255,.55); line-height: 2; }
+.entry-right { display: flex; flex-direction: column; gap: 12px; }
+.entry-btn-main {
+  background: white; color: #1c3a6e;
+  font-size: 14px; font-weight: 900; padding: 18px 48px;
+  border: none; cursor: pointer; font-family: inherit;
+  letter-spacing: .04em; white-space: nowrap;
+}
+.entry-btn-line {
+  background: #06C755; color: white;
+  font-size: 13px; font-weight: 700; padding: 14px 32px;
+  border: none; cursor: pointer; font-family: inherit; white-space: nowrap;
+}
+.entry-btn-tel {
+  background: transparent; color: rgba(255,255,255,.7);
+  font-size: 13px; font-weight: 700; padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,.3); cursor: pointer; font-family: inherit; white-space: nowrap;
+}
+
+/* ─── FOOTER ─── */
+.site-footer { background: #0a0a0a; padding: 60px 72px 32px; }
+.footer-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; margin-bottom: 48px; }
+.footer-logo-main { font-size: 14px; font-weight: 900; color: white; letter-spacing: .04em; margin-bottom: 4px; }
+.footer-logo-sub { font-size: 9px; color: rgba(255,255,255,.3); letter-spacing: .14em; }
+.footer-logo-desc { font-size: 12px; color: rgba(255,255,255,.35); line-height: 1.9; margin-top: 16px; }
+.footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 32px; }
+.footer-link { font-size: 12px; color: rgba(255,255,255,.4); text-decoration: none; line-height: 2.2; }
+.footer-link:hover { color: rgba(255,255,255,.8); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.25); }
+.footer-sub-links { display: flex; gap: 24px; }
+.footer-sub-link { font-size: 11px; color: rgba(255,255,255,.25); text-decoration: none; }
+
+/* fixed entry */
+.fixed-entry {
+  position: fixed; bottom: 0; right: 0;
+  background: #1c3a6e; color: white;
+  text-align: center; padding: 14px 22px;
+  text-decoration: none; z-index: 600;
+}
+.fixed-entry-en { font-size: 15px; font-weight: 900; letter-spacing: .1em; display: block; }
+.fixed-entry-ja { font-size: 9px; display: block; opacity: .6; margin-top: 2px; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .site-nav { padding: 0 20px; height: 60px; }
+  .nav-links { display: none; }
+  .hero { padding: 0 24px 60px; }
+  .hero-copy { font-size: 30px; }
+  .hero-sub { font-size: 13px; }
+  .hero-btn-sub { display: none; }
+  .brand-stmt { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+  .bs-title { font-size: 26px; }
+  .card-section, .appeal-section, .interview-section,
+  .recruit-section, .access-section { padding: 60px 24px; }
+  .card-grid { grid-template-columns: 1fr; gap: 2px; }
+  .nums-bar { grid-template-columns: 1fr 1fr; }
+  .num-item { padding: 24px 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .sekkei-wrap { padding: 0 24px; }
+  .sekkei-bar { flex-wrap: wrap; gap: 14px; }
+  .sk-pill { width: 100%; text-align: center; }
+  .iv-grid { grid-template-columns: 1fr; }
+  .access-grid { grid-template-columns: 1fr; }
+  .entry-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+  .entry-btn-main, .entry-btn-line, .entry-btn-tel { width: 100%; }
+  .site-footer { padding: 48px 24px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
 </style>
 </head>
 <body>
-<div class="case-switcher">
-  <span class="cs-label">提案案</span>
-  <a href="design-a.html" class="cs-link a ">案A｜成長・キャリア型</a>
-  <a href="design-b.html" class="cs-link b active">案B｜ものづくり誇り型</a>
-  <a href="design-c.html" class="cs-link c ">案C｜職人静謐型</a>
-  <span class="cs-meta">2026.06.29 打ち合わせ資料</span>
-</div><nav class="site-nav">
+
+<!-- NAV -->
+<nav class="site-nav">
   <div class="nav-logo">
-    <span class="nav-logo-main">イズミ電商株式会社</span>
-    <span class="nav-logo-sub">IZUMI DENSHO Co.,Ltd</span>
+    <div class="nav-logo-main">イズミ電商株式会社</div>
+    <div class="nav-logo-sub">IZUMI DENSHO Co.,Ltd</div>
   </div>
-  <div class="nav-links"><a href="#">私たちのものづくり</a><a href="#">数字で見る</a><a href="#">スタッフの声</a><a href="#">募集要項</a><a href="#">アクセス</a></div>
-  <a href="#entry" class="nav-entry" style="background:#1c3a6e">応募する・話を聞く</a>
+  <div class="nav-links">
+    <a href="#about">会社について</a>
+    <a href="#features">働く魅力</a>
+    <a href="#interview">社員の声</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#access">アクセス</a>
+  </div>
+  <a href="#entry" class="nav-cta">応募する</a>
 </nav>
+
+<!-- HERO -->
 <section class="hero">
-  
-  <div class="hero-overlay">
-    <div class="hero-en">MADE IN KASHIWARA, OSAKA — PANASONIC PARTNER</div>
-    <div class="hero-copy">日本の街を走る自転車を、<br>柏原から作っている。</div>
-    <div class="hero-sub">あなたが組み立てた一台が、誰かの通勤を支え、誰かの子どもを乗せて走っている。<br>それを知っているのは、ここで働く人だけ。</div>
-    <div class="hero-ctas">
-      <button class="hero-btn-main" style="background:#1c3a6e">この仕事について詳しく見る</button>
-      <button class="hero-btn-sub">LINEで気軽に聞く</button>
+  <div class="hero-content">
+    <div class="hero-label">Recruit — Izumi Electronic Trading Co.,Ltd</div>
+    <h1 class="hero-copy">自転車組立の<br>プロフェッショナルとして<br>「活躍しませんか」</h1>
+    <p class="hero-sub">パナソニックの工場で、日本中を走る電動アシスト自転車をつくる。<br>柏原から、40年。未経験から、プロへ。</p>
+    <div class="hero-btns">
+      <button class="hero-btn-main" onclick="document.querySelector('#entry').scrollIntoView({behavior:'smooth'})">応募する・話を聞く</button>
+      <button class="hero-btn-sub" onclick="document.querySelector('#recruit').scrollIntoView({behavior:'smooth'})">募集要項を見る</button>
     </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
   </div>
 </section>
 
-<section class="section">
-  <div class="sec-head">
-    <div class="sec-en">OUR STORY</div>
-    <div class="sec-ja">この一台は、誰かの日常を動かしている</div>
-    <div class="sec-divider"></div>
-  </div>
-  <div class="story-grid">
-    
-    <div class="story-body">
-      <div class="st-label" style="color:#2d5ba3">OUR STORY</div>
-      <h2>日本中を走る自転車が、<br>柏原から生まれている</h2>
-      <p>イズミ電商が手がけるのは、パナソニックブランドの電動アシスト自転車。全国のホームセンター・自転車店に並ぶ製品の多くに、私たちの手が入っています。</p>
-      <p>組立から検査まで、一台ごとに丁寧に。大量生産の中でも手を抜かないのがイズミのやり方です。</p>
-      <div class="story-pills">
-        <div class="story-pill">パナソニック正規協力工場</div>
-        <div class="story-pill">柏原市・40年以上の実績</div>
-        <div class="story-pill">社内品質基準で管理</div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="nums-bar" style="background:#1c3a6e">
-  <div class="num-item"><div class="num-val">126<small>日</small></div><div class="num-lbl">年間休日（土日祝＋夏季・年末年始）</div></div>
-  <div class="num-item"><div class="num-val">40<small>年</small></div><div class="num-lbl">パナソニックグループとの取引実績</div></div>
-  <div class="num-item"><div class="num-val">年<small>2</small>回</div><div class="num-lbl">賞与支給（実績あり）</div></div>
-  <div class="num-item"><div class="num-val">月<small>22〜27万</small></div><div class="num-lbl">給与水準（経験・能力により優遇）</div></div>
-</div>
-
-<div class="sekkei-bar" style="margin:0">
-  <div class="sk-badge">他社にない福利厚生</div>
+<!-- BRAND STATEMENT -->
+<section id="about" class="brand-stmt">
   <div>
-    <div class="sk-title">出張整体 ── 月1回、無料</div>
-    <div class="sk-text">プロのセラピストが職場に来て、肩・腰・首をケア。社員全員が対象。製造業では珍しい、イズミだけの制度。</div>
+    <div class="bs-en">About Us</div>
+    <div class="bs-title">すべては、<br>「人」が<br>つくっている。<br><em>── 40年の実績がある。</em></div>
+    <a href="#features" class="bs-link">働く魅力を見る →</a>
   </div>
-  <div class="sk-pill">社員全員 無料</div>
+  <div class="bs-body">
+    <p>イズミ電商は1985年の創業以来、自転車製造一筋で歩んできた会社です。1998年からパナソニックサイクルテックとの取引が始まり、それから30年近く。日本中を走る電動アシスト自転車に、私たちの手が入っています。</p>
+    <p>「自己資本比率7割以上」という数字が示す通り、財務は非常に堅実です。大手に依存しながらも自立した経営を続けてきた。だからこそ、社員にしっかり還元できる。その循環を大切にしてきました。</p>
+    <p>未経験でも構いません。素直さと誠実さがあれば、必ず技術は身につきます。ここで長く働いてほしい。それが代表・船本の本音です。</p>
+  </div>
+</section>
+
+<!-- 3カードグリッド -->
+<section class="card-section">
+  <div class="card-head">
+    <div class="card-head-en">What We Offer</div>
+    <div class="card-head-title">イズミで働く、3つの軸</div>
+  </div>
+  <div class="card-grid">
+    <div class="card-item">
+      <div class="card-item-top">
+        <div class="card-num">01</div>
+        <div class="card-en">Craftsmanship</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">ものづくりの技術</div>
+        <div class="card-text">パナソニック規格の品質基準で自転車を組み立てる技術。検品・組立・仕上げの各工程を通じて、製造業のプロとして通用するスキルが身につきます。</div>
+        <a href="#recruit" class="card-more">詳しく見る →</a>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card-item-top">
+        <div class="card-num">02</div>
+        <div class="card-en">Work-Life Balance</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">働きやすい環境</div>
+        <div class="card-text">年間休日126日・完全週休2日・定時退社が基本。さらに月1回の出張整体（全額会社負担）で、身体のメンテナンスまで会社がサポートします。</div>
+        <a href="#features" class="card-more">詳しく見る →</a>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card-item-top">
+        <div class="card-num">03</div>
+        <div class="card-en">Stability</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">長く続けられる安定</div>
+        <div class="card-text">パナソニックとの30年以上の取引実績と、自己資本比率7割超の堅実経営。月給22〜27万円＋賞与年2回で、腰を据えて働ける環境を整えています。</div>
+        <a href="#recruit" class="card-more">詳しく見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 働く魅力リスト -->
+<section id="features" class="appeal-section">
+  <div class="appeal-inner">
+    <div class="appeal-head">
+      <div class="appeal-head-en">Advantages</div>
+      <div class="appeal-head-title">イズミで働く、5つの魅力</div>
+    </div>
+    <div class="appeal-list">
+      <div class="appeal-item">
+        <div class="appeal-num">01</div>
+        <div class="appeal-body">
+          <div class="appeal-title">パナソニック基準の技術が身につく</div>
+          <div class="appeal-text">大手メーカーの品質基準で、自転車組立・検査・ライン管理の技術を習得できます。全国どこでも通用するスキルです。</div>
+          <span class="appeal-tag">スキルアップ</span>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">02</div>
+        <div class="appeal-body">
+          <div class="appeal-title">年間休日126日。残業もほぼなし</div>
+          <div class="appeal-text">完全週休2日（土・日）＋祝日・GW・夏季・年末年始。8:25〜17:25の定時を守る文化。仕事以外の時間も大切にできます。</div>
+          <span class="appeal-tag">ワークライフバランス</span>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">03</div>
+        <div class="appeal-body">
+          <div class="appeal-title">月給22〜27万円。賞与年2回</div>
+          <div class="appeal-text">経験・能力を正当に評価する給与体制。33歳・経験7年で年収440万円の実績あり。みなし残業なし、残業代は全額支給。</div>
+          <span class="appeal-tag">給与・待遇</span>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">04</div>
+        <div class="appeal-body">
+          <div class="appeal-title">製造業で唯一：出張整体（月1回・無料）</div>
+          <div class="appeal-text">プロのセラピストが職場に来て、肩・腰・首をケア。全社員が対象で費用は全額会社負担。身体のメンテナンスも仕事のうち。</div>
+          <span class="appeal-tag">福利厚生</span>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">05</div>
+        <div class="appeal-body">
+          <div class="appeal-title">9名の少数精鋭。全員の顔が見える職場</div>
+          <div class="appeal-text">大きな組織にありがちな「人間関係の複雑さ」がない。困ったことはすぐ相談できる、フラットな職場環境です。</div>
+          <span class="appeal-tag">職場環境</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="nums-bar">
+  <div class="num-item">
+    <div class="num-val">126<small>日</small></div>
+    <div class="num-lbl">年間休日</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val">40<small>年</small></div>
+    <div class="num-lbl">パナソニックとの取引実績</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val">2<small>回</small></div>
+    <div class="num-lbl">賞与支給（年2回）</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val" style="font-size:32px;letter-spacing:-.01em">22〜27万</div>
+    <div class="num-lbl">月給水準（経験考慮）</div>
+  </div>
 </div>
 
-<section class="section alt">
-  <div class="sec-head">
-    <div class="sec-en">A DAY IN THE LIFE</div>
-    <div class="sec-ja">働く1日の流れ</div>
-    <div class="sec-divider"></div>
+<!-- 出張整体バナー -->
+<div class="sekkei-wrap" style="padding-top:0;padding-bottom:0">
+  <div class="sekkei-bar">
+    <div class="sk-badge">製造業で他社にない制度</div>
+    <div class="sk-body">
+      <div class="sk-title">出張整体 ── 月1回、無料</div>
+      <div class="sk-text">プロのセラピストが職場に来て、肩・腰・首をケア。社員全員が対象。</div>
+    </div>
+    <div class="sk-pill">社員全員 無料</div>
   </div>
-  <div class="timeline-wrap">
-    <!-- 時間軸ラベル -->
-    <div class="tl-axis">
-      <span class="tl-hour" style="left:0%">08:25</span>
-      <span class="tl-hour" style="left:2.78%">08:40</span>
-      <span class="tl-hour" style="left:40%">12:00</span>
-      <span class="tl-hour" style="left:51.11%">13:00</span>
-      <span class="tl-hour" style="left:100%">17:25</span>
-    </div>
-    <!-- バー本体 -->
-    <div class="tl-bar-row">
-      <!-- 08:25〜08:40 朝礼 15min / 540min = 2.78% -->
-      <div class="tl-seg tl-seg-morning" style="flex:15">
-        <span class="tl-seg-label">朝礼</span>
-      </div>
-      <!-- 08:40〜12:00 組立 200min = 37.04% -->
-      <div class="tl-seg tl-seg-work" style="flex:200">
-        <span class="tl-seg-label">組立作業</span>
-      </div>
-      <!-- 12:00〜13:00 昼休憩 60min = 11.11% -->
-      <div class="tl-seg tl-seg-break" style="flex:60">
-        <span class="tl-seg-label">昼休憩</span>
-      </div>
-      <!-- 13:00〜17:25 品質検査 265min = 49.07% -->
-      <div class="tl-seg tl-seg-check" style="flex:265">
-        <span class="tl-seg-label">品質検査</span>
-      </div>
-    </div>
-    <!-- 終了マーカー -->
-    <div class="tl-end-marker">
-      <span class="tl-end-badge">17:25 定時退社</span>
-      <span class="tl-end-sub">残業ほぼなし</span>
-    </div>
-    <!-- 詳細カード -->
-    <div class="tl-detail-row">
-      <div class="tl-detail" style="flex:15">
-        <div class="tl-d-title">朝礼・準備</div>
-        <div class="tl-d-text">ラインの確認と当日の生産計画を共有</div>
-      </div>
-      <div class="tl-detail" style="flex:200">
-        <div class="tl-d-title">組立作業</div>
-        <div class="tl-d-text">パナソニック規格に沿って、丁寧に一台ずつ</div>
-      </div>
-      <div class="tl-detail tl-detail-break" style="flex:60">
-        <div class="tl-d-title">昼休憩</div>
-        <div class="tl-d-text">1時間<br>リフレッシュ</div>
-      </div>
-      <div class="tl-detail" style="flex:265">
-        <div class="tl-d-title">品質検査</div>
-        <div class="tl-d-text">完成品の最終確認。自分の目でOKを出す。</div>
-      </div>
-    </div>
-  </div>
-  <style>
-  .timeline-wrap { max-width: 900px; margin: 0 auto; position: relative; padding-bottom: 20px; }
-  .tl-axis { position: relative; height: 28px; margin-bottom: 6px; }
-  .tl-hour { position: absolute; transform: translateX(-50%); font-size: 11px; font-weight: 700; color: #2d5ba3; letter-spacing: .04em; white-space: nowrap; }
-  .tl-hour:first-child { transform: translateX(0); }
-  .tl-hour:last-child { transform: translateX(-100%); }
-  .tl-bar-row { display: flex; height: 52px; border-radius: 4px; overflow: hidden; gap: 2px; }
-  .tl-seg { display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; transition: filter .2s; }
-  .tl-seg:hover { filter: brightness(1.08); }
-  .tl-seg-morning { background: #93c5fd; }
-  .tl-seg-work    { background: #1c3a6e; }
-  .tl-seg-break   { background: #e2e8f0; }
-  .tl-seg-check   { background: #2d5ba3; }
-  .tl-seg-label { font-size: 12px; font-weight: 900; color: white; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 6px; }
-  .tl-seg-morning .tl-seg-label { color: #1c3a6e; }
-  .tl-seg-break .tl-seg-label { color: #64748b; }
-  .tl-end-marker { display: flex; align-items: center; gap: 10px; margin-top: 10px; justify-content: flex-end; }
-  .tl-end-badge { background: #1c3a6e; color: white; font-size: 11px; font-weight: 900; padding: 4px 14px; letter-spacing: .06em; }
-  .tl-end-sub { font-size: 11px; color: #888; }
-  .tl-detail-row { display: flex; gap: 2px; margin-top: 16px; }
-  .tl-detail { padding: 12px 10px; border-top: 2px solid #1c3a6e; }
-  .tl-detail-break { border-color: #cbd5e1; }
-  .tl-d-title { font-size: 12px; font-weight: 900; color: #1c3a6e; margin-bottom: 4px; }
-  .tl-detail-break .tl-d-title { color: #64748b; }
-  .tl-d-text { font-size: 11px; color: #666; line-height: 1.7; }
-  @media (max-width: 640px) {
-    .tl-axis { display: none; }
-    .tl-bar-row { height: 40px; }
-    .tl-seg-label { font-size: 10px; }
-    .tl-detail-row { flex-wrap: wrap; }
-    .tl-detail { flex: 1 1 45% !important; }
-  }
-  </style>
-</section>
+</div>
 
-<section class="section">
-  <div class="sec-head">
-    <div class="sec-en">ABOUT IZUMI ELECTRONIC TRADING</div>
-    <div class="sec-ja">イズミ電商とは</div>
-    <div class="sec-divider"></div>
+<!-- INTERVIEW -->
+<section id="interview" class="interview-section">
+  <div class="interview-head">
+    <div class="interview-head-en">Interview</div>
+    <div class="interview-head-title">ここで働く人の声</div>
+    <div class="interview-head-sub">経歴・年齢・きっかけは違っても、続けている理由がある。</div>
   </div>
-  <div class="about-grid">
-    
-    <div class="about-body">
-      <h2>柏原から、日本中の<br>自転車を支えている</h2>
-      <p>イズミ電商のストーリーは自転車と共にあります。1985年に初代代表・要耕治が家庭用電気機械器具卸売業としてスタート。自転車の組立事業に着手したのは1992年でした。</p>
-      <p>1998年にパナソニックサイクルテック株式会社との契約が始まり、それから30年。自転車組立のプロ集団として技術と納品スピードを磨いてまいりました。</p>
-      <p>堅実な経営も自慢です。自己資本比率7割以上を誇り業界と比較しても非常に高い水準。安定性も抜群です。</p>
-      <div class="about-stats">
-        <div><div class="about-stat-val">40年</div><div class="about-stat-lbl">パナソニック実績</div></div>
-        <div><div class="about-stat-val">柏原市</div><div class="about-stat-lbl">大阪府・近鉄沿線</div></div>
-        <div><div class="about-stat-val">9名</div><div class="about-stat-lbl">全員顔が見えるチーム</div></div>
+  <div class="iv-grid">
+    <div class="iv-card">
+      <div class="iv-card-top">
+        <div class="iv-role">代表取締役</div>
+        <div class="iv-name">船本 到</div>
+        <div class="iv-meta">49歳 ／ 創業から経営</div>
+      </div>
+      <div class="iv-body">
+        <div class="iv-q">採用で一番大切にしていることは？</div>
+        <div class="iv-a">「素直さ。技術は教えられますが、素直さは教えられません。一緒に長く働きたい人を探しています」</div>
+        <div class="iv-q">この会社の強みは？</div>
+        <div class="iv-a">「40年、パナソニックから信頼をいただいてきた実績。それは社員一人ひとりが積み上げてきたものです」</div>
+      </div>
+    </div>
+    <div class="iv-card">
+      <div class="iv-card-top">
+        <div class="iv-role">ラインリーダー・教育係</div>
+        <div class="iv-name">野口 孝文</div>
+        <div class="iv-meta">32歳 ／ 社歴11年目</div>
+      </div>
+      <div class="iv-body">
+        <div class="iv-q">入社前の不安は？</div>
+        <div class="iv-a">「製造業が初めてだったので、本当に心配でした。でも3ヶ月でだいたいできるようになりました」</div>
+        <div class="iv-q">今の仕事のやりがいは？</div>
+        <div class="iv-a">「街で自分が組んだ自転車を見かけると、じわっとします。後輩を教える立場になって、自分の成長も実感しています」</div>
+      </div>
+    </div>
+    <div class="iv-card">
+      <div class="iv-card-top">
+        <div class="iv-role">サブリーダー</div>
+        <div class="iv-name">岡 浩之</div>
+        <div class="iv-meta">複数年在籍</div>
+      </div>
+      <div class="iv-body">
+        <div class="iv-q">職場の雰囲気は？</div>
+        <div class="iv-a">「9人しかいないので、変な競争がない。困ったらすぐ相談できる。それだけで、続けられる理由になっています」</div>
+        <div class="iv-q">この仕事の魅力は？</div>
+        <div class="iv-a">「前職でも製造に携わっていましたが、ここは雰囲気が違います。プロとして誇りを持って働けています」</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section dark">
-  <div class="sec-head">
-    <div class="sec-en white">MESSAGE</div>
-    <div class="sec-ja white">「この仕事を続けている理由」</div>
-    <div class="sec-divider white"></div>
+<!-- 募集要項 -->
+<section id="recruit" class="recruit-section">
+  <div class="recruit-head">
+    <div class="recruit-head-en">Requirements</div>
+    <div class="recruit-head-title">募集要項</div>
   </div>
-  <div class="message-grid">
-    <div class="msg-card">
-      
-      <div class="msg-card-body">
-        <div class="msg-card-role">代表取締役</div>
-        <div class="msg-card-name">船本 到（49歳）</div>
-        <div class="msg-qa"><div class="msg-q">この仕事の誇りは？</div><div class="msg-a">「日本中を走る自転車に、うちの手が入っている。それをわかって働いている人間は強い。誇りが仕事の質を作ります」</div></div>
-      </div>
-    </div>
-    <div class="msg-card">
-      
-      <div class="msg-card-body">
-        <div class="msg-card-role">ラインリーダー・教育係（社歴11年目）</div>
-        <div class="msg-card-name">野口 孝文（32歳）</div>
-        <div class="msg-qa"><div class="msg-q">やりがいを感じる瞬間は？</div><div class="msg-a">「自分が組み立てた自転車が街を走っているのを見ると、じわっとします。自慢できる仕事だと思っています」</div></div>
-      </div>
-    </div>
-    <div class="msg-card">
-      
-      <div class="msg-card-body">
-        <div class="msg-card-role">サブリーダー</div>
-        <div class="msg-card-name">岡 浩之</div>
-        <div class="msg-qa"><div class="msg-q">この仕事に誇りはある？</div><div class="msg-a">「あります。パナソニックが信頼して任せてくれる仕事を、自分たちがやっている。それだけで十分です」</div></div>
-      </div>
-    </div>
-  </div>
+  <table class="recruit-table">
+    <tr><td>仕事の内容</td><td>電動自転車のパーツ検品・組立・仕上げ。パナソニックの工場敷地内でのものづくり。<br>※未経験者を応援します。</td></tr>
+    <tr><td>求めている人材</td><td>経験・年齢・性別不問。ものづくりに関わりたい方、コツコツ働ける方。未経験歓迎。</td></tr>
+    <tr><td>勤務地</td><td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br>近鉄大阪線「河内国分駅」徒歩10分 / 近鉄南大阪線「道明寺駅」徒歩10分</td></tr>
+    <tr><td>給与</td><td><span class="hl">月給22万円〜27万円</span>＋残業手当＋皆勤手当＋賞与年2回<br>【年収例】440万円／33歳／組立職／経験7年</td></tr>
+    <tr><td>勤務時間</td><td>8:25〜17:25（昼休憩45分）<span class="hl"> ／ 繁忙期以外、残業ほぼなし</span></td></tr>
+    <tr><td>休日・休暇</td><td><span class="hl">完全週休2日制（土・日）年間休日126日＋一斉年休5日</span><br>祝日・GW・夏季・年末年始休暇、有給、慶弔</td></tr>
+    <tr><td>待遇・福利厚生</td><td>昇給年1回（4月）、賞与年2回＋業績期末賞与あり、交通費全額支給<br>役職手当、家族手当、社会保険完備<br><span class="hl">出張整体（月1回・全額会社負担）</span></td></tr>
+    <tr><td>応募資格</td><td>未経験可・学歴不問。普通自動車免許があれば尚可。</td></tr>
+  </table>
 </section>
-<section id="recruit" class="section alt">
-  <div class="sec-head">
-    <div class="sec-en">RECRUIT</div>
-    <div class="sec-ja">募集要項</div>
-    <div class="sec-divider"></div>
-  </div>
-  <div class="recruit-inner">
-    <table class="recruit-table">
-      <tr><td>仕事の内容</td><td>電動自転車のパーツ検品から、組み立て、仕上げまで。パナソニックの工場敷地内で、モノ作りに携わるお仕事です。キズ・不良品のチェック、製品の組み立て、仕上げのチェック、各工程ごとにチームがあります。<br>※未経験者を応援します。</td></tr>
-      <tr><td>求めている人材</td><td>経験・年齢・性別不問。ものづくりに関わりたい方。コツコツ働く方。<br>未経験歓迎。人柄を重視し、素直な気持ちを応援する会社です！</td></tr>
-      <tr><td>勤務地</td><td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br>近鉄大阪線「河内国分駅」徒歩10分 / 近鉄南大阪線「道明寺駅」徒歩10分</td></tr>
-      <tr><td>給与</td><td><span class="recruit-hl">月給22万円〜27万円</span>＋残業手当＋皆勤手当＋賞与年2回<br>【年収例】440万円／33歳／組立職／経験7年</td></tr>
-      <tr><td>勤務時間</td><td>8:25〜17:25（お昼休憩45分）<span class="recruit-hl"> ／ 繁忙期以外、残業ほとんどなし</span></td></tr>
-      <tr><td>休日・休暇</td><td><span class="recruit-hl">完全週休2日制（土・日）年間休日126日＋一斉年休5日</span><br>祝日、GW、夏季・年末年始休暇、有給、慶弔</td></tr>
-      <tr><td>待遇・福利厚生</td><td>昇給年1回（4月）、賞与年2回＋業績期末賞与あり、交通費全額支給<br>役職手当、家族手当、社会保険完備<br><span class="recruit-hl">出張整体（月1回・全額会社負担）</span></td></tr>
-      <tr><td>応募資格</td><td>未経験可・学歴不問。普通自動車免許があれば尚可。</td></tr>
-    </table>
-  </div>
-</section>
-<section class="section">
-  <div class="sec-head">
-    <div class="sec-en">ACCESS</div>
-    <div class="sec-ja">交通アクセス</div>
-    <div class="sec-divider"></div>
+
+<!-- ACCESS -->
+<section id="access" class="access-section">
+  <div class="access-head">
+    <div class="access-head-en">Access</div>
+    <div class="access-head-title">交通アクセス</div>
   </div>
   <div class="access-grid">
-    <div class="access-map-ph">[ Google Map 埋め込み ]<br>大阪府柏原市 片山町13-13</div>
+    <div class="access-map">[ Google Map 埋め込み ]<br>大阪府柏原市 片山町13-13</div>
     <div class="access-info">
       <h3>イズミ電商株式会社</h3>
       <p>〒582-0028 大阪府柏原市 片山町13-13<br>パナソニックサイクルテック工場内<br><br>
       近鉄大阪線「河内国分駅」徒歩10分<br>
-      近鉄南大阪線「道明寺駅」徒歩10分<br>（自転車・車・バイク通勤可）<br><br>
+      近鉄南大阪線「道明寺駅」徒歩10分<br>
+      自転車・車・バイク通勤可<br><br>
       TEL：072-XXX-XXXX</p>
     </div>
   </div>
 </section>
-<section class="section alt">
-  <div class="sec-head">
-    <div class="sec-en">GALLERY</div>
-    <div class="sec-ja">フォトギャラリー</div>
-    <div class="sec-divider"></div>
+
+<!-- ENTRY CTA -->
+<section id="entry" class="entry-section">
+  <div class="entry-left">
+    <div class="entry-en">Entry</div>
+    <div class="entry-title">まずは、<br>気軽にご連絡ください。</div>
+    <div class="entry-sub">「まだ迷っている」「話だけ聞きたい」でも大丈夫です。<br>プレッシャーなく、あなたのペースで進められます。</div>
   </div>
-  <div class="gallery-layout">
-    <div class="gallery-main"></div>
-    <div class="gallery-thumbs">
-      <div class="gallery-thumb"></div>
-      <div class="gallery-thumb"></div>
-      <div class="gallery-thumb"></div>
-    </div>
-  </div>
-</section>
-<section id="entry" class="entry-section" style="background:#1c3a6e">
-  <div class="entry-en">ENTRY</div>
-  <div class="entry-ja">応募フォーム</div>
-  <div class="entry-divider" style="background:rgba(255,255,255,.3)"></div>
-  <p class="entry-copy">「自転車に詳しくない」「製造業は初めて」でも大丈夫です。<br>まずは気軽に話を聞かせてください。</p>
-  <div class="entry-btns">
+  <div class="entry-right">
     <button class="entry-btn-main">応募フォームから送る</button>
     <button class="entry-btn-line">LINE で気軽に聞く</button>
     <button class="entry-btn-tel">電話で問い合わせる</button>
   </div>
 </section>
-<a href="#entry" class="fixed-entry" style="background:#1c3a6e">
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-main">イズミ電商株式会社</div>
+      <div class="footer-logo-sub">IZUMI DENSHO Co.,Ltd</div>
+      <div class="footer-logo-desc">大阪府柏原市 片山町13-13<br>パナソニックサイクルテック工場内<br>TEL：072-XXX-XXXX</div>
+    </div>
+    <div class="footer-links">
+      <a href="#about" class="footer-link">会社について</a>
+      <a href="#features" class="footer-link">働く魅力</a>
+      <a href="#interview" class="footer-link">社員の声</a>
+      <a href="#recruit" class="footer-link">募集要項</a>
+      <a href="#access" class="footer-link">アクセス</a>
+      <a href="#entry" class="footer-link">応募する</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 イズミ電商株式会社 All Rights Reserved.</div>
+    <div class="footer-sub-links">
+      <a href="#" class="footer-sub-link">プライバシーポリシー</a>
+      <a href="#" class="footer-sub-link">サイトマップ</a>
+    </div>
+  </div>
+</footer>
+
+<a href="#entry" class="fixed-entry">
   <span class="fixed-entry-en">ENTRY</span>
   <span class="fixed-entry-ja">応募フォーム</span>
 </a>
-<footer class="site-footer">© 2024 イズミ電商株式会社 All Rights Reserved.</footer>
 
 </body>
 </html>
