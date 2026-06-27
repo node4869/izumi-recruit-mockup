@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before / After — 案C — 職人・クラフト型 — イズミ電商</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans JP', sans-serif; background: #e8e8e8; }
+
+/* ===== HEADER ===== */
+#site-header {
+  background: #111; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+#site-header h1 { color: white; font-size: 14px; font-weight: 700; letter-spacing: .08em; }
+.tab-group { display: flex; gap: 6px; }
+.tab-btn {
+  padding: 8px 20px; border-radius: 4px;
+  font-size: 13px; font-weight: 700; letter-spacing: .05em;
+  font-family: inherit; border: 1px solid #444; background: none; color: #888; cursor: pointer; transition: .15s;
+}
+.tab-btn.active { background: white; color: #111; border-color: white; }
+
+/* ===== SPLIT LAYOUT ===== */
+.compare-wrap { max-width: 1400px; margin: 0 auto; padding: 0; }
+
+.panel-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+  margin-bottom: 3px;
+}
+.panel { position: relative; }
+.panel-label {
+  position: sticky; top: 57px; z-index: 10;
+  padding: 8px 20px; font-size: 11px; font-weight: 900; letter-spacing: .14em;
+  text-transform: uppercase; text-align: center;
+}
+.panel-label.before { background: #b0b0b0; color: #444; }
+.panel-label.after { color: white; }
+
+/* LP SECTION hidden/shown via case */
+.lp-section { display: none; }
+.lp-section.active { display: block; }
+
+/* ===== BEFORE — 現状サイト再現 ===== */
+.before-site { background: #f5f5f5; font-family: 'MS Gothic', 'Hiragino Kaku Gothic Pro', sans-serif; }
+
+.b-nav {
+  background: #003a7a; padding: 0;
+  display: flex; align-items: stretch;
+  border-bottom: 3px solid #c8a800;
+}
+.b-nav .logo { padding: 12px 20px; color: white; font-size: 18px; font-weight: 700; border-right: 1px solid rgba(255,255,255,.2); }
+.b-nav ul { display: flex; list-style: none; }
+.b-nav ul li a { display: block; padding: 14px 14px; color: rgba(255,255,255,.8); font-size: 13px; text-decoration: none; }
+.b-nav ul li a:hover { background: rgba(255,255,255,.1); }
+
+.b-hero { background: #003a7a; padding: 32px 24px; color: white; text-align: center; }
+.b-hero .catch { font-size: 18px; font-weight: 700; line-height: 2; }
+.b-hero .sub { font-size: 13px; opacity: .7; margin-top: 6px; }
+
+.b-warn {
+  background: #fff3cd; border: 1px solid #ffc107;
+  padding: 8px 16px; font-size: 12px; color: #856404;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.b-body { padding: 24px; }
+.b-section { margin-bottom: 28px; }
+.b-section h2 { font-size: 15px; font-weight: 700; color: #003a7a; border-left: 4px solid #003a7a; padding-left: 10px; margin-bottom: 12px; }
+.b-section h3 { font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #333; }
+.b-section p { font-size: 13px; color: #555; line-height: 1.9; }
+.b-section table { border-collapse: collapse; font-size: 13px; width: 100%; }
+.b-section table td { border: 1px solid #ccc; padding: 8px 12px; vertical-align: top; }
+.b-section table td:first-child { background: #e8eef5; color: #003a7a; font-weight: 700; width: 120px; white-space: nowrap; }
+
+.b-recruit { background: #fff; border: 1px solid #ddd; padding: 16px; margin-bottom: 12px; }
+.b-recruit h3 { font-size: 14px; font-weight: 700; color: #003a7a; margin-bottom: 8px; }
+.b-recruit p { font-size: 12px; color: #666; line-height: 1.8; }
+.b-recruit .apply-link { font-size: 12px; color: #003a7a; text-decoration: underline; margin-top: 8px; display: block; }
+
+.b-link-area { text-align: center; margin-top: 16px; padding: 16px; background: #e8eef5; }
+.b-link-area a { color: #003a7a; font-size: 13px; text-decoration: underline; }
+
+.b-footer { background: #003a7a; color: rgba(255,255,255,.6); padding: 16px 24px; font-size: 12px; text-align: center; line-height: 2; border-top: 3px solid #c8a800; }
+
+/* pain points overlay */
+.pain {
+  display: inline-block; background: #ef4444; color: white;
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px;
+  margin-left: 8px; vertical-align: middle; letter-spacing: .04em;
+}
+.pain-note {
+  background: #fef2f2; border: 1px dashed #ef4444;
+  font-size: 12px; color: #b91c1c; padding: 8px 12px; margin-top: 8px;
+  border-radius: 4px; line-height: 1.7;
+}
+
+
+/* ===== AFTER — 案A：成長・キャリア型 ===== */
+.a-site { background: white; }
+.a-nav {
+  background: #1a2d4e; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid #d4a017;
+}
+.a-nav .logo { color: white; font-size: 16px; font-weight: 900; padding: 14px 0; }
+.a-nav .cta-btn { background: #d4a017; color: #1a2d4e; font-size: 12px; font-weight: 900; padding: 8px 16px; border-radius: 3px; text-decoration: none; }
+
+.a-hero {
+  background: linear-gradient(150deg, #0f1f38 0%, #1a3a6e 100%);
+  padding: 56px 28px; text-align: center; color: white;
+}
+.a-hero .badge { display: inline-block; background: #d4a017; color: #1a2d4e; font-size: 11px; font-weight: 900; letter-spacing: .14em; padding: 5px 16px; border-radius: 2px; margin-bottom: 24px; }
+.a-hero h1 { font-size: 30px; font-weight: 900; line-height: 1.4; margin-bottom: 14px; }
+.a-hero h1 em { color: #d4a017; font-style: normal; }
+.a-hero .sub { font-size: 15px; opacity: .75; line-height: 1.85; margin-bottom: 28px; }
+.a-hero .apply { background: #d4a017; color: #1a2d4e; font-size: 15px; font-weight: 900; padding: 14px 36px; border-radius: 3px; border: none; cursor: pointer; font-family: inherit; }
+
+.a-nums { background: #1a2d4e; display: flex; }
+.a-num { flex: 1; text-align: center; padding: 24px 8px; color: white; border-right: 1px solid rgba(255,255,255,.08); }
+.a-num:last-child { border: none; }
+.a-num .n { font-size: 34px; font-weight: 900; color: #d4a017; line-height: 1; }
+.a-num .n small { font-size: 16px; }
+.a-num p { font-size: 11px; opacity: .55; margin-top: 6px; line-height: 1.5; }
+
+.a-body { padding: 32px 24px; }
+.a-sec-lbl { font-size: 10px; font-weight: 900; letter-spacing: .18em; color: #d4a017; text-transform: uppercase; margin-bottom: 6px; }
+.a-sec-h { font-size: 22px; font-weight: 900; color: #1a2d4e; margin-bottom: 6px; line-height: 1.4; }
+.a-sec-s { font-size: 14px; color: #5a6a7a; margin-bottom: 20px; line-height: 1.7; }
+
+.a-flow { display: flex; gap: 0; margin-bottom: 28px; }
+.a-step { flex: 1; border-top: 3px solid #d4a017; padding: 14px 8px 0; }
+.a-step .yr { font-size: 10px; color: #d4a017; font-weight: 700; margin-bottom: 4px; }
+.a-step .ttl { font-size: 13px; font-weight: 700; color: #1a2d4e; line-height: 1.4; margin-bottom: 4px; }
+.a-step .desc { font-size: 11px; color: #8896a4; line-height: 1.6; }
+.a-arr { padding: 18px 4px 0; color: #d4a017; opacity: .4; font-size: 16px; }
+
+.a-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+.a-card { background: #f8fafc; border-left: 3px solid #d4a017; padding: 14px 16px; }
+.a-card h3 { font-size: 14px; font-weight: 700; color: #1a2d4e; margin-bottom: 6px; }
+.a-card p { font-size: 12px; color: #5a6a7a; line-height: 1.7; }
+
+.a-voice { background: #1a2d4e; padding: 24px; margin: 0 -24px; }
+.a-voice .lbl { font-size: 10px; color: rgba(255,255,255,.4); letter-spacing: .18em; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+.a-voice .ttl { font-size: 18px; font-weight: 900; color: white; margin-bottom: 16px; }
+.a-voice-card { background: rgba(255,255,255,.06); border-radius: 6px; padding: 16px; margin-bottom: 10px; }
+.a-voice-card .who { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 8px; }
+.a-voice-card .txt { font-size: 14px; color: white; line-height: 1.85; }
+
+.a-cta { background: #d4a017; padding: 40px 24px; text-align: center; }
+.a-cta h2 { font-size: 20px; font-weight: 900; color: #1a2d4e; margin-bottom: 10px; }
+.a-cta p { font-size: 14px; color: rgba(0,0,0,.55); margin-bottom: 20px; line-height: 1.7; }
+.a-cta .apply { background: #1a2d4e; color: white; font-size: 15px; font-weight: 900; padding: 14px 36px; border-radius: 3px; border: none; cursor: pointer; font-family: inherit; }
+.a-foot { background: #0f1f38; color: rgba(255,255,255,.25); padding: 16px; font-size: 11px; text-align: center; line-height: 2; }
+
+
+/* ===== AFTER — 案B：社会貢献型 ===== */
+.b2-site { background: white; }
+.b2-nav {
+  background: #1b4332; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.b2-nav .logo { color: white; font-size: 16px; font-weight: 900; padding: 14px 0; }
+.b2-nav .cta-btn { background: #95d5b2; color: #1b4332; font-size: 12px; font-weight: 900; padding: 8px 16px; border-radius: 3px; text-decoration: none; }
+
+.b2-hero {
+  background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 100%);
+  padding: 56px 28px; text-align: center; color: white;
+}
+.b2-hero .badge { display: inline-block; background: #95d5b2; color: #1b4332; font-size: 11px; font-weight: 900; letter-spacing: .14em; padding: 5px 16px; border-radius: 2px; margin-bottom: 24px; }
+.b2-hero h1 { font-size: 28px; font-weight: 900; line-height: 1.45; margin-bottom: 14px; }
+.b2-hero h1 em { color: #95d5b2; font-style: normal; }
+.b2-hero .sub { font-size: 15px; opacity: .8; line-height: 1.85; margin-bottom: 28px; }
+.b2-hero .apply { background: #95d5b2; color: #1b4332; font-size: 15px; font-weight: 900; padding: 14px 36px; border-radius: 3px; border: none; cursor: pointer; font-family: inherit; }
+
+.b2-nums { background: #1b4332; display: flex; }
+.b2-num { flex: 1; text-align: center; padding: 24px 8px; color: white; border-right: 1px solid rgba(255,255,255,.08); }
+.b2-num:last-child { border: none; }
+.b2-num .n { font-size: 34px; font-weight: 900; color: #95d5b2; line-height: 1; }
+.b2-num .n small { font-size: 16px; }
+.b2-num p { font-size: 11px; opacity: .55; margin-top: 6px; line-height: 1.5; }
+
+.b2-body { padding: 32px 24px; }
+.b2-sec-lbl { font-size: 10px; font-weight: 900; letter-spacing: .18em; color: #2d6a4f; text-transform: uppercase; margin-bottom: 6px; }
+.b2-sec-h { font-size: 22px; font-weight: 900; color: #1b4332; margin-bottom: 6px; line-height: 1.4; }
+.b2-sec-s { font-size: 14px; color: #5a6a7a; margin-bottom: 20px; line-height: 1.7; }
+
+.b2-hl { background: #d8f3dc; border-left: 4px solid #2d6a4f; padding: 16px 18px; font-size: 15px; font-weight: 500; color: #1b4332; line-height: 1.8; margin-bottom: 24px; }
+
+.b2-roles { margin-bottom: 24px; }
+.b2-role { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #e2f5e8; align-items: flex-start; }
+.b2-role:last-child { border: none; }
+.b2-role .icon { font-size: 22px; width: 36px; text-align: center; flex-shrink: 0; }
+.b2-role h3 { font-size: 15px; font-weight: 700; color: #1b4332; margin-bottom: 4px; }
+.b2-role p { font-size: 13px; color: #5a6a7a; line-height: 1.7; }
+
+.b2-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+.b2-card { background: #f0fdf4; border: 1px solid #b7e4c7; padding: 14px 16px; border-radius: 6px; }
+.b2-card h3 { font-size: 14px; font-weight: 700; color: #1b4332; margin-bottom: 6px; }
+.b2-card p { font-size: 12px; color: #5a6a7a; line-height: 1.7; }
+
+.b2-voice { background: #1b4332; padding: 24px; margin: 0 -24px; }
+.b2-voice .lbl { font-size: 10px; color: rgba(255,255,255,.4); letter-spacing: .18em; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+.b2-voice .ttl { font-size: 18px; font-weight: 900; color: white; margin-bottom: 16px; }
+.b2-voice-card { background: rgba(255,255,255,.06); border-radius: 6px; padding: 16px; }
+.b2-voice-card .who { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 8px; }
+.b2-voice-card .txt { font-size: 14px; color: white; line-height: 1.85; }
+
+.b2-cta { background: #d8f3dc; padding: 40px 24px; text-align: center; }
+.b2-cta h2 { font-size: 20px; font-weight: 900; color: #1b4332; margin-bottom: 10px; }
+.b2-cta p { font-size: 14px; color: rgba(0,0,0,.55); margin-bottom: 20px; line-height: 1.7; }
+.b2-cta .apply { background: #1b4332; color: white; font-size: 15px; font-weight: 900; padding: 14px 36px; border-radius: 3px; border: none; cursor: pointer; font-family: inherit; }
+.b2-foot { background: #1b4332; color: rgba(255,255,255,.25); padding: 16px; font-size: 11px; text-align: center; line-height: 2; }
+
+
+/* ===== AFTER — 案C：職人・クラフト型 ===== */
+.c-site { background: #f8f8f8; }
+.c-nav {
+  background: #1a1a1a; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid #333;
+}
+.c-nav .logo { color: white; font-size: 15px; font-weight: 900; padding: 14px 0; letter-spacing: .06em; }
+.c-nav .cta-btn { background: white; color: #1a1a1a; font-size: 12px; font-weight: 900; padding: 8px 16px; border-radius: 3px; text-decoration: none; }
+
+.c-hero {
+  background: #1a1a1a;
+  padding: 56px 28px; text-align: center; color: white;
+  border-bottom: 1px solid #2a2a2a;
+}
+.c-hero .badge { display: inline-block; color: #aaa; font-size: 11px; font-weight: 700; letter-spacing: .22em; padding: 5px 16px; border: 1px solid #444; border-radius: 2px; margin-bottom: 24px; }
+.c-hero h1 { font-size: 28px; font-weight: 900; line-height: 1.5; margin-bottom: 14px; color: #f0f0f0; }
+.c-hero h1 em { color: #c9c9c9; font-style: normal; }
+.c-hero .sub { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.9; margin-bottom: 28px; }
+.c-hero .apply { background: white; color: #1a1a1a; font-size: 15px; font-weight: 900; padding: 14px 36px; border-radius: 3px; border: none; cursor: pointer; font-family: inherit; }
+
+.c-nums { background: #111; display: flex; border-bottom: 1px solid #222; }
+.c-num { flex: 1; text-align: center; padding: 24px 8px; color: white; border-right: 1px solid #222; }
+.c-num:last-child { border: none; }
+.c-num .n { font-size: 34px; font-weight: 900; color: #c9c9c9; line-height: 1; }
+.c-num .n small { font-size: 16px; }
+.c-num p { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 6px; line-height: 1.5; }
+
+.c-body { padding: 32px 24px; }
+.c-sec-lbl { font-size: 10px; font-weight: 700; letter-spacing: .18em; color: #888; text-transform: uppercase; margin-bottom: 6px; }
+.c-sec-h { font-size: 22px; font-weight: 900; color: #1a1a1a; margin-bottom: 6px; line-height: 1.4; }
+.c-sec-s { font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.7; }
+
+.c-craft { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #ddd; margin-bottom: 28px; }
+.c-craft-item { background: white; padding: 20px; }
+.c-craft-item .num { font-size: 32px; font-weight: 900; color: #ddd; line-height: 1; margin-bottom: 8px; }
+.c-craft-item h3 { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; line-height: 1.4; }
+.c-craft-item p { font-size: 12px; color: #666; line-height: 1.7; }
+
+.c-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+.c-card { background: white; border-top: 2px solid #ddd; padding: 14px 16px; }
+.c-card h3 { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+.c-card p { font-size: 12px; color: #666; line-height: 1.7; }
+
+.c-voice { background: #1a1a1a; padding: 24px; margin: 0 -24px; border-top: 1px solid #2a2a2a; }
+.c-voice .lbl { font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: .18em; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+.c-voice .ttl { font-size: 18px; font-weight: 900; color: white; margin-bottom: 16px; }
+.c-voice-card { background: rgba(255,255,255,.04); border: 1px solid #333; border-radius: 6px; padding: 16px; }
+.c-voice-card .who { font-size: 11px; color: rgba(255,255,255,.3); margin-bottom: 8px; }
+.c-voice-card .txt { font-size: 14px; color: white; line-height: 1.85; }
+
+.c-cta { background: #1a1a1a; padding: 40px 24px; text-align: center; border-top: 1px solid #2a2a2a; }
+.c-cta h2 { font-size: 20px; font-weight: 900; color: white; margin-bottom: 10px; }
+.c-cta p { font-size: 14px; color: rgba(255,255,255,.4); margin-bottom: 20px; line-height: 1.7; }
+.c-cta .apply { background: white; color: #1a1a1a; font-size: 15px; font-weight: 900; padding: 14px 36px; border-radius: 3px; border: none; cursor: pointer; font-family: inherit; }
+.c-foot { background: #111; color: rgba(255,255,255,.18); padding: 16px; font-size: 11px; text-align: center; line-height: 2; }
+
+@media (max-width: 800px) {
+  .panel-row { grid-template-columns: 1fr; }
+  .tab-group { gap: 4px; }
+  .tab-btn { padding: 8px 12px; font-size: 11px; }
+  #site-header h1 { display: none; }
+}
+
+.nav-links { display:flex; gap:12px; }
+.nav-links a { color:rgba(255,255,255,.5); font-size:13px; font-weight:700; text-decoration:none; padding:6px 14px; border:1px solid rgba(255,255,255,.2); border-radius:4px; }
+.nav-links a:hover { color:white; border-color:rgba(255,255,255,.5); }
+.panel-label.after-active { background:#1a1a1a; }
+</style>
+</head>
+<body>
+
+<div id="site-header">
+ <h1>Before / After — 案C — 職人・クラフト型</h1>
+ <div class="nav-links">
+  <a href="lp-compare-a.html">← 案A</a> <a href="lp-compare-b.html">← 案B</a>
+ </div>
+</div>
+
+<div class="compare-wrap">
+ <div class="panel-row" style="margin-bottom:0">
+  <div class="panel-label before">Before ／ 現状のホームページ</div>
+  <div class="panel-label after-active" style="color:white">After ／ 案C — 職人・クラフト型</div>
+ </div>
+ <div class="panel-row">
+  <div class="panel">
+   <!-- ======== BEFORE ======== -->
+  <div class="panel before-site">
+   <div class="b-nav">
+    <div class="logo">イズミ電商株式会社</div>
+    <ul>
+     <li><a href="#">会社概要</a></li>
+     <li><a href="#">事業内容</a></li>
+     <li><a href="#">製品紹介</a></li>
+     <li><a href="#">採用情報</a></li>
+     <li><a href="#">お問い合わせ</a></li>
+    </ul>
+   </div>
+
+   <div class="b-warn">
+    ⚠ この接続は安全ではありません（http のため）<span class="pain">離脱リスク</span>
+   </div>
+
+   <div class="b-hero">
+    <div class="catch">イズミ電商株式会社<br>電動アシスト自転車を製造しています</div>
+    <div class="sub">パナソニックサイクルテック株式会社の協力工場として</div>
+   </div>
+
+   <div class="b-body">
+
+    <div class="b-section">
+     <h2>会社概要</h2>
+     <table>
+      <tr><td>社名</td><td>イズミ電商株式会社</td></tr>
+      <tr><td>所在地</td><td>大阪府柏原市</td></tr>
+      <tr><td>設立</td><td>昭和〇年〇月</td></tr>
+      <tr><td>事業内容</td><td>電動アシスト自転車の製造</td></tr>
+      <tr><td>取引先</td><td>パナソニックサイクルテック株式会社</td></tr>
+     </table>
+    </div>
+
+    <div class="b-section">
+     <h2>採用情報 <span class="pain">目立たない</span></h2>
+     <p>現在、以下の職種で社員を募集しています。</p>
+     <div class="pain-note">採用専用ページがなく、トップメニューの奥にある。スマホでたどり着くまでに4タップ以上必要。</div>
+     <br>
+     <div class="b-recruit">
+      <h3>製造スタッフ（正社員）</h3>
+      <p>電動アシスト自転車の組み立て・加工業務をお任せします。<br>経験不問。詳細はお問い合わせください。</p>
+      <a class="apply-link" href="#">▶ Indeedで応募する（外部サイト）</a>
+     </div>
+     <div class="b-recruit">
+      <h3>品質検査スタッフ（パート）</h3>
+      <p>製品の品質チェック業務です。</p>
+      <a class="apply-link" href="#">▶ Indeedで応募する（外部サイト）</a>
+     </div>
+     <div class="b-recruit">
+      <h3>出荷・梱包スタッフ</h3>
+      <p>製品の出荷準備・梱包業務です。</p>
+      <a class="apply-link" href="#">▶ Indeedで応募する（外部サイト）</a>
+     </div>
+     <div class="pain-note">求人が7件バラバラに掲載。職種ごとに別リンクでIndeedへ飛ぶため、会社の魅力が全く伝わらない。</div>
+    </div>
+
+    <div class="b-section">
+     <h2>年間休日・待遇 <span class="pain">埋もれている</span></h2>
+     <table>
+      <tr><td>年間休日</td><td>126日</td></tr>
+      <tr><td>給与</td><td>月給〇〇万円〜（詳細はお問い合わせ）</td></tr>
+      <tr><td>保険</td><td>社会保険完備</td></tr>
+     </table>
+     <div class="pain-note">「126日」「出張整体」「パナソニック40年」などの強みが、表の中に埋もれていて一切目立たない。</div>
+    </div>
+
+    <div class="b-section">
+     <h2>お問い合わせ</h2>
+     <p>採用に関するお問い合わせはこちらのフォームよりご連絡ください。</p>
+     <div class="pain-note">フォームへのリンクのみ。「応募する」ボタンがなく、求職者がどう動けばいいかわからない。</div>
+    </div>
+
+    <div class="b-section" style="text-align:center;color:#888;font-size:12px;padding:12px">
+     ※ このページはスマートフォンに対応していません <span class="pain">スマホ非対応</span>
+    </div>
+   </div>
+
+   <div class="b-footer">
+    Copyright © イズミ電商株式会社 All Rights Reserved.
+   </div>
+  </div><!-- /before -->
+  </div>
+  <div class="panel">
+   <!-- ======== AFTER C ======== -->
+  
+   <div class="c-site">
+    <div class="c-nav">
+     <div class="logo">IZUMI DENKI</div>
+     <a class="cta-btn" href="#">応募する</a>
+    </div>
+
+    <div class="c-hero">
+     <div class="badge">IZUMI DENKI ／ MONOTSUKURI ／ RECRUIT</div>
+     <h1>一台一台、手で仕上げる。<br><em>それが、イズミのものづくり。</em></h1>
+     <p class="sub">大阪・柏原のパナソニック系自転車メーカー。<br>丁寧な仕事を大切にしています。</p>
+     <button class="apply">応募する・話を聞く</button>
+    </div>
+
+    <div class="c-nums">
+     <div class="c-num"><div class="n">40<small>年</small></div><p>パナソニックとの<br>取引継続</p></div>
+     <div class="c-num"><div class="n">126<small>日</small></div><p>年間休日数</p></div>
+     <div class="c-num"><div class="n">未経験<small>OK</small></div><p>丁寧な研修制度</p></div>
+     <div class="c-num"><div class="n">大阪<small>柏原</small></div><p>地元に根ざした<br>ものづくり</p></div>
+    </div>
+
+    <div class="c-body">
+     <div class="c-sec-lbl">OUR CRAFT</div>
+     <div class="c-sec-h">丁寧に、確かに。<br>イズミのものづくりの4つの軸</div>
+     <div class="c-craft">
+      <div class="c-craft-item"><div class="num">01</div><h3>手作業にこだわる</h3><p>品質の要となる箇所は人の手で仕上げます。機械には出せない精度があります。</p></div>
+      <div class="c-craft-item"><div class="num">02</div><h3>パナソニックの水準を守る</h3><p>40年間維持してきた品質の水準が、この工場のものさしです。</p></div>
+      <div class="c-craft-item"><div class="num">03</div><h3>一人ひとりが品質を担う</h3><p>各工程の担当者が「自分の仕事」として責任を持ちます。</p></div>
+      <div class="c-craft-item"><div class="num">04</div><h3>技術は時間をかけて育てる</h3><p>焦らず確実に技術を積み上げていく文化があります。</p></div>
+     </div>
+
+     <div class="c-sec-lbl">BENEFITS</div>
+     <div class="c-sec-h">待遇・福利厚生</div>
+     <div class="c-cards">
+      <div class="c-card"><h3>年間休日126日</h3><p>大手並みの休日数で、仕事とプライベートを両立できます。</p></div>
+      <div class="c-card"><h3>残業少なめ</h3><p>計画的な製造ラインで残業を抑えています。</p></div>
+      <div class="c-card"><h3>出張整体サービス</h3><p>毎月プロが職場を訪問。体を使う仕事を支えます。</p></div>
+      <div class="c-card"><h3>未経験から始められる</h3><p>先輩が一緒に動きながら、着実に技術を教えます。</p></div>
+     </div>
+
+     <div class="c-voice">
+      <div class="lbl">VOICE</div>
+      <div class="ttl">働いている人の声</div>
+      <div class="c-voice-card">
+       <div class="who">Dさん ／ 製造スタッフ ／ 入社4年目</div>
+       <div class="txt">「速さより丁寧さを求められる現場なので、自分のペースで確かな仕事ができます。パナソニックに出す製品という緊張感が、やりがいでもあります。」</div>
+      </div>
+     </div>
+    </div>
+
+    <div class="c-cta">
+     <h2>まずは話を聞いてみませんか？</h2>
+     <p>応募後はまず担当者からご連絡します。職場見学も対応可。</p>
+     <button class="apply">応募する・話を聞く</button>
+    </div>
+
+    <div class="c-foot">
+     イズミ電商株式会社 ／ 大阪府柏原市 ／ パナソニックサイクルテック株式会社 協力工場
+    </div>
+   </div>
+  
+  </div>
+ </div>
+</div>
+
+</body>
+</html>
