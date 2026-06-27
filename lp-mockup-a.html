@@ -22,7 +22,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #f0f0f0; }
 }
 .tab-btn.active { color: white; border-bottom-color: var(--accent); }
 
-
+.lp { display: block; }
 
 
 /* ===== SHARED COMPONENTS ===== */
@@ -222,17 +222,17 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #f0f0f0; }
 
 .site-nav { position: sticky; top:0; z-index:999; background:#111; display:flex; align-items:center; justify-content:space-between; padding:12px 24px; }
 .site-nav .ttl { color:rgba(255,255,255,.6); font-size:13px; font-weight:700; }
-.site-nav .nav-links { display:flex; gap:10px; }
-.site-nav .nav-links a { color:rgba(255,255,255,.5); font-size:13px; font-weight:700; text-decoration:none; padding:6px 14px; border:1px solid rgba(255,255,255,.2); border-radius:4px; }
-.site-nav .nav-links a:hover { color:white; border-color:rgba(255,255,255,.5); }
+.site-nav .links { display:flex; gap:10px; }
+.site-nav .links a { color:rgba(255,255,255,.5); font-size:13px; font-weight:700; text-decoration:none; padding:6px 14px; border:1px solid rgba(255,255,255,.2); border-radius:4px; }
+.site-nav .links a:hover { color:white; border-color:rgba(255,255,255,.5); }
 </style>
 </head>
 <body>
 <div class="site-nav">
  <span class="ttl">案A — 成長・キャリア型</span>
- <div class="nav-links"><a href="lp-mockup-b.html">案B →</a> <a href="lp-mockup-c.html">案C →</a></div>
+ <div class="links"><a href="lp-mockup-b.html">案B →</a> <a href="lp-mockup-c.html">案C →</a></div>
 </div>
-
+<div class="lp active" id="lp-a">
 
  <!-- Hero -->
  <div class="hero">
@@ -369,6 +369,6 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #f0f0f0; }
  <div class="foot">
   イズミ電商株式会社 ／ 大阪府柏原市 ／ パナソニックサイクルテック株式会社 協力工場
  </div>
-
+</div>
 </body>
 </html>
