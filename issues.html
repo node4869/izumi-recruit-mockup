@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>現状の課題 — イズミ電商 採用サイト調査</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans JP', sans-serif; background: #f4f4f4; color: #1a1a1a; }
+
+/* HEADER */
+.header {
+  background: #1a1a1a; padding: 24px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header .logo { color: white; font-size: 14px; font-weight: 700; letter-spacing: .06em; opacity: .7; }
+.header h1 { color: white; font-size: 18px; font-weight: 900; }
+.header .date { color: rgba(255,255,255,.4); font-size: 12px; }
+
+/* SUMMARY BAR */
+.summary {
+  background: #dc2626; padding: 20px 32px;
+  display: flex; align-items: center; gap: 24px;
+}
+.summary p { color: white; font-size: 15px; font-weight: 500; line-height: 1.8; }
+.summary .count {
+  background: white; color: #dc2626; font-size: 36px; font-weight: 900;
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ISSUE LIST */
+.issues { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.issue {
+  background: white; border-radius: 10px; margin-bottom: 32px;
+  overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.issue-head {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px; border-bottom: 1px solid #f0f0f0;
+}
+.issue-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #dc2626; color: white;
+  font-size: 16px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.issue-head h2 { font-size: 18px; font-weight: 900; color: #1a1a1a; }
+.issue-head .tag {
+  margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  padding: 4px 12px; border-radius: 2px;
+}
+.tag-critical { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; }
+.tag-medium { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+.issue-body { padding: 24px; }
+.issue-desc { font-size: 15px; color: #444; line-height: 1.85; margin-bottom: 20px; }
+
+.screenshot-wrap { position: relative; margin-bottom: 16px; }
+.screenshot-wrap img { width: 100%; border: 1px solid #e0e0e0; border-radius: 6px; display: block; }
+
+/* annotation pins */
+.pin {
+  position: absolute;
+  background: #dc2626; color: white;
+  font-size: 11px; font-weight: 900; letter-spacing: .04em;
+  padding: 4px 10px; border-radius: 3px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(220,38,38,.4);
+}
+.pin::before {
+  content: '';
+  position: absolute; bottom: -6px; left: 14px;
+  border: 6px solid transparent;
+  border-top-color: #dc2626;
+  border-bottom: 0;
+}
+
+.impact {
+  background: #fef2f2; border-left: 4px solid #dc2626;
+  padding: 14px 16px; border-radius: 0 6px 6px 0;
+  font-size: 14px; color: #7f1d1d; line-height: 1.7;
+}
+.impact strong { display: block; margin-bottom: 4px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: #dc2626; }
+
+/* HOW TO FIX hint */
+.fix {
+  background: #f0fdf4; border-left: 4px solid #16a34a;
+  padding: 14px 16px; border-radius: 0 6px 6px 0;
+  font-size: 14px; color: #14532d; line-height: 1.7;
+  margin-top: 12px;
+}
+.fix strong { display: block; margin-bottom: 4px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: #16a34a; }
+
+/* DIVIDER */
+.section-label {
+  font-size: 11px; font-weight: 900; letter-spacing: .2em;
+  color: #888; text-transform: uppercase;
+  margin: 40px 0 16px; padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 640px) {
+  .header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .summary { flex-direction: column; gap: 12px; }
+  .issue-head { flex-wrap: wrap; }
+  .issue-head .tag { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="logo">FiTNESS UNIVERSITY × イズミ電商株式会社</div>
+    <h1>現状の採用サイト — 課題レポート</h1>
+  </div>
+  <div class="date">調査日：2026年6月27日</div>
+</div>
+
+<div class="summary">
+  <div class="count">5</div>
+  <p>現状のサイトには <strong>5つの課題</strong> が確認されました。<br>いずれも求職者の離脱・応募機会の損失に直結する問題です。</p>
+</div>
+
+<div class="issues">
+
+  <!-- 課題1 -->
+  <div class="issue">
+    <div class="issue-head">
+      <div class="issue-num">1</div>
+      <h2>SSL未対応 — サイトが「危険」と表示される</h2>
+      <span class="tag tag-critical">最重要</span>
+    </div>
+    <div class="issue-body">
+      <p class="issue-desc">https でアクセスすると「保護されていない通信」と表示され、さくらインターネットのエラー画面が出ます。求職者がURLを直接入力したとき、または検索結果のhttpsリンクを踏んだときに発生します。</p>
+
+      <div class="screenshot-wrap">
+        <img src="img/before-01.png" alt="トップページ">
+        <div class="pin" style="top:6%;left:2%">⚠ 保護されていない通信</div>
+      </div>
+
+      <div class="impact">
+        <strong>影響</strong>
+        求職者に「このサイトは安全ではない」という印象を与え、即座に離脱する可能性が高い。特にスマートフォンではブラウザが強く警告を表示します。
+      </div>
+      <div class="fix">
+        <strong>対応策</strong>
+        SSL証明書を設定し、httpsでアクセスできるよう切り替えます。現在のレンタルサーバー（さくらインターネット）で無料対応可能です。
+      </div>
+    </div>
+  </div>
+
+  <!-- 課題2 -->
+  <div class="issue">
+    <div class="issue-head">
+      <div class="issue-num">2</div>
+      <h2>ヒーローコピーに会社の強みが出ていない</h2>
+      <span class="tag tag-critical">最重要</span>
+    </div>
+    <div class="issue-body">
+      <p class="issue-desc">トップに表示されるキャッチコピーは「自転車組立のプロフェッショナルとして活躍しませんか」。これだけでは「なぜこの会社なのか」が伝わりません。パナソニックとの40年の実績・年間休日126日・出張整体といった他社にない強みが、ファーストビューに一切ありません。</p>
+
+      <div class="screenshot-wrap">
+        <img src="img/before-01.png" alt="トップページ">
+        <div class="pin" style="top:35%;left:20%">「なぜここで働くべきか」が伝わらない</div>
+      </div>
+
+      <div class="impact">
+        <strong>影響</strong>
+        求職者は複数の求人を比較しています。ファーストビューで差別化できなければ、他社ページへ流れてしまいます。
+      </div>
+      <div class="fix">
+        <strong>対応策</strong>
+        「パナソニックの現場で、プロになる。」など、具体的な強みを含むコピーにリニューアルします。
+      </div>
+    </div>
+  </div>
+
+  <!-- 課題3 -->
+  <div class="issue">
+    <div class="issue-head">
+      <div class="issue-num">3</div>
+      <h2>年間休日126日・賞与などの数字が目立たない</h2>
+      <span class="tag tag-critical">最重要</span>
+    </div>
+    <div class="issue-body">
+      <p class="issue-desc">「年間休日126日」「賞与年2回」「月給22〜27万」などの数字は、競合他社と比べても十分に魅力的です。しかし現状は募集要項の表の中に埋まっており、ひと目では気づけません。</p>
+
+      <div class="screenshot-wrap">
+        <img src="img/before-03.png" alt="給与・休日ページ">
+        <div class="pin" style="top:22%;left:25%">「126日」が文章の中に埋もれている</div>
+      </div>
+
+      <div class="impact">
+        <strong>影響</strong>
+        求職者の多くはページを流し読みします。数字が埋もれていると気づかれないまま離脱します。
+      </div>
+      <div class="fix">
+        <strong>対応策</strong>
+        大きな数字で「年間休日 126日」「賞与 年2回」を視覚的に強調するセクションを設けます。
+      </div>
+    </div>
+  </div>
+
+  <!-- 課題4 -->
+  <div class="issue">
+    <div class="issue-head">
+      <div class="issue-num">4</div>
+      <h2>従業員の声がコンテンツとして活用されていない</h2>
+      <span class="tag tag-medium">改善推奨</span>
+    </div>
+    <div class="issue-body">
+      <p class="issue-desc">船本代表・野口さん・岡さんの写真と紹介文は掲載されています。ただし「会社の魅力」「働いてみてどうか」という求職者が最も知りたい情報が引き出せていません。写真を顔写真にとどめず、生の声として見せることで信頼感が大きく変わります。</p>
+
+      <div class="screenshot-wrap">
+        <img src="img/before-04.png" alt="応募フォーム">
+        <div class="pin" style="top:2%;left:20%">応募の入口がフォームのみ</div>
+      </div>
+
+      <div class="impact">
+        <strong>影響</strong>
+        求職者は「実際に働いている人の話」を聞きたがっています。声がないと不安が残り、応募に踏み切れません。
+      </div>
+      <div class="fix">
+        <strong>対応策</strong>
+        「入社前の不安は？」「仕事のやりがいは？」など具体的なQ&A形式のインタビューコンテンツを追加します。
+      </div>
+    </div>
+  </div>
+
+  <!-- 課題5 -->
+  <div class="issue">
+    <div class="issue-head">
+      <div class="issue-num">5</div>
+      <h2>応募の入口がフォームのみで離脱しやすい</h2>
+      <span class="tag tag-medium">改善推奨</span>
+    </div>
+    <div class="issue-body">
+      <p class="issue-desc">現状の応募手段はメールフォーム1つのみ。「まず話だけ聞きたい」「気軽に質問したい」という求職者が応募に踏み切れず離脱するケースが発生しています。</p>
+
+      <div class="impact">
+        <strong>影響</strong>
+        特に未経験者ほど「フォームに書いて送る」というハードルを高く感じます。LINEや電話など複数の接触手段を用意することで応募数が変わります。
+      </div>
+      <div class="fix">
+        <strong>対応策</strong>
+        「まずはLINEで話を聞く」「電話で問い合わせる」など、ハードルの低い接触手段を追加します。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
