@@ -26,6 +26,26 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .s-copy { font-size: 15px; font-weight: 900; }
 .s-target { font-size: 12px; opacity: .65; }
 .s-pill { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 2px; background: rgba(255,255,255,.15); margin-left: auto; }
+/* 設計思想パネル */
+.design-rationale { background: #0f172a; color: white; }
+.dr-top { padding: 20px 32px 12px; display: flex; align-items: center; gap: 14px; }
+.dr-badge { font-size: 10px; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; background: rgba(255,255,255,.08); color: rgba(255,255,255,.45); }
+.dr-headline { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.65); }
+.dr-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; padding: 0 32px 20px; }
+.dr-block { padding: 12px 20px 12px 0; border-right: 1px solid rgba(255,255,255,.07); margin-right: 20px; }
+.dr-block:last-child { border: none; margin-right: 0; padding-right: 0; }
+.dr-label { font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 7px; }
+.dr-text { font-size: 12px; color: rgba(255,255,255,.6); line-height: 1.85; }
+.dr-flow-wrap { padding: 14px 32px 20px; border-top: 1px solid rgba(255,255,255,.07); }
+.dr-flow-title { font-size: 10px; font-weight: 900; letter-spacing: .15em; color: rgba(255,255,255,.3); text-transform: uppercase; margin-bottom: 12px; }
+.dr-flow { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 4px; }
+.dr-step { display: flex; align-items: flex-start; gap: 4px; }
+.dr-step-inner { text-align: center; }
+.dr-step-num { display: inline-flex; width: 20px; height: 20px; border-radius: 50%; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; margin-bottom: 4px; }
+.dr-step-name { font-size: 11px; font-weight: 700; color: white; white-space: nowrap; }
+.dr-step-why { font-size: 10px; color: rgba(255,255,255,.35); white-space: nowrap; }
+.dr-arrow { padding-top: 6px; color: rgba(255,255,255,.2); font-size: 13px; flex-shrink: 0; }
+/* ワイヤーフレーム共通 */
 .wf-canvas { max-width: 860px; margin: 32px auto; padding: 0 24px 80px; }
 .wf-section { background: white; border-radius: 8px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); position: relative; }
 .sec-tag { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; z-index: 10; }
@@ -40,6 +60,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .sec-tag.entry   { background: #fee2e2; color: #991b1b; }
 .wf-note { background: #fffbeb; border-left: 3px solid #f59e0b; font-size: 12px; color: #78350f; padding: 8px 14px; margin: 12px 20px 0; border-radius: 0 4px 4px 0; line-height: 1.65; }
 .wf-note.green { background: #f0fdf4; border-color: #16a34a; color: #14532d; }
+/* 共通コンポーネント */
 .wf-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; border-bottom: 3px solid; }
 .wf-nav .n-logo { font-size: 15px; font-weight: 900; }
 .wf-nav .n-links { display: flex; gap: 20px; }
@@ -58,22 +79,6 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .wf-num .n-val { font-size: 38px; font-weight: 900; line-height: 1; }
 .wf-num .n-val small { font-size: 18px; }
 .wf-num .n-lbl { font-size: 12px; margin-top: 8px; opacity: .6; line-height: 1.6; }
-.wf-career { padding: 40px 32px; }
-.career-head { text-align: center; margin-bottom: 28px; }
-.career-head .c-label { font-size: 11px; font-weight: 900; letter-spacing: .18em; margin-bottom: 6px; }
-.career-head h2 { font-size: 24px; font-weight: 900; }
-.career-head p { font-size: 14px; opacity: .6; margin-top: 6px; }
-.career-steps { display: flex; }
-.career-step { flex: 1; border-top: 3px solid; padding: 16px 12px 0; }
-.career-step .cs-yr { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
-.career-step .cs-ttl { font-size: 14px; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
-.career-step .cs-desc { font-size: 12px; opacity: .6; line-height: 1.65; }
-.career-arr { padding: 20px 6px 0; opacity: .3; font-size: 18px; }
-.career-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
-.career-card { border-left: 3px solid; padding: 14px 16px; }
-.career-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-.career-card p { font-size: 12px; opacity: .65; line-height: 1.7; }
-/* 出張整体ハイライト */
 .sekkei-wrap { padding: 0 32px 32px; }
 .sekkei-inner { display: flex; align-items: center; gap: 24px; padding: 28px 32px; border-radius: 10px; }
 .sekkei-icon { font-size: 48px; flex-shrink: 0; }
@@ -82,10 +87,22 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .sekkei-title { font-size: 26px; font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
 .sekkei-sub { font-size: 14px; line-height: 1.8; opacity: .75; }
 .sekkei-badge { flex-shrink: 0; width: 72px; height: 72px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; text-align: center; line-height: 1.4; }
-.cb .sekkei-inner { background: linear-gradient(135deg, #0d2e1a 0%, #1e4d2e 100%); border: 2px solid #52b788; color: white; }
-.cb .sekkei-eyebrow { color: #86efac; }
-.cb .sekkei-title { color: #86efac; }
-.cb .sekkei-badge { background: #52b788; color: white; }
+.wf-career { padding: 40px 32px; }
+.career-head { text-align: center; margin-bottom: 28px; }
+.career-head .c-label { font-size: 11px; font-weight: 900; letter-spacing: .18em; margin-bottom: 6px; }
+.career-head h2 { font-size: 24px; font-weight: 900; }
+.career-head p { font-size: 14px; opacity: .6; margin-top: 6px; }
+.career-steps { display: flex; align-items: flex-start; gap: 0; }
+.career-step { flex: 1; border-top: 3px solid; padding: 16px 12px 0; }
+.career-step .cs-yr { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+.career-step .cs-ttl { font-size: 14px; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+.career-step .cs-desc { font-size: 12px; opacity: .6; line-height: 1.65; }
+.career-arr { padding: 20px 6px 0; opacity: .3; font-size: 18px; }
+.skill-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 28px; }
+.skill-card { border-radius: 8px; padding: 18px 16px; }
+.skill-card .sk-icon { font-size: 24px; margin-bottom: 8px; }
+.skill-card .sk-title { font-size: 13px; font-weight: 900; margin-bottom: 6px; }
+.skill-card .sk-desc { font-size: 12px; opacity: .65; line-height: 1.7; }
 .wf-story { padding: 40px 32px; }
 .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
 .story-img { width: 100%; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
@@ -94,14 +111,26 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .story-text p { font-size: 14px; line-height: 1.9; opacity: .75; }
 .story-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .story-pill { font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; }
+.workday-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; padding: 32px 32px; }
+.workday-item { text-align: center; padding: 0 8px; border-right: 1px solid #f0f0f0; }
+.workday-item:last-child { border: none; }
+.wd-time { font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+.wd-icon { font-size: 28px; margin-bottom: 8px; }
+.wd-label { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+.wd-desc { font-size: 11px; opacity: .55; line-height: 1.6; }
 .wf-philosophy { padding: 48px 40px; text-align: center; }
-.phil-quote { font-size: 28px; font-weight: 900; line-height: 1.6; margin-bottom: 24px; }
-.phil-quote em { font-style: normal; display: block; font-size: 22px; margin-top: 8px; opacity: .65; }
+.phil-quote { font-size: 26px; font-weight: 900; line-height: 1.6; margin-bottom: 8px; }
+.phil-quote em { font-style: normal; display: block; font-size: 14px; margin-top: 10px; opacity: .5; }
 .phil-points { display: flex; gap: 32px; margin-top: 40px; justify-content: center; }
 .phil-point { flex: 1; max-width: 200px; }
-.phil-point .pp-num { font-size: 42px; font-weight: 900; line-height: 1; margin-bottom: 8px; opacity: .25; }
+.phil-point .pp-num { font-size: 42px; font-weight: 900; line-height: 1; margin-bottom: 8px; opacity: .2; }
 .phil-point h3 { font-size: 15px; font-weight: 900; margin-bottom: 8px; }
 .phil-point p { font-size: 13px; opacity: .6; line-height: 1.8; }
+.env-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 32px; }
+.env-card { border-radius: 8px; padding: 20px; border: 1px solid #e5e7eb; }
+.env-card .ec-icon { font-size: 28px; margin-bottom: 10px; }
+.env-card .ec-title { font-size: 14px; font-weight: 900; margin-bottom: 6px; }
+.env-card .ec-text { font-size: 12px; opacity: .65; line-height: 1.75; }
 .wf-about { padding: 40px 32px; }
 .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: start; }
 .about-img { width: 100%; height: 180px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
@@ -151,17 +180,22 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .cb .wf-nav .n-cta { background: #52b788; color: white; }
 .cb .wf-hero { background: linear-gradient(160deg, #0d2e1a 0%, #1a4a2e 100%); color: white; }
 .cb .wf-hero .h-badge { background: #52b788; color: white; }
-.cb .wf-hero h1 em { color: #86efac; font-style: normal; }
 .cb .wf-hero .h-cta { background: #52b788; color: white; }
 .cb .wf-hero .h-cta2 { border-color: rgba(255,255,255,.5); color: white; }
 .cb .wf-hero .h-img-placeholder { background: rgba(255,255,255,.08); color: rgba(255,255,255,.4); }
 .cb .wf-nums { background: #1e4d2e; color: white; }
 .cb .wf-num .n-val { color: #86efac; }
+.cb .sekkei-inner { background: linear-gradient(135deg, #0d2e1a 0%, #1e4d2e 100%); border: 2px solid #52b788; color: white; }
+.cb .sekkei-eyebrow { color: #86efac; }
+.cb .sekkei-title { color: #86efac; }
+.cb .sekkei-badge { background: #52b788; color: white; }
 .cb .wf-story { background: #f7fdf9; }
 .cb .story-text .s-label { color: #52b788; }
 .cb .story-text h2 { color: #1e4d2e; }
 .cb .story-img { background: #d4edda; color: #52b788; }
 .cb .story-pill { background: #d4edda; color: #1e4d2e; }
+.cb .workday-item .wd-time { color: #1e4d2e; }
+.cb .workday-item .wd-label { color: #1e4d2e; }
 .cb .about-text .a-label { color: #52b788; }
 .cb .about-text h2 { color: #1e4d2e; }
 .cb .about-img { background: #d4edda; color: #52b788; }
@@ -178,7 +212,6 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .cb .recruit-head .r-label { color: #52b788; }
 .cb .recruit-head h2 { color: #1e4d2e; }
 .cb .recruit-table td:first-child { color: #1e4d2e; border-right: 2px solid #52b788; }
-.cb .recruit-highlight { color: #1e4d2e; }
 .cb .access-map { background: #d4edda; color: #52b788; }
 .cb .wf-entry { background: linear-gradient(160deg, #0d2e1a 0%, #1a4a2e 100%); color: white; }
 .cb .entry-badge { background: #52b788; color: white; }
@@ -186,25 +219,67 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
 .cb .e-btn-main { background: #52b788; color: white; }
 .cb .e-btn-line { border-color: #00c300; color: #00c300; }
 .cb .e-btn-tel { border-color: rgba(255,255,255,.4); color: white; }
+.dr-badge-b { background: rgba(82,183,136,.15); color: #52b788; }
+.dr-label-b { color: #52b788; }
+.dr-step-num-b { background: #52b788; color: white; }
 </style>
 </head>
 <body>
-
 <div class="shell-header">
   <div class="shell-logo"><span>Build</span> × イズミ電商 ワイヤーフレーム</div>
   <div class="case-nav">
-    <a href="wireframe-a.html" class="case-link a">案A｜成長・キャリア型</a>
+    <a href="wireframe-a.html" class="case-link a ">案A｜成長・キャリア型</a>
     <a href="wireframe-b.html" class="case-link b active">案B｜ものづくり誇り型</a>
-    <a href="wireframe-c.html" class="case-link c">案C｜職人静謐型</a>
+    <a href="wireframe-c.html" class="case-link c ">案C｜職人静謐型</a>
   </div>
   <div class="shell-meta">2026.06.29 打ち合わせ資料</div>
 </div>
-
 <div class="strategy case-b">
   <div><div class="s-label">案B — コンセプト</div><div class="s-copy">日本の街を走る自転車を、柏原から作っている。</div></div>
-  <div class="s-target">ターゲット：30〜40代、「社会とつながる仕事」「誇りを持てる仕事」を求める層</div>
+  <div class="s-target">ターゲット：30〜40代 ／ 「社会とつながる仕事」「誇りを持てる仕事」を求める層</div>
 </div>
-
+<div class="design-rationale">
+  <div class="dr-top">
+    <div class="dr-badge dr-badge-b">設計思想</div>
+    <div class="dr-headline">なぜこの構成にしたか ── 案Bの設計ロジック</div>
+  </div>
+  <div class="dr-grid">
+    <div class="dr-block">
+      <div class="dr-label dr-label-b">ターゲット像</div>
+      <div class="dr-text">30〜40代。ある程度の社会経験あり。「給与は悪くないが、仕事をしている意味が感じられない」という充足感の欠如を抱える。<strong style="color:white">自分の仕事が誰かの役に立っている実感</strong>を強く求めている。</div>
+    </div>
+    <div class="dr-block">
+      <div class="dr-label dr-label-b">この人の最初の問い</div>
+      <div class="dr-text">「この仕事は、意味があるか？」<br>「誰かの役に立っているか？」<br>→ 待遇より前に<strong style="color:white">「社会との接続」</strong>を見せることが最優先。まず感情的に共鳴させる。</div>
+    </div>
+    <div class="dr-block">
+      <div class="dr-label dr-label-b">構成で意識したこと</div>
+      <div class="dr-text">OUR STORY（製品×社会）を数字より<strong style="color:white">前</strong>に配置。「日本中を走る自転車を作っている」という事実で感情を動かしてから、待遇・職場環境を見せる。VOICEは「やりがい・誇り」にフォーカス。</div>
+    </div>
+  </div>
+  <div class="dr-flow-wrap">
+    <div class="dr-flow-title">セクション構成の順番とその理由</div>
+    <div class="dr-flow">
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">1</span></div><div class="dr-step-name">HERO</div><div class="dr-step-why">社会への誇りを掴む</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">2</span></div><div class="dr-step-name">OUR STORY</div><div class="dr-step-why">製品×社会で感情を動かす</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">3</span></div><div class="dr-step-name">数字</div><div class="dr-step-why">「誇り＋待遇」で納得</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">4</span></div><div class="dr-step-name">出張整体</div><div class="dr-step-why">競合との差で驚かせる</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">5</span></div><div class="dr-step-name">1日の流れ</div><div class="dr-step-why">リアルな1日を想像させる</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">6</span></div><div class="dr-step-name">誇りの声</div><div class="dr-step-why">「やりがい」で共鳴強化</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">7</span></div><div class="dr-step-name">会社紹介</div><div class="dr-step-why">40年の信頼で補強</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">8</span></div><div class="dr-step-name">募集要項</div><div class="dr-step-why">条件確認</div></div></div>
+      <div class="dr-arrow">→</div>
+      <div class="dr-step"><div class="dr-step-inner"><div><span class="dr-step-num dr-step-num-b">9</span></div><div class="dr-step-name">応募</div><div class="dr-step-why">行動へ</div></div></div>
+    </div>
+  </div>
+</div>
 <div class="cb">
 <div class="wf-canvas">
 
@@ -215,19 +290,41 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
       <div class="n-links"><span>私たちのものづくり</span><span>数字で見る</span><span>スタッフの声</span><span>募集要項</span></div>
       <div class="n-cta">応募する・話を聞く</div>
     </div>
+    <div class="wf-note">全案共通。スクロール追従（sticky）。右端CTAで常時応募導線を確保。</div>
   </div>
 
   <div class="wf-section">
     <span class="sec-tag hero">HERO</span>
     <div class="wf-hero">
       <div class="h-badge">MADE IN KASHIWARA, OSAKA</div>
-      <h1>日本の街を走る自転車を、<br><em>柏原から作っている。</em></h1>
+      <h1>日本の街を走る自転車を、<br><em style="color:#86efac;font-style:normal">柏原から作っている。</em></h1>
       <p class="h-sub">あなたが組み立てた一台が、誰かの通勤を支え、<br>誰かの子どもを乗せて、誰かの街を走っている。<br>それを知っているのは、ここで働く人だけ。</p>
       <button class="h-cta">この仕事について詳しく見る</button>
       <button class="h-cta2">LINEで気軽に聞く</button>
-      <div class="h-img-placeholder">[ 完成した電動アシスト自転車・工場ラインの全景 ]<br>日常の街並みと自転車を重ねたビジュアルイメージ</div>
+      <div class="h-img-placeholder">[ 完成した電動アシスト自転車 / 日常の街並みと重ねたビジュアル ]</div>
     </div>
-    <div class="wf-note">「あなたが作った製品が世の中を走っている」というストーリーで、仕事の意味・社会貢献を前面に出す。</div>
+    <div class="wf-note">「あなたが作った製品が世の中を走っている」──社会との接続を最初に訴求。「誇り」という感情に訴えることで、30〜40代ターゲットに刺さる。</div>
+  </div>
+
+  <div class="wf-section">
+    <span class="sec-tag diff">CASE B 固有｜最前面に配置</span>
+    <div class="wf-story">
+      <div class="story-grid">
+        <div class="story-img">[ 自転車組立の手元クローズアップ ]<br>職人の手・パーツ・ライン</div>
+        <div class="story-text">
+          <div class="s-label">OUR STORY — 案B固有セクション</div>
+          <h2>この一台は、<br>誰かの日常を<br>動かしている</h2>
+          <p>イズミ電商が手がけるのは、パナソニックブランドの電動アシスト自転車。全国のホームセンター・自転車店に並ぶ製品の多くに、私たちの手が入っています。</p>
+          <p style="margin-top:12px">組立から検査まで、一台ごとに丁寧に。大量生産の中でも手を抜かないのがイズミのやり方。</p>
+          <div class="story-pills">
+            <div class="story-pill">パナソニック正規協力工場</div>
+            <div class="story-pill">柏原市・40年以上の実績</div>
+            <div class="story-pill">社内品質基準で管理</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-note green">【案B固有・最前面】「自分の仕事が社会に届いている」という実感を、数字より先に届ける。感情的共鳴を最初に作ることで、その後の待遇情報への興味が高まる。</div>
   </div>
 
   <div class="wf-section">
@@ -238,6 +335,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
       <div class="wf-num"><div class="n-val">年<small>2</small>回</div><div class="n-lbl">賞与支給</div></div>
       <div class="wf-num"><div class="n-val">月<small>22〜27万</small></div><div class="n-lbl">給与水準</div></div>
     </div>
+    <div class="wf-note">OUR STORYで感情的共鳴を作った後に数字を提示。「誇りある仕事＋良い待遇」の組み合わせで、30〜40代が「ここがいい」と決断しやすい状態を作る。</div>
   </div>
 
   <div class="wf-section">
@@ -253,28 +351,48 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
         <div class="sekkei-badge">社員<br>全員<br>無料</div>
       </div>
     </div>
-    <div class="wf-note green">「年間休日126日」と並ぶ最大の差別化ポイント。NUMBERS直後に専用枠を設けることで流し読みでも必ず目に入る。「整体が月1回無料」は製造業の競合求人にまず存在しない。</div>
+    <div class="wf-note green">「年間休日126日」と並ぶ最大の差別化ポイント。NUMBERS直後に専用枠を設けることで流し読みでも必ず目に入る。</div>
   </div>
 
   <div class="wf-section">
-    <span class="sec-tag diff">CASE B 固有</span>
-    <div class="wf-story">
-      <div class="story-grid">
-        <div class="story-img">[ 自転車組立の手元クローズアップ ]<br>職人の手・パーツ・ライン</div>
-        <div class="story-text">
-          <div class="s-label">OUR STORY</div>
-          <h2>この一台は、<br>誰かの日常を<br>動かしている</h2>
-          <p>イズミ電商が手がけるのは、パナソニックブランドの電動アシスト自転車。全国のホームセンター・自転車店に並ぶ製品の多くに、私たちの手が入っています。</p>
-          <p style="margin-top:12px">組立から検査まで、一台ごとに丁寧に。大量生産の中でも、手を抜かないのがイズミのやり方です。</p>
-          <div class="story-pills">
-            <div class="story-pill">パナソニック正規協力工場</div>
-            <div class="story-pill">柏原市・創業40年以上</div>
-            <div class="story-pill">品質基準 社内管理</div>
-          </div>
+    <span class="sec-tag diff">CASE B 固有｜1日の流れ</span>
+    <div style="padding: 32px">
+      <div style="text-align:center;margin-bottom:24px">
+        <div style="font-size:11px;font-weight:900;letter-spacing:.18em;color:#52b788;margin-bottom:8px">A DAY IN THE LIFE — 案B固有セクション</div>
+        <div style="font-size:22px;font-weight:900;color:#1e4d2e">働く1日の流れ</div>
+        <div style="font-size:13px;color:#888;margin-top:6px">「どんな1日を過ごすのか」を具体的に見せることで、入社後のイメージを持たせる</div>
+      </div>
+      <div class="workday-grid">
+        <div class="workday-item"><div class="wd-time">08:00</div><div class="wd-icon">🌅</div><div class="wd-label">朝礼・準備</div><div class="wd-desc">ラインの確認と当日の生産計画を共有</div></div>
+        <div class="workday-item"><div class="wd-time">08:15</div><div class="wd-icon">🔧</div><div class="wd-label">組立作業</div><div class="wd-desc">パナソニック規格に沿って1台1台丁寧に</div></div>
+        <div class="workday-item"><div class="wd-time">12:00</div><div class="wd-icon">🍱</div><div class="wd-label">昼休憩</div><div class="wd-desc">1時間のリフレッシュ。近くのコンビニへ。</div></div>
+        <div class="workday-item"><div class="wd-time">13:00</div><div class="wd-icon">🔍</div><div class="wd-label">品質検査</div><div class="wd-desc">完成品の最終確認。自分の目でOKを出す。</div></div>
+        <div class="workday-item"><div class="wd-time">17:00</div><div class="wd-icon">🏠</div><div class="wd-label">定時退社</div><div class="wd-desc">残業ほぼなし。オンとオフの切れ目が明確。</div></div>
+      </div>
+    </div>
+    <div class="wf-note green">【案B固有】「1日の流れ」を可視化することで、入社後のリアルな働くイメージが持てる。残業なし・定時退社の事実も自然な形で伝えられる。</div>
+  </div>
+
+  <div class="wf-section">
+    <span class="sec-tag voice">VOICE</span>
+    <div class="wf-voice">
+      <div class="voice-head"><div class="v-label">STAFF VOICE</div><h2>「この仕事を続けている理由」</h2></div>
+      <div class="voice-cards">
+        <div class="voice-card">
+          <div class="vc-img">[ 野口 孝文さんの写真 ]</div>
+          <div class="vc-body"><div class="vc-role">ラインリーダー</div><div class="vc-name">野口 孝文</div><div class="vc-q">Q. やりがいを感じる瞬間は？</div><div class="vc-a">「自分が組み立てた自転車が街を走っているのを見ると、じわっとします。自慢できる仕事だと思っています」</div></div>
+        </div>
+        <div class="voice-card">
+          <div class="vc-img">[ 岡 浩之さんの写真 ]</div>
+          <div class="vc-body"><div class="vc-role">サブリーダー</div><div class="vc-name">岡 浩之</div><div class="vc-q">Q. この仕事に誇りはある？</div><div class="vc-a">「あります。パナソニックが信頼して任せてくれる仕事を、自分たちがやっている。それだけで十分です」</div></div>
+        </div>
+        <div class="voice-card">
+          <div class="vc-img">[ 船本 代表の写真 ]</div>
+          <div class="vc-body"><div class="vc-role">代表取締役</div><div class="vc-name">船本 ○○</div><div class="vc-q">Q. この仕事の誇りは？</div><div class="vc-a">「日本中を走る自転車に、うちの手が入っている。それをわかって働いている人間は強い。誇りが仕事の質を作ります」</div></div>
         </div>
       </div>
     </div>
-    <div class="wf-note green">案B固有。「自分の仕事が社会に届いている」という実感を持たせるストーリーセクション。製品写真・工場写真で具体的に描写する。</div>
+    <div class="wf-note">【案B調整】VOICEのQ軸を「やりがい・誇り」に統一。30〜40代ターゲットが最も共鳴する「仕事の意味」を、実際に働く人の言葉で語ってもらう。</div>
   </div>
 
   <div class="wf-section">
@@ -297,27 +415,6 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
   </div>
 
   <div class="wf-section">
-    <span class="sec-tag voice">VOICE</span>
-    <div class="wf-voice">
-      <div class="voice-head"><div class="v-label">STAFF VOICE</div><h2>「この仕事を続けている理由」</h2></div>
-      <div class="voice-cards">
-        <div class="voice-card">
-          <div class="vc-img">[ 船本 代表の写真 ]</div>
-          <div class="vc-body"><div class="vc-role">代表取締役</div><div class="vc-name">船本 ○○</div><div class="vc-q">Q. この仕事の誇りは？</div><div class="vc-a">「日本中を走る自転車に、うちの手が入っている。それをわかって働いている人間は強い。誇りが仕事の質を作ります」</div></div>
-        </div>
-        <div class="voice-card">
-          <div class="vc-img">[ 野口 孝文さんの写真 ]</div>
-          <div class="vc-body"><div class="vc-role">ラインリーダー</div><div class="vc-name">野口 孝文</div><div class="vc-q">Q. やりがいを感じる瞬間は？</div><div class="vc-a">「自分が組み立てた自転車が街を走っているのを見ると、じわっとします。自慢できる仕事だと思っています」</div></div>
-        </div>
-        <div class="voice-card">
-          <div class="vc-img">[ 岡 浩之さんの写真 ]</div>
-          <div class="vc-body"><div class="vc-role">サブリーダー</div><div class="vc-name">岡 浩之</div><div class="vc-q">Q. 職場の雰囲気は？</div><div class="vc-a">「9人で動いているので、全員の名前と顔がわかる。ギスギスした感じが全然ない。居心地がいいんです」</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="wf-section">
     <span class="sec-tag recruit">RECRUIT</span>
     <div class="wf-recruit">
       <div class="recruit-head"><div class="r-label">RECRUIT INFO</div><h2>募集要項</h2></div>
@@ -332,7 +429,6 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
         <tr><td>待遇・福利厚生</td><td>社会保険完備、交通費全額支給、制服貸与、<span class="recruit-highlight">出張整体（月1回）</span>、昇給年1回</td></tr>
         <tr><td>応募資格</td><td>未経験可・学歴不問。普通自動車免許あれば尚可。</td></tr>
       </table>
-      <div style="text-align:center;margin-top:24px;font-size:12px;color:#888">※ 採用情報は Indeed 等の外部媒体にも掲載中。本ページからも直接ご応募いただけます。</div>
     </div>
   </div>
 
@@ -340,7 +436,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: #e5e7eb; color: #1a1
     <span class="sec-tag access">ACCESS</span>
     <div class="wf-access">
       <div class="access-grid">
-        <div class="access-map">[ Google Map 埋め込み ]</div>
+        <div class="access-map" style="background:#d4edda;color:#52b788">[ Google Map 埋め込み ]</div>
         <div class="access-info"><h3>イズミ電商株式会社</h3><p>〒 582-XXXX 大阪府柏原市 ○○ ○-○-○<br><br>近鉄大阪線「堅下駅」より徒歩 ○ 分<br>駐車場あり ｜ TEL：072-XXX-XXXX</p></div>
       </div>
     </div>
