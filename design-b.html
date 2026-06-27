@@ -306,13 +306,92 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #333; background: #fff; }
     <div class="sec-ja">働く1日の流れ</div>
     <div class="sec-divider"></div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;max-width:860px;margin:0 auto;">
-    <div style="text-align:center;padding:0 12px;border-right:1px solid #e5e7eb"><div style="font-size:13px;font-weight:700;color:#16a34a;margin-bottom:10px">08:25</div><div style="font-size:24px;margin-bottom:8px;color:#1e4d2e">—</div><div style="font-size:13px;font-weight:900;color:#1e4d2e;margin-bottom:6px">朝礼・準備</div><div style="font-size:12px;color:#666;line-height:1.7">ラインの確認と当日の生産計画を共有</div></div>
-    <div style="text-align:center;padding:0 12px;border-right:1px solid #e5e7eb"><div style="font-size:13px;font-weight:700;color:#16a34a;margin-bottom:10px">08:40</div><div style="font-size:24px;margin-bottom:8px;color:#1e4d2e">—</div><div style="font-size:13px;font-weight:900;color:#1e4d2e;margin-bottom:6px">組立作業</div><div style="font-size:12px;color:#666;line-height:1.7">パナソニック規格に沿って丁寧に</div></div>
-    <div style="text-align:center;padding:0 12px;border-right:1px solid #e5e7eb"><div style="font-size:13px;font-weight:700;color:#16a34a;margin-bottom:10px">12:00</div><div style="font-size:24px;margin-bottom:8px;color:#1e4d2e">—</div><div style="font-size:13px;font-weight:900;color:#1e4d2e;margin-bottom:6px">昼休憩</div><div style="font-size:12px;color:#666;line-height:1.7">1時間のリフレッシュ</div></div>
-    <div style="text-align:center;padding:0 12px;border-right:1px solid #e5e7eb"><div style="font-size:13px;font-weight:700;color:#16a34a;margin-bottom:10px">13:00</div><div style="font-size:24px;margin-bottom:8px;color:#1e4d2e">—</div><div style="font-size:13px;font-weight:900;color:#1e4d2e;margin-bottom:6px">品質検査</div><div style="font-size:12px;color:#666;line-height:1.7">完成品の最終確認。自分の目でOKを出す。</div></div>
-    <div style="text-align:center;padding:0 12px"><div style="font-size:13px;font-weight:700;color:#16a34a;margin-bottom:10px">17:25</div><div style="font-size:24px;margin-bottom:8px;color:#1e4d2e">—</div><div style="font-size:13px;font-weight:900;color:#1e4d2e;margin-bottom:6px">定時退社</div><div style="font-size:12px;color:#666;line-height:1.7">残業ほぼなし。オンオフの切れ目が明確。</div></div>
+  <div class="timeline-wrap">
+    <!-- 時間軸ラベル -->
+    <div class="tl-axis">
+      <span class="tl-hour" style="left:0%">08:25</span>
+      <span class="tl-hour" style="left:2.78%">08:40</span>
+      <span class="tl-hour" style="left:40%">12:00</span>
+      <span class="tl-hour" style="left:51.11%">13:00</span>
+      <span class="tl-hour" style="left:100%">17:25</span>
+    </div>
+    <!-- バー本体 -->
+    <div class="tl-bar-row">
+      <!-- 08:25〜08:40 朝礼 15min / 540min = 2.78% -->
+      <div class="tl-seg tl-seg-morning" style="flex:15">
+        <span class="tl-seg-label">朝礼</span>
+      </div>
+      <!-- 08:40〜12:00 組立 200min = 37.04% -->
+      <div class="tl-seg tl-seg-work" style="flex:200">
+        <span class="tl-seg-label">組立作業</span>
+      </div>
+      <!-- 12:00〜13:00 昼休憩 60min = 11.11% -->
+      <div class="tl-seg tl-seg-break" style="flex:60">
+        <span class="tl-seg-label">昼休憩</span>
+      </div>
+      <!-- 13:00〜17:25 品質検査 265min = 49.07% -->
+      <div class="tl-seg tl-seg-check" style="flex:265">
+        <span class="tl-seg-label">品質検査</span>
+      </div>
+    </div>
+    <!-- 終了マーカー -->
+    <div class="tl-end-marker">
+      <span class="tl-end-badge">17:25 定時退社</span>
+      <span class="tl-end-sub">残業ほぼなし</span>
+    </div>
+    <!-- 詳細カード -->
+    <div class="tl-detail-row">
+      <div class="tl-detail" style="flex:15">
+        <div class="tl-d-title">朝礼・準備</div>
+        <div class="tl-d-text">ラインの確認と当日の生産計画を共有</div>
+      </div>
+      <div class="tl-detail" style="flex:200">
+        <div class="tl-d-title">組立作業</div>
+        <div class="tl-d-text">パナソニック規格に沿って、丁寧に一台ずつ</div>
+      </div>
+      <div class="tl-detail tl-detail-break" style="flex:60">
+        <div class="tl-d-title">昼休憩</div>
+        <div class="tl-d-text">1時間<br>リフレッシュ</div>
+      </div>
+      <div class="tl-detail" style="flex:265">
+        <div class="tl-d-title">品質検査</div>
+        <div class="tl-d-text">完成品の最終確認。自分の目でOKを出す。</div>
+      </div>
+    </div>
   </div>
+  <style>
+  .timeline-wrap { max-width: 900px; margin: 0 auto; position: relative; padding-bottom: 20px; }
+  .tl-axis { position: relative; height: 28px; margin-bottom: 6px; }
+  .tl-hour { position: absolute; transform: translateX(-50%); font-size: 11px; font-weight: 700; color: #2d5ba3; letter-spacing: .04em; white-space: nowrap; }
+  .tl-hour:first-child { transform: translateX(0); }
+  .tl-hour:last-child { transform: translateX(-100%); }
+  .tl-bar-row { display: flex; height: 52px; border-radius: 4px; overflow: hidden; gap: 2px; }
+  .tl-seg { display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; transition: filter .2s; }
+  .tl-seg:hover { filter: brightness(1.08); }
+  .tl-seg-morning { background: #93c5fd; }
+  .tl-seg-work    { background: #1c3a6e; }
+  .tl-seg-break   { background: #e2e8f0; }
+  .tl-seg-check   { background: #2d5ba3; }
+  .tl-seg-label { font-size: 12px; font-weight: 900; color: white; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 6px; }
+  .tl-seg-morning .tl-seg-label { color: #1c3a6e; }
+  .tl-seg-break .tl-seg-label { color: #64748b; }
+  .tl-end-marker { display: flex; align-items: center; gap: 10px; margin-top: 10px; justify-content: flex-end; }
+  .tl-end-badge { background: #1c3a6e; color: white; font-size: 11px; font-weight: 900; padding: 4px 14px; letter-spacing: .06em; }
+  .tl-end-sub { font-size: 11px; color: #888; }
+  .tl-detail-row { display: flex; gap: 2px; margin-top: 16px; }
+  .tl-detail { padding: 12px 10px; border-top: 2px solid #1c3a6e; }
+  .tl-detail-break { border-color: #cbd5e1; }
+  .tl-d-title { font-size: 12px; font-weight: 900; color: #1c3a6e; margin-bottom: 4px; }
+  .tl-detail-break .tl-d-title { color: #64748b; }
+  .tl-d-text { font-size: 11px; color: #666; line-height: 1.7; }
+  @media (max-width: 640px) {
+    .tl-axis { display: none; }
+    .tl-bar-row { height: 40px; }
+    .tl-seg-label { font-size: 10px; }
+    .tl-detail-row { flex-wrap: wrap; }
+    .tl-detail { flex: 1 1 45% !important; }
+  }
+  </style>
 </section>
 
 <section class="section">
