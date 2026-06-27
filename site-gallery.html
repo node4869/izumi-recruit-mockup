@@ -3,151 +3,804 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>現状サイト スクリーンショット — イズミ電商</title>
+<title>現状サイト 分析レポート — イズミ電商</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Noto Sans JP', sans-serif; background: #1a1a1a; color: white; }
+body { font-family: 'Noto Sans JP', sans-serif; background: #141414; color: white; }
 
+/* HEADER */
 .header {
-  padding: 24px 32px; border-bottom: 1px solid #2a2a2a;
+  padding: 24px 32px; border-bottom: 1px solid #222;
   display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; background: #141414; z-index: 100;
 }
-.header h1 { font-size: 16px; font-weight: 700; color: white; }
-.header p { font-size: 13px; color: rgba(255,255,255,.4); margin-top: 4px; }
-.header .url { font-size: 12px; color: rgba(255,255,255,.3); font-family: monospace; background: #2a2a2a; padding: 4px 10px; border-radius: 4px; }
+.header-left h1 { font-size: 16px; font-weight: 700; }
+.header-left p { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 3px; }
+.header .url { font-size: 12px; color: rgba(255,255,255,.3); font-family: monospace; background: #222; padding: 4px 10px; border-radius: 4px; }
 
-.gallery { padding: 32px; display: flex; flex-direction: column; gap: 48px; max-width: 1000px; margin: 0 auto; }
+/* LEGEND */
+.legend {
+  display: flex; gap: 20px; padding: 14px 32px;
+  background: #1c1c1c; border-bottom: 1px solid #222; flex-wrap: wrap;
+}
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,.6); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-dot.good { background: #22c55e; }
+.legend-dot.bad  { background: #ef4444; }
+.legend-dot.improve { background: #f59e0b; }
 
+/* GALLERY */
+.gallery { padding: 40px 32px 80px; display: flex; flex-direction: column; gap: 56px; max-width: 1100px; margin: 0 auto; }
+
+/* ITEM */
 .item { }
-.item-label {
-  font-size: 11px; font-weight: 700; letter-spacing: .16em; color: rgba(255,255,255,.35);
-  text-transform: uppercase; margin-bottom: 10px;
-  display: flex; align-items: center; gap: 10px;
+.item-header {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px;
 }
-.item-label::after { content: ''; flex: 1; height: 1px; background: #2a2a2a; }
-.item-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,.8); margin-bottom: 12px; }
-.item img {
-  width: 100%; border-radius: 8px; display: block;
-  box-shadow: 0 4px 24px rgba(0,0,0,.5);
-  border: 1px solid #2a2a2a;
+.item-num { font-size: 11px; font-weight: 700; letter-spacing: .16em; color: rgba(255,255,255,.25); text-transform: uppercase; white-space: nowrap; }
+.item-title { font-size: 16px; font-weight: 700; color: rgba(255,255,255,.85); }
+
+.item-body { display: grid; grid-template-columns: 1fr 360px; gap: 24px; align-items: start; }
+
+.item img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 4px 24px rgba(0,0,0,.6); border: 1px solid #2a2a2a; }
+
+/* ANNOTATIONS PANEL */
+.annotations { display: flex; flex-direction: column; gap: 10px; }
+
+.ann {
+  border-radius: 6px; padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.ann.good    { background: rgba(34,197,94,.1);  border-left: 3px solid #22c55e; }
+.ann.bad     { background: rgba(239,68,68,.1);   border-left: 3px solid #ef4444; }
+.ann.improve { background: rgba(245,158,11,.1);  border-left: 3px solid #f59e0b; }
+
+.ann-icon { font-size: 14px; flex-shrink: 0; line-height: 1.5; }
+.ann-body { }
+.ann-tag {
+  font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ann.good .ann-tag    { color: #22c55e; }
+.ann.bad .ann-tag     { color: #ef4444; }
+.ann.improve .ann-tag { color: #f59e0b; }
+.ann-text { font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.7; }
+
+/* SECTION SCORE */
+.score-bar {
+  display: flex; gap: 8px; margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid #2a2a2a; align-items: center;
+}
+.score-label { font-size: 11px; color: rgba(255,255,255,.35); white-space: nowrap; }
+.score-dots { display: flex; gap: 4px; }
+.score-dot { width: 8px; height: 8px; border-radius: 50%; background: #2a2a2a; }
+.score-dot.filled { background: #f59e0b; }
+
+/* DIVIDER */
+.section-break {
+  text-align: center; color: rgba(255,255,255,.12); font-size: 11px;
+  letter-spacing: .2em; text-transform: uppercase; padding: 12px 0;
+  border-top: 1px solid #222; border-bottom: 1px solid #222;
+  margin: 8px 0;
 }
 
-@media (max-width: 640px) {
-  .header { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .gallery { padding: 20px; gap: 36px; }
+@media (max-width: 800px) {
+  .item-body { grid-template-columns: 1fr; }
+  .legend { gap: 12px; }
+  .gallery { padding: 24px 20px 60px; }
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div>
-    <h1>現状サイト スクリーンショット</h1>
+  <div class="header-left">
+    <h1>現状サイト 分析レポート</h1>
     <p>イズミ電商株式会社 採用サイト — 調査日：2026年6月27日</p>
   </div>
   <span class="url">izumi-densho.com</span>
 </div>
 
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot good"></div>良い点（活かせる資産）</div>
+  <div class="legend-item"><div class="legend-dot bad"></div>問題点（機会損失の原因）</div>
+  <div class="legend-item"><div class="legend-dot improve"></div>改善点（新設計での対応）</div>
+</div>
+
 <div class="gallery">
 
+  <!-- 01 -->
   <div class="item">
-    <div class="item-label">01 / 16</div>
-    <div class="item-title">トップ — ヒーロービジュアル</div>
-    <img src="img/site-01.png" alt="トップページ">
+    <div class="item-header">
+      <span class="item-num">01 / 16</span>
+      <span class="item-title">トップ — ヒーロービジュアル</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-01.png" alt="トップページ">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">ナビゲーションにパナソニックロゴが入っており、大手ブランドとの関係性が視認できる。</div>
+          </div>
+        </div>
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">ネイビー×ゴールドの配色は「信頼感・安定感」を感じさせる。製造業として適切な印象。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">キャッチコピーが「自転車組立のプロフェッショナルとして活躍しませんか」のみ。「なぜここで働くべきか」が一切伝わらない。競合他社と差別化できていない。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">https でアクセスするとSSLエラーが発生。求職者が「危険なサイト」と判断して即離脱するリスク。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「パナソニックの現場で40年」「年間休日126日」など具体的な強みをファーストビューに配置。SSL対応で信頼性を確保。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">2 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 02 -->
   <div class="item">
-    <div class="item-label">02 / 16</div>
-    <div class="item-title">会社紹介 — ABOUT</div>
-    <img src="img/site-02.png" alt="会社紹介">
+    <div class="item-header">
+      <span class="item-num">02 / 16</span>
+      <span class="item-title">会社紹介 — ABOUT</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-02.png" alt="会社紹介">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">会社の概要・創業年・事業内容がテキストで丁寧に記載されている。情報量は十分。</div>
+          </div>
+        </div>
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">工場内の写真があり、実際の職場環境をある程度イメージできる。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">「40年のパナソニック実績」という最大の強みが文章の中に埋もれており、一目でわからない。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「40年」「9名の少数精鋭」「柏原市」などをカード型・数字型で視覚的に強調する。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">3 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 03 -->
   <div class="item">
-    <div class="item-label">03 / 16</div>
-    <div class="item-title">会社沿革</div>
-    <img src="img/site-03.png" alt="会社沿革">
+    <div class="item-header">
+      <span class="item-num">03 / 16</span>
+      <span class="item-title">会社沿革</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-03.png" alt="会社沿革">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">創業からの歴史が年表形式で整理されており、長年の実績の根拠として機能している。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">採用ページとして見たとき、沿革は求職者が最も見たい情報ではない。優先度が高すぎる位置に配置されている。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">沿革はABOUTセクションの補足として折りたたみ表示にするか、ページ下部へ移動。上部には「スタッフの声」「給与・休日」を優先配置する。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">2 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 04 -->
   <div class="item">
-    <div class="item-label">04 / 16</div>
-    <div class="item-title">代表メッセージ（モーダル）</div>
-    <img src="img/site-04.png" alt="代表メッセージ">
+    <div class="item-header">
+      <span class="item-num">04 / 16</span>
+      <span class="item-title">代表メッセージ（モーダル表示）</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-04.png" alt="代表メッセージ">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">代表のメッセージが存在すること自体は大きな資産。「どんな人が経営しているか」は求職者が必ず気にする情報。</div>
+          </div>
+        </div>
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">代表の写真が掲載されており、顔が見える経営者として信頼感を与えられる。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">モーダル（ポップアップ）表示のため、開かないと読めない。多くの求職者がそのままスクロールして見逃している可能性が高い。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">モーダルを廃止し、ABOUTセクションにインライン表示。代表の言葉を「採用に込めた想い」としてQ&A形式で見せることで印象が大きく変わる。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">2 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 05 -->
   <div class="item">
-    <div class="item-label">05 / 16</div>
-    <div class="item-title">メッセージ — スタッフ一覧</div>
-    <img src="img/site-05.png" alt="スタッフ一覧">
+    <div class="item-header">
+      <span class="item-num">05 / 16</span>
+      <span class="item-title">メッセージ — スタッフ一覧</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-05.png" alt="スタッフ一覧">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">代表・野口さん・岡さんの3名が写真付きで掲載されている。「誰と働くか」が見えることは採用サイトの核心的な価値。</div>
+          </div>
+        </div>
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">役職（ラインリーダー、サブリーダー）まで記載されており、組織の階層・キャリアパスが想像できる。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">各スタッフへのリンクもモーダル前提。写真の下に短いコメントのみで、「この人はどんな人？」「入社してどうだった？」という肝心の情報がない。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「入社前の不安は？」「この仕事のやりがいは？」「休日の過ごし方は？」などQ&A形式のインタビュー形式に昇華。写真と言葉を組み合わせたカード型で見せる。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">3 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 06 -->
   <div class="item">
-    <div class="item-label">06 / 16</div>
-    <div class="item-title">スタッフメッセージ — 野口 孝文（ラインリーダー）</div>
-    <img src="img/site-06.png" alt="野口さんメッセージ">
+    <div class="item-header">
+      <span class="item-num">06 / 16</span>
+      <span class="item-title">スタッフメッセージ — 野口 孝文（ラインリーダー）</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-06.png" alt="野口さんメッセージ">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">「この仕事に向いている人」「仕事の楽しさ」など、求職者が知りたい内容が具体的に書かれている。コンテンツとして非常に価値が高い。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">モーダル内にしか存在しないため、多くの求職者がこの情報を見ていない可能性が高い。最も重要なコンテンツが最も見られにくい場所にある。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">このメッセージの内容をそのまま活用し、「STAFF VOICE」セクションとして独立させる。Q&A形式に再構成すれば、そのまま強力なコンテンツになる。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">4 / 5（内容は◎、表示方法が×）</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 07 -->
   <div class="item">
-    <div class="item-label">07 / 16</div>
-    <div class="item-title">スタッフメッセージ — 岡 浩之（サブリーダー）</div>
-    <img src="img/site-07.png" alt="岡さんメッセージ">
+    <div class="item-header">
+      <span class="item-num">07 / 16</span>
+      <span class="item-title">スタッフメッセージ — 岡 浩之（サブリーダー）</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-07.png" alt="岡さんメッセージ">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">「入社のきっかけ」「仕事の特徴」など、同様に内容の密度が高い。既存コンテンツとして活用できる素材が揃っている。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">野口さんと同様にモーダル内表示のみ。「働き方」「休日」などの具体的な数字（126日など）に触れた内容が薄い。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「年間休日126日は本当にあるか？」「残業は実際どうか？」といった求職者の疑問に正面から答える内容を追記してVOICEセクションに掲載する。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">4 / 5（内容は◎、表示方法が×）</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 08 -->
   <div class="item">
-    <div class="item-label">08 / 16</div>
-    <div class="item-title">募集要項 — 仕事の内容・求めている人材</div>
-    <img src="img/site-08.png" alt="募集要項①">
+    <div class="item-header">
+      <span class="item-num">08 / 16</span>
+      <span class="item-title">募集要項 — 仕事の内容・求めている人材</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-08.png" alt="募集要項①">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">「未経験者歓迎」「丁寧な研修あり」が明記されており、参入ハードルを下げるメッセージがある。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">テキストが長く、表組みの中に情報が均一に並んでいるため、重要な情報が目立たない。「パナソニック製品を扱う」という特別感が伝わってこない。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「仕事内容」を箇条書き＋アイコンで整理。「パナソニックブランドの製品を手がける」という文脈を冒頭に出す。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">3 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 09 -->
   <div class="item">
-    <div class="item-label">09 / 16</div>
-    <div class="item-title">募集要項 — 勤務地</div>
-    <img src="img/site-09.png" alt="募集要項②">
+    <div class="item-header">
+      <span class="item-num">09 / 16</span>
+      <span class="item-title">募集要項 — 勤務地</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-09.png" alt="募集要項②">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">住所・最寄り駅・車でのアクセス情報が記載されている。求職者が通勤可能かを判断するのに必要な情報は揃っている。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">地図（マップ）がないため、場所のイメージができない。住所だけでは柏原市がどこかわからない求職者も多い。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">Google Map を埋め込み表示。「近鉄大阪線沿い・大阪市内から〇〇分」のような周辺アクセス情報を追加し、近隣居住者へのアピールを強化する。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">2 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 10 -->
   <div class="item">
-    <div class="item-label">10 / 16</div>
-    <div class="item-title">募集要項 — 給与・勤務時間・休日（126日）</div>
-    <img src="img/site-10.png" alt="給与・休日">
+    <div class="item-header">
+      <span class="item-num">10 / 16</span>
+      <span class="item-title">募集要項 — 給与・勤務時間・休日</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-10.png" alt="給与・休日">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">月給22〜27万・賞与年2回・年間休日126日という情報が揃っており、数字自体は競合と比べて十分に魅力的。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点（最重要）</div>
+            <div class="ann-text">「年間休日126日」が表の1行として埋もれている。求職者が流し読みするとほぼ気づかない。最大の武器が最も見えにくい状態になっている。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「126日」「月22〜27万」「賞与年2回」を大きな数字＋横並びカードで全面表示。ヒーローの直下に配置し、スクロールしなくても目に入る位置にする。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">1 / 5（内容◎・見せ方✗）</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 11 -->
   <div class="item">
-    <div class="item-label">11 / 16</div>
-    <div class="item-title">募集要項 — 待遇・福利厚生</div>
-    <img src="img/site-11.png" alt="待遇・福利厚生">
+    <div class="item-header">
+      <span class="item-num">11 / 16</span>
+      <span class="item-title">募集要項 — 待遇・福利厚生</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-11.png" alt="待遇・福利厚生">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">社会保険完備・交通費支給・制服貸与など、標準的な待遇が揃っている。「出張整体（月1回）」という珍しい福利厚生が記載されている。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">「出張整体」という他社にない超差別化ポイントが、他の福利厚生と同列で1行として並んでいる。全く目立っていない。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「出張整体（月1回）」は専用のハイライトボックスで別出しして強調。「製造業でこれができる会社は少ない」という文脈を添えると差別化になる。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">2 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 12 -->
   <div class="item">
-    <div class="item-label">12 / 16</div>
-    <div class="item-title">交通アクセス</div>
-    <img src="img/site-12.png" alt="アクセス">
+    <div class="item-header">
+      <span class="item-num">12 / 16</span>
+      <span class="item-title">交通アクセス</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-12.png" alt="アクセス">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">地図が埋め込まれており、場所のイメージができる。電車・バス・車の複数アクセス手段が記載されている。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">募集要項（09）の勤務地欄には地図がなく、別ページのアクセスセクションにしか地図がない。情報の配置が分断されている。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">地図は募集要項内に統合。1ページで全情報が完結する設計に変更する。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">3 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 13 -->
   <div class="item">
-    <div class="item-label">13 / 16</div>
-    <div class="item-title">柏原市の紹介</div>
-    <img src="img/site-13.png" alt="柏原市">
+    <div class="item-header">
+      <span class="item-num">13 / 16</span>
+      <span class="item-title">柏原市の紹介</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-13.png" alt="柏原市">
+      <div class="annotations">
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">柏原市の観光・地域情報は採用サイトとして優先度が低い。求職者は「この街で働けるか」は気にするが、観光情報は不要。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">このセクションは削除かページ最下部へ移動。代わりに「周辺の生活環境（スーパー・駐車場・通勤利便性）」を簡潔に触れる程度に留める。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">1 / 5（採用サイトとして不要）</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 14 -->
   <div class="item">
-    <div class="item-label">14 / 16</div>
-    <div class="item-title">フォトギャラリー</div>
-    <img src="img/site-14.png" alt="ギャラリー">
+    <div class="item-header">
+      <span class="item-num">14 / 16</span>
+      <span class="item-title">フォトギャラリー</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-14.png" alt="ギャラリー">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">実際の工場・作業環境の写真があることは大きな強み。求職者は「どんな場所で働くか」をビジュアルで確認したがっている。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">写真にキャプションがなく、何を見ているのかがわからない。「どの工程の写真か」「誰が写っているか」の説明があると信頼度が大きく上がる。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">写真にキャプション（「組立ライン / 検査工程 / 出荷前確認」など）を追加。ヒーロー下に大きく1枚使い、工場の実際の雰囲気を最初に伝える配置にする。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">3 / 5（素材は◎、活用が△）</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 15 -->
   <div class="item">
-    <div class="item-label">15 / 16</div>
-    <div class="item-title">応募フォーム — ENTRY</div>
-    <img src="img/site-15.png" alt="応募フォーム">
+    <div class="item-header">
+      <span class="item-num">15 / 16</span>
+      <span class="item-title">応募フォーム — ENTRY</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-15.png" alt="応募フォーム">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">フォームが存在し、直接応募できる仕組みがある。Indeed等の外部サイトに依存しない応募経路を持っていることは重要。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点（最重要）</div>
+            <div class="ann-text">応募手段がこのフォーム1択。「まだ迷っている」「話だけ聞きたい」という求職者には選択肢がなく、ほとんどが離脱している。フォーム送信はハードルが高い。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">フォームへ誘導するCTAがページ上部にない。「読んで応募しようと思ったが、どこで応募できるかわからない」というケースが発生している可能性。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">「フォーム」「LINE」「電話」の3接触手段を用意。ナビバーに常時CTAを設置。「まずは話だけでもOK」というコピーで心理的ハードルを下げる。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">1 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 16 -->
   <div class="item">
-    <div class="item-label">16 / 16</div>
-    <div class="item-title">フッター</div>
-    <img src="img/site-16.png" alt="フッター">
+    <div class="item-header">
+      <span class="item-num">16 / 16</span>
+      <span class="item-title">フッター</span>
+    </div>
+    <div class="item-body">
+      <img src="img/site-16.png" alt="フッター">
+      <div class="annotations">
+        <div class="ann good">
+          <div class="ann-icon">✓</div>
+          <div class="ann-body">
+            <div class="ann-tag">良い点</div>
+            <div class="ann-text">会社名・住所・電話番号が記載されており、最低限の連絡先情報がある。</div>
+          </div>
+        </div>
+        <div class="ann bad">
+          <div class="ann-icon">✗</div>
+          <div class="ann-body">
+            <div class="ann-tag">問題点</div>
+            <div class="ann-text">フッターに応募ボタンや問い合わせ導線がない。ページの最後まで読んだ求職者が次にどうすれば良いかわからない。</div>
+          </div>
+        </div>
+        <div class="ann improve">
+          <div class="ann-icon">→</div>
+          <div class="ann-body">
+            <div class="ann-tag">改善点</div>
+            <div class="ann-text">フッター直前に強力なCTAセクション（ENTRY）を設置。「ページを最後まで読んだ人＝最も応募意欲が高い人」を確実に取りこぼさない設計にする。</div>
+          </div>
+        </div>
+        <div class="score-bar">
+          <span class="score-label">現状評価</span>
+          <div class="score-dots">
+            <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+          </div>
+          <span style="font-size:11px;color:rgba(255,255,255,.3)">2 / 5</span>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
-
 </body>
 </html>
