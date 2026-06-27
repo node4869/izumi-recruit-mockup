@@ -384,6 +384,21 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 .iv-card-top.clickable, .msg-card.clickable { cursor: pointer; }
 .iv-card-top.clickable:hover { filter: brightness(1.1); transition: filter .2s; }
 
+
+/* クリック誘導バッジ */
+.iv-click-hint { 
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 14px; padding: 10px 16px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  font-size: 12px; font-weight: 700; color: white; letter-spacing: .08em;
+  cursor: pointer; transition: background .2s;
+}
+.iv-click-hint:hover { background: rgba(255,255,255,.22); }
+.iv-click-hint::after { content: '→'; font-size: 14px; }
+.iv-card-top.clickable { cursor: pointer; transition: filter .2s; }
+.iv-card-top.clickable:hover { filter: brightness(1.12); }
+.msg-sign.clickable:hover { background: #eaecf0 !important; }
+
 </style>
 </head>
 <body>
@@ -572,9 +587,10 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
   <div class="iv-grid">
     <div class="iv-card">
       <div class="iv-card-top clickable" onclick="openModal()">
-        <div class="iv-role">代表取締役 ▶ クリックで詳細</div>
+        <div class="iv-role">代表取締役</div>
         <div class="iv-name">船本 到</div>
         <div class="iv-meta">49歳 ／ 創業から経営</div>
+        <div class="iv-click-hint" onclick="openModal()">詳細メッセージを読む</div>
       </div>
       <div class="iv-body">
         <div class="iv-q">採用で一番大切にしていることは？</div>
@@ -585,9 +601,10 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
     </div>
     <div class="iv-card">
       <div class="iv-card-top clickable" onclick="openNoguchiModal()">
-        <div class="iv-role">ラインリーダー・教育係 ▶ クリックで詳細</div>
+        <div class="iv-role">ラインリーダー・教育係</div>
         <div class="iv-name">野口 孝文</div>
         <div class="iv-meta">32歳 ／ 社歴11年目</div>
+        <div class="iv-click-hint" onclick="openNoguchiModal()">詳細メッセージを読む</div>
       </div>
       <div class="iv-body">
         <div class="iv-q">入社前の不安は？</div>
@@ -598,9 +615,10 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
     </div>
     <div class="iv-card">
       <div class="iv-card-top clickable" onclick="openOkaModal()">
-        <div class="iv-role">サブリーダー ▶ クリックで詳細</div>
+        <div class="iv-role">サブリーダー</div>
         <div class="iv-name">岡 浩之</div>
         <div class="iv-meta">複数年在籍</div>
+        <div class="iv-click-hint" onclick="openOkaModal()">詳細メッセージを読む</div>
       </div>
       <div class="iv-body">
         <div class="iv-q">職場の雰囲気は？</div>

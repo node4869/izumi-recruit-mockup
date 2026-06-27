@@ -160,6 +160,21 @@ footer { background: #111; color: rgba(255,255,255,.35); text-align: center; pad
 .iv-card-top.clickable, .msg-card.clickable { cursor: pointer; }
 .iv-card-top.clickable:hover { filter: brightness(1.1); transition: filter .2s; }
 
+
+/* クリック誘導バッジ */
+.iv-click-hint { 
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 14px; padding: 10px 16px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  font-size: 12px; font-weight: 700; color: white; letter-spacing: .08em;
+  cursor: pointer; transition: background .2s;
+}
+.iv-click-hint:hover { background: rgba(255,255,255,.22); }
+.iv-click-hint::after { content: '→'; font-size: 14px; }
+.iv-card-top.clickable { cursor: pointer; transition: filter .2s; }
+.iv-card-top.clickable:hover { filter: brightness(1.12); }
+.msg-sign.clickable:hover { background: #eaecf0 !important; }
+
 </style>
 </head>
 <body>
