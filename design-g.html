@@ -508,11 +508,14 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 .ct-body ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: #2d5ba3; }
 
 @media(max-width: 768px) {
-  .career-section { padding: 72px 20px; }
-  .ct-item { grid-template-columns: 100px 1fr; }
-  .ct-item::before { left: 99px; }
-  .ct-dot { right: -8px; }
-  .ct-label-text { font-size: 13px; }
+  .career-section { padding: 64px 20px; }
+  .ct-item { grid-template-columns: 1fr; }
+  .ct-item::before { display: none; }
+  .ct-dot { display: none; }
+  .ct-label { text-align: left; padding: 0 0 6px 0; }
+  .ct-label-text { font-size: 14px; font-weight: 900; color: #0f5a9e; }
+  .ct-body { padding: 0 0 28px 14px; border-left: 3px solid #2d5ba3; }
+  .ct-body ul li { font-size: 13px; }
 }
 
 
