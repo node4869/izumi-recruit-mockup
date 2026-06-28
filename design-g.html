@@ -659,41 +659,41 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 }
 
 
-/* ── 求めている人材 ── */
+/* ── 求めている人材（Design A） ── */
 .persona-block {
-  background: #f5f8fd;
+  background: #042C53;
   border-radius: 4px;
   padding: 40px 36px;
   margin-bottom: 24px;
-  text-align: center;
 }
-.persona-label {
-  font-size: 11px; font-weight: 700; letter-spacing: .2em;
-  color: #2d5ba3; text-transform: uppercase; margin-bottom: 24px;
+.persona-top {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
 }
+.persona-top-icon { font-size: 32px; color: #378ADD; flex-shrink: 0; }
+.persona-top-en { font-size: 10px; letter-spacing: .2em; color: #378ADD; margin-bottom: 3px; }
+.persona-top-ja { font-size: 16px; font-weight: 900; color: #fff; }
 .persona-tags {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  justify-content: center; margin-bottom: 24px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 24px;
 }
 .persona-tag {
-  display: inline-flex; align-items: center;
-  padding: 8px 18px;
-  background: #fff; border: 2px solid #0f5a9e; border-radius: 99px;
-  font-size: 14px; font-weight: 700; color: #0f5a9e;
-  opacity: 0; transform: translateY(12px);
+  background: rgba(255,255,255,.07);
+  border: 0.5px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  padding: 11px 14px;
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0; transform: translateY(10px);
   animation: tagIn .4s ease forwards;
   animation-delay: var(--d);
 }
-.persona-tag::before {
-  content: '✓';
-  margin-right: 6px; font-size: 12px; color: #0f5a9e;
-}
+.persona-tag i { font-size: 16px; color: #378ADD; flex-shrink: 0; }
+.persona-tag span { font-size: 13px; font-weight: 700; color: #E6F1FB; }
 @keyframes tagIn {
   to { opacity: 1; transform: translateY(0); }
 }
 .persona-note {
-  font-size: 13px; color: #666; line-height: 1.8;
-  max-width: 480px; margin: 0 auto;
+  font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.8;
+  border-top: 0.5px solid rgba(255,255,255,.12); padding-top: 16px;
 }
 
 /* ── アコーディオン ── */
@@ -716,8 +716,9 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 .recruit-detail.open { max-height: 2000px; }
 
 @media(max-width: 768px) {
-  .persona-block { padding: 32px 20px; }
-  .persona-tag { font-size: 13px; padding: 7px 14px; }
+  .persona-block { padding: 28px 20px; }
+  .persona-tags { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .persona-tag span { font-size: 12px; }
 }
 
 
@@ -1174,14 +1175,20 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 
   <!-- 求めている人材アニメーション -->
   <div class="persona-block">
-    <div class="persona-label">こんな方を求めています</div>
-    <div class="persona-tags" id="personaTags">
-      <span class="persona-tag" style="--d:0s">未経験でも大丈夫</span>
-      <span class="persona-tag" style="--d:.15s">コツコツ取り組める</span>
-      <span class="persona-tag" style="--d:.3s">ものづくりが好き</span>
-      <span class="persona-tag" style="--d:.45s">年齢・学歴不問</span>
-      <span class="persona-tag" style="--d:.6s">安定した職場を探している</span>
-      <span class="persona-tag" style="--d:.75s">手に職をつけたい</span>
+    <div class="persona-top">
+      <i class="ti ti-user-heart persona-top-icon" aria-hidden="true"></i>
+      <div>
+        <div class="persona-top-en">Ideal candidate</div>
+        <div class="persona-top-ja">こんな方を求めています</div>
+      </div>
+    </div>
+    <div class="persona-tags">
+      <div class="persona-tag" style="--d:0s"><i class="ti ti-check" aria-hidden="true"></i><span>未経験でも大丈夫</span></div>
+      <div class="persona-tag" style="--d:.1s"><i class="ti ti-check" aria-hidden="true"></i><span>コツコツ取り組める</span></div>
+      <div class="persona-tag" style="--d:.2s"><i class="ti ti-check" aria-hidden="true"></i><span>ものづくりが好き</span></div>
+      <div class="persona-tag" style="--d:.3s"><i class="ti ti-check" aria-hidden="true"></i><span>年齢・学歴不問</span></div>
+      <div class="persona-tag" style="--d:.4s"><i class="ti ti-check" aria-hidden="true"></i><span>安定した職場を探している</span></div>
+      <div class="persona-tag" style="--d:.5s"><i class="ti ti-check" aria-hidden="true"></i><span>手に職をつけたい</span></div>
     </div>
     <p class="persona-note">経験・年齢・性別・学歴は一切問いません。「続けられる環境」を大切にしています。</p>
   </div>
