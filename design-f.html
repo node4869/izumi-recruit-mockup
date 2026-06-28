@@ -178,6 +178,63 @@ a{color:inherit;text-decoration:none}
 @media(max-width: 900px) { .adv-grid { grid-template-columns: repeat(2, 1fr); } }
 @media(max-width: 480px) { .adv-grid { grid-template-columns: 1fr; } }
 
+
+/* Advantages 2段カード */
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.adv-grid .adv-card:nth-child(4) { grid-column: 1; }
+.adv-grid .adv-card:nth-child(4),
+.adv-grid .adv-card:nth-child(5) {
+  grid-column: span 1;
+}
+/* 2段目を中央寄せ（4・5枚目を2列で中央に） */
+.adv-grid::after {
+  content: '';
+  grid-column: span 1;
+}
+/* 4枚目と5枚目は2カラム中央配置 */
+.adv-grid { grid-template-columns: repeat(6, 1fr); }
+.adv-card:nth-child(1) { grid-column: 1 / 3; }
+.adv-card:nth-child(2) { grid-column: 3 / 5; }
+.adv-card:nth-child(3) { grid-column: 5 / 7; }
+.adv-card:nth-child(4) { grid-column: 2 / 4; }
+.adv-card:nth-child(5) { grid-column: 4 / 6; }
+
+.adv-card {
+  background: #fff;
+  border: 1px solid #e4e8f0;
+  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow .25s, transform .25s;
+}
+.adv-card:hover {
+  box-shadow: 0 10px 32px rgba(28,58,110,.12);
+  transform: translateY(-5px);
+}
+.adv-icon { width: 88px; height: 88px; margin-bottom: 20px; }
+.adv-icon svg { width: 100%; height: 100%; }
+.adv-num { font-size: 10px; font-weight: 900; color: #2d5ba3; letter-spacing: .12em; margin-bottom: 6px; }
+.adv-tag { font-size: 10px; font-weight: 700; color: #fff; background: #2d5ba3; padding: 3px 12px; letter-spacing: .06em; margin-bottom: 16px; }
+.adv-title { font-size: 15px; font-weight: 900; color: #1c3a6e; line-height: 1.6; margin-bottom: 14px; }
+.adv-text { font-size: 13px; color: #666; line-height: 1.9; }
+@media(max-width: 768px) {
+  .adv-grid { grid-template-columns: 1fr 1fr; }
+  .adv-card:nth-child(n) { grid-column: auto; }
+  .adv-card:nth-child(5) { grid-column: 1 / 3; }
+}
+@media(max-width: 480px) {
+  .adv-grid { grid-template-columns: 1fr; }
+  .adv-card:nth-child(n) { grid-column: auto; }
+}
+
 </style>
 </head>
 <body>
@@ -346,6 +403,340 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+
+<!-- NUMBERS -->
+<section class="numbers-section">
+  <div class="numbers-grid">
+    <div class="num-cell">
+      <div class="num-val">40<small>年</small></div>
+      <div class="num-label">パナソニックとの取引実績</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-val">126<small>日</small></div>
+      <div class="num-label">年間休日</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-val">22<small>〜27万</small></div>
+      <div class="num-label">月給（各種手当含む）</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-val">2<small>回</small></div>
+      <div class="num-label">年間賞与支給</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section class="interview-section" id="interview">
+  <div class="sec-head">
+    <div class="sec-en">INTERVIEW</div>
+    <div class="sec-ja">スタッフの声</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="interview-grid">
+    <div class="iv-card" onclick="openModal()">
+      <img class="iv-photo" src="img/funamoto.jpg" alt="船本 到">
+      <div class="iv-role">代表取締役</div>
+      <div class="iv-name">船本 到</div>
+      <div class="iv-age">49歳 ／ 創業から経営</div>
+      <div class="iv-rule"></div>
+      <p class="iv-excerpt">「素直さ。技術は教えられますが、素直さは教えられません。一緒に長く働きたい人を探しています」</p>
+      <div class="iv-more">詳細を読む</div>
+    </div>
+    <div class="iv-card" onclick="openNoguchiModal()">
+      <img class="iv-photo" src="img/noguchi.jpg" alt="野口 孝文">
+      <div class="iv-role">ラインリーダー・教育係</div>
+      <div class="iv-name">野口 孝文</div>
+      <div class="iv-age">32歳 ／ 社歴11年目</div>
+      <div class="iv-rule"></div>
+      <p class="iv-excerpt">「街で自分が組んだ自転車を見かけると、じわっとします。後輩を教える立場になって、自分の成長も実感しています」</p>
+      <div class="iv-more">詳細を読む</div>
+    </div>
+    <div class="iv-card" onclick="openOkaModal()">
+      <img class="iv-photo" src="img/oka.png" alt="岡 浩之">
+      <div class="iv-role">サブリーダー</div>
+      <div class="iv-name">岡 浩之</div>
+      <div class="iv-age">複数年在籍</div>
+      <div class="iv-rule"></div>
+      <p class="iv-excerpt">「少人数なので、変な競争がない。困ったらすぐ相談できる。それだけで、続けられる理由になっています」</p>
+      <div class="iv-more">詳細を読む</div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUIT -->
+<section class="recruit-section" id="recruit">
+  <div class="sec-head">
+    <div class="sec-en">RECRUIT</div>
+    <div class="sec-ja">募集要項</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="recruit-inner">
+    <table class="recruit-table">
+      <tr>
+        <td>仕事の内容</td>
+        <td>電動自転車のパーツ検品から、組み立て、仕上げまで。※未経験者を応援します。<br><br>【具体的には】パナソニックの工場敷地内で、モノ作りに携わるお仕事です。<br>キズ・不良品のチェック。および製品の組み立て。そして仕上げのチェック。各工程ごとにチームがあります。<br><br>【こんな方は是非】<br>・細かい作業が得意な方<br>・体を動かしながらお仕事をしたい方<br>・メカが好きな方。</td>
+      </tr>
+      <tr>
+        <td>求めている人材</td>
+        <td>経験・年齢・性別不問。ものづくりに関わりたい方。コツコツ働く<br><br>【具体的には】未経験歓迎<br>人柄を重視し、素直な気持ちを応援する会社です！</td>
+      </tr>
+      <tr>
+        <td>勤務地</td>
+        <td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br><br>【交通手段】<br>近鉄大阪線「河内国分駅」より徒歩10分（自転車・車・バイク通勤可）<br>近鉄南大阪線「道明寺駅」より徒歩10分（自転車・車・バイク通勤可）</td>
+      </tr>
+      <tr>
+        <td>給与</td>
+        <td>月給22万円〜27万円＋残業手当＋皆勤手当＋賞与年2回<br>※みなし残業制はありません。ご安心ください。<br>※年齢・経験を考慮し決定します。<br><br>【公正な人事考課制度の導入】<br>上期・下期に目標を設定し定期面談。<br>目標に対する課題と評価を確認し給与・賞与・手当・昇格に反映。<br><br>【年収例】<br>・440万円／33歳／組立職／経験7年（月給28万円＋残業手当＋賞与年2回）</td>
+      </tr>
+      <tr>
+        <td>勤務時間</td>
+        <td>8:25〜17:25（お昼休憩45分。他、定時休憩を合わせて合計1時間）<br>※繁忙期以外、残業はほとんどなし。</td>
+      </tr>
+      <tr>
+        <td>休日・休暇</td>
+        <td>完全週休2日制（土・日）※年間休日126日＋一斉年休5日<br>祝、GW、夏季休暇、年末年始休暇、有給、慶弔</td>
+      </tr>
+      <tr>
+        <td>諸手当・昇給</td>
+        <td>昇給年1回（4月）<br>賞与年2回＋業績により期末賞与あり<br>交通費全額支給（車・バイクの場合はガソリン代）<br>役職手当<br>家族手当</td>
+      </tr>
+      <tr>
+        <td>待遇・福利厚生</td>
+        <td>社会保険完備（雇用・労災・健康・厚生年金）<br>制服貸与<br>出張整体サービスあり（月1回・全額会社負担）<br>自転車整備士免許・技師免許の取得支援</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access-section" id="access">
+  <div class="sec-head">
+    <div class="sec-en">ACCESS</div>
+    <div class="sec-ja">交通アクセス</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="access-inner">
+    <div>
+      <div class="access-info-title">イズミ電商株式会社</div>
+      <div class="access-item"><div class="access-key">住所</div><div class="access-val">〒582-0028<br>大阪府柏原市 片山町13-13<br>パナソニックサイクルテック工場内</div></div>
+      <div class="access-item"><div class="access-key">アクセス</div><div class="access-val">近鉄大阪線「河内国分駅」徒歩10分<br>近鉄南大阪線「道明寺駅」徒歩10分<br>自転車・車・バイク通勤可</div></div>
+    </div>
+    <div class="access-map">
+      <iframe src="https://maps.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%BA%9C%E6%9F%8F%E5%8E%9F%E5%B8%82%E7%89%87%E5%B1%B1%E7%94%BA13-13&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY -->
+<section class="entry-section" id="entry">
+  <div class="sec-head">
+    <div class="sec-en">ENTRY</div>
+    <div class="sec-ja">応募フォーム</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="entry-inner">
+    <p class="entry-body">以下の必須項目をご入力頂き「入力内容を確認」ボタンを押してください。</p>
+    <div class="entry-form-grid">
+      <div>
+        <label class="form-label">お名前<span class="form-req">*</span></label>
+        <input class="form-input" type="text" placeholder="山田 太郎">
+      </div>
+      <div>
+        <label class="form-label">メールアドレス<span class="form-req">*</span></label>
+        <input class="form-input" type="email" placeholder="example@email.com">
+      </div>
+    </div>
+    <div class="entry-form-full">
+      <label class="form-label">確認メールアドレス<span class="form-req">*</span></label>
+      <input class="form-input" type="email" placeholder="example@email.com">
+    </div>
+    <div class="entry-form-full">
+      <label class="form-label">お問い合わせ内容<span class="form-req">*</span></label>
+      <textarea class="form-textarea" placeholder="ご質問・ご相談などご自由にお書きください"></textarea>
+    </div>
+    <div class="form-policy">
+      <div class="form-policy-title">プライバシーポリシー</div>
+      <div class="form-policy-body">当ページで取得した個人情報（名前、メールアドレス等）は、資料送付及び求人応募に関するご連絡にのみ利用されます。イズミ電商株式会社はこれらの個人情報に対し責任を持って保管し、個人情報への不正なアクセス、漏洩などを防ぐために必要な対策を講じます。取得した個人情報は、情報提供者から任意の同意を得た場合、および法令に基づき司法機関、行政機関から法的義務を伴う要請を受けた場合を除き、第三者に譲渡及び提供することはありません。</div>
+    </div>
+    <button class="entry-submit">入力内容を確認</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">イズミ電商株式会社</div>
+  <div class="footer-copy">&copy; IZUMI DENSHO Co.,Ltd. All Rights Reserved.</div>
+</footer>
+
+<!-- 社長モーダル -->
+<div id="presidentModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <img class="modal-photo" src="img/funamoto.jpg" alt="船本 到">
+    <div class="modal-role">代表取締役</div>
+    <div class="modal-name">船本 到（49歳）</div>
+    <div class="modal-q">一 採用で一番大切にしていることは？</div>
+    <div class="modal-a">素直さです。技術は教えられますが、素直さは教えられません。一緒に長く働きたい人を探しています。</div>
+    <div class="modal-q">一 この会社の強みは？</div>
+    <div class="modal-a">40年、パナソニックから信頼をいただいてきた実績。それは社員一人ひとりが積み上げてきたものです。</div>
+    <div class="modal-q">一 未経験の方へ一言</div>
+    <div class="modal-a">最初は誰でも未経験です。うちの会社は優しい先輩ばかりなので、安心して飛び込んできてください。一緒に成長しましょう。</div>
+    <button class="modal-close-btn" onclick="closeModal()">× 閉じる</button>
+  </div>
+</div>
+
+<!-- 野口モーダル -->
+<div id="noguchiModal" class="modal-overlay" onclick="if(event.target===this)closeNoguchiModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeNoguchiModal()">×</button>
+    <img class="modal-photo" src="img/noguchi.jpg" alt="野口 孝文">
+    <div class="modal-role">ラインリーダー・教育係 ／ 社歴11年目</div>
+    <div class="modal-name">野口 孝文（32歳）</div>
+    <div class="modal-q">一 新人教育で気を付けていること。</div>
+    <div class="modal-a">入社してくる方は未経験者がほとんどです。この部品は何か？今、どの箇所の何を作っているのか？まずは興味を持ってもらう事から始めています。<br>自分の作品のようなものが世の中で役に立っており、そこの楽しさを感じてもらえる様に心がけています。技術をしっかり磨いてもらって、そこに楽しさを見出してほしい。そうすれば、遣り甲斐も出てきます。</div>
+    <div class="modal-q">一 自分が新人の時に苦労したこと。</div>
+    <div class="modal-a">リーマンショックの影響がまだ残っていて、なかなか就職先が見つからなかった。だからイズミ電商に入社できた時は本当にうれしかったです。<br>初めての正社員だから、覚えることも多くて大変ですし8時間も働く事も初体験！最初は体を慣らすことに苦労しました。</div>
+    <div class="modal-q">一 新しく加わる仲間へのメッセージ</div>
+    <div class="modal-a">新しい仕事をする時は、職種関係なく心身ともに疲れると思います。しかし、イズミ電商は優しい先輩ばかりなのですぐに仲良くなり打ち解けられるはず。<br>組立作業も頭で理解し体が勝手に覚えるまで懇切丁寧に指導いたします。発想力や考える力も身につくと思うので、共に頑張り共に成長しましょう！</div>
+    <button class="modal-close-btn" onclick="closeNoguchiModal()">× 閉じる</button>
+  </div>
+</div>
+
+<!-- 岡モーダル -->
+<div id="okaModal" class="modal-overlay" onclick="if(event.target===this)closeOkaModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOkaModal()">×</button>
+    <img class="modal-photo" src="img/oka.png" alt="岡 浩之">
+    <div class="modal-role">サブリーダー</div>
+    <div class="modal-name">岡 浩之</div>
+    <div class="modal-q">一 あなたの仕事内容を教えてください。</div>
+    <div class="modal-a">主に検査ポジションを担当しています。皆が組み立てた車体に組付けミスや調整ミスがないか等のチェックを1台1台行っています。<br>またサブリーダーとして組立ての技術指導も行ってます。入社するまで全く自転車を触った事がなかった人でも一から丁寧に教えます。実際に自転車整備士試験に合格した人も何人もいますよ。</div>
+    <div class="modal-q">一 職場の雰囲気を教えてください</div>
+    <div class="modal-a">20代から50代まで様々な年齢層の社員がいます。前職が工場だったり自転車販売店だったり自動車整備士だったりいろいろな職種を経験してきてる人がいます。<br>少人数なので自分の意見や提案が上に届きやすいです。キャリアアップも年功序列ではないので頑張り次第で誰でも上にいけるチャンスがあります。</div>
+    <div class="modal-q">一 休日の過ごし方は？</div>
+    <div class="modal-a">釣りに行ったりドライブしたりしています。あとはお酒が好きな社員と飲みにいったりもしますね。<br>GWや夏季休暇は毎年10連休近くあるので、旅行に行ったり心身ともにかなりリフレッシュできます。</div>
+    <button class="modal-close-btn" onclick="closeOkaModal()">× 閉じる</button>
+  </div>
+</div>
+
+<script>
+function openModal(){ document.getElementById('presidentModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ document.getElementById('presidentModal').classList.remove('open'); document.body.style.overflow=''; }
+function openNoguchiModal(){ document.getElementById('noguchiModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeNoguchiModal(){ document.getElementById('noguchiModal').classList.remove('open'); document.body.style.overflow=''; }
+function openOkaModal(){ document.getElementById('okaModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeOkaModal(){ document.getElementById('okaModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); closeNoguchiModal(); closeOkaModal(); }});
+</script>
+</body>
+</html><!-- 働く魅力 -->
+<section id="features" class="features-section">
+  <div class="features-inner" style="max-width:1100px;margin:0 auto">
+    <div class="sec-head" style="margin-bottom:56px">
+      <div class="sec-en">Advantages</div>
+      <div class="sec-ja">イズミで働く、5つの魅力</div>
+    </div>
+    <div class="adv-grid">
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <!-- 上向き矢印：スキルアップ -->
+            <path d="M32 46 V22" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M22 32 L32 22 L42 32" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- 星 -->
+            <path d="M32 14 L33.5 11 L35 14 L38 14.5 L35.8 16.5 L36.5 19.5 L33.8 18 L31.2 19.5 L31.8 16.5 L29.5 14.5 Z" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- 資格バッジ -->
+            <rect x="22" y="42" width="20" height="8" rx="2" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M26 46 h12" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="adv-num">01</div>
+        <div class="adv-tag">スキルアップ</div>
+        <div class="adv-title">パナソニック基準の<br>技術が身につく</div>
+        <div class="adv-text">大手メーカーの品質基準で、自転車組立・検査・ライン管理の技術を習得できます。全国どこでも通用するスキルです。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <!-- 時計 -->
+            <circle cx="32" cy="34" r="16" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M32 24 V34 L39 39" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- カレンダー上部 -->
+            <path d="M24 14 h16" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M26 12 v4 M38 12 v4" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="adv-num">02</div>
+        <div class="adv-tag">ワークライフバランス</div>
+        <div class="adv-title">年間休日126日。<br>残業もほぼなし</div>
+        <div class="adv-text">完全週休2日（土・日）＋祝日・GW・夏季・年末年始。8:25〜17:25の定時を守る文化。仕事以外の時間も大切にできます。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <!-- 円マーク -->
+            <circle cx="32" cy="32" r="16" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M37 26 C37 26 35 23 30 23 C26 23 23 26 23 29 C23 33 27 34 32 35 C37 36 41 37 41 41 C41 44.5 38 47 33 47 C28 47 25 44 25 44" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M32 20 V23 M32 47 V50" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="adv-num">03</div>
+        <div class="adv-tag">給与・待遇</div>
+        <div class="adv-title">月給22〜27万円。<br>賞与年2回</div>
+        <div class="adv-text">経験・能力を正当に評価する給与体制。33歳・経験7年で年収440万円の実績あり。みなし残業なし、残業代は全額支給。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <!-- 人物シルエット -->
+            <circle cx="32" cy="20" r="6" stroke="#2d5ba3" stroke-width="2.5"/>
+            <!-- マッサージの手 -->
+            <path d="M20 38 C20 38 22 32 32 32 C42 32 44 38 44 38" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- リラックス波線 -->
+            <path d="M22 44 C24 42 26 46 28 44 C30 42 32 46 34 44 C36 42 38 46 40 44" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- ハートマーク（ケア） -->
+            <path d="M29 27 C29 25.3 30.3 24 32 24 C33.7 24 35 25.3 35 27 C35 30 32 32 32 32 C32 32 29 30 29 27 Z" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="adv-num">04</div>
+        <div class="adv-tag">福利厚生</div>
+        <div class="adv-title">製造業で唯一：<br>出張整体（月1回・無料）</div>
+        <div class="adv-text">プロのセラピストが職場に来て、肩・腰・首をケア。全社員が対象で費用は全額会社負担。身体のメンテナンスも仕事のうち。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <!-- 中央の人（少し大きく） -->
+            <circle cx="32" cy="22" r="6" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M20 46 C20 39.4 25.4 34 32 34 C38.6 34 44 39.4 44 46" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- 左の人 -->
+            <circle cx="19" cy="26" r="4.5" stroke="#2d5ba3" stroke-width="2"/>
+            <path d="M10 46 C10 41 13.8 38 19 38" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+            <!-- 右の人 -->
+            <circle cx="45" cy="26" r="4.5" stroke="#2d5ba3" stroke-width="2"/>
+            <path d="M54 46 C54 41 50.2 38 45 38" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="adv-num">05</div>
+        <div class="adv-tag">職場環境</div>
+        <div class="adv-title">顔が見える、<br>少数精鋭の職場</div>
+        <div class="adv-text">大きな組織にありがちな「人間関係の複雑さ」がない。困ったことはすぐ相談できる、フラットな職場環境です。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- NUMBERS -->
 <section class="numbers-section">
