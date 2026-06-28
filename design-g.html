@@ -598,6 +598,68 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
   .adv-card:nth-child(n) { grid-column: auto; }
 }
 
+
+/* ── 求めている人材 ── */
+.persona-block {
+  background: #f5f8fd;
+  border-radius: 4px;
+  padding: 40px 36px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.persona-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .2em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 24px;
+}
+.persona-tags {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center; margin-bottom: 24px;
+}
+.persona-tag {
+  display: inline-flex; align-items: center;
+  padding: 8px 18px;
+  background: #fff; border: 2px solid #0f5a9e; border-radius: 99px;
+  font-size: 14px; font-weight: 700; color: #0f5a9e;
+  opacity: 0; transform: translateY(12px);
+  animation: tagIn .4s ease forwards;
+  animation-delay: var(--d);
+}
+.persona-tag::before {
+  content: '✓';
+  margin-right: 6px; font-size: 12px; color: #0f5a9e;
+}
+@keyframes tagIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+.persona-note {
+  font-size: 13px; color: #666; line-height: 1.8;
+  max-width: 480px; margin: 0 auto;
+}
+
+/* ── アコーディオン ── */
+.recruit-toggle-wrap { max-width: 900px; }
+.recruit-toggle-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; background: #fff;
+  border: 2px solid #0f5a9e; cursor: pointer;
+  font-size: 14px; font-weight: 700; color: #0f5a9e;
+  font-family: inherit; letter-spacing: .04em;
+  transition: background .2s;
+}
+.recruit-toggle-btn:hover { background: #eef3fb; }
+.recruit-toggle-icon { font-size: 20px; line-height: 1; transition: transform .3s; }
+.recruit-toggle-btn.open .recruit-toggle-icon { transform: rotate(45deg); }
+.recruit-detail {
+  max-height: 0; overflow: hidden;
+  transition: max-height .45s ease;
+}
+.recruit-detail.open { max-height: 2000px; }
+
+@media(max-width: 768px) {
+  .persona-block { padding: 32px 20px; }
+  .persona-tag { font-size: 13px; padding: 7px 14px; }
+}
+
 </style>
 </head>
 <body>
@@ -1014,16 +1076,40 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
     <div class="recruit-head-en">Requirements</div>
     <div class="recruit-head-title">募集要項</div>
   </div>
-  <table class="recruit-table">
-    <tr><td>仕事の内容</td><td>電動自転車のパーツ検品・組立・仕上げ。パナソニックの工場敷地内でのものづくり。<br>※未経験者を応援します。</td></tr>
-    <tr><td>求めている人材</td><td>経験・年齢・性別不問。ものづくりに関わりたい方、コツコツ働ける方。未経験歓迎。</td></tr>
-    <tr><td>勤務地</td><td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br>近鉄大阪線「河内国分駅」徒歩10分 / 近鉄南大阪線「道明寺駅」徒歩10分</td></tr>
-    <tr><td>給与</td><td><span class="hl">月給22万円〜27万円</span>＋残業手当＋皆勤手当＋賞与年2回<br>【年収例】440万円／33歳／組立職／経験7年</td></tr>
-    <tr><td>勤務時間</td><td>8:25〜17:25（昼休憩45分）<span class="hl"> ／ 繁忙期以外、残業ほぼなし</span></td></tr>
-    <tr><td>休日・休暇</td><td><span class="hl">完全週休2日制（土・日）年間休日126日＋一斉年休5日</span><br>祝日・GW・夏季・年末年始休暇、有給、慶弔</td></tr>
-    <tr><td>待遇・福利厚生</td><td>昇給年1回（4月）、賞与年2回＋業績期末賞与あり、交通費全額支給<br>役職手当、家族手当、社会保険完備<br><span class="hl">出張整体（月1回・全額会社負担）</span></td></tr>
-    <tr><td>応募資格</td><td>未経験可・学歴不問。普通自動車免許があれば尚可。</td></tr>
-  </table>
+
+  <!-- 求めている人材アニメーション -->
+  <div class="persona-block">
+    <div class="persona-label">こんな方を求めています</div>
+    <div class="persona-tags" id="personaTags">
+      <span class="persona-tag" style="--d:0s">未経験でも大丈夫</span>
+      <span class="persona-tag" style="--d:.15s">コツコツ取り組める</span>
+      <span class="persona-tag" style="--d:.3s">ものづくりが好き</span>
+      <span class="persona-tag" style="--d:.45s">年齢・学歴不問</span>
+      <span class="persona-tag" style="--d:.6s">安定した職場を探している</span>
+      <span class="persona-tag" style="--d:.75s">手に職をつけたい</span>
+    </div>
+    <p class="persona-note">経験・年齢・性別・学歴は一切問いません。「続けられる環境」を大切にしています。</p>
+  </div>
+
+  <!-- 詳しく見るアコーディオン -->
+  <div class="recruit-toggle-wrap">
+    <button class="recruit-toggle-btn" id="recruitToggleBtn" onclick="toggleRecruit()">
+      <span>詳しく見る</span>
+      <span class="recruit-toggle-icon">＋</span>
+    </button>
+    <div class="recruit-detail" id="recruitDetail">
+      <table class="recruit-table">
+        <tr><td>仕事の内容</td><td>電動自転車のパーツ検品・組立・仕上げ。パナソニックの工場敷地内でのものづくり。<br>※未経験者を応援します。</td></tr>
+        <tr><td>求めている人材</td><td>経験・年齢・性別不問。ものづくりに関わりたい方、コツコツ働ける方。未経験歓迎。</td></tr>
+        <tr><td>勤務地</td><td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br>近鉄大阪線「河内国分駅」徒歩10分 / 近鉄南大阪線「道明寺駅」徒歩10分</td></tr>
+        <tr><td>給与</td><td><span class="hl">月給22万円〜27万円</span>＋残業手当＋皆勤手当＋賞与年2回<br>【年収例】440万円／33歳／組立職／経験7年</td></tr>
+        <tr><td>勤務時間</td><td>8:25〜17:25（昼休憩45分）<span class="hl"> ／ 繁忙期以外、残業ほぼなし</span></td></tr>
+        <tr><td>休日・休暇</td><td><span class="hl">完全週休2日制（土・日）年間休日126日＋一斉年休5日</span><br>祝日・GW・夏季・年末年始休暇、有給、慶弔</td></tr>
+        <tr><td>待遇・福利厚生</td><td>昇給年1回（4月）、賞与年2回＋業績期末賞与あり、交通費全額支給<br>役職手当、家族手当、社会保険完備<br><span class="hl">出張整体（月1回・全額会社負担）</span></td></tr>
+        <tr><td>応募資格</td><td>未経験可・学歴不問。普通自動車免許があれば尚可。</td></tr>
+      </table>
+    </div>
+  </div>
 </section>
 
 <!-- ACCESS -->
@@ -1182,5 +1268,17 @@ function closeNoguchiModal(){ document.getElementById('noguchiModal').classList.
 function openOkaModal(){ document.getElementById('okaModal').classList.add('open'); document.body.style.overflow='hidden'; }
 function closeOkaModal(){ document.getElementById('okaModal').classList.remove('open'); document.body.style.overflow=''; }
 </script>
+
+<script>
+function toggleRecruit() {
+  const btn = document.getElementById('recruitToggleBtn');
+  const detail = document.getElementById('recruitDetail');
+  btn.classList.toggle('open');
+  detail.classList.toggle('open');
+  const span = btn.querySelector('span');
+  span.textContent = btn.classList.contains('open') ? '閉じる' : '詳しく見る';
+}
+</script>
+
 </body>
 </html>
