@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | イズミ電商株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff;font-size:15px;line-height:1.8}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── HEADER ── */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:#fff;border-bottom:1px solid #e8e8e8;height:60px;display:flex;align-items:center;padding:0 40px}
+.header-logo{flex:1}
+.header-logo-main{font-size:14px;font-weight:900;color:#1c3a6e;letter-spacing:.04em}
+.header-logo-sub{font-size:9px;color:#999;letter-spacing:.12em}
+.header-nav{display:flex;gap:32px;align-items:center}
+.header-nav a{font-size:12px;color:#444;letter-spacing:.04em}
+.header-nav a:hover{color:#1c3a6e}
+
+/* ── HERO ── */
+.hero{margin-top:60px;position:relative;height:100vh;min-height:560px;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('img/izumi-hero.jpg') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,25,65,.58)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 24px}
+.hero-en{font-size:11px;font-weight:700;letter-spacing:.3em;color:rgba(255,255,255,.5);margin-bottom:24px}
+.hero-copy{font-size:clamp(28px,4.5vw,52px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:32px}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.2em}
+.hero-scroll::after{content:'';display:block;width:1px;height:48px;background:rgba(255,255,255,.35)}
+
+/* ── FIXED ENTRY ── */
+.fixed-entry{position:fixed;bottom:0;right:0;z-index:300;background:#1c3a6e;color:#fff;text-align:center;padding:14px 20px;cursor:pointer;border:none;font-family:inherit;min-width:100px}
+.fixed-entry-en{font-size:16px;font-weight:900;letter-spacing:.1em;display:block}
+.fixed-entry-ja{font-size:10px;display:block;opacity:.7;margin-top:2px}
+
+/* ── セクション共通 ── */
+.section{padding:100px 40px}
+.sec-head{text-align:center;margin-bottom:72px}
+.sec-en{font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:.08em;color:#1c3a6e;margin-bottom:8px}
+.sec-ja{font-size:14px;color:#666;letter-spacing:.06em}
+.sec-rule{width:60px;height:1px;background:#c8d0de;margin:20px auto 0}
+
+/* ── MESSAGE ── */
+.message-section{background:#fff;padding:100px 40px}
+.message-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:72px;align-items:start}
+.msg-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top}
+.msg-text{}
+.msg-catch{font-size:22px;font-weight:900;color:#1c3a6e;line-height:1.6;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid #e0e4ee}
+.msg-body{font-size:14px;color:#444;line-height:2.2}
+.msg-body p{margin-bottom:18px}
+.msg-sign{margin-top:28px;display:flex;align-items:center;gap:14px;cursor:pointer;padding:16px;background:#f5f7fb;border-left:3px solid #1c3a6e;transition:background .2s}
+.msg-sign:hover{background:#eaecf5}
+.msg-sign-role{font-size:11px;color:#888}
+.msg-sign-name{font-size:16px;font-weight:900;color:#1c3a6e}
+.msg-sign-hint{font-size:11px;color:#2d5ba3;margin-left:auto}
+
+/* ── GALLERY ── */
+.gallery-strip{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:210px 210px;gap:3px}
+.gallery-strip img{width:100%;height:100%;object-fit:cover}
+.gallery-strip .g-main{grid-row:1/3}
+
+/* ── FEATURES ── */
+.features-section{background:#f8f9fb;padding:100px 40px}
+.features-inner{max-width:860px;margin:0 auto}
+.feature-list{display:flex;flex-direction:column;gap:0}
+.feature-item{display:grid;grid-template-columns:64px 1fr;align-items:start;padding:36px 0;border-bottom:1px solid #e0e4ee}
+.feature-item:first-child{border-top:1px solid #e0e4ee}
+.feature-num{font-size:13px;font-weight:900;color:#2d5ba3;letter-spacing:.06em;padding-top:2px}
+.feature-title{font-size:17px;font-weight:900;color:#1c3a6e;margin-bottom:10px}
+.feature-body{font-size:14px;color:#555;line-height:1.9}
+.feature-tag{display:inline-block;font-size:10px;font-weight:700;color:#2d5ba3;border:1px solid #2d5ba3;padding:2px 10px;margin-top:10px;letter-spacing:.06em}
+
+/* ── NUMBERS ── */
+.numbers-section{background:#1c3a6e;padding:72px 40px}
+.numbers-grid{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1)}
+.num-cell{background:#1c3a6e;text-align:center;padding:40px 20px}
+.num-val{font-size:42px;font-weight:900;color:#fff;line-height:1}
+.num-val small{font-size:18px}
+.num-label{font-size:12px;color:rgba(255,255,255,.55);margin-top:10px;letter-spacing:.04em}
+
+/* ── INTERVIEW ── */
+.interview-section{background:#fff;padding:100px 40px}
+.interview-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.iv-card{cursor:pointer}
+.iv-card:hover .iv-photo{filter:brightness(1.05)}
+.iv-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;margin-bottom:16px;transition:filter .2s}
+.iv-role{font-size:10px;font-weight:700;letter-spacing:.12em;color:#2d5ba3;margin-bottom:4px}
+.iv-name{font-size:18px;font-weight:900;color:#1c3a6e;margin-bottom:4px}
+.iv-age{font-size:12px;color:#999;margin-bottom:14px}
+.iv-rule{width:32px;height:2px;background:#2d5ba3;margin-bottom:14px}
+.iv-excerpt{font-size:13px;color:#555;line-height:1.9;margin-bottom:14px}
+.iv-more{font-size:11px;font-weight:700;color:#1c3a6e;letter-spacing:.08em;display:flex;align-items:center;gap:6px}
+.iv-more::after{content:'→'}
+
+/* ── RECRUIT ── */
+.recruit-section{background:#fff;padding:100px 40px}
+.recruit-inner{max-width:860px;margin:0 auto}
+.recruit-table{width:100%;border-collapse:collapse}
+.recruit-table tr{border-bottom:1px solid #e8eaed}
+.recruit-table tr:first-child{border-top:1px solid #e8eaed}
+.recruit-table td{padding:24px 20px;vertical-align:top;font-size:14px;line-height:1.9;color:#444}
+.recruit-table td:first-child{width:130px;font-weight:700;color:#1c3a6e;white-space:nowrap;font-size:13px}
+
+/* ── ACCESS ── */
+.access-section{background:#f8f9fb;padding:100px 40px}
+.access-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:start}
+.access-info-title{font-size:17px;font-weight:900;color:#1c3a6e;margin-bottom:24px}
+.access-item{display:flex;gap:16px;margin-bottom:18px;font-size:14px}
+.access-key{font-weight:700;color:#1c3a6e;min-width:56px}
+.access-val{color:#555;line-height:1.9}
+.access-map{height:300px;overflow:hidden}
+.access-map iframe{width:100%;height:100%;border:0;display:block}
+
+/* ── ENTRY ── */
+.entry-section{background:#fff;padding:100px 40px}
+.entry-inner{max-width:700px;margin:0 auto;text-align:center}
+.entry-body{font-size:14px;color:#555;line-height:2;margin-bottom:48px}
+.entry-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;text-align:left;margin-bottom:24px}
+.entry-form-full{text-align:left;margin-bottom:24px}
+.form-label{font-size:12px;font-weight:700;color:#444;display:block;margin-bottom:6px}
+.form-req{color:#c0392b;margin-left:4px}
+.form-input,.form-textarea{width:100%;border:1px solid #d0d4db;padding:12px 14px;font-size:14px;font-family:inherit;background:#fafafa;color:#222;outline:none}
+.form-input:focus,.form-textarea:focus{border-color:#1c3a6e;background:#fff}
+.form-textarea{height:160px;resize:vertical}
+.form-policy{background:#f5f7fb;border:1px solid #e0e4ee;padding:20px 24px;margin-bottom:32px;text-align:left}
+.form-policy-title{font-size:13px;font-weight:700;color:#444;margin-bottom:10px}
+.form-policy-body{font-size:12px;color:#777;line-height:1.9}
+.entry-submit{background:#1c3a6e;color:#fff;border:none;font-family:inherit;font-size:14px;font-weight:700;padding:16px 64px;cursor:pointer;letter-spacing:.08em}
+.entry-submit:hover{background:#2d5ba3}
+
+/* ── FOOTER ── */
+.site-footer{background:#0d2247;padding:32px 40px;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-size:13px;font-weight:900;color:#fff}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.3)}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;overflow-y:auto;padding:60px 20px}
+.modal-overlay.open{display:flex;justify-content:center;align-items:flex-start}
+.modal-box{background:#fff;max-width:680px;width:100%;position:relative;padding:48px 52px 52px;margin:auto}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;background:#1c3a6e;color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.modal-photo{width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:14px}
+.modal-role{font-size:10px;font-weight:700;letter-spacing:.12em;color:#2d5ba3;margin-bottom:4px}
+.modal-name{font-size:20px;font-weight:900;margin-bottom:28px;color:#1a1a1a}
+.modal-q{font-size:12px;font-weight:700;color:#2d5ba3;border-left:3px solid #2d5ba3;padding-left:10px;margin-bottom:10px;margin-top:28px;letter-spacing:.05em}
+.modal-a{font-size:14px;color:#444;line-height:2.1}
+.modal-close-btn{display:block;margin:36px auto 0;background:#1c3a6e;color:#fff;border:none;padding:12px 36px;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.08em;font-family:inherit}
+
+@media(max-width:768px){
+  .site-header{padding:0 20px}
+  .header-nav{display:none}
+  .hero-copy{font-size:28px}
+  .section,.message-section,.features-section,.interview-section,.recruit-section,.access-section,.entry-section{padding:72px 20px}
+  .message-inner{grid-template-columns:1fr;gap:32px}
+  .msg-photo{max-width:240px}
+  .numbers-grid{grid-template-columns:repeat(2,1fr)}
+  .interview-grid{grid-template-columns:1fr}
+  .access-inner{grid-template-columns:1fr}
+  .entry-form-grid{grid-template-columns:1fr}
+  .gallery-strip{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-strip .g-main{grid-row:auto}
+  .modal-box{padding:32px 20px 40px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-logo">
+    <div class="header-logo-main">イズミ電商株式会社</div>
+    <div class="header-logo-sub">IZUMI DENSHO Co.,Ltd.</div>
+  </div>
+  <nav class="header-nav">
+    <a href="#message">メッセージ</a>
+    <a href="#features">働く魅力</a>
+    <a href="#interview">スタッフの声</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#access">交通アクセス</a>
+  </nav>
+</header>
+
+<!-- FIXED ENTRY -->
+<button class="fixed-entry" onclick="document.getElementById('entry').scrollIntoView({behavior:'smooth'})">
+  <span class="fixed-entry-en">ENTRY</span>
+  <span class="fixed-entry-ja">応募フォーム</span>
+</button>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-en">IZUMI ELECTRONIC TRADING</div>
+    <h1 class="hero-copy">自転車組立のプロフェッショナルとして<br>「活躍しませんか」</h1>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- MESSAGE -->
+<section class="message-section" id="message">
+  <div class="sec-head">
+    <div class="sec-en">MESSAGE</div>
+    <div class="sec-ja">代表メッセージ</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="message-inner">
+    <img class="msg-photo" src="img/izumi-member-funamoto.jpg" alt="代表取締役 船本 到">
+    <div class="msg-text">
+      <div class="msg-catch">素直に来てくれれば、技術は必ず教えます。<br>ここで本物のプロになってほしい。</div>
+      <div class="msg-body">
+        <p>イズミ電商は1985年の創業以来、自転車製造一筋で歩んできた会社です。1998年からパナソニックサイクルテックとの取引が始まり、それから30年近く。日本中を走る電動アシスト自転車に、私たちの手が入っています。</p>
+        <p>「自己資本比率7割以上」という数字が示す通り、財務は非常に堅実です。大手に依存しながらも自立した経営を続けてきた。だからこそ、社員にしっかり還元できる。その循環を大切にしてきました。</p>
+        <p>未経験でも構いません。素直さと誠実さがあれば、必ず技術は身につきます。ここで長く働いてほしい。それが私の本音です。</p>
+      </div>
+      <div class="msg-sign" onclick="openModal()">
+        <div>
+          <div class="msg-sign-role">代表取締役</div>
+          <div class="msg-sign-name">船本 到</div>
+        </div>
+        <div class="msg-sign-hint">詳細を読む →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-strip">
+  <img class="g-main" src="img/izumi-gallery-1.jpg" alt="組立現場">
+  <img src="img/izumi-gallery-2.jpg" alt="工場内">
+  <img src="img/izumi-gallery-3.jpg" alt="作業風景">
+  <img src="img/izumi-about-1.jpg" alt="ライン作業">
+  <img src="img/izumi-gallery-4.jpg" alt="製品">
+</div>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="sec-head">
+    <div class="sec-en">FEATURES</div>
+    <div class="sec-ja">働く魅力</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="features-inner">
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-num">01</div>
+        <div>
+          <div class="feature-title">パナソニック基準の技術が身につく</div>
+          <div class="feature-body">大手メーカーの品質基準で、自転車組立・検査・ライン管理の技術を習得できます。自転車整備士・技師免許の取得支援あり。全国どこでも通用するスキルです。</div>
+          <span class="feature-tag">スキルアップ</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">02</div>
+        <div>
+          <div class="feature-title">年間休日126日。残業もほぼなし</div>
+          <div class="feature-body">完全週休2日（土・日）＋祝日・GW・夏季・年末年始。GWや夏季休暇は10連休近くあり。8:25〜17:25の定時を守る文化で、仕事以外の時間も大切にできます。</div>
+          <span class="feature-tag">ワークライフバランス</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">03</div>
+        <div>
+          <div class="feature-title">月給22〜27万円。賞与年2回</div>
+          <div class="feature-body">経験・能力を正当に評価する給与体制。公正な人事考課制度を導入。みなし残業なし、残業代は全額支給。昇給年1回（4月）。</div>
+          <span class="feature-tag">給与・待遇</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">04</div>
+        <div>
+          <div class="feature-title">出張整体（月1回・全額会社負担）</div>
+          <div class="feature-body">プロのセラピストが職場に来て、肩・腰・首をケア。全社員が対象で費用は全額会社負担。身体のメンテナンスも仕事のうちです。</div>
+          <span class="feature-tag">福利厚生</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">05</div>
+        <div>
+          <div class="feature-title">未経験・第二新卒・ブランクOK</div>
+          <div class="feature-body">入社してくる方は未経験者がほとんど。先輩が懇切丁寧に指導します。3ヶ月でひと通りの作業ができるようになります。素直さがあれば、技術は必ず身につきます。</div>
+          <span class="feature-tag">キャリア</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers-section">
+  <div class="numbers-grid">
+    <div class="num-cell">
+      <div class="num-val">40<small>年</small></div>
+      <div class="num-label">パナソニックとの取引実績</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-val">126<small>日</small></div>
+      <div class="num-label">年間休日</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-val">22<small>〜27万</small></div>
+      <div class="num-label">月給（各種手当含む）</div>
+    </div>
+    <div class="num-cell">
+      <div class="num-val">2<small>回</small></div>
+      <div class="num-label">年間賞与支給</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section class="interview-section" id="interview">
+  <div class="sec-head">
+    <div class="sec-en">INTERVIEW</div>
+    <div class="sec-ja">スタッフの声</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="interview-grid">
+    <div class="iv-card" onclick="openModal()">
+      <img class="iv-photo" src="img/funamoto.jpg" alt="船本 到">
+      <div class="iv-role">代表取締役</div>
+      <div class="iv-name">船本 到</div>
+      <div class="iv-age">49歳 ／ 創業から経営</div>
+      <div class="iv-rule"></div>
+      <p class="iv-excerpt">「素直さ。技術は教えられますが、素直さは教えられません。一緒に長く働きたい人を探しています」</p>
+      <div class="iv-more">詳細を読む</div>
+    </div>
+    <div class="iv-card" onclick="openNoguchiModal()">
+      <img class="iv-photo" src="img/noguchi.jpg" alt="野口 孝文">
+      <div class="iv-role">ラインリーダー・教育係</div>
+      <div class="iv-name">野口 孝文</div>
+      <div class="iv-age">32歳 ／ 社歴11年目</div>
+      <div class="iv-rule"></div>
+      <p class="iv-excerpt">「街で自分が組んだ自転車を見かけると、じわっとします。後輩を教える立場になって、自分の成長も実感しています」</p>
+      <div class="iv-more">詳細を読む</div>
+    </div>
+    <div class="iv-card" onclick="openOkaModal()">
+      <img class="iv-photo" src="img/oka.png" alt="岡 浩之">
+      <div class="iv-role">サブリーダー</div>
+      <div class="iv-name">岡 浩之</div>
+      <div class="iv-age">複数年在籍</div>
+      <div class="iv-rule"></div>
+      <p class="iv-excerpt">「少人数なので、変な競争がない。困ったらすぐ相談できる。それだけで、続けられる理由になっています」</p>
+      <div class="iv-more">詳細を読む</div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUIT -->
+<section class="recruit-section" id="recruit">
+  <div class="sec-head">
+    <div class="sec-en">RECRUIT</div>
+    <div class="sec-ja">募集要項</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="recruit-inner">
+    <table class="recruit-table">
+      <tr>
+        <td>仕事の内容</td>
+        <td>電動自転車のパーツ検品から、組み立て、仕上げまで。※未経験者を応援します。<br><br>【具体的には】パナソニックの工場敷地内で、モノ作りに携わるお仕事です。<br>キズ・不良品のチェック。および製品の組み立て。そして仕上げのチェック。各工程ごとにチームがあります。<br><br>【こんな方は是非】<br>・細かい作業が得意な方<br>・体を動かしながらお仕事をしたい方<br>・メカが好きな方。</td>
+      </tr>
+      <tr>
+        <td>求めている人材</td>
+        <td>経験・年齢・性別不問。ものづくりに関わりたい方。コツコツ働く<br><br>【具体的には】未経験歓迎<br>人柄を重視し、素直な気持ちを応援する会社です！</td>
+      </tr>
+      <tr>
+        <td>勤務地</td>
+        <td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br><br>【交通手段】<br>近鉄大阪線「河内国分駅」より徒歩10分（自転車・車・バイク通勤可）<br>近鉄南大阪線「道明寺駅」より徒歩10分（自転車・車・バイク通勤可）</td>
+      </tr>
+      <tr>
+        <td>給与</td>
+        <td>月給22万円〜27万円＋残業手当＋皆勤手当＋賞与年2回<br>※みなし残業制はありません。ご安心ください。<br>※年齢・経験を考慮し決定します。<br><br>【公正な人事考課制度の導入】<br>上期・下期に目標を設定し定期面談。<br>目標に対する課題と評価を確認し給与・賞与・手当・昇格に反映。<br><br>【年収例】<br>・440万円／33歳／組立職／経験7年（月給28万円＋残業手当＋賞与年2回）</td>
+      </tr>
+      <tr>
+        <td>勤務時間</td>
+        <td>8:25〜17:25（お昼休憩45分。他、定時休憩を合わせて合計1時間）<br>※繁忙期以外、残業はほとんどなし。</td>
+      </tr>
+      <tr>
+        <td>休日・休暇</td>
+        <td>完全週休2日制（土・日）※年間休日126日＋一斉年休5日<br>祝、GW、夏季休暇、年末年始休暇、有給、慶弔</td>
+      </tr>
+      <tr>
+        <td>諸手当・昇給</td>
+        <td>昇給年1回（4月）<br>賞与年2回＋業績により期末賞与あり<br>交通費全額支給（車・バイクの場合はガソリン代）<br>役職手当<br>家族手当</td>
+      </tr>
+      <tr>
+        <td>待遇・福利厚生</td>
+        <td>社会保険完備（雇用・労災・健康・厚生年金）<br>制服貸与<br>出張整体サービスあり（月1回・全額会社負担）<br>自転車整備士免許・技師免許の取得支援</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access-section" id="access">
+  <div class="sec-head">
+    <div class="sec-en">ACCESS</div>
+    <div class="sec-ja">交通アクセス</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="access-inner">
+    <div>
+      <div class="access-info-title">イズミ電商株式会社</div>
+      <div class="access-item"><div class="access-key">住所</div><div class="access-val">〒582-0028<br>大阪府柏原市 片山町13-13<br>パナソニックサイクルテック工場内</div></div>
+      <div class="access-item"><div class="access-key">アクセス</div><div class="access-val">近鉄大阪線「河内国分駅」徒歩10分<br>近鉄南大阪線「道明寺駅」徒歩10分<br>自転車・車・バイク通勤可</div></div>
+    </div>
+    <div class="access-map">
+      <iframe src="https://maps.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%BA%9C%E6%9F%8F%E5%8E%9F%E5%B8%82%E7%89%87%E5%B1%B1%E7%94%BA13-13&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY -->
+<section class="entry-section" id="entry">
+  <div class="sec-head">
+    <div class="sec-en">ENTRY</div>
+    <div class="sec-ja">応募フォーム</div>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="entry-inner">
+    <p class="entry-body">以下の必須項目をご入力頂き「入力内容を確認」ボタンを押してください。</p>
+    <div class="entry-form-grid">
+      <div>
+        <label class="form-label">お名前<span class="form-req">*</span></label>
+        <input class="form-input" type="text" placeholder="山田 太郎">
+      </div>
+      <div>
+        <label class="form-label">メールアドレス<span class="form-req">*</span></label>
+        <input class="form-input" type="email" placeholder="example@email.com">
+      </div>
+    </div>
+    <div class="entry-form-full">
+      <label class="form-label">確認メールアドレス<span class="form-req">*</span></label>
+      <input class="form-input" type="email" placeholder="example@email.com">
+    </div>
+    <div class="entry-form-full">
+      <label class="form-label">お問い合わせ内容<span class="form-req">*</span></label>
+      <textarea class="form-textarea" placeholder="ご質問・ご相談などご自由にお書きください"></textarea>
+    </div>
+    <div class="form-policy">
+      <div class="form-policy-title">プライバシーポリシー</div>
+      <div class="form-policy-body">当ページで取得した個人情報（名前、メールアドレス等）は、資料送付及び求人応募に関するご連絡にのみ利用されます。イズミ電商株式会社はこれらの個人情報に対し責任を持って保管し、個人情報への不正なアクセス、漏洩などを防ぐために必要な対策を講じます。取得した個人情報は、情報提供者から任意の同意を得た場合、および法令に基づき司法機関、行政機関から法的義務を伴う要請を受けた場合を除き、第三者に譲渡及び提供することはありません。</div>
+    </div>
+    <button class="entry-submit">入力内容を確認</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">イズミ電商株式会社</div>
+  <div class="footer-copy">&copy; IZUMI DENSHO Co.,Ltd. All Rights Reserved.</div>
+</footer>
+
+<!-- 社長モーダル -->
+<div id="presidentModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <img class="modal-photo" src="img/funamoto.jpg" alt="船本 到">
+    <div class="modal-role">代表取締役</div>
+    <div class="modal-name">船本 到（49歳）</div>
+    <div class="modal-q">一 採用で一番大切にしていることは？</div>
+    <div class="modal-a">素直さです。技術は教えられますが、素直さは教えられません。一緒に長く働きたい人を探しています。</div>
+    <div class="modal-q">一 この会社の強みは？</div>
+    <div class="modal-a">40年、パナソニックから信頼をいただいてきた実績。それは社員一人ひとりが積み上げてきたものです。</div>
+    <div class="modal-q">一 未経験の方へ一言</div>
+    <div class="modal-a">最初は誰でも未経験です。うちの会社は優しい先輩ばかりなので、安心して飛び込んできてください。一緒に成長しましょう。</div>
+    <button class="modal-close-btn" onclick="closeModal()">× 閉じる</button>
+  </div>
+</div>
+
+<!-- 野口モーダル -->
+<div id="noguchiModal" class="modal-overlay" onclick="if(event.target===this)closeNoguchiModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeNoguchiModal()">×</button>
+    <img class="modal-photo" src="img/noguchi.jpg" alt="野口 孝文">
+    <div class="modal-role">ラインリーダー・教育係 ／ 社歴11年目</div>
+    <div class="modal-name">野口 孝文（32歳）</div>
+    <div class="modal-q">一 新人教育で気を付けていること。</div>
+    <div class="modal-a">入社してくる方は未経験者がほとんどです。この部品は何か？今、どの箇所の何を作っているのか？まずは興味を持ってもらう事から始めています。<br>自分の作品のようなものが世の中で役に立っており、そこの楽しさを感じてもらえる様に心がけています。技術をしっかり磨いてもらって、そこに楽しさを見出してほしい。そうすれば、遣り甲斐も出てきます。</div>
+    <div class="modal-q">一 自分が新人の時に苦労したこと。</div>
+    <div class="modal-a">リーマンショックの影響がまだ残っていて、なかなか就職先が見つからなかった。だからイズミ電商に入社できた時は本当にうれしかったです。<br>初めての正社員だから、覚えることも多くて大変ですし8時間も働く事も初体験！最初は体を慣らすことに苦労しました。</div>
+    <div class="modal-q">一 新しく加わる仲間へのメッセージ</div>
+    <div class="modal-a">新しい仕事をする時は、職種関係なく心身ともに疲れると思います。しかし、イズミ電商は優しい先輩ばかりなのですぐに仲良くなり打ち解けられるはず。<br>組立作業も頭で理解し体が勝手に覚えるまで懇切丁寧に指導いたします。発想力や考える力も身につくと思うので、共に頑張り共に成長しましょう！</div>
+    <button class="modal-close-btn" onclick="closeNoguchiModal()">× 閉じる</button>
+  </div>
+</div>
+
+<!-- 岡モーダル -->
+<div id="okaModal" class="modal-overlay" onclick="if(event.target===this)closeOkaModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOkaModal()">×</button>
+    <img class="modal-photo" src="img/oka.png" alt="岡 浩之">
+    <div class="modal-role">サブリーダー</div>
+    <div class="modal-name">岡 浩之</div>
+    <div class="modal-q">一 あなたの仕事内容を教えてください。</div>
+    <div class="modal-a">主に検査ポジションを担当しています。皆が組み立てた車体に組付けミスや調整ミスがないか等のチェックを1台1台行っています。<br>またサブリーダーとして組立ての技術指導も行ってます。入社するまで全く自転車を触った事がなかった人でも一から丁寧に教えます。実際に自転車整備士試験に合格した人も何人もいますよ。</div>
+    <div class="modal-q">一 職場の雰囲気を教えてください</div>
+    <div class="modal-a">20代から50代まで様々な年齢層の社員がいます。前職が工場だったり自転車販売店だったり自動車整備士だったりいろいろな職種を経験してきてる人がいます。<br>少人数なので自分の意見や提案が上に届きやすいです。キャリアアップも年功序列ではないので頑張り次第で誰でも上にいけるチャンスがあります。</div>
+    <div class="modal-q">一 休日の過ごし方は？</div>
+    <div class="modal-a">釣りに行ったりドライブしたりしています。あとはお酒が好きな社員と飲みにいったりもしますね。<br>GWや夏季休暇は毎年10連休近くあるので、旅行に行ったり心身ともにかなりリフレッシュできます。</div>
+    <button class="modal-close-btn" onclick="closeOkaModal()">× 閉じる</button>
+  </div>
+</div>
+
+<script>
+function openModal(){ document.getElementById('presidentModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ document.getElementById('presidentModal').classList.remove('open'); document.body.style.overflow=''; }
+function openNoguchiModal(){ document.getElementById('noguchiModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeNoguchiModal(){ document.getElementById('noguchiModal').classList.remove('open'); document.body.style.overflow=''; }
+function openOkaModal(){ document.getElementById('okaModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeOkaModal(){ document.getElementById('okaModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); closeNoguchiModal(); closeOkaModal(); }});
+</script>
+</body>
+</html>
