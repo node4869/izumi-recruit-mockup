@@ -450,11 +450,16 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 }
 
 
-/* Advantages 丸アイコン */
+
+  .adv-card:nth-child(n) { grid-column: auto; }
+}
+
+
+/* ── Advantages ── */
 .adv-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 24px;
+  gap: 20px;
   max-width: 1060px;
   margin: 0 auto;
 }
@@ -464,67 +469,59 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 .adv-card:nth-child(4) { grid-column: 1 / 4; }
 .adv-card:nth-child(5) { grid-column: 4 / 7; }
 .adv-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.adv-circle {
-  width: 100%;
-  max-width: 280px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 3px solid #1c3a6e;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 16px 12px;
-  margin-bottom: 20px;
   background: #fff;
+  border-top: 4px solid #1c3a6e;
+  padding: 32px 28px 28px;
+  box-shadow: 0 2px 12px rgba(28,58,110,.07);
   transition: box-shadow .25s, transform .25s;
-  cursor: default;
 }
-.adv-card:hover .adv-circle {
-  box-shadow: 0 8px 32px rgba(28,58,110,.15);
-  transform: translateY(-4px);
+.adv-card:hover {
+  box-shadow: 0 8px 28px rgba(28,58,110,.14);
+  transform: translateY(-3px);
 }
-.adv-circle-num {
-  font-size: 11px;
+.adv-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.adv-num {
+  font-size: 32px;
   font-weight: 900;
-  letter-spacing: .2em;
-  color: #2d5ba3;
-  margin-bottom: 2px;
+  color: #e0e8f4;
+  line-height: 1;
+  flex-shrink: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
-.adv-circle-label {
+.adv-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.adv-tag {
+  display: inline-block;
   font-size: 10px;
   font-weight: 700;
-  color: #fff;
-  background: #2d5ba3;
+  color: #2d5ba3;
+  border: 1px solid #2d5ba3;
   padding: 2px 10px;
   letter-spacing: .06em;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
-.adv-circle-title {
-  font-size: 17px;
+.adv-title {
+  font-size: 15px;
   font-weight: 900;
   color: #1c3a6e;
-  line-height: 1.4;
-  margin-bottom: 8px;
+  line-height: 1.5;
+  margin-bottom: 12px;
 }
-.adv-circle-illust {
-  width: 75%;
-  max-width: 120px;
-}
-.adv-circle-illust svg { width: 100%; height: auto; }
-.adv-body-text {
+.adv-text {
   font-size: 13px;
-  color: #555;
+  color: #666;
   line-height: 1.9;
-  max-width: 280px;
 }
 @media(max-width: 860px) {
-  .adv-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .adv-grid { grid-template-columns: repeat(2, 1fr); }
   .adv-card:nth-child(n) { grid-column: auto; }
   .adv-card:nth-child(5) { grid-column: 1 / 3; }
 }
@@ -763,97 +760,79 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
     <div class="adv-grid">
 
       <div class="adv-card">
-        <div class="adv-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
-            <!-- 上向き矢印：スキルアップ -->
-            <path d="M32 46 V22" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M22 32 L32 22 L42 32" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- 星 -->
-            <path d="M32 14 L33.5 11 L35 14 L38 14.5 L35.8 16.5 L36.5 19.5 L33.8 18 L31.2 19.5 L31.8 16.5 L29.5 14.5 Z" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- 資格バッジ -->
-            <rect x="22" y="42" width="20" height="8" rx="2" stroke="#2d5ba3" stroke-width="2.5"/>
-            <path d="M26 46 h12" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+        <div class="adv-top">
+          <div class="adv-num">01</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 8 L24 36" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M14 18 L24 8 L34 18" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 40 H36" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="36" cy="16" r="6" stroke="#1c3a6e" stroke-width="2" fill="none"/>
+            <path d="M34 16 L36 18 L39 14" stroke="#1c3a6e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="adv-num">01</div>
         <div class="adv-tag">スキルアップ</div>
-        <div class="adv-title">パナソニック基準の<br>技術が身につく</div>
+        <div class="adv-title">パナソニック基準の技術が身につく</div>
         <div class="adv-text">大手メーカーの品質基準で、自転車組立・検査・ライン管理の技術を習得できます。全国どこでも通用するスキルです。</div>
       </div>
 
       <div class="adv-card">
-        <div class="adv-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
-            <!-- 時計 -->
-            <circle cx="32" cy="34" r="16" stroke="#2d5ba3" stroke-width="2.5"/>
-            <path d="M32 24 V34 L39 39" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- カレンダー上部 -->
-            <path d="M24 14 h16" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M26 12 v4 M38 12 v4" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+        <div class="adv-top">
+          <div class="adv-num">02</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="26" r="14" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M24 14 V26 L31 31" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17 10 H31" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 8 V12 M28 8 V12" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="adv-num">02</div>
         <div class="adv-tag">ワークライフバランス</div>
-        <div class="adv-title">年間休日126日。<br>残業もほぼなし</div>
+        <div class="adv-title">年間休日126日。残業もほぼなし</div>
         <div class="adv-text">完全週休2日（土・日）＋祝日・GW・夏季・年末年始。8:25〜17:25の定時を守る文化。仕事以外の時間も大切にできます。</div>
       </div>
 
       <div class="adv-card">
-        <div class="adv-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
-            <!-- 円マーク -->
-            <circle cx="32" cy="32" r="16" stroke="#2d5ba3" stroke-width="2.5"/>
-            <path d="M37 26 C37 26 35 23 30 23 C26 23 23 26 23 29 C23 33 27 34 32 35 C37 36 41 37 41 41 C41 44.5 38 47 33 47 C28 47 25 44 25 44" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M32 20 V23 M32 47 V50" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+        <div class="adv-top">
+          <div class="adv-num">03</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="14" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M28 18 C28 18 26 16 22 16 C19 16 16 18 16 21 C16 24 19 25 24 26 C29 27 32 28 32 31 C32 34 29 36 25 36 C21 36 18 34 18 34" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 12 V16 M24 36 V40" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="adv-num">03</div>
         <div class="adv-tag">給与・待遇</div>
-        <div class="adv-title">月給22〜27万円。<br>賞与年2回</div>
+        <div class="adv-title">月給22〜27万円。賞与年2回</div>
         <div class="adv-text">経験・能力を正当に評価する給与体制。33歳・経験7年で年収440万円の実績あり。みなし残業なし、残業代は全額支給。</div>
       </div>
 
       <div class="adv-card">
-        <div class="adv-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
-            <!-- 人物シルエット -->
-            <circle cx="32" cy="20" r="6" stroke="#2d5ba3" stroke-width="2.5"/>
-            <!-- マッサージの手 -->
-            <path d="M20 38 C20 38 22 32 32 32 C42 32 44 38 44 38" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- リラックス波線 -->
-            <path d="M22 44 C24 42 26 46 28 44 C30 42 32 46 34 44 C36 42 38 46 40 44" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- ハートマーク（ケア） -->
-            <path d="M29 27 C29 25.3 30.3 24 32 24 C33.7 24 35 25.3 35 27 C35 30 32 32 32 32 C32 32 29 30 29 27 Z" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="adv-top">
+          <div class="adv-num">04</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="16" r="7" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M14 36 C14 30 18.5 26 24 26 C29.5 26 34 30 34 36" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M36 28 C38 26 40 28 38 30 C40 30 42 32 40 34" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 32 C10 30 12 32 10 34 C12 34 14 36 12 38" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="adv-num">04</div>
         <div class="adv-tag">福利厚生</div>
-        <div class="adv-title">製造業で唯一：<br>出張整体（月1回・無料）</div>
+        <div class="adv-title">製造業で唯一：出張整体（月1回・無料）</div>
         <div class="adv-text">プロのセラピストが職場に来て、肩・腰・首をケア。全社員が対象で費用は全額会社負担。身体のメンテナンスも仕事のうち。</div>
       </div>
 
       <div class="adv-card">
-        <div class="adv-icon">
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
-            <!-- 中央の人（少し大きく） -->
-            <circle cx="32" cy="22" r="6" stroke="#2d5ba3" stroke-width="2.5"/>
-            <path d="M20 46 C20 39.4 25.4 34 32 34 C38.6 34 44 39.4 44 46" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- 左の人 -->
-            <circle cx="19" cy="26" r="4.5" stroke="#2d5ba3" stroke-width="2"/>
-            <path d="M10 46 C10 41 13.8 38 19 38" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
-            <!-- 右の人 -->
-            <circle cx="45" cy="26" r="4.5" stroke="#2d5ba3" stroke-width="2"/>
-            <path d="M54 46 C54 41 50.2 38 45 38" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+        <div class="adv-top">
+          <div class="adv-num">05</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="18" r="6" stroke="#2d5ba3" stroke-width="2.5"/>
+            <circle cx="12" cy="22" r="5" stroke="#1c3a6e" stroke-width="2"/>
+            <circle cx="36" cy="22" r="5" stroke="#1c3a6e" stroke-width="2"/>
+            <path d="M4 40 C4 34 7.6 30 12 30" stroke="#1c3a6e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M36 30 C40.4 30 44 34 44 40" stroke="#1c3a6e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 38 C13 32 18 28 24 28 C30 28 35 32 35 38" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="adv-num">05</div>
         <div class="adv-tag">職場環境</div>
-        <div class="adv-title">顔が見える、<br>少数精鋭の職場</div>
+        <div class="adv-title">顔が見える、少数精鋭の職場</div>
         <div class="adv-text">大きな組織にありがちな「人間関係の複雑さ」がない。困ったことはすぐ相談できる、フラットな職場環境です。</div>
       </div>
 
