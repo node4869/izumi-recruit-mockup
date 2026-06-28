@@ -636,6 +636,68 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
   .persona-tag { font-size: 13px; padding: 7px 14px; }
 }
 
+
+/* ── 募集要項グリッド ── */
+.rq-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #dde4f0;
+  border: 1px solid #dde4f0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.rq-item {
+  background: #fff;
+  padding: 28px 20px;
+  text-align: center;
+}
+.rq-label {
+  font-size: 11px;
+  font-weight: 900;
+  color: #fff;
+  background: #0f5a9e;
+  padding: 5px 10px;
+  letter-spacing: .06em;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+.rq-body {
+  font-size: 13px;
+  color: #444;
+  line-height: 2;
+}
+.rq-sub {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  letter-spacing: .04em;
+}
+.rq-note {
+  font-size: 12px;
+  color: #888;
+}
+@media(max-width: 768px) {
+  .rq-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    border: none;
+    background: transparent;
+  }
+  .rq-item {
+    text-align: left;
+    padding: 20px 0;
+    border-bottom: 1px solid #dde4f0;
+    background: transparent;
+  }
+  .rq-item:last-child { border-bottom: none; }
+  .rq-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .rq-body { font-size: 14px; }
+}
+
 </style>
 </head>
 <body>
@@ -1082,16 +1144,49 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
       <span class="recruit-toggle-icon">＋</span>
     </button>
     <div class="recruit-detail" id="recruitDetail">
-      <table class="recruit-table">
-        <tr><td>仕事の内容</td><td>電動自転車のパーツ検品・組立・仕上げ。パナソニックの工場敷地内でのものづくり。<br>※未経験者を応援します。</td></tr>
-        <tr><td>求めている人材</td><td>経験・年齢・性別不問。ものづくりに関わりたい方、コツコツ働ける方。未経験歓迎。</td></tr>
-        <tr><td>勤務地</td><td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br>近鉄大阪線「河内国分駅」徒歩10分 / 近鉄南大阪線「道明寺駅」徒歩10分</td></tr>
-        <tr><td>給与</td><td><span class="hl">月給22万円〜27万円</span>＋残業手当＋皆勤手当＋賞与年2回<br>【年収例】440万円／33歳／組立職／経験7年</td></tr>
-        <tr><td>勤務時間</td><td>8:25〜17:25（昼休憩45分）<span class="hl"> ／ 繁忙期以外、残業ほぼなし</span></td></tr>
-        <tr><td>休日・休暇</td><td><span class="hl">完全週休2日制（土・日）年間休日126日＋一斉年休5日</span><br>祝日・GW・夏季・年末年始休暇、有給、慶弔</td></tr>
-        <tr><td>待遇・福利厚生</td><td>昇給年1回（4月）、賞与年2回＋業績期末賞与あり、交通費全額支給<br>役職手当、家族手当、社会保険完備<br><span class="hl">出張整体（月1回・全額会社負担）</span></td></tr>
-        <tr><td>応募資格</td><td>未経験可・学歴不問。普通自動車免許があれば尚可。</td></tr>
-      </table>
+      <div class="rq-grid">
+
+        <div class="rq-item">
+          <div class="rq-label">仕事の内容</div>
+          <div class="rq-body">電動自転車のパーツ検品・組立・仕上げ。<br>パナソニックの工場敷地内でのものづくり。<br><span class="rq-note">※未経験者を応援します。</span></div>
+        </div>
+
+        <div class="rq-item">
+          <div class="rq-label">求めている人材</div>
+          <div class="rq-body">経験・年齢・性別不問。<br>ものづくりに関わりたい方、コツコツ働ける方。<br>未経験歓迎。</div>
+        </div>
+
+        <div class="rq-item">
+          <div class="rq-label">勤務地</div>
+          <div class="rq-body">大阪府柏原市 片山町13-13<br>パナソニックサイクルテック工場内<br>近鉄大阪線「河内国分駅」徒歩10分<br>近鉄南大阪線「道明寺駅」徒歩10分</div>
+        </div>
+
+        <div class="rq-item">
+          <div class="rq-label">給与</div>
+          <div class="rq-body"><span class="hl">月給22万円〜27万円</span><br>＋残業手当<br>＋皆勤手当<br>＋賞与年2回<br><br><span class="rq-sub">【年収例】</span><br>440万円<br>33歳／組立職／経験7年</div>
+        </div>
+
+        <div class="rq-item">
+          <div class="rq-label">勤務時間</div>
+          <div class="rq-body">8:25〜17:25（昼休憩45分）<br><span class="hl">繁忙期以外、残業ほぼなし</span></div>
+        </div>
+
+        <div class="rq-item">
+          <div class="rq-label">休日・休暇</div>
+          <div class="rq-body"><span class="hl">完全週休2日制（土・日）</span><br><span class="hl">年間休日126日＋一斉年休5日</span><br>祝日・GW・夏季・年末年始休暇<br>有給、慶弔</div>
+        </div>
+
+        <div class="rq-item">
+          <div class="rq-label">待遇・福利厚生</div>
+          <div class="rq-body">昇給年1回（4月）<br>賞与年2回＋業績期末賞与あり<br>交通費全額支給<br>役職手当、家族手当、社会保険完備<br><span class="hl">出張整体（月1回・全額会社負担）</span></div>
+        </div>
+
+        <div class="rq-item">
+          <div class="rq-label">応募資格</div>
+          <div class="rq-body">未経験可・学歴不問。<br>普通自動車免許があれば尚可。</div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
