@@ -465,6 +465,39 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
   .adv-card:nth-child(n) { grid-column: auto; }
 }
 
+
+/* ── CAREER PATH ── */
+.career-section { background: #f5f7fb; padding: 100px 60px; }
+.career-head { text-align: center; margin-bottom: 64px; }
+.career-en { font-size: 11px; font-weight: 700; letter-spacing: .25em; color: #2d5ba3; margin-bottom: 10px; }
+.career-title { font-size: 28px; font-weight: 900; color: #1c3a6e; }
+.career-divider { width: 40px; height: 3px; background: #2d5ba3; margin: 16px auto 0; }
+
+/* 階段SVG */
+.career-stair-wrap { max-width: 960px; margin: 0 auto 80px; overflow-x: auto; }
+.career-stair-wrap svg { width: 100%; height: auto; display: block; min-width: 600px; }
+
+/* タイムライン */
+.career-timeline { max-width: 760px; margin: 0 auto; }
+.ct-item { display: grid; grid-template-columns: 140px 1fr; gap: 0; position: relative; margin-bottom: 0; }
+.ct-item::before { content: ''; position: absolute; left: 139px; top: 24px; bottom: -1px; width: 2px; background: #d0d8ea; z-index: 0; }
+.ct-item:last-child::before { display: none; }
+.ct-label { text-align: right; padding: 18px 24px 48px 0; position: relative; z-index: 1; }
+.ct-label-text { font-size: 15px; font-weight: 900; color: #1c3a6e; display: inline-block; }
+.ct-dot { position: absolute; right: -8px; top: 22px; width: 16px; height: 16px; border-radius: 50%; background: #2d5ba3; border: 3px solid #f5f7fb; z-index: 2; }
+.ct-body { padding: 16px 0 48px 28px; border-left: none; }
+.ct-body ul { list-style: none; padding: 0; }
+.ct-body ul li { font-size: 14px; color: #444; line-height: 1.9; padding-left: 16px; position: relative; margin-bottom: 10px; }
+.ct-body ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: #2d5ba3; }
+
+@media(max-width: 768px) {
+  .career-section { padding: 72px 20px; }
+  .ct-item { grid-template-columns: 100px 1fr; }
+  .ct-item::before { left: 99px; }
+  .ct-dot { right: -8px; }
+  .ct-label-text { font-size: 13px; }
+}
+
 </style>
 </head>
 <body>
@@ -499,6 +532,169 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
   <div class="hero-scroll" style="position:relative;z-index:1">
     <div class="hero-scroll-line"></div>
     <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- CAREER PATH -->
+<section class="career-section" id="career">
+  <div class="career-head">
+    <div class="career-en">CAREER PATH</div>
+    <div class="career-title">キャリアパスのイメージ</div>
+    <div class="career-divider"></div>
+  </div>
+
+  <!-- 階段グラフィック -->
+  <div class="career-stair-wrap">
+    <svg viewBox="0 0 960 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- 階段ブロック（左→右で段が上がる） -->
+      <rect x="0"   y="280" width="220" height="100" rx="0" fill="#b8cde8"/>
+      <rect x="230" y="210" width="220" height="170" rx="0" fill="#7fadd6"/>
+      <rect x="460" y="140" width="220" height="240" rx="0" fill="#4a7bc4"/>
+      <rect x="690" y="70"  width="270" height="310" rx="0" fill="#1c3a6e"/>
+
+      <!-- 段ラベル -->
+      <text x="110" y="336" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">入社〜3ヶ月</text>
+      <text x="110" y="356" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">基礎知識</text>
+
+      <text x="340" y="266" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">1〜2年目</text>
+      <text x="340" y="286" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">一人立ち</text>
+
+      <text x="570" y="196" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">3〜5年目</text>
+      <text x="570" y="216" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">サブリーダー</text>
+
+      <text x="825" y="126" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">5年目〜</text>
+      <text x="825" y="146" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">ラインリーダー</text>
+
+      <!-- 吹き出し 1 -->
+      <rect x="16" y="140" width="188" height="68" rx="8" fill="white" stroke="#b8cde8" stroke-width="2"/>
+      <polygon points="90,208 100,220 110,208" fill="white" stroke="#b8cde8" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="91,208 100,218 109,208" fill="white"/>
+      <text x="110" y="166" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#1c3a6e" font-weight="700">OJTや研修で</text>
+      <text x="110" y="184" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#1c3a6e" font-weight="700">業務内容を理解する</text>
+      <text x="110" y="202" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#888">先輩が懇切丁寧に指導</text>
+
+      <!-- 吹き出し 2 -->
+      <rect x="246" y="64" width="188" height="80" rx="8" fill="white" stroke="#7fadd6" stroke-width="2"/>
+      <polygon points="320,144 330,156 340,144" fill="white" stroke="#7fadd6" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="321,144 330,154 339,144" fill="white"/>
+      <text x="340" y="90" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#1c3a6e" font-weight="700">各ポジションを</text>
+      <text x="340" y="108" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#1c3a6e" font-weight="700">一人でこなせるように</text>
+      <text x="340" y="130" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#888">資格取得にも挑戦できる</text>
+
+      <!-- 吹き出し 3 -->
+      <rect x="476" y="0" width="188" height="80" rx="8" fill="white" stroke="#4a7bc4" stroke-width="2"/>
+      <polygon points="550,80 560,92 570,80" fill="white" stroke="#4a7bc4" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="551,80 560,90 569,80" fill="white"/>
+      <text x="570" y="26" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#1c3a6e" font-weight="700">後輩の指導も担当</text>
+      <text x="570" y="44" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#1c3a6e" font-weight="700">サブリーダーへ昇格</text>
+      <text x="570" y="66" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#888">年功序列なし・実力評価</text>
+
+      <!-- 吹き出し 4 -->
+      <rect x="706" y="0" width="202" height="68" rx="8" fill="#1c3a6e" stroke="#1c3a6e" stroke-width="2"/>
+      <polygon points="790,68 800,80 810,68" fill="#1c3a6e"/>
+      <text x="807" y="24" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="white" font-weight="700">チームを統括する</text>
+      <text x="807" y="42" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="white" font-weight="700">ラインリーダーへ</text>
+      <text x="807" y="60" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.65)">ライン全体を管理</text>
+
+      <!-- 人物 1（入社） -->
+      <g transform="translate(100,220)">
+        <circle cx="0" cy="-42" r="10" stroke="#1c3a6e" stroke-width="2.5" fill="white"/>
+        <line x1="0" y1="-32" x2="0" y2="-10" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-12" y1="-24" x2="12" y2="-24" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="-10" y2="8" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="10" y2="8" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- 人物 2（1〜2年目） -->
+      <g transform="translate(330,150)">
+        <circle cx="0" cy="-42" r="10" stroke="white" stroke-width="2.5" fill="#7fadd6"/>
+        <line x1="0" y1="-32" x2="0" y2="-10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-12" y1="-22" x2="12" y2="-22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="-10" y2="8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="10" y2="8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- 人物 3（3〜5年目） -->
+      <g transform="translate(560,80)">
+        <circle cx="0" cy="-42" r="10" stroke="white" stroke-width="2.5" fill="#4a7bc4"/>
+        <line x1="0" y1="-32" x2="0" y2="-10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-14" y1="-20" x2="0" y2="-28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-28" x2="14" y2="-20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="-10" y2="8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="10" y2="8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- 人物 4（リーダー・旗を持つ） -->
+      <g transform="translate(800,10)">
+        <circle cx="0" cy="-42" r="10" stroke="white" stroke-width="2.5" fill="#2d5ba3"/>
+        <line x1="0" y1="-32" x2="0" y2="-10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-12" y1="-22" x2="14" y2="-22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="-10" y2="8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="0" y1="-10" x2="10" y2="8" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- 旗 -->
+        <line x1="14" y1="-22" x2="14" y2="-48" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <polygon points="14,-48 28,-42 14,-36" fill="white"/>
+      </g>
+
+    </svg>
+  </div>
+
+  <!-- タイムライン詳細 -->
+  <div class="career-timeline">
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">入社〜<br>3ヶ月</div>
+        <div class="ct-dot"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>先輩社員によるOJTで組立・検査・ピッキングの基礎を習得します。</li>
+          <li>部品の名前・工程の流れ・品質基準を一つひとつ丁寧に覚えていきます。</li>
+          <li>3ヶ月でひと通りの作業ができるようになるのが目安です。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">1〜2年目</div>
+        <div class="ct-dot" style="background:#4a7bc4"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>各ポジションを一人でこなせるようになります。</li>
+          <li>自転車整備士の資格取得にチャレンジする社員も多数います。試験前は先輩が指導・アドバイスをします。</li>
+          <li>「安全・品質・生産」のチームに分かれた社内改善活動にも参加します。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">3〜5年目</div>
+        <div class="ct-dot" style="background:#2d5ba3"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>サブリーダーとして後輩の指導も担当するようになります。</li>
+          <li>ライン内の問題発見・改善提案など、自分で考えて行動する力が身につきます。</li>
+          <li>年功序列ではないため、実力次第でこの段階から昇格も可能です。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">5年目〜</div>
+        <div class="ct-dot" style="background:#1c3a6e"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>ラインリーダーとしてチーム全体を管理します。</li>
+          <li>毎年の新車種に対応した作業割り振りや工程設計を担当します。</li>
+          <li>不具合対応・新人教育・品質管理など、幅広い役割を担います。</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
