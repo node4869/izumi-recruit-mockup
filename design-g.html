@@ -548,9 +548,9 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 @media(max-width: 768px) {
   .career-timeline { grid-template-columns: 1fr; gap: 0; }
   .career-timeline::before { display: none; }
-  .ct-item { flex-direction: row; align-items: flex-start; text-align: left; padding: 0 0 32px 0; gap: 16px; }
+  .ct-item { flex-direction: column; align-items: flex-start; text-align: left; padding: 0 0 32px 0; gap: 12px; }
   .ct-item:last-child { padding-bottom: 0; }
-  .ct-step { width: 56px; height: 56px; flex-shrink: 0; margin-bottom: 0; }
+  .ct-step { width: 56px; height: 56px; flex-shrink: 0; margin-bottom: 0; align-self: flex-start; }
   .ct-step-period { font-size: 9px; }
   .ct-content { flex: 1; }
   .ct-role { display: inline-block; margin-bottom: 10px; }
