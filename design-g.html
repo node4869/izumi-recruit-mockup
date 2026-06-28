@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 — イズミ電商株式会社</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff; }
+
+/* ─── NAV ─── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 72px;
+  background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.nav-logo { display: flex; flex-direction: column; }
+.nav-logo-main { font-size: 14px; font-weight: 900; color: #0f5a9e; letter-spacing: .04em; }
+.nav-logo-sub  { font-size: 9px; color: #aaa; letter-spacing: .14em; margin-top: 2px; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-size: 12px; color: #444; text-decoration: none; letter-spacing: .04em; }
+.nav-links a:hover { color: #0f5a9e; }
+.nav-cta { background: #0f5a9e; color: white; font-size: 12px; font-weight: 700; padding: 10px 24px; text-decoration: none; letter-spacing: .06em; }
+
+/* ─── HERO（フルスクリーン） ─── */
+.hero {
+  height: 100vh; min-height: 600px;
+  background: url('img/izumi-hero.jpg') center/cover no-repeat;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 72px 80px;
+  position: relative; overflow: hidden;
+}
+/* 背景装飾円 */
+.hero::before { content: ''; position: absolute; inset: 0; background: rgba(15,35,90,.72); z-index: 0; }
+.hero::after { display: none; }
+/* スライドバー（視覚的演出） */
+.hero-slides {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: stretch;
+}
+.hero-slide {
+  flex: 1; opacity: 0; transition: opacity 1.2s;
+  display: flex; align-items: flex-end; padding: 0 24px 80px;
+}
+.hero-slide.active { opacity: 1; }
+.slide-1 { background: linear-gradient(160deg, #0f2447 0%, #0f5a9e 60%, #2d5ba3 100%); }
+.slide-2 { background: linear-gradient(160deg, #1a3356 0%, #243f6e 60%, #1c5ba3 100%); }
+.hero-content { position: relative; z-index: 2; }
+.hero-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: rgba(255,255,255,.4); text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-copy {
+  font-size: 52px; font-weight: 900; color: white; line-height: 1.3;
+  margin-bottom: 24px;
+}
+.hero-sub {
+  font-size: 15px; color: rgba(255,255,255,.6);
+  line-height: 2; max-width: 480px; margin-bottom: 40px;
+}
+.hero-btns { display: flex; gap: 16px; }
+.hero-btn-main {
+  background: white; color: #0f5a9e;
+  font-size: 13px; font-weight: 900; padding: 14px 40px;
+  border: none; cursor: pointer; font-family: inherit; letter-spacing: .06em;
+}
+.hero-btn-sub {
+  background: transparent; color: white;
+  font-size: 13px; font-weight: 700; padding: 12px 28px;
+  border: 1px solid rgba(255,255,255,.35); cursor: pointer; font-family: inherit;
+}
+/* スクロール矢印 */
+.hero-scroll {
+  position: absolute; bottom: 32px; right: 48px; z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.hero-scroll span { font-size: 9px; letter-spacing: .2em; color: rgba(255,255,255,.35); text-transform: uppercase; }
+.hero-scroll-line {
+  width: 1px; height: 48px; background: rgba(255,255,255,.2);
+  position: relative; overflow: hidden;
+}
+.hero-scroll-line::after {
+  content: ''; position: absolute; top: -100%; left: 0; right: 0; height: 100%;
+  background: white; animation: scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine { 0%{top:-100%} 100%{top:100%} }
+
+/* ─── BRAND STATEMENT ─── */
+.brand-stmt {
+  background: #111; padding: 100px 72px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.bs-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: rgba(255,255,255,.3); text-transform: uppercase; margin-bottom: 24px;
+}
+.bs-title {
+  font-size: 40px; font-weight: 900; color: white; line-height: 1.5;
+}
+.bs-title em { font-style: normal; color: rgba(255,255,255,.35); }
+.bs-body { font-size: 14px; color: rgba(255,255,255,.5); line-height: 2.2; }
+.bs-body p { margin-bottom: 16px; }
+.bs-link {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 28px; font-size: 12px; font-weight: 700;
+  letter-spacing: .12em; color: white; text-decoration: none; text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 6px;
+}
+
+/* ─── 3カードグリッド ─── */
+.card-section { padding: 100px 72px; background: #f8f9fb; }
+.card-head { text-align: center; margin-bottom: 60px; }
+.card-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.card-head-title { font-size: 28px; font-weight: 900; color: #0f5a9e; }
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.card-item {
+  background: white; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow .3s;
+}
+.card-item:hover { box-shadow: 0 8px 40px rgba(28,58,110,.12); }
+.card-item-top {
+  height: 200px; background: #0f5a9e;
+  display: flex; align-items: flex-end; padding: 24px;
+  position: relative; overflow: hidden;
+}
+.card-item:nth-child(2) .card-item-top { background: #2d5ba3; }
+.card-item:nth-child(3) .card-item-top { background: #1a4d7a; }
+.card-item-top::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.card-num {
+  position: absolute; top: 20px; left: 24px;
+  font-size: 56px; font-weight: 900; color: rgba(255,255,255,.08);
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1;
+}
+.card-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .2em;
+  color: rgba(255,255,255,.45); text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+.card-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+.card-title { font-size: 18px; font-weight: 900; color: #0f5a9e; margin-bottom: 12px; }
+.card-text { font-size: 13px; color: #555; line-height: 1.9; flex: 1; }
+.card-more {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 20px; font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; color: #2d5ba3; text-transform: uppercase; text-decoration: none;
+  border-bottom: 1px solid #c8d8f0; padding-bottom: 4px; width: fit-content;
+}
+
+/* ─── 働く魅力リスト ─── */
+.appeal-section { padding: 100px 72px; }
+.appeal-inner { max-width: 900px; margin: 0 auto; }
+.appeal-head { margin-bottom: 56px; }
+.appeal-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.appeal-head-title { font-size: 28px; font-weight: 900; color: #0f5a9e; }
+.appeal-list { display: flex; flex-direction: column; }
+.appeal-item {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 0; padding: 32px 0; border-bottom: 1px solid #e8eaed;
+  align-items: start;
+}
+.appeal-item:first-child { border-top: 1px solid #e8eaed; }
+.appeal-num {
+  font-size: 40px; font-weight: 900; color: #e8edf5; line-height: 1;
+  font-family: 'Helvetica Neue', Arial, sans-serif; padding-top: 4px;
+}
+.appeal-body {}
+.appeal-title { font-size: 17px; font-weight: 900; color: #0f5a9e; margin-bottom: 8px; }
+.appeal-text { font-size: 13px; color: #555; line-height: 1.9; }
+.appeal-tag {
+  display: inline-block; margin-top: 10px;
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  background: #eef2fa; color: #2d5ba3; padding: 4px 12px;
+}
+
+/* ─── NUMBERS 帯 ─── */
+.nums-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: #0f5a9e; }
+.num-item { padding: 40px 24px; text-align: center; border-right: 1px solid rgba(255,255,255,.08); }
+.num-item:last-child { border: none; }
+.num-val {
+  font-size: 48px; font-weight: 900; color: white; line-height: 1;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.num-val small { font-size: 20px; }
+.num-lbl { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 10px; line-height: 1.6; letter-spacing: .04em; }
+
+/* ─── 出張整体バナー ─── */
+.sekkei-wrap { padding: 0 72px; }
+.sekkei-bar {
+  background: #eef2fa; border-left: 5px solid #0f5a9e;
+  padding: 28px 36px; display: flex; align-items: center; gap: 24px;
+}
+.sk-badge {
+  background: #0f5a9e; color: white; font-size: 10px; font-weight: 900;
+  letter-spacing: .1em; padding: 6px 16px; white-space: nowrap;
+}
+.sk-body { flex: 1; }
+.sk-title { font-size: 18px; font-weight: 900; color: #0f5a9e; margin-bottom: 4px; }
+.sk-text { font-size: 13px; color: #555; line-height: 1.7; }
+.sk-pill {
+  background: #0f5a9e; color: white; font-size: 11px; font-weight: 900;
+  padding: 12px 24px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ─── インタビュー ─── */
+.interview-section { padding: 100px 72px; background: #f8f9fb; }
+.interview-head { margin-bottom: 56px; }
+.interview-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.interview-head-title { font-size: 28px; font-weight: 900; color: #0f5a9e; }
+.interview-head-sub { font-size: 14px; color: #888; margin-top: 10px; line-height: 1.8; }
+.iv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.iv-card { background: white; }
+.iv-card-top { background: #0f5a9e; padding: 28px; }
+.iv-card:nth-child(2) .iv-card-top { background: #2d5ba3; }
+.iv-card:nth-child(3) .iv-card-top { background: #1a4d7a; }
+.iv-role { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .08em; margin-bottom: 6px; }
+.iv-name { font-size: 22px; font-weight: 900; color: white; margin-bottom: 4px; }
+.iv-meta { font-size: 11px; color: rgba(255,255,255,.4); }
+.iv-body { padding: 24px; }
+.iv-q {
+  font-size: 12px; font-weight: 700; color: #2d5ba3;
+  border-left: 3px solid #2d5ba3; padding-left: 10px;
+  margin-bottom: 8px; line-height: 1.5;
+}
+.iv-a { font-size: 13px; color: #444; line-height: 1.9; margin-bottom: 20px; }
+
+/* ─── 募集要項 ─── */
+.recruit-section { padding: 100px 72px; }
+.recruit-head { margin-bottom: 56px; }
+.recruit-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.recruit-head-title { font-size: 28px; font-weight: 900; color: #0f5a9e; }
+.recruit-table { width: 100%; border-collapse: collapse; font-size: 14px; max-width: 900px; }
+.recruit-table tr { border-bottom: 1px solid #e8eaed; }
+.recruit-table tr:first-child { border-top: 1px solid #e8eaed; }
+.recruit-table td { padding: 20px 16px; vertical-align: top; line-height: 1.9; color: #444; }
+.recruit-table td:first-child {
+  width: 150px; font-weight: 700; color: #0f5a9e;
+  font-size: 12px; letter-spacing: .04em; white-space: nowrap;
+}
+.hl { font-weight: 700; color: #0f5a9e; }
+
+/* ─── ACCESS ─── */
+.access-section { padding: 100px 72px; background: #f8f9fb; }
+.access-head { margin-bottom: 48px; }
+.access-head-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: #2d5ba3; text-transform: uppercase; margin-bottom: 12px;
+}
+.access-head-title { font-size: 28px; font-weight: 900; color: #0f5a9e; }
+.access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.access-map {
+  width: 100%; height: 280px; background: #dde3ed;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: #888;
+}
+.access-info h3 { font-size: 16px; font-weight: 900; color: #0f5a9e; margin-bottom: 16px; }
+.access-info p { font-size: 14px; line-height: 2.1; color: #444; }
+
+/* ─── ENTRY CTA（フルバンド） ─── */
+.entry-section {
+  background: #0f5a9e; padding: 100px 72px;
+  display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center;
+}
+.entry-left {}
+.entry-en {
+  font-size: 10px; font-weight: 700; letter-spacing: .3em;
+  color: rgba(255,255,255,.35); text-transform: uppercase; margin-bottom: 16px;
+}
+.entry-title { font-size: 34px; font-weight: 900; color: white; line-height: 1.4; margin-bottom: 16px; }
+.entry-sub { font-size: 14px; color: rgba(255,255,255,.55); line-height: 2; }
+.entry-right { display: flex; flex-direction: column; gap: 12px; }
+.entry-btn-main {
+  background: white; color: #0f5a9e;
+  font-size: 14px; font-weight: 900; padding: 18px 48px;
+  border: none; cursor: pointer; font-family: inherit;
+  letter-spacing: .04em; white-space: nowrap;
+}
+.entry-btn-line {
+  background: #06C755; color: white;
+  font-size: 13px; font-weight: 700; padding: 14px 32px;
+  border: none; cursor: pointer; font-family: inherit; white-space: nowrap;
+}
+.entry-btn-tel {
+  background: transparent; color: rgba(255,255,255,.7);
+  font-size: 13px; font-weight: 700; padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,.3); cursor: pointer; font-family: inherit; white-space: nowrap;
+}
+
+/* ─── FOOTER ─── */
+.site-footer { background: #0a0a0a; padding: 60px 72px 32px; }
+.footer-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; margin-bottom: 48px; }
+.footer-logo-main { font-size: 14px; font-weight: 900; color: white; letter-spacing: .04em; margin-bottom: 4px; }
+.footer-logo-sub { font-size: 9px; color: rgba(255,255,255,.3); letter-spacing: .14em; }
+.footer-logo-desc { font-size: 12px; color: rgba(255,255,255,.35); line-height: 1.9; margin-top: 16px; }
+.footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 32px; }
+.footer-link { font-size: 12px; color: rgba(255,255,255,.4); text-decoration: none; line-height: 2.2; }
+.footer-link:hover { color: rgba(255,255,255,.8); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.25); }
+.footer-sub-links { display: flex; gap: 24px; }
+.footer-sub-link { font-size: 11px; color: rgba(255,255,255,.25); text-decoration: none; }
+
+/* fixed entry */
+.fixed-entry {
+  position: fixed; bottom: 0; right: 0;
+  background: #0f5a9e; color: white;
+  text-align: center; padding: 14px 22px;
+  text-decoration: none; z-index: 600;
+}
+.fixed-entry-en { font-size: 15px; font-weight: 900; letter-spacing: .1em; display: block; }
+.fixed-entry-ja { font-size: 9px; display: block; opacity: .6; margin-top: 2px; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .site-nav { padding: 0 20px; height: 60px; }
+  .nav-links { display: none; }
+  .hero { padding: 0 24px 60px; }
+  .hero-copy { font-size: 30px; }
+  .hero-sub { font-size: 13px; }
+  .hero-btn-sub { display: none; }
+  .brand-stmt { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+  .bs-title { font-size: 26px; }
+  .card-section, .appeal-section, .interview-section,
+  .recruit-section, .access-section { padding: 60px 24px; }
+  .card-grid { grid-template-columns: 1fr; gap: 2px; }
+  .nums-bar { grid-template-columns: 1fr 1fr; }
+  .num-item { padding: 24px 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .sekkei-wrap { padding: 0 24px; }
+  .sekkei-bar { flex-wrap: wrap; gap: 14px; }
+  .sk-pill { width: 100%; text-align: center; }
+  .iv-grid { grid-template-columns: 1fr; }
+  .access-grid { grid-template-columns: 1fr; }
+  .entry-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+  .entry-btn-main, .entry-btn-line, .entry-btn-tel { width: 100%; }
+  .site-footer { padding: 48px 24px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* モーダル */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 900; overflow-y: auto; padding: 40px 20px; }
+.modal-overlay.open { display: flex; justify-content: center; align-items: flex-start; }
+.modal-box { background: white; max-width: 720px; width: 100%; position: relative; padding: 48px 52px 52px; margin: auto; }
+.modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: #0f5a9e; color: white; border: none; cursor: pointer; font-size: 18px; font-family: inherit; display: flex; align-items: center; justify-content: center; }
+.modal-role { font-size: 11px; color: #888; letter-spacing: .08em; margin-bottom: 4px; }
+.modal-name { font-size: 22px; font-weight: 900; color: #0f5a9e; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #e8e8e8; }
+.modal-q { font-size: 13px; font-weight: 700; color: #2d5ba3; border-left: 3px solid #2d5ba3; padding-left: 10px; margin-bottom: 10px; margin-top: 28px; line-height: 1.5; }
+.modal-a { font-size: 14px; color: #444; line-height: 2.1; }
+.modal-close-btn { display: block; width: 100%; margin-top: 36px; padding: 14px; background: #0f5a9e; color: white; border: none; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: .06em; }
+.iv-card-top.clickable, .msg-card.clickable { cursor: pointer; }
+.iv-card-top.clickable:hover { filter: brightness(1.1); transition: filter .2s; }
+
+
+/* クリック誘導バッジ */
+.iv-click-hint { 
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 14px; padding: 10px 16px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  font-size: 12px; font-weight: 700; color: white; letter-spacing: .08em;
+  cursor: pointer; transition: background .2s;
+}
+.iv-click-hint:hover { background: rgba(255,255,255,.22); }
+.iv-click-hint::after { content: '→'; font-size: 14px; }
+.iv-card-top.clickable { cursor: pointer; transition: filter .2s; }
+.iv-card-top.clickable:hover { filter: brightness(1.12); }
+.msg-sign.clickable:hover { background: #eaecf0 !important; }
+
+
+/* スタッフ写真 */
+.iv-card-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; display: block; }
+.modal-photo { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 16px; display: block; }
+
+
+/* brand stmt with photo */
+.bs-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; flex-shrink: 0; width: 240px; }
+@media(max-width:768px){ .bs-photo { display: none; } }
+
+
+/* gallery strip */
+.gallery-strip { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; height: 420px; }
+.gallery-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-strip .g-main { grid-row: 1 / 3; }
+@media(max-width:768px){ .gallery-strip { grid-template-columns: 1fr 1fr; height: auto; } .gallery-strip .g-main { grid-row: auto; } }
+
+
+ }
+
+
+
+  .adv-card:nth-child(n) { grid-column: auto; }
+}
+  .adv-card:nth-child(n) { grid-column: auto; }
+}
+
+
+/* ── CAREER PATH ── */
+.career-section { background: #f5f7fb; padding: 96px 48px; }
+.career-head { text-align: center; margin-bottom: 64px; padding-top: 25px; }
+.career-en { font-size: 11px; font-weight: 700; letter-spacing: .25em; color: #2d5ba3; margin-bottom: 10px; }
+.career-title { font-size: 28px; font-weight: 900; color: #0f5a9e; }
+.career-divider { width: 40px; height: 3px; background: #2d5ba3; margin: 16px auto 0; }
+
+/* 階段SVG */
+.career-stair-wrap { max-width: 960px; margin: 0 auto 80px; overflow-x: auto; }
+.career-stair-wrap svg { width: 100%; height: auto; display: block; min-width: 600px; }
+
+/* タイムライン */
+.career-timeline { max-width: 760px; margin: 0 auto; }
+.ct-item { display: grid; grid-template-columns: 140px 1fr; gap: 0; position: relative; margin-bottom: 0; }
+.ct-item::before { content: ''; position: absolute; left: 139px; top: 24px; bottom: -1px; width: 2px; background: #d0d8ea; z-index: 0; }
+.ct-item:last-child::before { display: none; }
+.ct-label { text-align: right; padding: 18px 24px 48px 0; position: relative; z-index: 1; }
+.ct-label-text { font-size: 15px; font-weight: 900; color: #0f5a9e; display: inline-block; }
+.ct-dot { position: absolute; right: -8px; top: 22px; width: 16px; height: 16px; border-radius: 50%; background: #2d5ba3; border: 3px solid #f5f7fb; z-index: 2; }
+.ct-body { padding: 16px 0 48px 28px; border-left: none; }
+.ct-body ul { list-style: none; padding: 0; }
+.ct-body ul li { font-size: 14px; color: #444; line-height: 1.9; padding-left: 16px; position: relative; margin-bottom: 10px; }
+.ct-body ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: #2d5ba3; }
+
+@media(max-width: 768px) {
+  .career-section { padding: 72px 20px; }
+  .ct-item { grid-template-columns: 100px 1fr; }
+  .ct-item::before { left: 99px; }
+  .ct-dot { right: -8px; }
+  .ct-label-text { font-size: 13px; }
+}
+
+
+
+  .adv-card:nth-child(n) { grid-column: auto; }
+}
+
+
+/* ── Advantages ── */
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.adv-card:nth-child(1) { grid-column: 1 / 3; }
+.adv-card:nth-child(2) { grid-column: 3 / 5; }
+.adv-card:nth-child(3) { grid-column: 5 / 7; }
+.adv-card:nth-child(4) { grid-column: 1 / 4; }
+.adv-card:nth-child(5) { grid-column: 4 / 7; }
+.adv-card {
+  background: #fff;
+  border-top: 4px solid #0f5a9e;
+  padding: 32px 28px 28px;
+  box-shadow: 0 2px 12px rgba(28,58,110,.07);
+  transition: box-shadow .25s, transform .25s;
+}
+.adv-card:hover {
+  box-shadow: 0 8px 28px rgba(28,58,110,.14);
+  transform: translateY(-3px);
+}
+.adv-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.adv-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: #e0e8f4;
+  line-height: 1;
+  flex-shrink: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.adv-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.adv-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #2d5ba3;
+  border: 1px solid #2d5ba3;
+  padding: 2px 10px;
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+}
+.adv-title {
+  font-size: 15px;
+  font-weight: 900;
+  color: #0f5a9e;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.adv-text {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.9;
+}
+@media(max-width: 860px) {
+  .adv-grid { grid-template-columns: repeat(2, 1fr); }
+  .adv-card:nth-child(n) { grid-column: auto; }
+  .adv-card:nth-child(5) { grid-column: 1 / 3; }
+}
+@media(max-width: 480px) {
+  .adv-grid { grid-template-columns: 1fr; }
+  .adv-card:nth-child(n) { grid-column: auto; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-logo">
+    <div class="nav-logo-main">イズミ電商株式会社</div>
+    <div class="nav-logo-sub">IZUMI DENSHO Co.,Ltd</div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">会社について</a>
+    <a href="#features">働く魅力</a>
+    <a href="#interview">社員の声</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#access">アクセス</a>
+  </div>
+  <a href="#entry" class="nav-cta">応募する</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content" style="position:relative;z-index:1">
+    <div class="hero-label">Recruit — Izumi Electronic Trading Co.,Ltd</div>
+    <h1 class="hero-copy">自転車組立の<br>プロフェッショナルとして<br>「活躍しませんか」</h1>
+    <p class="hero-sub">パナソニックの工場で、日本中を走る電動アシスト自転車をつくる。<br>柏原から、40年。未経験から、プロへ。</p>
+    <div class="hero-btns">
+      <button class="hero-btn-main" onclick="document.querySelector('#entry').scrollIntoView({behavior:'smooth'})">応募する・話を聞く</button>
+      <button class="hero-btn-sub" onclick="document.querySelector('#recruit').scrollIntoView({behavior:'smooth'})">募集要項を見る</button>
+    </div>
+  </div>
+  <div class="hero-scroll" style="position:relative;z-index:1">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- BRAND STATEMENT -->
+<section id="about" class="brand-stmt">
+  <img class="bs-photo" src="img/izumi-member-funamoto.jpg" alt="代表取締役 船本 到">
+  <div>
+    <div class="bs-en">About Us</div>
+    <div class="bs-title">すべては、<br>「人」が<br>つくっている。<br><em>── 40年の実績がある。</em></div>
+    <a href="#features" class="bs-link">働く魅力を見る →</a>
+  </div>
+  <div class="bs-body">
+    <p>イズミ電商は1985年の創業以来、自転車製造一筋で歩んできた会社です。1998年からパナソニックサイクルテックとの取引が始まり、それから30年近く。日本中を走る電動アシスト自転車に、私たちの手が入っています。</p>
+    <p>「自己資本比率7割以上」という数字が示す通り、財務は非常に堅実です。大手に依存しながらも自立した経営を続けてきた。だからこそ、社員にしっかり還元できる。その循環を大切にしてきました。</p>
+    <p>未経験でも構いません。素直さと誠実さがあれば、必ず技術は身につきます。ここで長く働いてほしい。それが代表・船本の本音です。</p>
+  </div>
+</section>
+
+<!-- 3カードグリッド -->
+<section class="card-section">
+  <div class="card-head">
+    <div class="card-head-en">What We Offer</div>
+    <div class="card-head-title">イズミで働く、3つの軸</div>
+  </div>
+  <div class="card-grid">
+    <div class="card-item">
+      <div class="card-item-top">
+        <div class="card-num">01</div>
+        <div class="card-en">Craftsmanship</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">ものづくりの技術</div>
+        <div class="card-text">パナソニック規格の品質基準で自転車を組み立てる技術。検品・組立・仕上げの各工程を通じて、製造業のプロとして通用するスキルが身につきます。</div>
+        <a href="#recruit" class="card-more">詳しく見る →</a>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card-item-top">
+        <div class="card-num">02</div>
+        <div class="card-en">Work-Life Balance</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">働きやすい環境</div>
+        <div class="card-text">年間休日126日・完全週休2日・定時退社が基本。さらに月1回の出張整体（全額会社負担）で、身体のメンテナンスまで会社がサポートします。</div>
+        <a href="#features" class="card-more">詳しく見る →</a>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card-item-top">
+        <div class="card-num">03</div>
+        <div class="card-en">Stability</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">長く続けられる安定</div>
+        <div class="card-text">パナソニックとの30年以上の取引実績と、自己資本比率7割超の堅実経営。月給22〜27万円＋賞与年2回で、腰を据えて働ける環境を整えています。</div>
+        <a href="#recruit" class="card-more">詳しく見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER PATH -->
+<section class="career-section" id="career">
+  <div class="career-head">
+    <div class="career-en">CAREER PATH</div>
+    <div class="career-title">キャリアパスのイメージ</div>
+    <div class="career-divider"></div>
+  </div>
+
+  <!-- 階段グラフィック -->
+  <div class="career-stair-wrap">
+    <svg viewBox="0 -80 960 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- 階段ブロック（左→右で段が上がる） -->
+      <rect x="0"   y="280" width="220" height="100" rx="0" fill="#b8cde8"/>
+      <rect x="230" y="210" width="220" height="170" rx="0" fill="#7fadd6"/>
+      <rect x="460" y="140" width="220" height="240" rx="0" fill="#4a7bc4"/>
+      <rect x="690" y="70"  width="270" height="310" rx="0" fill="#0f5a9e"/>
+
+      <!-- 段ラベル -->
+      <text x="110" y="336" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">入社〜3ヶ月</text>
+      <text x="110" y="356" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">基礎知識</text>
+
+      <text x="340" y="266" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">1〜2年目</text>
+      <text x="340" y="286" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">一人立ち</text>
+
+      <text x="570" y="196" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">3〜5年目</text>
+      <text x="570" y="216" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">サブリーダー</text>
+
+      <text x="825" y="126" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="13" font-weight="700" fill="white">5年目〜</text>
+      <text x="825" y="146" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.7)">ラインリーダー</text>
+
+      <!-- 吹き出し 1 -->
+      <rect x="16" y="140" width="188" height="68" rx="8" fill="white" stroke="#b8cde8" stroke-width="2"/>
+      <polygon points="90,208 100,220 110,208" fill="white" stroke="#b8cde8" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="91,208 100,218 109,208" fill="white"/>
+      <text x="110" y="166" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#0f5a9e" font-weight="700">OJTや研修で</text>
+      <text x="110" y="184" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#0f5a9e" font-weight="700">業務内容を理解する</text>
+      <text x="110" y="202" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#888">先輩が懇切丁寧に指導</text>
+
+      <!-- 吹き出し 2 -->
+      <rect x="246" y="64" width="188" height="80" rx="8" fill="white" stroke="#7fadd6" stroke-width="2"/>
+      <polygon points="320,144 330,156 340,144" fill="white" stroke="#7fadd6" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="321,144 330,154 339,144" fill="white"/>
+      <text x="340" y="90" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#0f5a9e" font-weight="700">各ポジションを</text>
+      <text x="340" y="108" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#0f5a9e" font-weight="700">一人でこなせるように</text>
+      <text x="340" y="130" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#888">資格取得にも挑戦できる</text>
+
+      <!-- 吹き出し 3 -->
+      <rect x="476" y="0" width="188" height="80" rx="8" fill="white" stroke="#4a7bc4" stroke-width="2"/>
+      <polygon points="550,80 560,92 570,80" fill="white" stroke="#4a7bc4" stroke-width="2" stroke-linejoin="round"/>
+      <polygon points="551,80 560,90 569,80" fill="white"/>
+      <text x="570" y="26" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#0f5a9e" font-weight="700">後輩の指導も担当</text>
+      <text x="570" y="44" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="#0f5a9e" font-weight="700">サブリーダーへ昇格</text>
+      <text x="570" y="66" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#888">年功序列なし・実力評価</text>
+
+      <!-- 吹き出し 4 -->
+      <rect x="706" y="-70" width="202" height="80" rx="8" fill="#0f5a9e" stroke="#0f5a9e" stroke-width="2"/>
+      <polygon points="790,10 800,22 810,10" fill="#0f5a9e"/>
+      <text x="807" y="-44" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="white" font-weight="700">チームを統括する</text>
+      <text x="807" y="-24" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="12" fill="white" font-weight="700">ラインリーダーへ</text>
+      <text x="807" y="-2" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="rgba(255,255,255,.65)">ライン全体を管理</text>
+
+
+    </svg>
+  </div>
+
+  <!-- タイムライン詳細 -->
+  <div class="career-timeline">
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">入社〜<br>3ヶ月</div>
+        <div class="ct-dot"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>先輩社員によるOJTで組立・検査・ピッキングの基礎を習得します。</li>
+          <li>部品の名前・工程の流れ・品質基準を一つひとつ丁寧に覚えていきます。</li>
+          <li>3ヶ月でひと通りの作業ができるようになるのが目安です。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">1〜2年目</div>
+        <div class="ct-dot" style="background:#4a7bc4"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>各ポジションを一人でこなせるようになります。</li>
+          <li>自転車整備士の資格取得にチャレンジする社員も多数います。試験前は先輩が指導・アドバイスをします。</li>
+          <li>「安全・品質・生産」のチームに分かれた社内改善活動にも参加します。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">3〜5年目</div>
+        <div class="ct-dot" style="background:#2d5ba3"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>サブリーダーとして後輩の指導も担当するようになります。</li>
+          <li>ライン内の問題発見・改善提案など、自分で考えて行動する力が身につきます。</li>
+          <li>年功序列ではないため、実力次第でこの段階から昇格も可能です。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-label">
+        <div class="ct-label-text">5年目〜</div>
+        <div class="ct-dot" style="background:#0f5a9e"></div>
+      </div>
+      <div class="ct-body">
+        <ul>
+          <li>ラインリーダーとしてチーム全体を管理します。</li>
+          <li>毎年の新車種に対応した作業割り振りや工程設計を担当します。</li>
+          <li>不具合対応・新人教育・品質管理など、幅広い役割を担います。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 働く魅力 -->
+<section id="features" class="appeal-section">
+  <div class="appeal-inner">
+    <div class="appeal-head">
+      <div class="appeal-head-en">Advantages</div>
+      <div class="appeal-head-title">イズミで働く、5つの魅力</div>
+    </div>
+    <div class="adv-grid">
+
+      <div class="adv-card">
+        <div class="adv-top">
+          <div class="adv-num">01</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 8 L24 36" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M14 18 L24 8 L34 18" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 40 H36" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="36" cy="16" r="6" stroke="#0f5a9e" stroke-width="2" fill="none"/>
+            <path d="M34 16 L36 18 L39 14" stroke="#0f5a9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="adv-tag">スキルアップ</div>
+        <div class="adv-title">パナソニック基準の技術が身につく</div>
+        <div class="adv-text">大手メーカーの品質基準で、自転車組立・検査・ライン管理の技術を習得できます。全国どこでも通用するスキルです。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-top">
+          <div class="adv-num">02</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="26" r="14" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M24 14 V26 L31 31" stroke="#0f5a9e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17 10 H31" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 8 V12 M28 8 V12" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="adv-tag">ワークライフバランス</div>
+        <div class="adv-title">年間休日126日。残業もほぼなし</div>
+        <div class="adv-text">完全週休2日（土・日）＋祝日・GW・夏季・年末年始。8:25〜17:25の定時を守る文化。仕事以外の時間も大切にできます。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-top">
+          <div class="adv-num">03</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="14" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M28 18 C28 18 26 16 22 16 C19 16 16 18 16 21 C16 24 19 25 24 26 C29 27 32 28 32 31 C32 34 29 36 25 36 C21 36 18 34 18 34" stroke="#0f5a9e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 12 V16 M24 36 V40" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="adv-tag">給与・待遇</div>
+        <div class="adv-title">月給22〜27万円。賞与年2回</div>
+        <div class="adv-text">経験・能力を正当に評価する給与体制。33歳・経験7年で年収440万円の実績あり。みなし残業なし、残業代は全額支給。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-top">
+          <div class="adv-num">04</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="16" r="7" stroke="#2d5ba3" stroke-width="2.5"/>
+            <path d="M14 36 C14 30 18.5 26 24 26 C29.5 26 34 30 34 36" stroke="#0f5a9e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M36 28 C38 26 40 28 38 30 C40 30 42 32 40 34" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 32 C10 30 12 32 10 34 C12 34 14 36 12 38" stroke="#2d5ba3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="adv-tag">福利厚生</div>
+        <div class="adv-title">製造業で唯一：出張整体（月1回・無料）</div>
+        <div class="adv-text">プロのセラピストが職場に来て、肩・腰・首をケア。全社員が対象で費用は全額会社負担。身体のメンテナンスも仕事のうち。</div>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-top">
+          <div class="adv-num">05</div>
+          <svg class="adv-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="18" r="6" stroke="#2d5ba3" stroke-width="2.5"/>
+            <circle cx="12" cy="22" r="5" stroke="#0f5a9e" stroke-width="2"/>
+            <circle cx="36" cy="22" r="5" stroke="#0f5a9e" stroke-width="2"/>
+            <path d="M4 40 C4 34 7.6 30 12 30" stroke="#0f5a9e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M36 30 C40.4 30 44 34 44 40" stroke="#0f5a9e" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 38 C13 32 18 28 24 28 C30 28 35 32 35 38" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="adv-tag">職場環境</div>
+        <div class="adv-title">顔が見える、少数精鋭の職場</div>
+        <div class="adv-text">大きな組織にありがちな「人間関係の複雑さ」がない。困ったことはすぐ相談できる、フラットな職場環境です。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="nums-bar">
+  <div class="num-item">
+    <div class="num-val">126<small>日</small></div>
+    <div class="num-lbl">年間休日</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val">40<small>年</small></div>
+    <div class="num-lbl">パナソニックとの取引実績</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val">2<small>回</small></div>
+    <div class="num-lbl">賞与支給（年2回）</div>
+  </div>
+  <div class="num-item">
+    <div class="num-val" style="font-size:32px;letter-spacing:-.01em">22〜27万</div>
+    <div class="num-lbl">月給水準（経験考慮）</div>
+  </div>
+</div>
+
+<!-- 出張整体バナー -->
+<div class="sekkei-wrap" style="padding-top:0;padding-bottom:0">
+  <div class="sekkei-bar">
+    <div class="sk-badge">製造業で他社にない制度</div>
+    <div class="sk-body">
+      <div class="sk-title">出張整体 ── 月1回、無料</div>
+      <div class="sk-text">プロのセラピストが職場に来て、肩・腰・首をケア。社員全員が対象。</div>
+    </div>
+    <div class="sk-pill">社員全員 無料</div>
+  </div>
+</div>
+
+
+<!-- GALLERY -->
+<section style="padding:0">
+  <div class="gallery-strip">
+    <img class="g-main" src="img/izumi-gallery-1.jpg" alt="組立現場">
+    <img src="img/izumi-gallery-2.jpg" alt="工場内">
+    <img src="img/izumi-gallery-3.jpg" alt="作業風景">
+    <img src="img/izumi-about-1.jpg" alt="ライン作業">
+    <img src="img/izumi-gallery-4.jpg" alt="製品">
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section id="interview" class="interview-section">
+  <div class="interview-head">
+    <div class="interview-head-en">Interview</div>
+    <div class="interview-head-title">ここで働く人の声</div>
+    <div class="interview-head-sub">経歴・年齢・きっかけは違っても、続けている理由がある。</div>
+  </div>
+  <div class="iv-grid">
+    <div class="iv-card">
+      <img class="iv-card-photo" src="img/funamoto.jpg" alt="船本 到" onclick="openModal()" style="cursor:pointer">
+        <div class="iv-card-top clickable" onclick="openModal()">
+        <div class="iv-role">代表取締役</div>
+        <div class="iv-name">船本 到</div>
+        <div class="iv-meta">49歳 ／ 創業から経営</div>
+        <div class="iv-click-hint" onclick="openModal()">詳細メッセージを読む</div>
+      </div>
+      <div class="iv-body">
+        <div class="iv-q">採用で一番大切にしていることは？</div>
+        <div class="iv-a">「素直さ。技術は教えられますが、素直さは教えられません。一緒に長く働きたい人を探しています」</div>
+        <div class="iv-q">この会社の強みは？</div>
+        <div class="iv-a">「40年、パナソニックから信頼をいただいてきた実績。それは社員一人ひとりが積み上げてきたものです」</div>
+      </div>
+    </div>
+    <div class="iv-card">
+      <img class="iv-card-photo" src="img/noguchi.jpg" alt="野口 孝文" onclick="openNoguchiModal()" style="cursor:pointer">
+        <div class="iv-card-top clickable" onclick="openNoguchiModal()">
+        <div class="iv-role">ラインリーダー・教育係</div>
+        <div class="iv-name">野口 孝文</div>
+        <div class="iv-meta">32歳 ／ 社歴11年目</div>
+        <div class="iv-click-hint" onclick="openNoguchiModal()">詳細メッセージを読む</div>
+      </div>
+      <div class="iv-body">
+        <div class="iv-q">入社前の不安は？</div>
+        <div class="iv-a">「製造業が初めてだったので、本当に心配でした。でも3ヶ月でだいたいできるようになりました」</div>
+        <div class="iv-q">今の仕事のやりがいは？</div>
+        <div class="iv-a">「街で自分が組んだ自転車を見かけると、じわっとします。後輩を教える立場になって、自分の成長も実感しています」</div>
+      </div>
+    </div>
+    <div class="iv-card">
+      <img class="iv-card-photo" src="img/oka.png" alt="岡 浩之" onclick="openOkaModal()" style="cursor:pointer">
+        <div class="iv-card-top clickable" onclick="openOkaModal()">
+        <div class="iv-role">サブリーダー</div>
+        <div class="iv-name">岡 浩之</div>
+        <div class="iv-meta">複数年在籍</div>
+        <div class="iv-click-hint" onclick="openOkaModal()">詳細メッセージを読む</div>
+      </div>
+      <div class="iv-body">
+        <div class="iv-q">職場の雰囲気は？</div>
+        <div class="iv-a">「少人数なので、変な競争がない。困ったらすぐ相談できる。それだけで、続けられる理由になっています」</div>
+        <div class="iv-q">この仕事の魅力は？</div>
+        <div class="iv-a">「前職でも製造に携わっていましたが、ここは雰囲気が違います。プロとして誇りを持って働けています」</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="recruit" class="recruit-section">
+  <div class="recruit-head">
+    <div class="recruit-head-en">Requirements</div>
+    <div class="recruit-head-title">募集要項</div>
+  </div>
+  <table class="recruit-table">
+    <tr><td>仕事の内容</td><td>電動自転車のパーツ検品・組立・仕上げ。パナソニックの工場敷地内でのものづくり。<br>※未経験者を応援します。</td></tr>
+    <tr><td>求めている人材</td><td>経験・年齢・性別不問。ものづくりに関わりたい方、コツコツ働ける方。未経験歓迎。</td></tr>
+    <tr><td>勤務地</td><td>大阪府柏原市 片山町13-13 パナソニックサイクルテック工場内<br>近鉄大阪線「河内国分駅」徒歩10分 / 近鉄南大阪線「道明寺駅」徒歩10分</td></tr>
+    <tr><td>給与</td><td><span class="hl">月給22万円〜27万円</span>＋残業手当＋皆勤手当＋賞与年2回<br>【年収例】440万円／33歳／組立職／経験7年</td></tr>
+    <tr><td>勤務時間</td><td>8:25〜17:25（昼休憩45分）<span class="hl"> ／ 繁忙期以外、残業ほぼなし</span></td></tr>
+    <tr><td>休日・休暇</td><td><span class="hl">完全週休2日制（土・日）年間休日126日＋一斉年休5日</span><br>祝日・GW・夏季・年末年始休暇、有給、慶弔</td></tr>
+    <tr><td>待遇・福利厚生</td><td>昇給年1回（4月）、賞与年2回＋業績期末賞与あり、交通費全額支給<br>役職手当、家族手当、社会保険完備<br><span class="hl">出張整体（月1回・全額会社負担）</span></td></tr>
+    <tr><td>応募資格</td><td>未経験可・学歴不問。普通自動車免許があれば尚可。</td></tr>
+  </table>
+</section>
+
+<!-- ACCESS -->
+<section id="access" class="access-section">
+  <div class="access-head">
+    <div class="access-head-en">Access</div>
+    <div class="access-head-title">交通アクセス</div>
+  </div>
+  <div class="access-grid">
+    <div class="access-map" style="padding:0;overflow:hidden"><iframe src="https://maps.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%BA%9C%E6%9F%8F%E5%8E%9F%E5%B8%82%E7%89%87%E5%B1%B1%E7%94%BA13-13&output=embed" width="100%" height="100%" style="border:0;display:block;" allowfullscreen loading="lazy"></iframe></div>
+    <div class="access-info">
+      <h3>イズミ電商株式会社</h3>
+      <p>〒582-0028 大阪府柏原市 片山町13-13<br>パナソニックサイクルテック工場内<br><br>
+      近鉄大阪線「河内国分駅」徒歩10分<br>
+      近鉄南大阪線「道明寺駅」徒歩10分<br>
+      自転車・車・バイク通勤可</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY CTA -->
+<section id="entry" class="entry-section">
+  <div class="entry-left">
+    <div class="entry-en">Entry</div>
+    <div class="entry-title">まずは、<br>気軽にご連絡ください。</div>
+    <div class="entry-sub">「まだ迷っている」「話だけ聞きたい」でも大丈夫です。<br>プレッシャーなく、あなたのペースで進められます。</div>
+  </div>
+  <div class="entry-right">
+    <button class="entry-btn-main">応募フォームから送る</button>
+    <button class="entry-btn-line">LINE で気軽に聞く</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-main">イズミ電商株式会社</div>
+      <div class="footer-logo-sub">IZUMI DENSHO Co.,Ltd</div>
+      <div class="footer-logo-desc">大阪府柏原市 片山町13-13<br>パナソニックサイクルテック工場内<br></div>
+    </div>
+    <div class="footer-links">
+      <a href="#about" class="footer-link">会社について</a>
+      <a href="#features" class="footer-link">働く魅力</a>
+      <a href="#interview" class="footer-link">社員の声</a>
+      <a href="#recruit" class="footer-link">募集要項</a>
+      <a href="#access" class="footer-link">アクセス</a>
+      <a href="#entry" class="footer-link">応募する</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 イズミ電商株式会社 All Rights Reserved.</div>
+    <div class="footer-sub-links">
+      <a href="#" class="footer-sub-link">プライバシーポリシー</a>
+      <a href="#" class="footer-sub-link">サイトマップ</a>
+    </div>
+  </div>
+</footer>
+
+<a href="#entry" class="fixed-entry">
+  <span class="fixed-entry-en">ENTRY</span>
+  <span class="fixed-entry-ja">応募フォーム</span>
+</a>
+
+
+<!-- 社長モーダル -->
+<div id="presidentModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <img class="modal-photo" src="img/funamoto.jpg" alt="船本 到">
+    <div class="modal-role">代表取締役</div>
+    <div class="modal-name">船本 到（49歳）</div>
+
+    <div class="modal-q">一 私の普段の仕事内容は。</div>
+    <div class="modal-a">社長業と言えど、さまざまあります。現場のラインに立つこともありますしデスクワークに1日中没頭することも。イズミ電商の監督としてオールマイティに動き回っています。<br>監督はチームのモチベーションを向上させ、時に厳しくチームを引き締めることが大事です。それが私の役割だと考えております。</div>
+
+    <div class="modal-q">一 私がこのお仕事を始めたきっかけ。</div>
+    <div class="modal-a">最初は岡山県で営業職をしていました。そのあと、熊本県でも営業職として日々奮戦！だから、しゃべったり、ビジネスの交渉は得意なんですよ（笑）<br>その後、大阪に戻り堺市にある親友の会社でも営業職を経験。さらに別の会社でも玄関ドアの営業職をしました。<br>奥さんと結婚して、義父が創業した「イズミ電商」に入社することになりました。だから自転車の組立の仕事は未経験。最初は苦労しましたね。自由度が高く応変力が求められる営業職と違い、組立は基礎知識と集中力が必要な仕事です。</div>
+
+    <div class="modal-q">一 最初に始めたこと。</div>
+    <div class="modal-a">まず、部品の名前を覚える。そのあと、組立の仕方を覚える。常に自分自身の中で改善点を考え、次に実践する。<br>部品を見るだけでどのパーツかわかるようになったり、発見がどんどん出てきます。電動自転車は毎年新作がリリースされるため、新しいパーツの把握も大切です。<br>デタラメに組んだら、後の工程で大変なことになります。集中力が必要なので、慣れるまでが大変かもしれませんね。</div>
+
+    <div class="modal-q">一 ES向上のための取組み</div>
+    <div class="modal-a"><strong>公平な人事考課と人材育成</strong><br>安全・5Sチーム、品質チーム、生産性チームのどれかに属し小集団活動（改善活動）を行っていただきます。<br>少し頑張れば手の届く数値目標をチームリーダーと設定しその達成率が人事考課となり、評価に繋がります。活動を通して創意工夫し考える力や発想力を養い、個人の成長を促します。目標を達成する喜びを実感することで仕事にやりがいをもってもらえたらという思いで取組んでおります。</div>
+
+    <div class="modal-q">一 出張整体について</div>
+    <div class="modal-a">従業員にとても好評な企画です。毎月最終日に身体のメンテナンスのため出張整体に来ていただいてます。1人当たり約30分間、身体の疲れている箇所をほぐしてもらい、自身でできるストレッチ方法を教えていただく。また、身体の困りごとの相談や健康診断結果からのアドバイスも。<br>彼らと協同で『中小企業健康経営優良法人』の取得を目指しています。</div>
+
+    <div class="modal-q">一 社内行事</div>
+    <div class="modal-a">社員旅行・定期的な飲み会（どちらも希望者のみ）コロナ禍で一度はなくなっていたのですが、従業員からの熱い要望で再開いたしました。自由参加で希望者のみで開催、無理強いは一切いたしません。笑</div>
+
+    <div class="modal-q">一 イズミ電商の経営理念。</div>
+    <div class="modal-a">『私たちは、みんなが笑顔になる、安心できる製品を提供します。』<br>自転車の製造を通じて、お客様、取引先、従業員など、私たちに関わる全ての人を幸せにする企業を目指しています。<br>イズミ電商とそこで働く従業員は、求められる品質以上の製品を作り出すために、常に新しいことにチャレンジし続けています。そして、誰もが安心して乗れる自転車を作ることが、私たちに関わる全ての人の幸せ・笑顔につながると考えています。<br>自転車組立のプロとして、私たちの冒険はまだまだ始まったばかりです。</div>
+
+    <button class="modal-close-btn" onclick="closeModal()">× 閉じる</button>
+  </div>
+</div>
+<script>
+function openModal(){ document.getElementById('presidentModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ document.getElementById('presidentModal').classList.remove('open'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+
+
+<!-- 野口モーダル -->
+<div id="noguchiModal" class="modal-overlay" onclick="if(event.target===this)closeNoguchiModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeNoguchiModal()">×</button>
+    <img class="modal-photo" src="img/noguchi.jpg" alt="野口 孝文">
+    <div class="modal-role">ラインリーダー・教育係 ／ 社歴11年目</div>
+    <div class="modal-name">野口 孝文（32歳）</div>
+
+    <div class="modal-q">一 新人教育で気を付けていること。</div>
+    <div class="modal-a">入社してくる方は未経験者がほとんどです。この部品は何か？今、どの箇所の何を作っているのか？まずは興味を持ってもらう事から始めています。<br>今、作ってるものが、自転車を組み立てる上でどの箇所に使われるのか。君が作った部分が自転車のこんな所に使われている。イズミ電商が作った自転車が、世の中のあらゆる所で使われている。自分の作品のようなものが世の中で役に立っており、そこの楽しさを感じてもらえる様に心がけています。<br>技術をしっかり磨いてもらって、そこに楽しさを見出してほしい。そうすれば、遣り甲斐も出てきます。</div>
+
+    <div class="modal-q">一 会社の魅力</div>
+    <div class="modal-a">・年間カレンダーが配布されるので休日のスケジュールが組みやすく長期休暇も年3回あるので趣味や旅行でプライベートを充実させたり、家族サービスをしたり、リフレッシュできます。<br>・自転車整備士免許・技師免許も自身の頑張り次第で取得可能。試験を受ける際は、指導・アドバイスをするので安心してください。もし退職されたとしても、自転車業界内では役に立つ免許ですよ！<br>・20代〜50代の従業員が働いており、皆人柄が良く、社長も1番に従業員の事を考えてくれ、コミュニケーションがとりやすく仕事・プライベートの相談も気軽にできます。<br>・年功序列制度がないので自身の頑張り次第でサブリーダー、リーダーと上がっていけるのも魅力の一つです。</div>
+
+    <div class="modal-q">一 私の会社での役割</div>
+    <div class="modal-a">たまに組立ライン内で作業もしますが、メインの仕事はピッキング作業を行いながらライン全体の管理をしています。不具合など様々な問題が発生した時の対応や従業員・新人の教育も行っています。<br>また、毎年新しい車種が販売されるので、各ポジションの仕事の割振りを考えます。組立て後に皆にヒアリングをして仕事量の調整を行います。それぞれの意見を尊重しながら調整し、納得してもらう作業がとても大変ですがやりがいがあります。</div>
+
+    <div class="modal-q">一 自分が新人の時に苦労したこと。</div>
+    <div class="modal-a">リーマンショックの影響がまだ残っていて、なかなか就職先が見つからなかった。だからイズミ電商に入社できた時は本当にうれしかったです。<br>初めての正社員だから、覚えることも多くて大変ですし8時間も働く事も初体験！最初は体を慣らすことに苦労しました。</div>
+
+    <div class="modal-q">一 新しく加わる仲間へのメッセージ</div>
+    <div class="modal-a">新しい仕事をする時は、職種関係なく心身ともに疲れると思います。しかし、イズミ電商は優しい先輩ばかりなのですぐに仲良くなり打ち解けられるはず。<br>組立作業も頭で理解し体が勝手に覚えるまで懇切丁寧に指導いたします。発想力や考える力も身につくと思うので、共に頑張り共に成長しましょう！</div>
+
+    <button class="modal-close-btn" onclick="closeNoguchiModal()">× 閉じる</button>
+  </div>
+</div>
+<!-- 岡モーダル -->
+<div id="okaModal" class="modal-overlay" onclick="if(event.target===this)closeOkaModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOkaModal()">×</button>
+    <img class="modal-photo" src="img/oka.png" alt="岡 浩之">
+    <div class="modal-role">サブリーダー</div>
+    <div class="modal-name">岡 浩之</div>
+
+    <div class="modal-q">一 あなたの仕事内容を教えてください。</div>
+    <div class="modal-a">主に検査ポジションを担当しています。皆が組み立てた車体に組付けミスや調整ミスがないか等のチェックを1台1台行っています。<br>またサブリーダーとして組立ての技術指導も行ってます。入社するまで全く自転車を触った事がなかった人でも一から丁寧に教えます。実際に自転車整備士試験に合格した人も何人もいますよ。</div>
+
+    <div class="modal-q">一 組立て作業以外にすることはありますか？</div>
+    <div class="modal-a">「安全」・「品質」・「生産」とチームにわかれて社内の改善活動を行っています。それぞれのメンバーが自分自身で問題点を見つけて改善を行うので自分で考えて行動する力が付くと思います。<br>大きなミスや問題があった場合も個人を責めるのではなく、チームで対策を考えて改善したり仕組みを変えたりします。</div>
+
+    <div class="modal-q">一 職場の雰囲気を教えてください</div>
+    <div class="modal-a">20代から50代まで様々な年齢層の社員がいます。前職が工場だったり自転車販売店だったり自動車整備士だったりいろいろな職種を経験してきてる人がいます。<br>少人数なので自分の意見や提案が上に届きやすいです。キャリアアップも年功序列ではないので頑張り次第で誰でも上にいけるチャンスがあります。</div>
+
+    <div class="modal-q">一 休日の過ごし方は？</div>
+    <div class="modal-a">釣りに行ったりドライブしたりしています。あとはお酒が好きな社員と飲みにいったりもしますね。ときどき社長もお誘いして連れて行ってもらうこともありますよ。<br>そしてGWや夏季休暇は毎年10連休近くあるので、旅行に行ったり心身ともにかなりリフレッシュできます。</div>
+
+    <button class="modal-close-btn" onclick="closeOkaModal()">× 閉じる</button>
+  </div>
+</div>
+<script>
+function openNoguchiModal(){ document.getElementById('noguchiModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeNoguchiModal(){ document.getElementById('noguchiModal').classList.remove('open'); document.body.style.overflow=''; }
+function openOkaModal(){ document.getElementById('okaModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeOkaModal(){ document.getElementById('okaModal').classList.remove('open'); document.body.style.overflow=''; }
+</script>
+</body>
+</html>
