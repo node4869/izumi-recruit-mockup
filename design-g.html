@@ -335,30 +335,75 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
+  /* ナビ */
   .site-nav { padding: 0 20px; height: 60px; }
   .nav-links { display: none; }
-  .hero { padding: 0 24px 60px; }
-  .hero-copy { font-size: 30px; }
-  .hero-sub { font-size: 13px; }
+
+  /* ヒーロー */
+  .hero-content { position: absolute; bottom: 50%; left: 24px; right: 24px; transform: translateY(50%); text-align: center; }
+  .hero-copy { font-size: 28px; line-height: 1.5; }
+  .hero-sub { font-size: 13px; margin: 12px auto 24px; }
   .hero-btn-sub { display: none; }
-  .brand-stmt { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
-  .bs-title { font-size: 26px; }
+  .hero-btn { width: 100%; max-width: 280px; }
+
+  /* ブランドステートメント：1カラム縦積み */
+  .brand-stmt { grid-template-columns: 1fr; padding: 56px 24px; gap: 28px; }
+  .bs-title { font-size: 24px; }
+  .brand-text { font-size: 14px; max-width: 100%; }
+
+  /* セクション共通 */
   .card-section, .appeal-section, .interview-section,
-  .recruit-section, .access-section { padding: 60px 24px; }
+  .recruit-section, .access-section, .career-section { padding: 64px 20px; }
+
+  /* What We Offer：1カラム */
   .card-grid { grid-template-columns: 1fr; gap: 2px; }
+
+  /* NUMBERS：2カラム */
   .nums-bar { grid-template-columns: 1fr 1fr; }
   .num-item { padding: 24px 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
-  .sekkei-wrap { padding: 0 24px; }
-  .sekkei-bar { flex-wrap: wrap; gap: 14px; }
-  .sk-pill { width: 100%; text-align: center; }
+  .num-value { font-size: 40px; }
+
+  /* ギャラリー */
+  .gallery-strip { grid-template-columns: 1fr 1fr; height: auto; }
+  .gallery-strip .g-main { grid-row: auto; }
+
+  /* スタッフ：1カラム */
   .iv-grid { grid-template-columns: 1fr; }
+
+  /* 魅力カード：1カラム */
+  .adv-grid { grid-template-columns: 1fr !important; }
+  .adv-card:nth-child(n) { grid-column: auto !important; }
+
+  /* タイムライン：1カラム */
+  .ct-item { grid-template-columns: 1fr; }
+  .ct-item::before { display: none; }
+  .ct-label { text-align: left; padding: 0 0 8px 0; }
+  .ct-label-text { font-size: 14px; color: #0f5a9e; }
+  .ct-dot { display: none; }
+  .ct-body { padding: 0 0 32px 0; border-left: 3px solid #2d5ba3; padding-left: 16px; }
+
+  /* 募集要項テーブル：1カラム */
+  .recruit-table th,
+  .recruit-table td { display: block; width: 100%; padding: 10px 16px; }
+  .recruit-table th { background: #f0f4fb; font-size: 12px; padding-bottom: 4px; border-bottom: none; }
+  .recruit-table td { padding-top: 4px; }
+
+  /* アクセス：1カラム */
   .access-grid { grid-template-columns: 1fr; }
+
+  /* エントリー：1カラム */
   .entry-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
   .entry-btn-main, .entry-btn-line, .entry-btn-tel { width: 100%; }
-  .site-footer { padding: 48px 24px 24px; }
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+
+  /* フッター：1カラム */
+  .site-footer { padding: 48px 20px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
   .footer-links { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+  /* モーダル */
+  .modal-box { padding: 36px 20px; }
+  .modal-photo { width: 100px; height: 100px; }
 }
 
 /* モーダル */
@@ -397,7 +442,7 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 
 /* brand stmt with photo */
 .bs-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; flex-shrink: 0; width: 240px; }
-@media(max-width:768px){ .bs-photo { display: none; } }
+@media(max-width:768px){ .bs-photo { width: 100%; height: 240px; object-fit: cover; object-position: top; } }
 
 
 /* gallery strip */
