@@ -522,56 +522,87 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 
 
 /* ── Advantages ── */
-/* ── Advantages (Design C) ── */
-.adv-list {
-  max-width: 720px;
+/* ── Advantages ── */
+.adv-grid-new {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1000px;
   margin: 0 auto;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid #dde4f0;
 }
-.adv-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 24px 28px;
+.adv-card-new {
   background: #fff;
-  border-bottom: 1px solid #dde4f0;
-  transition: background .2s;
-  cursor: default;
+  border: 1px solid #dde6f4;
+  padding: 36px 24px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .55s ease, transform .55s ease, box-shadow .25s;
 }
-.adv-row:last-child { border-bottom: none; }
-.adv-row:hover { background: #f5f8fd; }
-.adv-icon-wrap {
-  width: 52px; height: 52px;
+.adv-card-new.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.adv-card-new:hover {
+  box-shadow: 0 12px 40px rgba(15,90,158,.12);
+  transform: translateY(-4px);
+}
+.adv-card-new.visible:hover {
+  transform: translateY(-4px);
+}
+.adv-card-bg-num {
+  position: absolute;
+  top: -8px; right: 8px;
+  font-size: 72px;
+  font-weight: 900;
+  color: #f0f4fb;
+  line-height: 1;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  pointer-events: none;
+  user-select: none;
+}
+.adv-card-icon {
+  width: 72px; height: 72px;
   border-radius: 50%;
   background: #e8f0fb;
   display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+  margin: 0 auto 20px;
+  transition: background .25s, transform .25s;
 }
-.adv-icon-wrap .ti { font-size: 26px; color: #0f5a9e; }
-.adv-body { flex: 1; min-width: 0; }
-.adv-meta {
-  font-size: 11px; font-weight: 700;
-  color: #2d5ba3; letter-spacing: .06em;
-  margin-bottom: 4px;
+.adv-card-new:hover .adv-card-icon {
+  background: #0f5a9e;
+  transform: scale(1.08);
 }
-.adv-title {
+.adv-card-icon .ti {
+  font-size: 32px;
+  color: #0f5a9e;
+  transition: color .25s;
+}
+.adv-card-new:hover .adv-card-icon .ti { color: #fff; }
+.adv-card-meta {
+  font-size: 10px; font-weight: 700;
+  color: #2d5ba3; letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.adv-card-title {
   font-size: 15px; font-weight: 900;
-  color: #0f2d5c; line-height: 1.45;
-  margin-bottom: 4px;
+  color: #0f2d5c; line-height: 1.5;
+  margin-bottom: 12px;
 }
-.adv-text {
-  font-size: 12px; color: #666; line-height: 1.8;
+.adv-card-text {
+  font-size: 12px; color: #666; line-height: 1.85;
 }
-.adv-arrow {
-  color: #b0bdd4; font-size: 18px; flex-shrink: 0;
+@media(max-width: 860px) {
+  .adv-grid-new { grid-template-columns: repeat(2, 1fr); }
 }
-@media(max-width: 768px) {
-  .adv-row { padding: 18px 16px; gap: 14px; }
-  .adv-icon-wrap { width: 44px; height: 44px; }
-  .adv-title { font-size: 14px !important; }
-  .adv-text { font-size: 12px; }
+@media(max-width: 480px) {
+  .adv-grid-new { grid-template-columns: 1fr; gap: 12px; }
+  .adv-card-new { padding: 28px 20px 24px; text-align: left; }
+  .adv-card-icon { margin: 0 0 16px; width: 56px; height: 56px; }
+  .adv-card-icon .ti { font-size: 26px; }
+  .adv-card-bg-num { font-size: 56px; top: -4px; right: 12px; }
 }
 
 
@@ -926,66 +957,46 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
       <div class="appeal-head-en">Advantages</div>
       <div class="appeal-head-title">イズミで働く、5つの魅力</div>
     </div>
-    <div class="adv-list">
+    <div class="adv-grid-new">
 
-      <div class="adv-row">
-        <div class="adv-icon-wrap">
-          <i class="ti ti-certificate" aria-hidden="true"></i>
-        </div>
-        <div class="adv-body">
-          <div class="adv-meta">01 ─ スキルアップ</div>
-          <div class="adv-title">パナソニック基準の技術が身につく</div>
-          <div class="adv-text">組立・検査・ライン管理まで、<br>全国通用のスキルを習得。</div>
-        </div>
-        <div class="adv-arrow">›</div>
+      <div class="adv-card-new" style="transition-delay:.0s">
+        <div class="adv-card-bg-num">01</div>
+        <div class="adv-card-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+        <div class="adv-card-meta">スキルアップ</div>
+        <div class="adv-card-title">パナソニック基準の<br>技術が身につく</div>
+        <div class="adv-card-text">組立・検査・ライン管理まで、<br>全国通用のスキルを習得。</div>
       </div>
 
-      <div class="adv-row">
-        <div class="adv-icon-wrap">
-          <i class="ti ti-calendar-event" aria-hidden="true"></i>
-        </div>
-        <div class="adv-body">
-          <div class="adv-meta">02 ─ ワークライフバランス</div>
-          <div class="adv-title">年間休日126日。残業もほぼなし</div>
-          <div class="adv-text">完全週休2日＋GW・夏季・年末年始。<br>定時退社が文化。</div>
-        </div>
-        <div class="adv-arrow">›</div>
+      <div class="adv-card-new" style="transition-delay:.1s">
+        <div class="adv-card-bg-num">02</div>
+        <div class="adv-card-icon"><i class="ti ti-calendar-event" aria-hidden="true"></i></div>
+        <div class="adv-card-meta">ワークライフバランス</div>
+        <div class="adv-card-title">年間休日126日。<br>残業もほぼなし</div>
+        <div class="adv-card-text">完全週休2日＋GW・夏季・年末年始。<br>定時退社が文化。</div>
       </div>
 
-      <div class="adv-row">
-        <div class="adv-icon-wrap">
-          <i class="ti ti-coin" aria-hidden="true"></i>
-        </div>
-        <div class="adv-body">
-          <div class="adv-meta">03 ─ 給与・待遇</div>
-          <div class="adv-title">月給22〜27万円。賞与年2回</div>
-          <div class="adv-text">みなし残業なし、残業代全額支給。<br>年収440万円実績あり。</div>
-        </div>
-        <div class="adv-arrow">›</div>
+      <div class="adv-card-new" style="transition-delay:.2s">
+        <div class="adv-card-bg-num">03</div>
+        <div class="adv-card-icon"><i class="ti ti-coin" aria-hidden="true"></i></div>
+        <div class="adv-card-meta">給与・待遇</div>
+        <div class="adv-card-title">月給22〜27万円。<br>賞与年2回</div>
+        <div class="adv-card-text">みなし残業なし、残業代全額支給。<br>年収440万円実績あり。</div>
       </div>
 
-      <div class="adv-row">
-        <div class="adv-icon-wrap">
-          <i class="ti ti-massage" aria-hidden="true"></i>
-        </div>
-        <div class="adv-body">
-          <div class="adv-meta">04 ─ 福利厚生</div>
-          <div class="adv-title">出張整体・月1回・全額会社負担</div>
-          <div class="adv-text">製造業で唯一。<br>プロが職場に来て肩・腰・首をケア。</div>
-        </div>
-        <div class="adv-arrow">›</div>
+      <div class="adv-card-new" style="transition-delay:.15s">
+        <div class="adv-card-bg-num">04</div>
+        <div class="adv-card-icon"><i class="ti ti-massage" aria-hidden="true"></i></div>
+        <div class="adv-card-meta">福利厚生</div>
+        <div class="adv-card-title">出張整体・月1回<br>全額会社負担</div>
+        <div class="adv-card-text">製造業で唯一。<br>プロが職場に来て肩・腰・首をケア。</div>
       </div>
 
-      <div class="adv-row">
-        <div class="adv-icon-wrap">
-          <i class="ti ti-users" aria-hidden="true"></i>
-        </div>
-        <div class="adv-body">
-          <div class="adv-meta">05 ─ 職場環境</div>
-          <div class="adv-title">顔が見える、少数精鋭の職場</div>
-          <div class="adv-text">複雑な人間関係なし。<br>困ったらすぐ相談できるフラットな環境。</div>
-        </div>
-        <div class="adv-arrow">›</div>
+      <div class="adv-card-new" style="transition-delay:.25s">
+        <div class="adv-card-bg-num">05</div>
+        <div class="adv-card-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+        <div class="adv-card-meta">職場環境</div>
+        <div class="adv-card-title">顔が見える、<br>少数精鋭の職場</div>
+        <div class="adv-card-text">複雑な人間関係なし。<br>困ったらすぐ相談できるフラットな環境。</div>
       </div>
 
     </div>
@@ -1333,6 +1344,23 @@ function toggleRecruit() {
   const span = btn.querySelector('span');
   span.textContent = btn.classList.contains('open') ? '閉じる' : '詳しく見る';
 }
+</script>
+
+
+<script>
+(function(){
+  var cards = document.querySelectorAll('.adv-card-new');
+  if(!cards.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(function(c){ io.observe(c); });
+})();
 </script>
 
 </body>
