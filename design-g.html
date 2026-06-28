@@ -490,73 +490,47 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 .career-stair-wrap svg { width: 100%; height: auto; display: block; min-width: 600px; }
 
 /* タイムライン */
-/* ── キャリアロードマップ ── */
+/* ── キャリアロードマップ（Design B） ── */
 .career-timeline {
-  max-width: 900px; margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-}
-.career-timeline::before {
-  content: '';
-  position: absolute;
-  top: 36px; left: 12.5%; right: 12.5%;
-  height: 2px; background: #c8d8ee; z-index: 0;
+  max-width: 600px; margin: 0 auto;
+  display: flex; flex-direction: column;
+  padding-left: 22px;
+  border-left: 2px solid #185FA5;
 }
 .ct-item {
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center; position: relative; padding: 0 12px 0;
+  position: relative;
+  padding: 0 0 36px 24px;
 }
-.ct-step {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: #fff; border: 3px solid #b8cde8;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  position: relative; z-index: 1; margin-bottom: 20px;
-  transition: border-color .25s, background .25s;
+.ct-item:last-child { padding-bottom: 0; }
+.ct-item::before {
+  content: '';
+  position: absolute; left: -9px; top: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #185FA5; border: 3px solid #f5f7fb;
+  box-sizing: border-box;
 }
-.ct-item:nth-child(2) .ct-step { border-color: #7fadd6; }
-.ct-item:nth-child(3) .ct-step { border-color: #4a7bc4; }
-.ct-item:nth-child(4) .ct-step { border-color: #0f5a9e; background: #0f5a9e; }
-.ct-step-period {
-  font-size: 10px; font-weight: 900; color: #0f5a9e; line-height: 1.3;
-  letter-spacing: -.01em;
+.ct-item:nth-child(2)::before { background: #378ADD; }
+.ct-item:nth-child(3)::before { background: #85B7EB; }
+.ct-item:nth-child(4)::before { background: #B5D4F4; border-color: #185FA5; }
+.ct-step { display: none; }
+.ct-period {
+  font-size: 11px; font-weight: 700; color: #185FA5;
+  letter-spacing: .08em; margin-bottom: 4px;
 }
-.ct-item:nth-child(4) .ct-step-period { color: #fff; }
-.ct-step-icon { font-size: 11px; color: #aac0dc; margin-top: 2px; }
-.ct-item:nth-child(4) .ct-step-icon { color: rgba(255,255,255,.6); }
 .ct-role {
-  font-size: 12px; font-weight: 900; color: #0f5a9e;
-  background: #e8f0fb; padding: 4px 12px; margin-bottom: 14px;
-  letter-spacing: .04em;
+  font-size: 15px; font-weight: 900; color: #0f5a9e;
+  margin-bottom: 10px;
 }
-.ct-item:nth-child(4) .ct-role { background: #0f5a9e; color: #fff; }
-.ct-list { list-style: none; padding: 0; text-align: left; width: 100%; }
+.ct-card {
+  background: #f5f7fb; border-radius: 6px;
+  padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;
+}
+.ct-list { list-style: none; padding: 0; }
 .ct-list li {
-  font-size: 12px; color: #555; line-height: 1.8;
-  padding: 6px 0; border-bottom: 1px solid #edf1f8;
-  padding-left: 14px; position: relative;
+  font-size: 13px; color: #555; line-height: 1.7;
+  display: flex; align-items: center; gap: 8px;
 }
-.ct-list li:last-child { border-bottom: none; }
-.ct-list li::before {
-  content: ''; position: absolute; left: 0; top: 14px;
-  width: 5px; height: 5px; border-radius: 50%; background: #b8cde8;
-}
-.ct-item:nth-child(2) .ct-list li::before { background: #7fadd6; }
-.ct-item:nth-child(3) .ct-list li::before { background: #4a7bc4; }
-.ct-item:nth-child(4) .ct-list li::before { background: #0f5a9e; }
-
-@media(max-width: 768px) {
-  .career-timeline { grid-template-columns: 1fr; gap: 0; }
-  .career-timeline::before { display: none; }
-  .ct-item { flex-direction: column; align-items: flex-start; text-align: left; padding: 0 0 32px 0; gap: 12px; }
-  .ct-item:last-child { padding-bottom: 0; }
-  .ct-step { width: 56px; height: 56px; flex-shrink: 0; margin-bottom: 0; align-self: flex-start; }
-  .ct-step-period { font-size: 9px; }
-  .ct-content { flex: 1; }
-  .ct-role { display: inline-block; margin-bottom: 10px; }
-  .ct-list li { font-size: 13px; }
-}
+.ct-list li i { font-size: 13px; color: #378ADD; flex-shrink: 0; }
 
 @media(max-width: 768px) {
   .career-section { padding: 64px 20px; }
@@ -718,8 +692,8 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 
 @media(max-width: 768px) {
   .persona-block { padding: 28px 20px; }
-  .persona-tags { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .persona-tag span { font-size: 12px; }
+  .persona-tags { grid-template-columns: 1fr; gap: 8px; }
+  .persona-tag span { font-size: 13px; }
 }
 
 
@@ -951,61 +925,49 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
   <div class="career-timeline">
 
     <div class="ct-item">
-      <div class="ct-step">
-        <div class="ct-step-period">入社〜<br>3ヶ月</div>
-        <i class="ti ti-seedling ct-step-icon" aria-hidden="true"></i>
-      </div>
-      <div class="ct-content">
-        <div class="ct-role">基礎習得</div>
+      <div class="ct-period">入社〜3ヶ月</div>
+      <div class="ct-role">基礎習得</div>
+      <div class="ct-card">
         <ul class="ct-list">
-          <li>OJTで組立・検査・ピッキングの基礎を習得</li>
-          <li>部品の名前・工程・品質基準を丁寧に習得</li>
-          <li>3ヶ月でひと通りの作業をこなせるのが目安</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>OJTで組立・検査・ピッキングの基礎を習得</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>部品の名前・工程・品質基準を丁寧に習得</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>3ヶ月でひと通りの作業をこなせるのが目安</li>
         </ul>
       </div>
     </div>
 
     <div class="ct-item">
-      <div class="ct-step">
-        <div class="ct-step-period">1〜2<br>年目</div>
-        <i class="ti ti-tools ct-step-icon" aria-hidden="true"></i>
-      </div>
-      <div class="ct-content">
-        <div class="ct-role">一人立ち</div>
+      <div class="ct-period">1〜2年目</div>
+      <div class="ct-role">一人立ち</div>
+      <div class="ct-card">
         <ul class="ct-list">
-          <li>各ポジションを一人でこなせるように</li>
-          <li>自転車整備士の資格取得にチャレンジ</li>
-          <li>社内改善チームへの参加</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>各ポジションを一人でこなせるように</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>自転車整備士の資格取得にチャレンジ</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>社内改善チームへの参加</li>
         </ul>
       </div>
     </div>
 
     <div class="ct-item">
-      <div class="ct-step">
-        <div class="ct-step-period">3〜5<br>年目</div>
-        <i class="ti ti-users ct-step-icon" aria-hidden="true"></i>
-      </div>
-      <div class="ct-content">
-        <div class="ct-role">サブリーダー</div>
+      <div class="ct-period">3〜5年目</div>
+      <div class="ct-role">サブリーダー</div>
+      <div class="ct-card">
         <ul class="ct-list">
-          <li>後輩の指導・教育を担当</li>
-          <li>ライン改善の提案・実行</li>
-          <li>実力次第でこの段階から昇格も</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>後輩の指導・教育を担当</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>ライン改善の提案・実行</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>実力次第でこの段階から昇格も</li>
         </ul>
       </div>
     </div>
 
     <div class="ct-item">
-      <div class="ct-step">
-        <div class="ct-step-period">5年<br>目〜</div>
-        <i class="ti ti-crown ct-step-icon" aria-hidden="true"></i>
-      </div>
-      <div class="ct-content">
-        <div class="ct-role">ラインリーダー</div>
+      <div class="ct-period">5年目〜</div>
+      <div class="ct-role">ラインリーダー</div>
+      <div class="ct-card">
         <ul class="ct-list">
-          <li>チーム全体の管理・工程設計</li>
-          <li>新車種への対応・作業割り振り</li>
-          <li>不具合対応・品質管理の責任者</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>チーム全体の管理・工程設計</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>新車種への対応・作業割り振り</li>
+          <li><i class="ti ti-point-filled" aria-hidden="true"></i>不具合対応・品質管理の責任者</li>
         </ul>
       </div>
     </div>
