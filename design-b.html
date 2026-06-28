@@ -406,6 +406,20 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
 .gallery-strip .g-main { grid-row: 1 / 3; }
 @media(max-width:768px){ .gallery-strip { grid-template-columns: 1fr 1fr; height: auto; } .gallery-strip .g-main { grid-row: auto; } }
 
+
+/* Advantages カードグリッド */
+.adv-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.adv-card { background: #fff; border: 1px solid #e4e8f0; padding: 32px 24px 28px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: box-shadow .2s, transform .2s; }
+.adv-card:hover { box-shadow: 0 8px 28px rgba(28,58,110,.10); transform: translateY(-4px); }
+.adv-icon { width: 80px; height: 80px; margin-bottom: 20px; }
+.adv-icon svg { width: 100%; height: 100%; }
+.adv-num { font-size: 10px; font-weight: 900; color: #2d5ba3; letter-spacing: .1em; margin-bottom: 6px; }
+.adv-tag { font-size: 10px; font-weight: 700; color: #fff; background: #2d5ba3; padding: 3px 10px; letter-spacing: .06em; margin-bottom: 14px; }
+.adv-title { font-size: 14px; font-weight: 900; color: #1c3a6e; line-height: 1.5; margin-bottom: 12px; }
+.adv-text { font-size: 12px; color: #666; line-height: 1.8; }
+@media(max-width: 900px) { .adv-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width: 480px) { .adv-grid { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
@@ -508,47 +522,90 @@ body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff
       <div class="appeal-head-en">Advantages</div>
       <div class="appeal-head-title">イズミで働く、5つの魅力</div>
     </div>
-    <div class="appeal-list">
-      <div class="appeal-item">
-        <div class="appeal-num">01</div>
-        <div class="appeal-body">
-          <div class="appeal-title">パナソニック基準の技術が身につく</div>
-          <div class="appeal-text">大手メーカーの品質基準で、自転車組立・検査・ライン管理の技術を習得できます。全国どこでも通用するスキルです。</div>
-          <span class="appeal-tag">スキルアップ</span>
+    <div class="adv-grid">
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <path d="M20 44 L32 20 L44 44" stroke="#1c3a6e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M24 36 h16" stroke="#1c3a6e" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="32" cy="18" r="3" fill="#2d5ba3"/>
+            <path d="M26 48 h12" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
         </div>
+        <div class="adv-num">01</div>
+        <div class="adv-tag">スキルアップ</div>
+        <div class="adv-title">パナソニック基準の<br>技術が身につく</div>
+        <div class="adv-text">大手メーカーの品質基準で、自転車組立・検査・ライン管理の技術を習得できます。全国どこでも通用するスキルです。</div>
       </div>
-      <div class="appeal-item">
-        <div class="appeal-num">02</div>
-        <div class="appeal-body">
-          <div class="appeal-title">年間休日126日。残業もほぼなし</div>
-          <div class="appeal-text">完全週休2日（土・日）＋祝日・GW・夏季・年末年始。8:25〜17:25の定時を守る文化。仕事以外の時間も大切にできます。</div>
-          <span class="appeal-tag">ワークライフバランス</span>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <circle cx="32" cy="32" r="16" stroke="#1c3a6e" stroke-width="3" fill="none"/>
+            <path d="M32 20 v12 l8 5" stroke="#2d5ba3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 12 h6 M42 12 h6" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M19 12 v5 M45 12 v5" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
         </div>
+        <div class="adv-num">02</div>
+        <div class="adv-tag">ワークライフバランス</div>
+        <div class="adv-title">年間休日126日。<br>残業もほぼなし</div>
+        <div class="adv-text">完全週休2日（土・日）＋祝日・GW・夏季・年末年始。8:25〜17:25の定時を守る文化。仕事以外の時間も大切にできます。</div>
       </div>
-      <div class="appeal-item">
-        <div class="appeal-num">03</div>
-        <div class="appeal-body">
-          <div class="appeal-title">月給22〜27万円。賞与年2回</div>
-          <div class="appeal-text">経験・能力を正当に評価する給与体制。33歳・経験7年で年収440万円の実績あり。みなし残業なし、残業代は全額支給。</div>
-          <span class="appeal-tag">給与・待遇</span>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <path d="M22 42 L22 30 L32 18 L42 30 L42 42 Z" stroke="#1c3a6e" stroke-width="3" stroke-linejoin="round" fill="none"/>
+            <path d="M28 42 v-10 h8 v10" stroke="#2d5ba3" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M32 18 v-4" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="32" cy="12" r="2.5" fill="#2d5ba3"/>
+          </svg>
         </div>
+        <div class="adv-num">03</div>
+        <div class="adv-tag">給与・待遇</div>
+        <div class="adv-title">月給22〜27万円。<br>賞与年2回</div>
+        <div class="adv-text">経験・能力を正当に評価する給与体制。33歳・経験7年で年収440万円の実績あり。みなし残業なし、残業代は全額支給。</div>
       </div>
-      <div class="appeal-item">
-        <div class="appeal-num">04</div>
-        <div class="appeal-body">
-          <div class="appeal-title">製造業で唯一：出張整体（月1回・無料）</div>
-          <div class="appeal-text">プロのセラピストが職場に来て、肩・腰・首をケア。全社員が対象で費用は全額会社負担。身体のメンテナンスも仕事のうち。</div>
-          <span class="appeal-tag">福利厚生</span>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <path d="M24 20 C24 20 20 28 20 34 C20 40 25.4 45 32 45 C38.6 45 44 40 44 34 C44 28 40 20 40 20" stroke="#1c3a6e" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M32 45 v4" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M27 31 C27 31 29 35 32 35 C35 35 37 31 37 31" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle cx="32" cy="20" r="3" fill="#2d5ba3"/>
+          </svg>
         </div>
+        <div class="adv-num">04</div>
+        <div class="adv-tag">福利厚生</div>
+        <div class="adv-title">製造業で唯一：<br>出張整体（月1回・無料）</div>
+        <div class="adv-text">プロのセラピストが職場に来て、肩・腰・首をケア。全社員が対象で費用は全額会社負担。身体のメンテナンスも仕事のうち。</div>
       </div>
-      <div class="appeal-item">
-        <div class="appeal-num">05</div>
-        <div class="appeal-body">
-          <div class="appeal-title">顔が見える、少数精鋭の職場</div>
-          <div class="appeal-text">大きな組織にありがちな「人間関係の複雑さ」がない。困ったことはすぐ相談できる、フラットな職場環境です。</div>
-          <span class="appeal-tag">職場環境</span>
+
+      <div class="adv-card">
+        <div class="adv-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="30" fill="#e8eef8"/>
+            <circle cx="22" cy="26" r="6" stroke="#1c3a6e" stroke-width="2.5" fill="none"/>
+            <circle cx="42" cy="26" r="6" stroke="#1c3a6e" stroke-width="2.5" fill="none"/>
+            <circle cx="32" cy="24" r="6" stroke="#2d5ba3" stroke-width="2.5" fill="#e8eef8"/>
+            <path d="M12 46 C12 40 16.5 36 22 36" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M42 36 C47.5 36 52 40 52 46" stroke="#1c3a6e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M20 44 C20 38 25.4 34 32 34 C38.6 34 44 38 44 44" stroke="#2d5ba3" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
         </div>
+        <div class="adv-num">05</div>
+        <div class="adv-tag">職場環境</div>
+        <div class="adv-title">顔が見える、<br>少数精鋭の職場</div>
+        <div class="adv-text">大きな組織にありがちな「人間関係の複雑さ」がない。困ったことはすぐ相談できる、フラットな職場環境です。</div>
       </div>
+
     </div>
   </div>
 </section>
