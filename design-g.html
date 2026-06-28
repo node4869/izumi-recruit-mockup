@@ -380,12 +380,6 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
   /* 魅力カード：1カラム */
 
   /* タイムライン：1カラム */
-  .ct-item { grid-template-columns: 1fr; }
-  .ct-item::before { display: none; }
-  .ct-label { text-align: left; padding: 0 0 8px 0; }
-  .ct-label-text { font-size: 14px; color: #0f5a9e; }
-  .ct-dot { display: none; }
-  .ct-body { padding: 0 0 32px 0; border-left: 3px solid #2d5ba3; padding-left: 16px; }
 
   /* 募集要項テーブル：1カラム */
   .recruit-table th,
@@ -495,17 +489,73 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
 .career-stair-wrap svg { width: 100%; height: auto; display: block; min-width: 600px; }
 
 /* タイムライン */
-.career-timeline { max-width: 760px; margin: 0 auto; }
-.ct-item { display: grid; grid-template-columns: 140px 1fr; gap: 0; position: relative; margin-bottom: 0; }
-.ct-item::before { content: ''; position: absolute; left: 139px; top: 24px; bottom: -1px; width: 2px; background: #d0d8ea; z-index: 0; }
-.ct-item:last-child::before { display: none; }
-.ct-label { text-align: right; padding: 18px 24px 48px 0; position: relative; z-index: 1; }
-.ct-label-text { font-size: 15px; font-weight: 900; color: #0f5a9e; display: inline-block; }
-.ct-dot { position: absolute; right: -8px; top: 22px; width: 16px; height: 16px; border-radius: 50%; background: #2d5ba3; border: 3px solid #f5f7fb; z-index: 2; }
-.ct-body { padding: 16px 0 48px 28px; border-left: none; }
-.ct-body ul { list-style: none; padding: 0; }
-.ct-body ul li { font-size: 14px; color: #444; line-height: 1.9; padding-left: 16px; position: relative; margin-bottom: 10px; }
-.ct-body ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: #2d5ba3; }
+/* ── キャリアロードマップ ── */
+.career-timeline {
+  max-width: 900px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.career-timeline::before {
+  content: '';
+  position: absolute;
+  top: 36px; left: 12.5%; right: 12.5%;
+  height: 2px; background: #c8d8ee; z-index: 0;
+}
+.ct-item {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; position: relative; padding: 0 12px 0;
+}
+.ct-step {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: #fff; border: 3px solid #b8cde8;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: relative; z-index: 1; margin-bottom: 20px;
+  transition: border-color .25s, background .25s;
+}
+.ct-item:nth-child(2) .ct-step { border-color: #7fadd6; }
+.ct-item:nth-child(3) .ct-step { border-color: #4a7bc4; }
+.ct-item:nth-child(4) .ct-step { border-color: #0f5a9e; background: #0f5a9e; }
+.ct-step-period {
+  font-size: 10px; font-weight: 900; color: #0f5a9e; line-height: 1.3;
+  letter-spacing: -.01em;
+}
+.ct-item:nth-child(4) .ct-step-period { color: #fff; }
+.ct-step-icon { font-size: 11px; color: #aac0dc; margin-top: 2px; }
+.ct-item:nth-child(4) .ct-step-icon { color: rgba(255,255,255,.6); }
+.ct-role {
+  font-size: 12px; font-weight: 900; color: #0f5a9e;
+  background: #e8f0fb; padding: 4px 12px; margin-bottom: 14px;
+  letter-spacing: .04em;
+}
+.ct-item:nth-child(4) .ct-role { background: #0f5a9e; color: #fff; }
+.ct-list { list-style: none; padding: 0; text-align: left; width: 100%; }
+.ct-list li {
+  font-size: 12px; color: #555; line-height: 1.8;
+  padding: 6px 0; border-bottom: 1px solid #edf1f8;
+  padding-left: 14px; position: relative;
+}
+.ct-list li:last-child { border-bottom: none; }
+.ct-list li::before {
+  content: ''; position: absolute; left: 0; top: 14px;
+  width: 5px; height: 5px; border-radius: 50%; background: #b8cde8;
+}
+.ct-item:nth-child(2) .ct-list li::before { background: #7fadd6; }
+.ct-item:nth-child(3) .ct-list li::before { background: #4a7bc4; }
+.ct-item:nth-child(4) .ct-list li::before { background: #0f5a9e; }
+
+@media(max-width: 768px) {
+  .career-timeline { grid-template-columns: 1fr; gap: 0; }
+  .career-timeline::before { display: none; }
+  .ct-item { flex-direction: row; align-items: flex-start; text-align: left; padding: 0 0 32px 0; gap: 16px; }
+  .ct-item:last-child { padding-bottom: 0; }
+  .ct-step { width: 56px; height: 56px; flex-shrink: 0; margin-bottom: 0; }
+  .ct-step-period { font-size: 9px; }
+  .ct-content { flex: 1; }
+  .ct-role { display: inline-block; margin-bottom: 10px; }
+  .ct-list li { font-size: 13px; }
+}
 
 @media(max-width: 768px) {
   .career-section { padding: 64px 20px; }
@@ -895,60 +945,69 @@ body { overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1a1a
     </svg>
   </div>
 
-  <!-- タイムライン詳細 -->
+  <!-- キャリアロードマップ -->
   <div class="career-timeline">
+
     <div class="ct-item">
-      <div class="ct-label">
-        <div class="ct-label-text">入社〜<br>3ヶ月</div>
-        <div class="ct-dot"></div>
+      <div class="ct-step">
+        <div class="ct-step-period">入社〜<br>3ヶ月</div>
+        <i class="ti ti-seedling ct-step-icon" aria-hidden="true"></i>
       </div>
-      <div class="ct-body">
-        <ul>
-          <li>先輩社員によるOJTで組立・検査・ピッキングの基礎を習得します。</li>
-          <li>部品の名前・工程の流れ・品質基準を一つひとつ丁寧に覚えていきます。</li>
-          <li>3ヶ月でひと通りの作業ができるようになるのが目安です。</li>
+      <div class="ct-content">
+        <div class="ct-role">基礎習得</div>
+        <ul class="ct-list">
+          <li>OJTで組立・検査・ピッキングの基礎を習得</li>
+          <li>部品の名前・工程・品質基準を丁寧に習得</li>
+          <li>3ヶ月でひと通りの作業をこなせるのが目安</li>
         </ul>
       </div>
     </div>
+
     <div class="ct-item">
-      <div class="ct-label">
-        <div class="ct-label-text">1〜2年目</div>
-        <div class="ct-dot" style="background:#4a7bc4"></div>
+      <div class="ct-step">
+        <div class="ct-step-period">1〜2<br>年目</div>
+        <i class="ti ti-tools ct-step-icon" aria-hidden="true"></i>
       </div>
-      <div class="ct-body">
-        <ul>
-          <li>各ポジションを一人でこなせるようになります。</li>
-          <li>自転車整備士の資格取得にチャレンジする社員も多数います。試験前は先輩が指導・アドバイスをします。</li>
-          <li>「安全・品質・生産」のチームに分かれた社内改善活動にも参加します。</li>
+      <div class="ct-content">
+        <div class="ct-role">一人立ち</div>
+        <ul class="ct-list">
+          <li>各ポジションを一人でこなせるように</li>
+          <li>自転車整備士の資格取得にチャレンジ</li>
+          <li>社内改善チームへの参加</li>
         </ul>
       </div>
     </div>
+
     <div class="ct-item">
-      <div class="ct-label">
-        <div class="ct-label-text">3〜5年目</div>
-        <div class="ct-dot" style="background:#2d5ba3"></div>
+      <div class="ct-step">
+        <div class="ct-step-period">3〜5<br>年目</div>
+        <i class="ti ti-users ct-step-icon" aria-hidden="true"></i>
       </div>
-      <div class="ct-body">
-        <ul>
-          <li>サブリーダーとして後輩の指導も担当するようになります。</li>
-          <li>ライン内の問題発見・改善提案など、自分で考えて行動する力が身につきます。</li>
-          <li>年功序列ではないため、実力次第でこの段階から昇格も可能です。</li>
+      <div class="ct-content">
+        <div class="ct-role">サブリーダー</div>
+        <ul class="ct-list">
+          <li>後輩の指導・教育を担当</li>
+          <li>ライン改善の提案・実行</li>
+          <li>実力次第でこの段階から昇格も</li>
         </ul>
       </div>
     </div>
+
     <div class="ct-item">
-      <div class="ct-label">
-        <div class="ct-label-text">5年目〜</div>
-        <div class="ct-dot" style="background:#0f5a9e"></div>
+      <div class="ct-step">
+        <div class="ct-step-period">5年<br>目〜</div>
+        <i class="ti ti-crown ct-step-icon" aria-hidden="true"></i>
       </div>
-      <div class="ct-body">
-        <ul>
-          <li>ラインリーダーとしてチーム全体を管理します。</li>
-          <li>毎年の新車種に対応した作業割り振りや工程設計を担当します。</li>
-          <li>不具合対応・新人教育・品質管理など、幅広い役割を担います。</li>
+      <div class="ct-content">
+        <div class="ct-role">ラインリーダー</div>
+        <ul class="ct-list">
+          <li>チーム全体の管理・工程設計</li>
+          <li>新車種への対応・作業割り振り</li>
+          <li>不具合対応・品質管理の責任者</li>
         </ul>
       </div>
     </div>
+
   </div>
 </section>
 
